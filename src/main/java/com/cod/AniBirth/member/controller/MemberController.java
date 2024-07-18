@@ -14,15 +14,19 @@ import org.springframework.web.bind.annotation.*;
 public class MemberController {
     private final MemberService memberService;
 
+    @GetMapping("/login")
+    public String login() {
+        return "member/login";
+    }
+
     @GetMapping("/signup")
     public String showSignupForm(Model model) {
-        model.addAttribute("member", new Member());
-        return "signup"; // 회원가입 페이지로 이동
+        return "member/signup"; // 회원가입 페이지로 이동
     }
 
     @PostMapping("/signup")
-    public String signupMember(@ModelAttribute Member member) {
-        return "redirect:/login"; // 회원가입 후 로그인 페이지로 리다이렉트
+    public String signupMember() {
+        return "redirect:/member/login"; // 회원가입 후 로그인 페이지로 리다이렉트
     }
 
 }

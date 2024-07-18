@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>로그인</title>
+
+    <!-- 파비콘 -->
+    <link rel="icon" href="/images/favicon_logo.ico">
+
+    <link href="/resource/member/login.css" rel="stylesheet" type="text/css"/>
+
+    <script defer src="/resource/js/member/login.js"></script>
+</head>
+<body>
+    <div class="logo-box">
+        <a href="/">
+            <img th:src="@{/images/logo_sub.png}" alt="로고이미지">
+        </a>
+    </div>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1>Create Account</h1>
+                <div class="social-container">
+                    <a href="#" class="social kakao">
+                        <img src="" alt="">
+                    </a>
+                    <a href="#" class="social naver">
+                        <img src="" alt="">
+                    </a>
+                    <a href="#" class="social google">
+                        <img src="" alt="">
+                    </a>
+                </div>
+                <span>or use your email for registration</span>
+                <input type="text" placeholder="Name" />
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <button>Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="#">
+                <h1>Login</h1>
+                <div class="social-container">
+                    <a href="#" class="social kakao">
+                        <img src="" alt="">
+                    </a>
+                    <a href="#" class="social naver">
+                        <img src="" alt="">
+                    </a>
+                    <a href="#" class="social google">
+                        <img src="" alt="">
+                    </a>
+                </div>
+                <input type="text" placeholder="아이디를 입력하세요." />
+                <input type="password" placeholder="비밀번호를 입력하세요." />
+                <div class="signup-btn">
+                    <a href="#">회원가입</a>
+                </div>
+                <button type="submit">로그인</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="ghost" id="signUp">아이디 찾기</button>
+                    <button class="ghost" id="signUp">비밀번호 찾기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
