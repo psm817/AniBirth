@@ -1,15 +1,12 @@
 package com.cod.AniBirth.member.entity;
 
-import jakarta.persistence.*;
+import com.cod.AniBirth.base.entity.BaseEntity;
+import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -17,7 +14,7 @@ import java.time.LocalDateTime;
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Member {
+public class Member extends BaseEntity {
     private String username;
     private String password;
     private String nickname;    // 활동명 or 기업/보호소명

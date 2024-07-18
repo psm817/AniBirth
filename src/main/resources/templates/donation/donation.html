@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>후원 하기</title>
+    <style>
+
+        .content {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+        .background-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+        .text-overlay {
+            position: absolute;
+            top: 15%;
+            left: 180px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: left;
+            padding: 30px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        .text-overlay h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .text-overlay p {
+            margin: 0;
+            font-size: 1.2em;
+            text-align: left;
+            max-width: 80%;
+        }
+        .donation-section {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .donation-box {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width: 45%;
+            background-color: #f4f4f4;
+        }
+        .donation-box img {
+            max-width: 100px;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+        .donation-box p {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+        }
+        .btn-donate {
+            display: block;
+            width: 150px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #f88379;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="container">
+        <img src="https://i.ibb.co/fNDw1FH/4415755-j-XZ.jpg" alt="Dog Shelter" class="background-image">
+        <div class="text-overlay">
+            <h1>후원하기</h1>
+            <br>
+            <p>애니버스는 커뮤니티의 힘과 환원의 중요성을 믿습니다. 유기 동물 센터와 협력하여 <br> 우리는 버려진 동물들의 삶에 큰 변화를 가져오는 것을 목표로 합니다. <br>함께, 유기동물을 안전한 환경을 제공하여 유기동물을 사랑이 가득한 영원한 가족을 <br>찾을 수 있는 기회를 보장할 수 있습니다.</p>
+        </div>
+        <div class="donation-section">
+            <div class="donation-box">
+                <img src="shelter_donation.png" alt="센터 후원">
+                <p>센터 후원</p>
+                <p>구조된 동물이 평생의 가족을 만날 때까지 유기동물 보호센터로 후원합니다.</p>
+                <a href="#" class="btn-donate" onclick="donate()">후원하기</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://js.tosspayments.com/v1"></script>
+<script>
+    let amount = 10000; // 후원 금액 예시
+    let orderName = "센터 후원";
+    let tossPayments = TossPayments("test_ck_pP2YxJ4K879LGbonq7X2VRGZwXLO"); // 테스트 클라이언트 키
+
+    let path = "/donation/";
+    let successUrl = window.location.origin + path + "success";
+    let failUrl = window.location.origin + path + "fail";
+    let callbackUrl = window.location.origin + path + "va_callback";
+    let orderId = new Date().getTime();
+
+    function donate() {
+        const method = "카드";
+        const requestJson = {
+            amount: amount,
+            orderId: "donation-" + orderId,
+            orderName: orderName,
+            successUrl: successUrl,
+            failUrl: failUrl,
+            cardCompany: null,
+            cardInstallmentPlan: null,
+            maxCardInstallmentPlan: null,
+            useCardPoint: false,
+            customerName: "홍길동",
+            customerEmail: null,
+            customerMobilePhone: null,
+            taxFreeAmount: null,
+            useInternationalCardOnly: false,
+            flowMode: "DEFAULT",
+            discountCode: null,
+            appScheme: null,
+        }
+
+        tossPayments.requestPayment(method, requestJson)
+    }
+</script>
+</body>
+</html>
