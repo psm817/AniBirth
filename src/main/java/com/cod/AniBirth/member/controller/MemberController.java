@@ -2,6 +2,7 @@ package com.cod.AniBirth.member.controller;
 
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,10 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/member")
+@RequiredArgsConstructor
 public class MemberController {
-
-    @Autowired
-    private MemberService memberService;
+    private final MemberService memberService;
 
     @GetMapping("/signup")
     public String showSignupForm(Model model) {
