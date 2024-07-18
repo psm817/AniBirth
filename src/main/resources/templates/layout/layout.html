@@ -9,6 +9,9 @@
 
     <title>애니버스</title>
 
+    <!-- 파비콘 -->
+    <link rel="icon" href="/images/favicon_logo.ico">
+
     <!-- 제이쿼리 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
@@ -23,32 +26,24 @@
 
     <!-- 폰트어썸 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link href="/resource/common/common.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body class="flex flex-col min-h-screen pt-[56px]">
 <!-- common.css -->
-<link href="/resource/common/common.css" rel="stylesheet" type="text/css"/>
+
 
 <header>
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-[#344563]">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-[#FF416C]">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">애니버스</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/">홈</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">강의리스트</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">로그아웃</a>
-                    </li>
+                <ul class="navbar-nav mb-2 mb-md-0 ml-[auto] mr-[190px]">
                     <li class="nav-item">
                         <a class="nav-link" href="#">로그인</a>
                     </li>
@@ -56,6 +51,48 @@
                         <a class="nav-link" href="#">회원가입</a>
                     </li>
                 </ul>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary menu-bar">
+        <div class="container-fluid logo-box">
+            <a href="/">
+                <img th:src="@{/images/logo.png}" alt="로고이미지">
+            </a>
+        </div>
+        <div class="container-fluid menu-box">
+            <ul class="menu-title">
+                <li class="menu-text">
+                    <a href="#">
+                        <span>애니버스</span>
+                    </a>
+                </li>
+                <li class="menu-text">
+                    <a href="#">
+                        <span>봉사활동</span>
+                    </a>
+                </li>
+                <li class="menu-text">
+                    <a href="#">
+                        <span>입양하기</span>
+                    </a>
+                </li>
+                <li class="menu-text">
+                    <a href="#">
+                        <span>후원하기</span>
+                    </a>
+                </li>
+                <li class="menu-text">
+                    <a href="#">
+                        <span>애니마켓</span>
+                    </a>
+                </li>
+                <li class="menu-text">
+                    <a href="#">
+                        <span>애니공지</span>
+                    </a>
+                </li>
+            </ul>
             </div>
         </div>
     </nav>
