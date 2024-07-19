@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
 
-
     <!-- 테일윈드-->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
@@ -27,7 +26,18 @@
     <!-- 폰트어썸 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
+    <!-- Swiper JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- 커스텀 css모음 -->
     <link href="/resource/common/common.css" rel="stylesheet" type="text/css"/>
+    <link href="/resource/home/main.css" rel="stylesheet" type="text/css"/>
+    <link href="/resource/member/signup.css" rel="stylesheet" type="text/css"/>
+
+    <!-- 커스텀 js모음 -->
+    <script defer src="/javascript/home/main.js"></script>
+    <script defer src="/javascript/member/signup.js"></script>
 </head>
 
 <body class="flex flex-col min-h-screen pt-[56px]">
@@ -45,10 +55,11 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mb-2 mb-md-0 ml-[auto] mr-[190px]">
                     <li class="nav-item">
-                        <a class="nav-link" href="/member/login">로그인</a>
+                        <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/member/login}">로그인</a>
+                        <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/member/logout}">로그아웃</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">회원가입</a>
+                        <a class="nav-link" th:href="@{/member/signup}">회원가입</a>
                     </li>
                 </ul>
             </div>
@@ -57,7 +68,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary menu-bar">
         <div class="container-fluid logo-box">
             <a href="/">
-                <img th:src="@{/images/logo.png}" alt="로고이미지">
+                <img th:src="@{/images/logo/logo.png}" alt="로고이미지">
             </a>
         </div>
         <div class="container-fluid menu-box">
@@ -97,7 +108,7 @@
         </div>
     </nav>
 </header>
-<section class="flex-1 py-[20px] flex flex-col">
+<section class="flex-1 flex flex-col">
     <!-- Content Start -->
     <th:block layout:fragment="content"></th:block>
     <!-- Content End -->
@@ -105,7 +116,8 @@
 
 <footer class="footer py-3 bg-light">
     <div class="container text-center">
-        <span class="text-muted">애니버스</span>
+        <span class="text-muted">상호명 : 애니버스</span><br>
+        <span class="text-muted">공동 개발자 : 김지영, 김태우, 박상민, 박현철</span>
     </div>
 </footer>
 

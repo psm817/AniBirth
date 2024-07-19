@@ -27,9 +27,6 @@ h2 {
 p {
 	font-size: 14px;
 	font-weight: 100;
-	line-height: 20px;
-	letter-spacing: 0.5px;
-	margin: 20px 0 30px;
 }
 
 span {
@@ -50,10 +47,11 @@ button {
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
-	padding: 12px 45px;
-	letter-spacing: 1px;
+	padding: 12px 35px;
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
+	cursor: pointer;
+	font-family: 'Pretendard-Regular', sans-serif;
 }
 
 button:active {
@@ -67,6 +65,11 @@ button:focus {
 button.ghost {
 	background-color: transparent;
 	border-color: #FFFFFF;
+	padding: 12px 25px;
+}
+
+button.ghost:hover {
+	background-color: #6b182a;
 }
 
 form {
@@ -138,6 +141,15 @@ input {
 	width: 50%;
 	opacity: 0;
 	z-index: 1;
+}
+
+.sign-up-container > form > h1 {
+    font-size: 26px;
+    letter-spacing: -1px;
+}
+
+.sign-up-container > form > button {
+    margin-top: 30px;
 }
 
 .container.right-panel-active .sign-up-container {
@@ -213,6 +225,21 @@ input {
 	transform: translateX(-20%);
 }
 
+.overlay-left > h1 {
+    font-size: 20px;
+    letter-spacing: -1px;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+
+.overlay-left > span {
+    font-weight: 700;
+}
+
+.overlay-left > span:nth-child(5) {
+    margin-bottom: 40px;
+}
+
 .container.right-panel-active .overlay-left {
 	transform: translateX(0);
 }
@@ -220,6 +247,21 @@ input {
 .overlay-right {
 	right: 0;
 	transform: translateX(0);
+}
+
+.overlay-right > h1 {
+    font-size: 20px;
+    letter-spacing: -1px;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+
+.overlay-right > span {
+    font-weight: 700;
+}
+
+.overlay-right > span:nth-child(4) {
+    margin-bottom: 40px;
 }
 
 .container.right-panel-active .overlay-right {
@@ -252,6 +294,11 @@ input {
     background-color: #F4F4F4;
 }
 
+.social-container a > img {
+    width: 50%;
+    height: 50%;
+}
+
 .form-container > form > input::placeholder {
     font-size: 11px;
 }
@@ -269,27 +316,6 @@ input {
     letter-spacing: -1px;
 }
 
-footer {
-    background-color: #222;
-    color: #fff;
-    font-size: 14px;
-    bottom: 0;
-    position: fixed;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 999;
-}
-
-footer p {
-    margin: 10px 0;
-}
-
-footer i {
-    color: red;
-}
-
-footer a {
-    color: #3c97bf;
-    text-decoration: none;
+.form-container > form > .signup-btn > a:hover {
+    color: #FF416C;
 }

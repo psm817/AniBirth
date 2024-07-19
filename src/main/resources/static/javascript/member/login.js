@@ -1,8 +1,13 @@
-const signUpButton = document.getElementById('signUp');
+const findIdButton = document.getElementById('findId');
+const findPwButton = document.getElementById('findPw');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
 
-signUpButton.addEventListener('click', () => {
+findIdButton.addEventListener('click', () => {
+	container.classList.add("right-panel-active");
+});
+
+findPwButton.addEventListener('click', () => {
 	container.classList.add("right-panel-active");
 });
 
