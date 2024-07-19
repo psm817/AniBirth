@@ -23,6 +23,6 @@ public class Member extends BaseEntity {
     private String address;
     private String thumbnailImg;
 
-    private int authority;   // 보호소/기업(1) or 회원(2)
+    private int authority;   // admin(0) or 보호소/기업(1) or 회원(2)
     private int isActive;   // 승인(1), 대기(0)
 }

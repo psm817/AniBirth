@@ -27,6 +27,14 @@ html > body {
   text-underline-position: under;
 }
 
+ul, li, a {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    color: inherit;
+}
+
 .collapse {
     visibility: visible !important;
 }
@@ -75,5 +83,9 @@ header > .menu-bar > .menu-box > ul > li {
 header > .menu-bar > .menu-box > ul > li > a > span {
     color: #323232;
     font-weight: 800 !important;
-    font-size: 20px;
+    font-size: 22px;
+}
+
+header > .menu-bar > .menu-box > ul > li > a > span:hover {
+    color: #FF416C;
 }
