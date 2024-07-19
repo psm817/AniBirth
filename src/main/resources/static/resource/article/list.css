@@ -1,0 +1,241 @@
+/*
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+table {
+    width: 200%;
+
+    border-collapse: collapse;
+    background-color: #ffffff;
+    margin-bottom: 2rem;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 0.25rem;
+    background-color: #007bff;
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+*/
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.container {
+    width: 200%;
+    max-width: 2000px; /* 최대 너비 설정 */
+    position: relative; /* 부모 컨테이너를 상대적으로 위치시키기 */
+    padding: 0 1rem; /* 좌우 패딩 추가 */
+    box-sizing: border-box; /* 패딩을 포함한 전체 너비 계산 */
+}
+
+table {
+    width: 200%; /* 테이블 너비 설정 */
+    border-collapse: collapse;
+    background-color: #ffffff;
+    margin: 0 auto; /* 테이블을 가운데 정렬 */
+    position: relative;
+    left: -50%; /* 중앙 정렬을 위해 테이블을 왼쪽으로 이동 */
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.text-center {
+    text-align: center; /* 중앙 정렬 */
+}
+
+.text-right {
+    text-align: right;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 0.25rem;
+    background-color: #007bff;
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+/* 페이지네이션 스타일 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.pagination-button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    background-color: #ffffff;
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0 0.25rem;
+}
+
+.pagination-button:hover {
+    background-color: #FF416C;
+    color: #ffffff;
+}
+
+.pagination-first, .pagination-last {
+    font-weight: bold;
+}
+
+.pagination-prev, .pagination-next {
+    font-weight: bold;
+}
+
+.pagination-number {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    margin: 0 0.25rem;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.pagination-number:hover {
+    background-color: #FF416C;
+    color: #ffffff;
+}
+
+.pagination-active {
+    background-color: #007bff;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* 버튼 비활성화 상태 */
+.pagination-button.disabled {
+    background-color: #e9ecef;
+    color: #6c757d;
+    cursor: not-allowed;
+    border-color: #dee2e6;
+}

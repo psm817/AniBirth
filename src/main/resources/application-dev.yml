@@ -12,7 +12,7 @@ spring:
     password:
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
 
 custom:
   genFileDirPath: C:\work\genFile
