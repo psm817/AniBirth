@@ -1,15 +1,13 @@
 package com.cod.AniBirth.member.service;
 
 
-import com.cod.AniBirth.email.EmailService;
+import com.cod.AniBirth.email.service.EmailService;
 import com.cod.AniBirth.global.security.DataNotFoundException;
 import com.cod.AniBirth.member.entity.Member;
-import com.cod.AniBirth.member.form.MemberForm;
 import com.cod.AniBirth.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -55,5 +53,9 @@ public class MemberService {
         } else {
             throw new DataNotFoundException("Member not found");
         }
+    }
+
+    public Member findByUsernameAndEmail(String id, String email) {
+        return memberRepository.findByUsernameAndEmail(id, email);
     }
 }

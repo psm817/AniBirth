@@ -1,27 +1,25 @@
 package com.cod.AniBirth.member.controller;
 
-import com.cod.AniBirth.email.EmailService;
+import com.cod.AniBirth.email.service.EmailService;
+import com.cod.AniBirth.global.security.DataNotFoundException;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.form.MemberForm;
 import com.cod.AniBirth.member.repository.MemberRepository;
 import com.cod.AniBirth.member.service.MemberService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.Optional;
 import java.util.UUID;
 
 @Controller
@@ -117,7 +115,7 @@ public class MemberController {
 
     @PostMapping("/sendPassword")
     public String sendPassword(@RequestParam(value="id", defaultValue = "") String id,
-                               @RequestParam(value="email", defaultValue = "") String email) {
+                               @RequestParam(value="email", defaultValue = "") String email, Model model) {
         String subject = "애니버스 임시비밀번호 발급";
         String code = emailService.createCode();
         String body = String.format(
@@ -133,13 +131,21 @@ public class MemberController {
                 id, code
         );
 
-        // 임시비밀번호로 변경
-        Member member = memberService.findByUsername(id);
-        member.setPassword(passwordEncoder.encode(code));
-        memberRepository.save(member);
+        // username, email 둘다 만족하는 회원 찾기
+        Member member = memberService.findByUsernameAndEmail(id, email);
 
-        emailService.send(email, subject, body);
+        if(member != null && member.getUsername().equals(id) && member.getEmail().equals(email)) {
+            // 임시비밀번호로 변경
+            member.setPassword(passwordEncoder.encode(code));
+            memberRepository.save(member);
+            emailService.send(email, subject, body);
 
-        return "redirect:/member/login";
+            return "redirect:/member/login";
+        } else {
+            model.addAttribute("error", "member not found");
+            return "member/sendPasswordError";
+        }
+
+
     }
 }
