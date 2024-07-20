@@ -4,7 +4,6 @@ import com.cod.AniBirth.global.security.exception.MemberNotFoundException;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -61,6 +60,24 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
                     String username = "NAVER_%s".formatted(name.substring(0, 3));
                     String nickname =  (String) ((Map) attributes.get("response")).get("name");
                     String email = (String) ((Map) attributes.get("response")).get("email");
+
+                    member = new Member();
+                    member.setUsername(username);
+                    member.setNickname(nickname);
+                    member.setPassword("");
+                    member.setEmail(email);
+                    member.setIsActive(1);
+                    member.setAuthority(2);
+                    member.setThumbnailImg("/images/profile_default.jpg");
+                    memberRepository.save(member);
+                }
+
+                case "GOOGLE" -> {
+                    String name = (String) attributes.get("sub");
+
+                    String username = "GOOGLE_%s".formatted(name.substring(0, 3));
+                    String email = (String) attributes.get("email");
+                    String nickname = (String) attributes.get("name");
 
                     member = new Member();
                     member.setUsername(username);
