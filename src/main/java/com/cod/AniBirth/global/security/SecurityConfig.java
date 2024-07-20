@@ -20,6 +20,9 @@ public class SecurityConfig {
     @Autowired
     private OAuth2UserService oAuth2UserService;
 
+    @Autowired
+    private CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
+
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -27,7 +30,8 @@ public class SecurityConfig {
                         .requestMatchers(new AntPathRequestMatcher("/**")).permitAll())
                 .formLogin((formLogin) -> formLogin
                         .loginPage("/member/login")
-                        .defaultSuccessUrl("/"))
+                        .defaultSuccessUrl("/")
+                        .failureHandler(customAuthenticationFailureHandler))
                 .oauth2Login(
                         oauth2Login -> oauth2Login
                                 .loginPage("/member/login")

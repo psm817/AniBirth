@@ -29,3 +29,15 @@ if (success) {
     alert("이메일이 성공적으로 전송되었습니다!");
     window.location.href = '/member/login';
 }
+
+const wait = urlParams.get('wait');
+if (wait === 'notActive') {
+    alert('회원가입 승인 대기중입니다.');
+    window.location.href = '/member/login'
+}
+
+const fail = urlParams.get('fail');
+if (fail) {
+    alert('로그인 실패입니다.');
+    window.location.href = '/member/login'
+}

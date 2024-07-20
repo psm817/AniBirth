@@ -30,6 +30,10 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         Member member = _member.get();
 
+        if(member.getIsActive() == 0) {
+            throw new UserNotActiveException("회원가입 승인 대기중입니다.");
+        }
+
         List<GrantedAuthority> authorities = new ArrayList<>();
 
         authorities.add(new SimpleGrantedAuthority("member"));
@@ -37,3 +41,4 @@ public class CustomUserDetailsService implements UserDetailsService {
         return new User(member.getUsername(), member.getPassword(), authorities);
     }
 }
+

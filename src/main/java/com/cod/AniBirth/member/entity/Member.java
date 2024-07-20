@@ -22,7 +22,10 @@ public class Member extends BaseEntity {
 
     private String password;
     private String nickname;    // 활동명 or 기업/보호소명
+
+    @Column(unique = true)
     private String email;
+
     private String phone;
     private String address;
     private String thumbnailImg;
