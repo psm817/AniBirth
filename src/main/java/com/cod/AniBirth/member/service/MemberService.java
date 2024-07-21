@@ -10,6 +10,9 @@ import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.repository.MemberRepository;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -51,6 +54,7 @@ public class MemberService {
     }
 
 
+
     public Member findByUsername(String name) {
         Optional<Member> member = memberRepository.findByUsername(name);
 
@@ -67,6 +71,14 @@ public class MemberService {
 
     public Member findByEmail(String email) {
         return memberRepository.findByEmail(email);
+    }
+
+
+    public Member getCurrentMember() {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = user.getUsername();
+        return memberRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
     }
 
 }

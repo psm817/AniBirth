@@ -58,7 +58,7 @@
 }
 .donation-box img {
     max-width: 100px;
-    margin-bottom: 20px;
+    margin-bottom: 35px;
     object-fit: cover;
 }
 .donation-box p {
@@ -70,8 +70,8 @@
     font-size: 2rem;
 }
 .center-background-image {
-    width: 30%;
-    height: 30%;
+    width: 25%;
+    height: 25%;
     object-fit: cover;
     border-radius: 50%;
     box-shadow: 3px 3px 3px 3px #555555;
@@ -114,7 +114,7 @@
 
 /* Modal Styles */
 .modal {
-    display: flex;
+    display: none;
     position: fixed;
     z-index: 1;
     left: 0;

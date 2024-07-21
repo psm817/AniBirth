@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/layout/layout}">
+<section layout:fragment="content" class="section-recharge-points">
+    <div class="container">
+        <h1 class="text-[1.5rem] font-bold flex justify-center pt-5 pb-5">포인트 충전</h1>
+
+        <div class="mb-3">
+            <span class="form-label">충전 금액</span>
+            <div class="btn-group d-flex justify-content-center " role="group" aria-label="충전 금액 선택">
+                <button type="button" class="btn btn-outline-primary btn-amount" data-amount="1000">1,000원</button>
+                <button type="button" class="btn btn-outline-primary btn-amount" data-amount="5000">5,000원</button>
+                <button type="button" class="btn btn-outline-primary btn-amount" data-amount="10000">10,000원</button>
+                <button type="button" class="btn btn-outline-primary btn-amount" data-amount="50000">50,000원</button>
+                <button type="button" class="btn btn-outline-primary btn-amount" data-amount="100000">100,000원</button>
+            </div>
+        </div>
+
+        <form id="recharge-form">
+            <div class="mb-3">
+                <label for="amount" class="form-label">직접 입력 충전 금액</label>
+                <input type="number" class="form-control" id="amount" name="amount">
+            </div>
+            <button type="button" class="btn btn-primary btn-recharge" style="background-color: #FF416C; border-color: #FF416C;">충전</button>
+        </form>
+
+        <div class="mt-5">
+            <h2 class="text-[1.25rem] font-bold">현재 잔액: <span id="current-balance">0</span> 원</h2>
+        </div>
+    </div>
+
+    <script src="https://js.tosspayments.com/v1"></script>
+    <script th:inline="javascript">
+        const tossPayments = TossPayments("test_ck_pP2YxJ4K879LGbonq7X2VRGZwXLO"); // 테스트 클라이언트 키
+
+        // 충전 금액 버튼 클릭 이벤트
+        document.querySelectorAll('.btn-amount').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelector('#amount').value = this.dataset.amount;
+            });
+        });
+
+        document.querySelector('.btn-recharge').addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const amount = document.querySelector('#amount').value;
+            if (amount <= 0) {
+                alert('충전 금액을 입력해주세요.');
+                return;
+            }
+
+            const orderId = new Date().getTime();
+            const successUrl = window.location.origin + "/points/success";
+            const failUrl = window.location.origin + "/points/fail";
+
+            const requestJson = {
+                amount: amount,
+                orderId: "recharge-" + orderId,
+                orderName: "포인트 충전",
+                successUrl: successUrl,
+                failUrl: failUrl,
+                customerName: "박토스",
+                customerEmail: null,
+                customerMobilePhone: null,
+                useCardPoint: false,
+                flowMode: "DEFAULT"
+            };
+
+            tossPayments.requestPayment("카드", requestJson)
+                .catch(function (error) {
+                    if (error.code === 'USER_CANCEL') {
+                        console.log('사용자에 의해 취소되었습니다.');
+                    } else {
+                        console.error(error);
+                    }
+                });
+        });
+
+        // 현재 잔액을 표시하는 함수
+        function updateCurrentBalance(balance) {
+            document.querySelector('#current-balance').textContent = balance.toLocaleString();
+        }
+
+        // 페이지 로드 시 현재 잔액을 서버에서 가져와 표시
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/points/balance')
+                .then(response => response.json())
+                .then(data => {
+                    updateCurrentBalance(data.balance);
+                })
+                .catch(error => console.error('Error fetching balance:', error));
+        });
+    </script>
+</section>
+</html>
