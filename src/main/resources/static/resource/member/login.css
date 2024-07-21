@@ -183,6 +183,7 @@ input {
 .sign-up-container > form > h1 {
     font-size: 26px;
     letter-spacing: -1px;
+    margin-bottom: 20px;
 }
 
 .sign-up-container > form > button {

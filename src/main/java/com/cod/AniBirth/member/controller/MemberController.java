@@ -1,24 +1,27 @@
 package com.cod.AniBirth.member.controller;
 
 import com.cod.AniBirth.email.EmailService;
+import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.form.MemberForm;
+import com.cod.AniBirth.member.repository.MemberRepository;
 import com.cod.AniBirth.member.service.MemberService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Optional;
 import java.util.UUID;
 
 @Controller
@@ -27,6 +30,8 @@ import java.util.UUID;
 public class MemberController {
     private final MemberService memberService;
     private final EmailService emailService;
+    private final MemberRepository memberRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @PreAuthorize("isAnonymous()")
     @GetMapping("/login")
@@ -108,5 +113,33 @@ public class MemberController {
         }
         // 저장된 파일의 상대 경로를 반환합니다.
         return "/images/profile/" + imageFileName;
+    }
+
+    @PostMapping("/sendPassword")
+    public String sendPassword(@RequestParam(value="id", defaultValue = "") String id,
+                               @RequestParam(value="email", defaultValue = "") String email) {
+        String subject = "애니버스 임시비밀번호 발급";
+        String code = emailService.createCode();
+        String body = String.format(
+                "안녕하세요, <b>%s</b>님<br><br>" +
+                        "애니버스 사이트에 오신 것을 진심으로 환영합니다! 저희는 유기동물 봉사, 입양, 후원을 통해 따뜻한 사회를 만들어 나가는 커뮤티니 사이트입니다.<br><br>" +
+                        "비밀번호를 잃어버리셔서 걱정 많으셨죠? 아래 임시비밀번호를 제공해드립니다.<br><br>" +
+                        "임시비밀번호는 다음과 같습니다: <b>%s</b><br><br>" +
+                        "제공된 임시비밀번호를 통해 로그인 부탁드리며, 개인정보 보호를 위해 마이페이지를 통해 반드시 비밀번호 변경을 요청드립니다.<br><br>" +
+                        "더 궁금하신 점이나 도움이 필요하신 경우 언제든지 저희에게 연락해 주세요. 애니버스가 여러분께 많은 즐거움을 줄 수 있기를 바랍니다.<br><br>" +
+                        "애니버스 팀 드림<br>"+
+                        "고객지원 이메일 주소 : 5004jse@gmail.com<br>"+
+                        "웹 사이트 주소 : http://localhost:8040",
+                id, code
+        );
+
+        // 임시비밀번호로 변경
+        Member member = memberService.findByUsername(id);
+        member.setPassword(passwordEncoder.encode(code));
+        memberRepository.save(member);
+
+        emailService.send(email, subject, body);
+
+        return "redirect:/member/login";
     }
 }

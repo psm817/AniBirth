@@ -7,6 +7,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import java.util.Random;
+
 @Service
 @RequiredArgsConstructor
 public class EmailService {
@@ -26,5 +28,19 @@ public class EmailService {
         catch (MessagingException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public String createCode() {
+        StringBuilder codeBuilder = new StringBuilder();
+        Random random = new Random();
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        int length = 6; // 인증번호 길이 (여기서는 6자리로 설정)
+
+        for (int i = 0; i < length; i++) {
+            int index = random.nextInt(characters.length());
+            codeBuilder.append(characters.charAt(index));
+        }
+
+        return codeBuilder.toString();
     }
 }
