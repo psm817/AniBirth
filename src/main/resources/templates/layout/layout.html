@@ -54,12 +54,30 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mb-2 mb-md-0 ml-[auto] mr-[190px]">
+                    <li class="nav-item flex items-center text-white mr-[40px]">
+                        <span sec:authorize="isAuthenticated()" th:text="${member.nickname} + '님'"></span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" sec:authorize="isAuthenticated()" href="#"
+                           th:if="${member.authority} == 0">관리자페이지</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" sec:authorize="isAuthenticated()" href="#"
+                           th:if="${member.authority} == 1">보호소/기업페이지</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" sec:authorize="isAuthenticated()" href="#"
+                           th:if="${member.authority} == 2">마이페이지</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" sec:authorize="isAuthenticated()" href="#" th:if="${member.authority} == 2">장바구니</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/member/login}">로그인</a>
                         <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/member/logout}">로그아웃</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/member/signup}">회원가입</a>
+                        <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/member/agreement}">회원가입</a>
                     </li>
                 </ul>
             </div>

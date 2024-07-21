@@ -1,6 +1,7 @@
 package com.cod.AniBirth.member.service;
 
 
+import com.cod.AniBirth.global.security.DataNotFoundException;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -39,5 +41,15 @@ public class MemberService {
 
     public boolean usernameExists(String username) {
         return memberRepository.existsByUsername(username);
+    }
+
+    public Member findByUsername(String name) {
+        Optional<Member> member = memberRepository.findByUsername(name);
+
+        if (member.isPresent()) {
+            return member.get();
+        } else {
+            throw new DataNotFoundException("Member not found");
+        }
     }
 }

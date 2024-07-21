@@ -56,6 +56,9 @@ dependencies {
 
 	// 소셜로그인
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+	// 이메일
+	implementation 'org.springframework.boot:spring-boot-starter-mail:3.3.0'
 }
 
 tasks.named('test') {

@@ -1,6 +1,7 @@
 package com.cod.AniBirth.global.security;
 
 import com.cod.AniBirth.global.security.exception.MemberNotFoundException;
+import com.cod.AniBirth.global.security.exception.OAuthTypeMatchNotFoundException;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
