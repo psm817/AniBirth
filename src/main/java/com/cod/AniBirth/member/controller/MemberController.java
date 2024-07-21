@@ -177,4 +177,10 @@ public class MemberController {
         // 이메일 주소가 일치하지 않거나 회원이 존재하지 않는 경우
         return "redirect:/member/login?incorrect=true";
     }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/myPage")
+    public String myPage() {
+        return "member/myPage";
+    }
 }

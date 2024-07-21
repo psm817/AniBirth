@@ -15,13 +15,7 @@ public class HomeController {
     private final MemberService memberService;
 
     @GetMapping("/")
-    public String root(Principal principal, Model model) {
-        if(principal != null) {
-            Member member = memberService.findByUsername(principal.getName());
-
-            model.addAttribute("member", member);
-        }
-
+    public String root() {
         return "home/main";
     }
 }

@@ -27,15 +27,9 @@ h2 {
 p {
 	font-size: 14px;
 	font-weight: 100;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 	line-height: 20px;
 	letter-spacing: 0.5px;
 	margin: 20px 0 30px;
->>>>>>> c5a4a35 (충돌방지)
-=======
->>>>>>> 119fa11 (main 수정, 로그인&회원가입, 테스트 회원)
 }
 
 span {
@@ -56,26 +50,11 @@ button {
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
-<<<<<<< HEAD
-<<<<<<< HEAD
 	padding: 12px 35px;
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
 	cursor: pointer;
 	font-family: 'Pretendard-Regular', sans-serif;
-=======
-	padding: 12px 45px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	transition: transform 80ms ease-in;
->>>>>>> c5a4a35 (충돌방지)
-=======
-	padding: 12px 35px;
-	text-transform: uppercase;
-	transition: transform 80ms ease-in;
-	cursor: pointer;
-	font-family: 'Pretendard-Regular', sans-serif;
->>>>>>> 119fa11 (main 수정, 로그인&회원가입, 테스트 회원)
 }
 
 button:active {
@@ -89,10 +68,6 @@ button:focus {
 button.ghost {
 	background-color: transparent;
 	border-color: #FFFFFF;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 119fa11 (main 수정, 로그인&회원가입, 테스트 회원)
 	padding: 12px 25px;
 	border-radius: 30px;
 	font-size: 12px;
@@ -101,11 +76,6 @@ button.ghost {
 
 button.ghost:hover {
 	background-color: #6b182a;
-<<<<<<< HEAD
-=======
->>>>>>> c5a4a35 (충돌방지)
-=======
->>>>>>> 119fa11 (main 수정, 로그인&회원가입, 테스트 회원)
 }
 
 form {
@@ -179,10 +149,6 @@ input {
 	z-index: 1;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 119fa11 (main 수정, 로그인&회원가입, 테스트 회원)
 .sign-up-container > form > h1 {
     font-size: 26px;
     letter-spacing: -1px;
@@ -193,11 +159,6 @@ input {
     margin-top: 30px;
 }
 
-<<<<<<< HEAD
-=======
->>>>>>> c5a4a35 (충돌방지)
-=======
->>>>>>> 119fa11 (main 수정, 로그인&회원가입, 테스트 회원)
 .container.right-panel-active .sign-up-container {
 	transform: translateX(100%);
 	opacity: 1;
@@ -271,10 +232,6 @@ input {
 	transform: translateX(-20%);
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 119fa11 (main 수정, 로그인&회원가입, 테스트 회원)
 .overlay-left > h1 {
     font-size: 20px;
     letter-spacing: -1px;
@@ -290,11 +247,6 @@ input {
     margin-bottom: 40px;
 }
 
-<<<<<<< HEAD
-=======
->>>>>>> c5a4a35 (충돌방지)
-=======
->>>>>>> 119fa11 (main 수정, 로그인&회원가입, 테스트 회원)
 .container.right-panel-active .overlay-left {
 	transform: translateX(0);
 }
@@ -304,10 +256,6 @@ input {
 	transform: translateX(0);
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 119fa11 (main 수정, 로그인&회원가입, 테스트 회원)
 .overlay-right > h1 {
     font-size: 20px;
     letter-spacing: -1px;
@@ -323,11 +271,6 @@ input {
     margin-bottom: 40px;
 }
 
-<<<<<<< HEAD
-=======
->>>>>>> c5a4a35 (충돌방지)
-=======
->>>>>>> 119fa11 (main 수정, 로그인&회원가입, 테스트 회원)
 .container.right-panel-active .overlay-right {
 	transform: translateX(20%);
 }
@@ -358,20 +301,11 @@ input {
     background-color: #F4F4F4;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 119fa11 (main 수정, 로그인&회원가입, 테스트 회원)
 .social-container a > img {
     width: 50%;
     height: 50%;
 }
 
-<<<<<<< HEAD
-=======
->>>>>>> c5a4a35 (충돌방지)
-=======
->>>>>>> 119fa11 (main 수정, 로그인&회원가입, 테스트 회원)
 .form-container > form > input::placeholder {
     font-size: 11px;
 }
@@ -389,12 +323,10 @@ input {
     letter-spacing: -1px;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 .form-container > form > .signup-btn > a:hover {
     color: #FF416C;
-<<<<<<< HEAD
-=======
+}
+
 footer {
     background-color: #222;
     color: #fff;
@@ -418,12 +350,6 @@ footer i {
 footer a {
     color: #3c97bf;
     text-decoration: none;
->>>>>>> c5a4a35 (충돌방지)
-=======
-.form-container > form > .signup-btn > a:hover {
-    color: #FF416C;
->>>>>>> 119fa11 (main 수정, 로그인&회원가입, 테스트 회원)
-=======
 }
 
 /* 모달 커스텀 */
@@ -466,5 +392,4 @@ footer a {
 
 .modal > .modal-dialog > .modal-content > .modal-footer > button {
     border: 1px solid transparent;
->>>>>>> 23fcc5d (아이디 찾기, 소셜로그인 수정)
 }
