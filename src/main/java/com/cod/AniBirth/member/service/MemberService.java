@@ -1,10 +1,14 @@
 package com.cod.AniBirth.member.service;
 
 
+
 import com.cod.AniBirth.email.service.EmailService;
 import com.cod.AniBirth.global.security.DataNotFoundException;
+
 import com.cod.AniBirth.member.entity.Member;
+
 import com.cod.AniBirth.member.repository.MemberRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,6 +22,7 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
     private final EmailService emailService;
+
 
     public Member signup(String username, String password, String nickname, String email,
                          String phone, String address, String thumbnailImg, int authority, int isActive) {
@@ -45,6 +50,7 @@ public class MemberService {
         return memberRepository.existsByUsername(username);
     }
 
+
     public Member findByUsername(String name) {
         Optional<Member> member = memberRepository.findByUsername(name);
 
@@ -62,4 +68,5 @@ public class MemberService {
     public Member findByEmail(String email) {
         return memberRepository.findByEmail(email);
     }
+
 }
