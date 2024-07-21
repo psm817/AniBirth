@@ -94,6 +94,9 @@ button.ghost {
 =======
 >>>>>>> 119fa11 (main 수정, 로그인&회원가입, 테스트 회원)
 	padding: 12px 25px;
+	border-radius: 30px;
+	font-size: 12px;
+	font-weight: 700;
 }
 
 button.ghost:hover {
@@ -390,6 +393,7 @@ input {
 <<<<<<< HEAD
 .form-container > form > .signup-btn > a:hover {
     color: #FF416C;
+<<<<<<< HEAD
 =======
 footer {
     background-color: #222;
@@ -419,4 +423,48 @@ footer a {
 .form-container > form > .signup-btn > a:hover {
     color: #FF416C;
 >>>>>>> 119fa11 (main 수정, 로그인&회원가입, 테스트 회원)
+=======
+}
+
+/* 모달 커스텀 */
+.modal > .modal-dialog > .modal-content > .modal-body > form {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.modal > .modal-dialog > .modal-content > .modal-body > form > div > input {
+    width: 250px;
+    border-radius: 6px;
+}
+
+.modal > .modal-dialog > .modal-content > .modal-body > form > div > input::placeholder {
+    font-size: 13px;
+}
+
+.modal > .modal-dialog > .modal-content > .modal-body > form > div > label {
+    font-size: 15px;
+    font-weight: 700;
+    margin-right: 10px;
+    width: 90px;
+}
+
+.modal > .modal-dialog > .modal-content > .modal-body > form > .input-box {
+    display: flex;
+    width: 100%;
+    margin-bottom: 30px;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.modal > .modal-dialog > .modal-content > .modal-body > form > .input-box > button {
+    font-size: 15px;
+    margin-left: 8px;
+    padding: 12px 17px 12px 17px;
+    background-color: #FF416C;
+    border: 1px solid transparent;
+}
+
+.modal > .modal-dialog > .modal-content > .modal-footer > button {
+    border: 1px solid transparent;
+>>>>>>> 23fcc5d (아이디 찾기, 소셜로그인 수정)
 }

@@ -58,4 +58,8 @@ public class MemberService {
     public Member findByUsernameAndEmail(String id, String email) {
         return memberRepository.findByUsernameAndEmail(id, email);
     }
+
+    public Member findByEmail(String email) {
+        return memberRepository.findByEmail(email);
+    }
 }

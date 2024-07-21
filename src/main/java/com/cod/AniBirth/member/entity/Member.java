@@ -1,6 +1,7 @@
 package com.cod.AniBirth.member.entity;
 
 import com.cod.AniBirth.base.entity.BaseEntity;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -15,8 +16,10 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Member extends BaseEntity   {
+public class Member extends BaseEntity {
+    @Column(unique = true)
     private String username;
+
     private String password;
     private String nickname;    // 활동명 or 기업/보호소명
     private String email;

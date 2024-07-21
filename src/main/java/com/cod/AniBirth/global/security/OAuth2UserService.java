@@ -38,6 +38,10 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
         Member member = null;
         String oauthType = userRequest.getClientRegistration().getRegistrationId().toUpperCase();
 
+        if (!"KAKAO".equals(oauthType) && !"NAVER".equals(oauthType) && !"GOOGLE".equals(oauthType)) {
+            throw new OAuthTypeMatchNotFoundException();
+        }
+
         if (isNew(oauthType, oauthId)) {
             switch (oauthType) {
                 case "KAKAO" -> {
@@ -58,15 +62,17 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
                 case "NAVER" -> {
                     String name = (String) ((Map) attributes.get("response")).get("id");
 
-                    String username = "NAVER_%s".formatted(name.substring(0, 3));
-                    String nickname =  (String) ((Map) attributes.get("response")).get("name");
+                    String username = "NAVER_%s".formatted(oauthId);
+                    String nickname =  (String) ((Map) attributes.get("response")).get("nickname");
                     String email = (String) ((Map) attributes.get("response")).get("email");
+                    String mobile = (String) ((Map) attributes.get("response")).get("mobile");
 
                     member = new Member();
                     member.setUsername(username);
                     member.setNickname(nickname);
                     member.setPassword("");
                     member.setEmail(email);
+                    member.setPhone(mobile);
                     member.setIsActive(1);
                     member.setAuthority(2);
                     member.setThumbnailImg("/images/profile_default.jpg");
@@ -74,9 +80,7 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
                 }
 
                 case "GOOGLE" -> {
-                    String name = (String) attributes.get("sub");
-
-                    String username = "GOOGLE_%s".formatted(name.substring(0, 3));
+                    String username = "GOOGLE_%s".formatted(oauthId);
                     String email = (String) attributes.get("email");
                     String nickname = (String) attributes.get("name");
 

@@ -8,6 +8,8 @@ import com.cod.AniBirth.member.repository.MemberRepository;
 import com.cod.AniBirth.member.service.MemberService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Controller
@@ -116,7 +120,7 @@ public class MemberController {
     @PostMapping("/sendPassword")
     public String sendPassword(@RequestParam(value="id", defaultValue = "") String id,
                                @RequestParam(value="email", defaultValue = "") String email, Model model) {
-        String subject = "애니버스 임시비밀번호 발급";
+        String subject = "애니버스 - 임시비밀번호 발급";
         String code = emailService.createCode();
         String body = String.format(
                 "안녕하세요, <b>%s</b>님<br><br>" +
@@ -140,12 +144,37 @@ public class MemberController {
             memberRepository.save(member);
             emailService.send(email, subject, body);
 
-            return "redirect:/member/login";
+            return "redirect:/member/login?success=true";
         } else {
             model.addAttribute("error", "member not found");
-            return "member/sendPasswordError";
+            return "redirect:/member/login?error=true";
+        }
+    }
+
+    @PostMapping("/sendId")
+    public String sendId(@RequestParam(value="mail", defaultValue = "") String mail, Model model) {
+        // email 만족하는 회원 찾기
+        Member member = memberService.findByEmail(mail);
+
+        if (member != null) {
+            String subject = "애니버스 - 아이디 찾기";
+            String body = String.format(
+                    "애니버스 사이트에 오신 것을 진심으로 환영합니다! 저희는 유기동물 봉사, 입양, 후원을 통해 따뜻한 사회를 만들어 나가는 커뮤티니 사이트입니다.<br><br>" +
+                            "아이디를 잃어버리셔서 걱정 많으셨죠? 아래 회원님의 아이디를 전달드립니다.<br><br>" +
+                            "아이디는 다음과 같습니다: <b>%s</b><br><br>" +
+                            "더 궁금하신 점이나 도움이 필요하신 경우 언제든지 저희에게 연락해 주세요. 애니버스가 여러분께 많은 즐거움을 줄 수 있기를 바랍니다.<br><br>" +
+                            "애니버스 팀 드림<br>" +
+                            "고객지원 이메일 주소 : 5004jse@gmail.com<br>" +
+                            "웹 사이트 주소 : http://localhost:8040", member.getUsername()
+            );
+
+            if (member.getEmail().equals(mail)) {
+                emailService.send(mail, subject, body);
+                return "redirect:/member/login?success=true";
+            }
         }
 
-
+        // 이메일 주소가 일치하지 않거나 회원이 존재하지 않는 경우
+        return "redirect:/member/login?incorrect=true";
     }
 }
