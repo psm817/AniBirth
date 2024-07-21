@@ -44,17 +44,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
                 <h1>비밀번호 찾기</h1>
-                <div class="social-container">
-                    <a href="#" class="social kakao">
-                        <img th:src="@{/images/logo/kakaologo2.png}" alt="카카오톡">
-                    </a>
-                    <a href="#" class="social naver">
-                        <img th:src="@{/images/logo/naverlogo2.png}" alt="네이버">
-                    </a>
-                    <a href="#" class="social google">
-                        <img th:src="@{/images/logo/googlelogo2.png}" alt="구글">
-                    </a>
-                </div>
                 <input type="text" placeholder="아이디를 입력하세요."/>
                 <input type="email" placeholder="이메일을 입력하세요."/>
                 <button>이메일 전송</button>
@@ -64,10 +53,10 @@
             <form th:action="@{/member/login}" method="POST">
                 <h1>Login</h1>
                 <div class="social-container">
-                    <a href="#" class="social kakao">
+                    <a href="/oauth2/authorization/kakao" class="social kakao">
                         <img th:src="@{/images/logo/kakaologo2.png}" alt="카카오톡">
                     </a>
-                    <a href="#" class="social naver">
+                    <a href="/oauth2/authorization/naver" class="social naver">
                         <img th:src="@{/images/logo/naverlogo2.png}" alt="네이버">
                     </a>
                     <a href="#" class="social google">
@@ -147,7 +136,6 @@
                     <span>너무 걱정하지 마세요!</span>
                     <span>버튼을 통해 간편하게 회원 정보를 찾을 수 있습니다!</span>
                     <div class="find-btn">
-                        <button class="ghost" id="findId">아이디 찾기</button>
                         <button class="ghost" id="findPw">비밀번호 찾기</button>
                     </div>
 =======

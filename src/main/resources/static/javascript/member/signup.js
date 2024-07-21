@@ -24,6 +24,14 @@ function submitWriteForm(form) {
         return;
     }
 
+    form.authority.value = form.authority.value.trim();
+
+    if ( form.authority.value === "" ) {
+        alert("권한을 선택해주세요.");
+        form.authority.focus();
+        return;
+    }
+
     form.nickname.value = form.nickname.value.trim();
 
     if ( form.nickname.value.length == 0 ) {
@@ -43,7 +51,7 @@ function submitWriteForm(form) {
     form.phone.value = form.phone.value.trim();
 
     if ( form.phone.value.length == 0 ) {
-        alert("이메일을 입력해주세요.");
+        alert("전화번호를 입력해주세요.");
         form.phone.focus();
         return;
     }
@@ -51,7 +59,7 @@ function submitWriteForm(form) {
     form.address.value = form.address.value.trim();
 
     if ( form.address.value.length == 0 ) {
-        alert("이메일을 입력해주세요.");
+        alert("주소를 입력해주세요.");
         form.address.focus();
         return;
     }

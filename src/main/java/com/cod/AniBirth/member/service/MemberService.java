@@ -15,7 +15,6 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
 
-
     public Member signup(String username, String password, String nickname, String email,
                          String phone, String address, String thumbnailImg, int authority, int isActive) {
         Member member = Member.builder()
@@ -30,6 +29,10 @@ public class MemberService {
                 .isActive(isActive)
                 .createDate(LocalDateTime.now())
                 .build();
+
+        if(authority == 2) {
+            member.setIsActive(1);
+        }
 
         return memberRepository.save(member);
     }
