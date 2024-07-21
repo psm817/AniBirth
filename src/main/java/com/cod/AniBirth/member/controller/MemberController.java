@@ -77,5 +77,4 @@ public class MemberController {
         // 저장된 파일의 상대 경로를 반환합니다.
         return "/images/profile/" + imageFileName;
     }
-
 }
