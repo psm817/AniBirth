@@ -35,14 +35,14 @@
             <p>등록된 공지사항이 없습니다.</p>
         </div>
 
-        <div class="mt-4 text-right">
+        <div class="mt-7 text-right" >
             <a th:href="@{/article/create}" class="button">
                 글쓰기
             </a>
         </div>
 
         <!-- 페이지네이션 -->
-        <div th:if="${!#lists.isEmpty(paging.content)}" class="pagination flex justify-center mt-5">
+        <div th:if="${!#lists.isEmpty(paging.content)}" class="pagination-container">
             <!-- << 처음 페이지로 이동 -->
             <a th:href="@{|/article/list?page=0&size=${paging.size}|}" class="pagination-button"
                th:classappend="${!paging.hasPrevious()} ? 'disabled'">

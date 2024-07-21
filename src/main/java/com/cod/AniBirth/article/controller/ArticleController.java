@@ -18,13 +18,7 @@ import java.util.List;
 @RequestMapping("/article")
 public class ArticleController {
     private final ArticleService articleService;
-//
-//    @GetMapping("/list")
-//    public String list(Model model) {
-//        List<Article> articleList = articleService.getList();
-//        model.addAttribute("articleList", articleList);
-//        return "article/list";
-//    }
+
 
 @GetMapping("/list")
 public String list(Model model,
@@ -49,5 +43,16 @@ public String list(Model model,
 
         articleService.saveArticle(article);
         return "redirect:/article/list";
+    }
+
+    @GetMapping("/{id}")
+    public String detail(@PathVariable("id") Long id, Model model) {
+        Article article = articleService.getArticleById(id);
+        if (article != null) {
+            article.setViewCount(article.getViewCount() + 1);
+            articleService.saveArticle(article);
+        }
+        model.addAttribute("article", article);
+        return "article/detail";
     }
 }

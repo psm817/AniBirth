@@ -104,8 +104,8 @@ h1 {
 }
 
 .container {
-    width: 200%;
-    max-width: 2000px; /* 최대 너비 설정 */
+    width: 800px
+    max-width:1200px; /* 최대 너비 설정 */
     position: relative; /* 부모 컨테이너를 상대적으로 위치시키기 */
     padding: 0 1rem; /* 좌우 패딩 추가 */
     box-sizing: border-box; /* 패딩을 포함한 전체 너비 계산 */
@@ -177,6 +177,7 @@ a:hover {
 
 
 /* 페이지네이션 스타일 */
+
 .pagination {
     display: flex;
     justify-content: center;

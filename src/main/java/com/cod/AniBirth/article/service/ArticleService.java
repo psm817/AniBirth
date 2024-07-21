@@ -6,10 +6,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,9 +28,10 @@ public class ArticleService {
 
 
 
-    public Page<Article> getList(Pageable pageable) {
-        return articleRepository.findAll(pageable);
-    }
+public Page<Article> getList(Pageable pageable) {
+    Pageable sortedByCreateDateDesc = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by(Sort.Direction.DESC, "createDate"));
+    return articleRepository.findAll(sortedByCreateDateDesc);
+}
 
 
     public void create(String title, String content) {
@@ -40,6 +43,10 @@ public class ArticleService {
                 .build();
 
         articleRepository.save(article);
+    }
+    public Article getArticleById(Long id) {
+        Optional<Article> article = articleRepository.findById(id);
+        return article.orElse(null);
     }
 
 }
