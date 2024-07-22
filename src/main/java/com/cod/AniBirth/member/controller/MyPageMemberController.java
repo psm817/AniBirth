@@ -36,10 +36,8 @@ public class MyPageMemberController {
     @GetMapping("/volunteer")
     public String myVolunteer(Model model, Principal principal) {
         Member member = memberService.findByUsername(principal.getName());
-        Account account = accountService.findByMember(member);
 
         model.addAttribute("member", member);
-        model.addAttribute("account", account);
 
         return "member/myPage/volunteer";
     }
@@ -48,10 +46,8 @@ public class MyPageMemberController {
     @GetMapping("/adopt")
     public String myAdopt(Model model, Principal principal) {
         Member member = memberService.findByUsername(principal.getName());
-        Account account = accountService.findByMember(member);
 
         model.addAttribute("member", member);
-        model.addAttribute("account", account);
 
         return "member/myPage/adopt";
     }
@@ -66,5 +62,17 @@ public class MyPageMemberController {
         model.addAttribute("account", account);
 
         return "member/myPage/donation";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/market")
+    public String myMarket(Model model, Principal principal) {
+        Member member = memberService.findByUsername(principal.getName());
+        Account account = accountService.findByMember(member);
+
+        model.addAttribute("member", member);
+        model.addAttribute("account", account);
+
+        return "member/myPage/market";
     }
 }

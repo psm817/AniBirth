@@ -23,7 +23,7 @@
                         <a th:href="@{/member/myPage/adopt}"><span>입양내역</span></a>
                     </li>
                     <li class="list-group-item flex justify-center items-center donation">
-                        <a th:href="@{/member/myPage/donation}"><span>후원내역</span></a>
+                        <a th:href="@{/member/myPage/donation}"><span>후원 및 구매내역</span></a>
                     </li>
                 </ul>
             </div>
@@ -32,7 +32,75 @@
             <div class="title-box card-header flex items-center pl-[40px]">
                 <span>봉사내역</span>
             </div>
-            <div class="content-box card-header pl-[40px]"></div>
+            <div class="content-box card-header pl-[40px]">
+                <div class="total-box">
+                    <span th:text="${member.username} + '님이 참여하신 봉사활동은 총 0 건입니다.'"></span>
+                </div>
+                <div class="volunteer-box-title card-body">
+                    <ul class="list-group list-group-flush gap-6">
+                        <li class="list-group-item flex items-center">
+                            <span class="number">번호</span>
+                            <span class="date">봉사기간</span>
+                            <span class="volunteer-name">봉사명</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="volunteer-box-detail card-body">
+                    <ul class="list-group list-group-flush">
+                        <!-- th:each로 반복문 돌려야됨  -->
+                        <li class="list-group-item flex items-center">
+                            <span class="number">1</span>
+                            <span class="date">2024-07-22 ~ 2024-07-22</span>
+                            <span class="volunteer-name">유기견 목욕시키기</span>
+                        </li>
+                        <li class="list-group-item flex items-center">
+                            <span class="number">2</span>
+                            <span class="date">2024-07-22 ~ 2024-07-22</span>
+                            <span class="volunteer-name">유기견 목욕시키기</span>
+                        </li>
+                        <li class="list-group-item flex items-center">
+                            <span class="number">3</span>
+                            <span class="date">2024-07-22 ~ 2024-07-22</span>
+                            <span class="volunteer-name">유기견 목욕시키기</span>
+                        </li>
+                        <li class="list-group-item flex items-center">
+                            <span class="number">4</span>
+                            <span class="date">2024-07-22 ~ 2024-07-22</span>
+                            <span class="volunteer-name">유기견 목욕시키기</span>
+                        </li>
+                        <li class="list-group-item flex items-center">
+                            <span class="number">5</span>
+                            <span class="date">2024-07-22 ~ 2024-07-22</span>
+                            <span class="volunteer-name">유기견 목욕시키기</span>
+                        </li>
+                        <li class="list-group-item flex items-center">
+                            <span class="number">6</span>
+                            <span class="date">2024-07-22 ~ 2024-07-22</span>
+                            <span class="volunteer-name">유기견 목욕시키기</span>
+                        </li>
+                        <li class="list-group-item flex items-center">
+                            <span class="number">7</span>
+                            <span class="date">2024-07-22 ~ 2024-07-22</span>
+                            <span class="volunteer-name">유기견 목욕시키기</span>
+                        </li>
+                        <li class="list-group-item flex items-center">
+                            <span class="number">8</span>
+                            <span class="date">2024-07-22 ~ 2024-07-22</span>
+                            <span class="volunteer-name">유기견 목욕시키기</span>
+                        </li>
+                        <li class="list-group-item flex items-center">
+                            <span class="number">9</span>
+                            <span class="date">2024-07-22 ~ 2024-07-22</span>
+                            <span class="volunteer-name">유기견 목욕시키기</span>
+                        </li>
+                        <li class="list-group-item flex items-center">
+                            <span class="number">10</span>
+                            <span class="date">2024-07-22 ~ 2024-07-22</span>
+                            <span class="volunteer-name">유기견 목욕시키기</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </section>

@@ -91,75 +91,83 @@
 }
 
 /* 리스트 번호 구분 */
-.right-box > .content-box > .donation-box-title {
+.right-box > .content-box > .market-box-title {
     border-bottom: 1px solid #121212;
     padding: 0;
     height: 50px;
 }
 
-.right-box > .content-box > .donation-box-title > ul {
+.right-box > .content-box > .market-box-title > ul {
     height: 100%;
 }
 
-.right-box > .content-box > .donation-box-title > ul > li {
+.right-box > .content-box > .market-box-title > ul > li {
     height: 100%;
     background-color: transparent;
 }
 
-.right-box > .content-box > .donation-box-title > ul > li > span {
+.right-box > .content-box > .market-box-title > ul > li > span {
     font-size: 16px;
     text-align: center;
 }
 
-.right-box > .content-box > .donation-box-title > ul > li > .number {
+.right-box > .content-box > .market-box-title > ul > li > .number {
     width: 10%;
 }
 
-.right-box > .content-box > .donation-box-title > ul > li > .date {
+.right-box > .content-box > .market-box-title > ul > li > .date {
+    width: 20%;
+}
+
+.right-box > .content-box > .market-box-title > ul > li > .title {
     width: 30%;
 }
 
-.right-box > .content-box > .donation-box-title > ul > li > .shelter {
-    width: 30%;
+.right-box > .content-box > .market-box-title > ul > li > .amount {
+    width: 20%;
 }
 
-.right-box > .content-box > .donation-box-title > ul > li > .amount {
-    width: 30%;
+.right-box > .content-box > .market-box-title > ul > li > .review {
+    width: 20%;
 }
 
 /* 리스트 내용 */
-.right-box > .content-box > .donation-box-detail {
+.right-box > .content-box > .market-box-detail {
     max-height: 450px;
     overflow-y: auto;
     padding: 0;
 }
 
-.right-box > .content-box > .donation-box-detail > ul {
+.right-box > .content-box > .market-box-detail > ul {
     height: 100%:
 }
 
-.right-box > .content-box > .donation-box-detail > ul > li {
+.right-box > .content-box > .market-box-detail > ul > li {
     height: 100%;
     background-color: transparent;
 }
 
-.right-box > .content-box > .donation-box-detail > ul > li > span {
+.right-box > .content-box > .market-box-detail > ul > li > span {
     font-size: 16px;
     text-align: center;
 }
 
-.right-box > .content-box > .donation-box-detail > ul > li > .number {
+.right-box > .content-box > .market-box-detail > ul > li > .number {
     width: 10%;
 }
 
-.right-box > .content-box > .donation-box-detail > ul > li > .date {
+.right-box > .content-box > .market-box-detail > ul > li > .date {
+    width: 20%;
+}
+
+.right-box > .content-box > .market-box-detail > ul > li > .title {
     width: 30%;
 }
 
-.right-box > .content-box > .donation-box-detail > ul > li > .shelter {
-    width: 30%;
+.right-box > .content-box > .market-box-detail > ul > li > .amount {
+    width: 20%;
 }
 
-.right-box > .content-box > .donation-box-detail > ul > li > .amount {
-    width: 30%;
+.right-box > .content-box > .market-box-detail > ul > li > .review {
+    width: 20%;
 }

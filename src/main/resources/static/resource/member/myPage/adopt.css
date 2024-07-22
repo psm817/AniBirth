@@ -64,7 +64,7 @@
     color: #fff;
 }
 
-/* 우측 프로필 정보 */
+/* 우측 입양내역 */
 .right-box > .title-box {
     height: 100px;
 }
@@ -76,4 +76,106 @@
 
 .right-box > .content-box {
     height: 100%;
+}
+
+.right-box > .content-box > .total-box {
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.right-box > .content-box > .total-box > span {
+    display: block;
+    height: 100%;
+    line-height: 60px;
+    font-size: 18px;
+}
+
+/* 리스트 번호 구분 */
+.right-box > .content-box > .adopt-box-title {
+    border-bottom: 1px solid #121212;
+    padding: 0;
+    height: 50px;
+}
+
+.right-box > .content-box > .adopt-box-title > ul {
+    height: 100%;
+}
+
+.right-box > .content-box > .adopt-box-title > ul > li {
+    height: 100%;
+    background-color: transparent;
+}
+
+.right-box > .content-box > .adopt-box-title > ul > li > span {
+    font-size: 16px;
+    text-align: center;
+}
+
+.right-box > .content-box > .adopt-box-title > ul > li > .number {
+    width: 5%;
+}
+
+.right-box > .content-box > .adopt-box-title > ul > li > .date {
+    width: 20%;
+}
+
+.right-box > .content-box > .adopt-box-title > ul > li > .name {
+    width: 20%;
+}
+
+.right-box > .content-box > .adopt-box-title > ul > li > .type {
+    width: 20%;
+}
+
+.right-box > .content-box > .adopt-box-title > ul > li > .shelter {
+    width: 20%;
+}
+
+.right-box > .content-box > .adopt-box-title > ul > li > .picture {
+    width: 15%;
+}
+
+/* 리스트 내용 */
+.right-box > .content-box > .adopt-box-detail {
+    max-height: 450px;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.right-box > .content-box > .adopt-box-detail > ul {
+    height: 100%:
+}
+
+.right-box > .content-box > .adopt-box-detail > ul > li {
+    height: 100%;
+    background-color: transparent;
+}
+
+.right-box > .content-box > .adopt-box-detail > ul > li > span {
+    font-size: 16px;
+    text-align: center;
+}
+
+.right-box > .content-box > .adopt-box-detail > ul > li > .number {
+    width: 5%;
+}
+
+.right-box > .content-box > .adopt-box-detail > ul > li > .date {
+    width: 20%;
+}
+
+.right-box > .content-box > .adopt-box-detail > ul > li > .name {
+    width: 20%;
+}
+
+.right-box > .content-box > .adopt-box-detail > ul > li > .type {
+    width: 20%;
+}
+
+.right-box > .content-box > .adopt-box-detail > ul > li > .shelter {
+    width: 20%;
+}
+
+.right-box > .content-box > .adopt-box-detail > ul > li > .picture {
+    width: 15%;
 }

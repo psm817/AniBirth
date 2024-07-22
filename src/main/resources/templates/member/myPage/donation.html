@@ -23,16 +23,42 @@
                         <a th:href="@{/member/myPage/adopt}"><span>입양내역</span></a>
                     </li>
                     <li class="list-group-item flex justify-center items-center donation">
-                        <a th:href="@{/member/myPage/donation}"><span>후원내역</span></a>
+                        <a th:href="@{/member/myPage/donation}"><span>후원 및 구매내역</span></a>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="right-box card w-[100%] ">
             <div class="title-box card-header flex items-center pl-[40px]">
-                <span>후원내역</span>
+                <span>후원 및 구매내역</span>
+                <a th:href="@{/member/myPage/market}" class="btn btn-link ml-[20px]">구매내역 보기</a>
             </div>
-            <div class="content-box card-header pl-[40px]"></div>
+            <div class="content-box card-header pl-[40px]">
+                <div class="total-box">
+                    <span th:text="${member.username} + '님이 후원하신 후원내역은 총 0 원입니다.'"></span>
+                </div>
+                <div class="donation-box-title card-body">
+                    <ul class="list-group list-group-flush gap-6">
+                        <li class="list-group-item flex items-center">
+                            <span class="number">번호</span>
+                            <span class="date">후원날짜</span>
+                            <span class="shelter">후원보호소</span>
+                            <span class="amount">후원금액</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="donation-box-detail card-body">
+                    <ul class="list-group list-group-flush">
+                        <!-- th:each로 반복문 돌려야됨  -->
+                        <li class="list-group-item flex items-center">
+                            <span class="number">1</span>
+                            <span class="date">2024-07-22</span>
+                            <span class="shelter">대전센터</span>
+                            <span class="amount">5,000원</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </section>
