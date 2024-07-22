@@ -60,7 +60,7 @@ public class MemberController {
                 memberForm.getEmail(), memberForm.getPhone(), memberForm.getAddress(),
                 imageFileName, memberForm.getAuthority(), memberForm.getIsActive());
 
-        String subject = "애니버스 가입을 환영합니다!";
+        String subject = "애니버스 - 서비스 가입 환영";
 
         String body = String.format(
                 "안녕하세요, <b>%s</b>님<br><br>"+

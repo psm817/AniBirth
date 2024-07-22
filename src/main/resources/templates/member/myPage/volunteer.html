@@ -80,7 +80,29 @@
                         </li>
                     </ul>
                 </div>
-                <!-- 최고/중간 관리자일때 리스트 항목 -->
+                <!-- 최고 관리자일때 리스트 항목 -->
+                <div th:if="${member.authority} == 0" class="volunteer-box-detail card-body">
+                    <ul class="list-group list-group-flush">
+                        <!-- th:each로 반복문 돌려야됨  -->
+                        <li class="list-group-item flex items-center">
+                            <span class="number w-[10%]">1</span>
+                            <span class="start-date w-[20%]">2024-07-22</span>
+                            <span class="end-date w-[20%]">2024-07-22</span>
+                            <span class="volunteer-name w-[20%]">유기견 목욕시키기</span>
+                            <span class="num w-[15%]">15</span>
+                            <span class="maxNum w-[15%]">20</span>
+                        </li>
+                        <li class="list-group-item flex items-center">
+                            <span class="number w-[10%]">2</span>
+                            <span class="start-date w-[20%]">2024-07-22</span>
+                            <span class="end-date w-[20%]">2024-07-22</span>
+                            <span class="volunteer-name w-[20%]">유기견 목욕시키기</span>
+                            <span class="num w-[15%]">8</span>
+                            <span class="maxNum w-[15%]">20</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 중간 관리자일때 리스트 항목 -->
                 <div th:if="${member.authority} == 1 or ${member.authority} == 0" class="volunteer-box-detail card-body">
                     <ul class="list-group list-group-flush">
                         <!-- th:each로 반복문 돌려야됨  -->
