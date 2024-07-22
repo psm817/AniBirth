@@ -174,9 +174,12 @@ a:hover {
 }
 
 
-
-
 /* 페이지네이션 스타일 */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem; /* 페이지네이션과 테이블 간의 간격 */
+}
 
 .pagination {
     display: flex;

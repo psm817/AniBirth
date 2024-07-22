@@ -35,7 +35,7 @@
             <p>등록된 공지사항이 없습니다.</p>
         </div>
 
-        <div class="mt-7 text-right" >
+        <div th:if="${isAdmin}" class="mt-7 text-right" >
             <a th:href="@{/article/create}" class="button">
                 글쓰기
             </a>
@@ -77,6 +77,7 @@
             </a>
         </div>
     </div>
+
 </section>
 </body>
 </html>
