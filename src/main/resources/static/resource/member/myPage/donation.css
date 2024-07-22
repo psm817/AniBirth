@@ -111,22 +111,6 @@
     text-align: center;
 }
 
-.right-box > .content-box > .donation-box-title > ul > li > .number {
-    width: 10%;
-}
-
-.right-box > .content-box > .donation-box-title > ul > li > .date {
-    width: 30%;
-}
-
-.right-box > .content-box > .donation-box-title > ul > li > .shelter {
-    width: 30%;
-}
-
-.right-box > .content-box > .donation-box-title > ul > li > .amount {
-    width: 30%;
-}
-
 /* 리스트 내용 */
 .right-box > .content-box > .donation-box-detail {
     max-height: 450px;
@@ -146,20 +130,4 @@
 .right-box > .content-box > .donation-box-detail > ul > li > span {
     font-size: 16px;
     text-align: center;
-}
-
-.right-box > .content-box > .donation-box-detail > ul > li > .number {
-    width: 10%;
-}
-
-.right-box > .content-box > .donation-box-detail > ul > li > .date {
-    width: 30%;
-}
-
-.right-box > .content-box > .donation-box-detail > ul > li > .shelter {
-    width: 30%;
-}
-
-.right-box > .content-box > .donation-box-detail > ul > li > .amount {
-    width: 30%;
 }

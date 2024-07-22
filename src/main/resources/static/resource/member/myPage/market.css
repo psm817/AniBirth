@@ -111,26 +111,6 @@
     text-align: center;
 }
 
-.right-box > .content-box > .market-box-title > ul > li > .number {
-    width: 10%;
-}
-
-.right-box > .content-box > .market-box-title > ul > li > .date {
-    width: 20%;
-}
-
-.right-box > .content-box > .market-box-title > ul > li > .title {
-    width: 30%;
-}
-
-.right-box > .content-box > .market-box-title > ul > li > .amount {
-    width: 20%;
-}
-
-.right-box > .content-box > .market-box-title > ul > li > .review {
-    width: 20%;
-}
-
 /* 리스트 내용 */
 .right-box > .content-box > .market-box-detail {
     max-height: 450px;
@@ -150,24 +130,4 @@
 .right-box > .content-box > .market-box-detail > ul > li > span {
     font-size: 16px;
     text-align: center;
-}
-
-.right-box > .content-box > .market-box-detail > ul > li > .number {
-    width: 10%;
-}
-
-.right-box > .content-box > .market-box-detail > ul > li > .date {
-    width: 20%;
-}
-
-.right-box > .content-box > .market-box-detail > ul > li > .title {
-    width: 30%;
-}
-
-.right-box > .content-box > .market-box-detail > ul > li > .amount {
-    width: 20%;
-}
-
-.right-box > .content-box > .market-box-detail > ul > li > .review {
-    width: 20%;
 }

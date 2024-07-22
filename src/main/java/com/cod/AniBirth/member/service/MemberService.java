@@ -1,5 +1,6 @@
 package com.cod.AniBirth.member.service;
 
+import com.cod.AniBirth.account.service.AccountService;
 import com.cod.AniBirth.global.security.DataNotFoundException;
 
 import com.cod.AniBirth.member.entity.Member;
@@ -21,6 +22,7 @@ import java.util.Optional;
 public class MemberService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
+    private final AccountService accountService;
 
 
     public Member signup(String username, String password, String nickname, String email,
@@ -42,7 +44,10 @@ public class MemberService {
             member.setIsActive(1);
         }
 
-        return memberRepository.save(member);
+        memberRepository.save(member);
+        accountService.createOrUpdate(member, "", 0L);
+
+        return member;
     }
 
     public boolean usernameExists(String username) {

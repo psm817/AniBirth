@@ -110,18 +110,6 @@
     text-align: center;
 }
 
-.right-box > .content-box > .volunteer-box-title > ul > li > .number {
-    width: 10%;
-}
-
-.right-box > .content-box > .volunteer-box-title > ul > li > .date {
-    width: 35%;
-}
-
-.right-box > .content-box > .volunteer-box-title > ul > li > .volunteer-name {
-    width: 55%;
-}
-
 /* 리스트 내용 */
 .right-box > .content-box > .volunteer-box-detail {
     max-height: 450px;
@@ -141,16 +129,4 @@
 .right-box > .content-box > .volunteer-box-detail > ul > li > span {
     font-size: 16px;
     text-align: center;
-}
-
-.right-box > .content-box > .volunteer-box-detail > ul > li > .number {
-    width: 10%;
-}
-
-.right-box > .content-box > .volunteer-box-detail > ul > li > .date {
-    width: 35%;
-}
-
-.right-box > .content-box > .volunteer-box-detail > ul > li > .volunteer-name {
-    width: 55%;
 }
