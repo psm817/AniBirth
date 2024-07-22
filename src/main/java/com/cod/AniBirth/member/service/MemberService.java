@@ -1,8 +1,5 @@
 package com.cod.AniBirth.member.service;
 
-
-
-import com.cod.AniBirth.email.service.EmailService;
 import com.cod.AniBirth.global.security.DataNotFoundException;
 
 import com.cod.AniBirth.member.entity.Member;
@@ -24,7 +21,6 @@ import java.util.Optional;
 public class MemberService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
-    private final EmailService emailService;
 
 
     public Member signup(String username, String password, String nickname, String email,
@@ -73,12 +69,10 @@ public class MemberService {
         return memberRepository.findByEmail(email);
     }
 
-
     public Member getCurrentMember() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = user.getUsername();
         return memberRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
     }
-
 }
