@@ -1,20 +1,20 @@
 package com.cod.AniBirth.member.controller;
 
 import com.cod.AniBirth.email.service.EmailService;
-import com.cod.AniBirth.global.security.DataNotFoundException;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.form.MemberForm;
 import com.cod.AniBirth.member.repository.MemberRepository;
 import com.cod.AniBirth.member.service.MemberService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -22,8 +22,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 @Controller
@@ -58,7 +56,7 @@ public class MemberController {
     public String signupMember(@Valid MemberForm memberForm, @RequestParam("thumbnailImg") MultipartFile thumbnailImg) {
         String imageFileName = storeProfilePicture(memberForm.getThumbnailImg());
 
-        memberService.signup(memberForm.getUsername(), memberForm.getPassword(), memberForm.getNickname(),
+        Member member = memberService.signup(memberForm.getUsername(), memberForm.getPassword(), memberForm.getNickname(),
                 memberForm.getEmail(), memberForm.getPhone(), memberForm.getAddress(),
                 imageFileName, memberForm.getAuthority(), memberForm.getIsActive());
 
@@ -176,11 +174,5 @@ public class MemberController {
 
         // 이메일 주소가 일치하지 않거나 회원이 존재하지 않는 경우
         return "redirect:/member/login?incorrect=true";
-    }
-
-    @PreAuthorize("isAuthenticated()")
-    @GetMapping("/myPage")
-    public String myPage() {
-        return "member/myPage";
     }
 }

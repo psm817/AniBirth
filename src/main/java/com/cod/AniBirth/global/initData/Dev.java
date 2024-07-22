@@ -1,5 +1,7 @@
 package com.cod.AniBirth.global.initData;
 
+import com.cod.AniBirth.account.entity.Account;
+import com.cod.AniBirth.account.service.AccountService;
 import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.animal.service.AnimalService;
 import com.cod.AniBirth.member.entity.Member;
@@ -13,7 +15,7 @@ import org.springframework.context.annotation.Profile;
 @Profile("dev")
 public class Dev {
     @Bean
-    public ApplicationRunner init(MemberService memberService, AnimalService animalService) {
+    public ApplicationRunner init(MemberService memberService, AnimalService animalService, AccountService accountService) {
         return args -> {
             Member member1 = memberService.signup("admin", "admin", "admin", "admin@test.com","010-1111-2222", "대전광역시 서구 청사로 281","/images/profile_default.jpg", 0, 1);
             Member member2 = memberService.signup("company1", "company1", "company1", "company1@test.com","010-1111-2222", "대전광역시 서구 청사로 281","/images/profile_default.jpg", 1, 1);
@@ -23,6 +25,12 @@ public class Dev {
 
             Animal animal1 = animalService.create("복순이", "브라운", "개");
             Animal animal2 = animalService.create("복자", "검정", "고양이");
+
+            Account account1 = accountService.createOrUpdate(member1, "123-1234-1234", 0L);
+            Account account2 = accountService.createOrUpdate(member2, "123-1234-1234", 0L);
+            Account account3 = accountService.createOrUpdate(member3, "123-1234-1234", 0L);
+            Account account4 = accountService.createOrUpdate(member4, "123-1234-1234", 0L);
+            Account account5 = accountService.createOrUpdate(member5, "123-1234-1234", 0L);
         };
     }
 }
