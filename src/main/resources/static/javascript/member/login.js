@@ -38,6 +38,6 @@ if (wait === 'notActive') {
 
 const fail = urlParams.get('fail');
 if (fail) {
-    alert('로그인 실패입니다.');
+    alert('로그인 실패입니다. \n아이디와 비밀번호를 정확히 입력해주세요.');
     window.location.href = '/member/login'
 }

@@ -2,8 +2,92 @@
 <html layout:decorate="~{/layout/layout}">
 <section layout:fragment="content" class="flex-1 flex justify-center items-center">
     <div class="container flex h-full">
-        <div class="card w-[500px]">ddd</div>
-        <div class="card w-[100%]">ddd</div>
+        <div class="left-box card w-[500px]">
+            <div class="profile-box card-header flex flex-col items-center">
+                <div class="profile-img mt-[10px]">
+                    <img th:src="@{|${member.thumbnailImg}|}" alt="프로필사진">
+                </div>
+                <div class="profile-name mt-[15px]">
+                    <span th:text="${member.nickname}"></span>
+                </div>
+            </div>
+            <div class="menu-box card-header">
+                <ul class="list-group list-group-flush gap-6 mt-2">
+                    <li class="list-group-item flex justify-center items-center">
+                        <a th:href="@{/member/myPage}"><span>마이프로필</span></a>
+                    </li>
+                    <li class="list-group-item flex justify-center items-center">
+                        <a href="#"><span>봉사내역</span></a>
+                    </li>
+                    <li class="list-group-item flex justify-center items-center">
+                        <a href="#"><span>입양내역</span></a>
+                    </li>
+                    <li class="list-group-item flex justify-center items-center">
+                        <a href="#"><span>후원내역</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="right-box card w-[100%] ">
+            <div class="title-box card-header flex items-center pl-[40px]">
+                <span>마이프로필</span>
+            </div>
+            <div class="content-box card-header pl-[40px]">
+                <ul class="list-group list-group-flush gap-6">
+                    <li class="list-group-item flex items-center">
+                        <span class="mr-[70px]">ID</span>
+                        <div class="text-box flex items-center">
+                            <span th:if="${#strings.startsWith(member.username, 'NAVER')}" th:text="${#strings.substring(member.username, 0, 20)}"></span>
+                            <span th:unless="${#strings.startsWith(member.username, 'NAVER')}" th:text="${member.username}"></span>
+                        </div>
+                    </li>
+                    <li class="list-group-item flex items-center">
+                        <span class="mr-[70px]">활동명</span>
+                        <div class="text-box flex items-center">
+                            <span th:text="${member.nickname}"></span>
+                        </div>
+                    </li>
+                    <li class="list-group-item flex items-center">
+                        <span class="mr-[70px]">권한</span>
+                        <div class="text-box flex items-center">
+                            <span class="text-blue-600" th:if="${member.authority == 1}" th:text="'보호소/기업'"></span>
+                            <span class="text-blue-600" th:if="${member.authority == 2}" th:text="'일반회원'"></span>
+                        </div>
+                    </li>
+                    <li class="list-group-item flex items-center">
+                        <span class="mr-[70px]">전화번호</span>
+                        <div class="text-box flex items-center">
+                            <span th:text="${member.phone}"></span>
+                        </div>
+                    </li>
+                    <li class="list-group-item flex items-center">
+                        <span class="mr-[70px]">이메일</span>
+                        <div class="text-box flex items-center">
+                            <span th:text="${member.email}"></span>
+                        </div>
+                    </li>
+                    <li class="list-group-item flex items-center">
+                        <span class="mr-[70px]">주소</span>
+                        <div class="text-box flex items-center">
+                            <span th:text="${member.address}"></span>
+                        </div>
+                    </li>
+                    <li class="list-group-item flex items-center">
+                        <span class="mr-[70px]">애니포인트</span>
+                        <div class="text-box flex items-center">
+                            <span th:text="${account.aniPoint} + ' 원'"></span>
+                        </div>
+                        <div class="charge-box ml-[30px]">
+                            <a href="">충전하기</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="btn-box card-body flex items-center justify-center mt-[10px]">
+                    <a href="#" class="modify-btn mr-[30px]">프로필 수정</a>
+                    <a href="#" class="delete-btn ml-[30px]" onclick="return confirmDelete()">탈퇴하기</a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 </html>

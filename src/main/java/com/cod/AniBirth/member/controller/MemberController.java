@@ -1,5 +1,7 @@
 package com.cod.AniBirth.member.controller;
 
+import com.cod.AniBirth.account.entity.Account;
+import com.cod.AniBirth.account.service.AccountService;
 import com.cod.AniBirth.email.service.EmailService;
 import com.cod.AniBirth.global.security.DataNotFoundException;
 import com.cod.AniBirth.member.entity.Member;
@@ -22,6 +24,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -34,6 +37,7 @@ public class MemberController {
     private final EmailService emailService;
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
+    private final AccountService accountService;
 
     @PreAuthorize("isAnonymous()")
     @GetMapping("/login")
@@ -58,7 +62,7 @@ public class MemberController {
     public String signupMember(@Valid MemberForm memberForm, @RequestParam("thumbnailImg") MultipartFile thumbnailImg) {
         String imageFileName = storeProfilePicture(memberForm.getThumbnailImg());
 
-        memberService.signup(memberForm.getUsername(), memberForm.getPassword(), memberForm.getNickname(),
+        Member member = memberService.signup(memberForm.getUsername(), memberForm.getPassword(), memberForm.getNickname(),
                 memberForm.getEmail(), memberForm.getPhone(), memberForm.getAddress(),
                 imageFileName, memberForm.getAuthority(), memberForm.getIsActive());
 
@@ -180,7 +184,13 @@ public class MemberController {
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/myPage")
-    public String myPage() {
+    public String myPage(Model model, Principal principal) {
+        Member member = memberService.findByUsername(principal.getName());
+        Account account = accountService.findByMember(member);
+
+        model.addAttribute("member", member);
+        model.addAttribute("account", account);
+
         return "member/myPage";
     }
 }

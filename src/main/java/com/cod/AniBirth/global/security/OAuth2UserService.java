@@ -1,5 +1,6 @@
 package com.cod.AniBirth.global.security;
 
+import com.cod.AniBirth.account.service.AccountService;
 import com.cod.AniBirth.global.security.exception.MemberNotFoundException;
 import com.cod.AniBirth.global.security.exception.OAuthTypeMatchNotFoundException;
 import com.cod.AniBirth.member.entity.Member;
@@ -23,6 +24,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class OAuth2UserService extends DefaultOAuth2UserService {
     private final MemberRepository memberRepository;
+    private final AccountService accountService;
 
     @Override
     @Transactional
@@ -50,14 +52,17 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
                     String nickname = (String) attributesProperties.get("nickname");
                     String username = "KAKAO_%s".formatted(oauthId);
 
-                    member = new Member();
-                    member.setUsername(username);
-                    member.setNickname(nickname);
-                    member.setPassword("");
-                    member.setIsActive(1);
-                    member.setAuthority(2);
-                    member.setThumbnailImg("/images/profile_default.jpg");
+                    member = Member.builder()
+                            .username(username)
+                            .nickname(nickname)
+                            .password("")
+                            .isActive(1)
+                            .authority(2)
+                            .thumbnailImg("/images/profile_default.jpg")
+                            .build();
+
                     memberRepository.save(member);
+                    accountService.createOrUpdate(member, "", 0L);
                 }
                 case "NAVER" -> {
                     String name = (String) ((Map) attributes.get("response")).get("id");
@@ -67,16 +72,20 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
                     String email = (String) ((Map) attributes.get("response")).get("email");
                     String mobile = (String) ((Map) attributes.get("response")).get("mobile");
 
-                    member = new Member();
-                    member.setUsername(username);
-                    member.setNickname(nickname);
-                    member.setPassword("");
-                    member.setEmail(email);
-                    member.setPhone(mobile);
-                    member.setIsActive(1);
-                    member.setAuthority(2);
-                    member.setThumbnailImg("/images/profile_default.jpg");
+
+                    member = Member.builder()
+                            .username(username)
+                            .nickname(nickname)
+                            .password("")
+                            .email(email)
+                            .phone(mobile)
+                            .isActive(1)
+                            .authority(2)
+                            .thumbnailImg("/images/profile_default.jpg")
+                            .build();
+
                     memberRepository.save(member);
+                    accountService.createOrUpdate(member, "", 0L);
                 }
 
                 case "GOOGLE" -> {
@@ -84,15 +93,18 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
                     String email = (String) attributes.get("email");
                     String nickname = (String) attributes.get("name");
 
-                    member = new Member();
-                    member.setUsername(username);
-                    member.setNickname(nickname);
-                    member.setPassword("");
-                    member.setEmail(email);
-                    member.setIsActive(1);
-                    member.setAuthority(2);
-                    member.setThumbnailImg("/images/profile_default.jpg");
+                    member = Member.builder()
+                            .username(username)
+                            .nickname(nickname)
+                            .password("")
+                            .email(email)
+                            .isActive(1)
+                            .authority(2)
+                            .thumbnailImg("/images/profile_default.jpg")
+                            .build();
+
                     memberRepository.save(member);
+                    accountService.createOrUpdate(member, "", 0L);
                 }
             }
         } else {
