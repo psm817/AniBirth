@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+
 @Getter
 @Setter
 @Entity
@@ -32,4 +33,6 @@ public class Member extends BaseEntity {
 
     private int authority;   // admin(0) or 보호소/기업(1) or 회원(2)
     private int isActive;   // 승인(1), 대기(0)
+
+
 }
