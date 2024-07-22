@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/layout/layout}">
+<section layout:fragment="content" class="flex-1 flex justify-center items-center">
+    <div class="container flex h-full">
+        <div class="left-box card w-[500px]">
+            <div class="profile-box card-header flex flex-col items-center">
+                <div class="profile-img mt-[10px]">
+                    <img th:src="@{|${member.thumbnailImg}|}" alt="프로필사진">
+                </div>
+                <div class="profile-name mt-[15px]">
+                    <span th:text="${member.nickname}"></span>
+                </div>
+            </div>
+            <div class="menu-box-v card-header">
+                <ul class="list-group list-group-flush gap-6 mt-2">
+                    <li class="list-group-item flex justify-center items-center profile">
+                        <a th:href="@{/member/myPage/myProfile}"><span>마이프로필</span></a>
+                    </li>
+                    <li class="list-group-item flex justify-center items-center volunteer">
+                        <a th:href="@{/member/myPage/volunteer}"><span>봉사내역</span></a>
+                    </li>
+                    <li class="list-group-item flex justify-center items-center adopt">
+                        <a th:href="@{/member/myPage/adopt}"><span>입양내역</span></a>
+                    </li>
+                    <li class="list-group-item flex justify-center items-center donation">
+                        <a th:href="@{/member/myPage/donation}"><span>후원내역</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="right-box card w-[100%] ">
+            <div class="title-box card-header flex items-center pl-[40px]">
+                <span>봉사내역</span>
+            </div>
+            <div class="content-box card-header pl-[40px]"></div>
+        </div>
+    </div>
+</section>
+</html>

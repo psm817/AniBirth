@@ -11,19 +11,19 @@
                     <span th:text="${member.nickname}"></span>
                 </div>
             </div>
-            <div class="menu-box card-header">
+            <div class="menu-box-t card-header">
                 <ul class="list-group list-group-flush gap-6 mt-2">
-                    <li class="list-group-item flex justify-center items-center">
-                        <a th:href="@{/member/myPage}"><span>마이프로필</span></a>
+                    <li class="list-group-item flex justify-center items-center profile">
+                        <a th:href="@{/member/myPage/myProfile}"><span>마이프로필</span></a>
                     </li>
-                    <li class="list-group-item flex justify-center items-center">
-                        <a href="#"><span>봉사내역</span></a>
+                    <li class="list-group-item flex justify-center items-center volunteer">
+                        <a th:href="@{/member/myPage/volunteer}"><span>봉사내역</span></a>
                     </li>
-                    <li class="list-group-item flex justify-center items-center">
-                        <a href="#"><span>입양내역</span></a>
+                    <li class="list-group-item flex justify-center items-center adopt">
+                        <a th:href="@{/member/myPage/adopt}"><span>입양내역</span></a>
                     </li>
-                    <li class="list-group-item flex justify-center items-center">
-                        <a href="#"><span>후원내역</span></a>
+                    <li class="list-group-item flex justify-center items-center donation">
+                        <a th:href="@{/member/myPage/donation}"><span>후원내역</span></a>
                     </li>
                 </ul>
             </div>

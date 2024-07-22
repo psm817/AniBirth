@@ -1,0 +1,79 @@
+.container > .card {
+    background-color: transparent;
+    padding: 0;
+}
+
+.card {
+    height: 100%;
+}
+
+.card > .card-header {
+    height: 50%;
+    border: transparent;
+    background-color: transparent;
+}
+
+/* 좌측 프로필, 메뉴 */
+.left-box > .profile-box > .profile-img {
+    width: 270px;
+    height: 270px;
+}
+
+.left-box > .profile-box > .profile-img > img {
+    width: 100%;
+    height: 100%;
+}
+
+.left-box > .profile-box > .profile-name > span {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.left-box > .menu-box-d > ul > li {
+    background-color: transparent;
+    height: 50px;
+    padding: 0;
+    border: transparent;
+}
+
+.left-box > .menu-box-d > ul > li > a {
+    border: 1.5px solid #FF416C;
+    border-radius: 10px;
+    width: 140px;
+    height: 100%;
+    text-align: center;
+    line-height: 48px;
+    box-sizing: border-box;
+}
+
+.left-box > .menu-box-d > ul > .donation > a {
+    background-color: #FF416C;
+    color: #fff;
+}
+
+.left-box > .menu-box-d > ul > li > a:hover {
+    background-color: #FF416C;
+}
+
+.left-box > .menu-box-d > ul > li > a > span {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.left-box > .menu-box-d > ul > li > a:hover > span {
+    color: #fff;
+}
+
+/* 우측 프로필 정보 */
+.right-box > .title-box {
+    height: 100px;
+}
+
+.right-box > .title-box > span {
+    font-weight: 700;
+    font-size: 23px;
+}
+
+.right-box > .content-box {
+    height: 100%;
+}

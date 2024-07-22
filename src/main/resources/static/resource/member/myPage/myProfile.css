@@ -29,14 +29,14 @@
     font-weight: 700;
 }
 
-.left-box > .menu-box > ul > li {
+.left-box > .menu-box-t > ul > li {
     background-color: transparent;
     height: 50px;
     padding: 0;
     border: transparent;
 }
 
-.left-box > .menu-box > ul > li > a {
+.left-box > .menu-box-t > ul > li > a {
     border: 1.5px solid #FF416C;
     border-radius: 10px;
     width: 140px;
@@ -46,21 +46,21 @@
     box-sizing: border-box;
 }
 
-.left-box > .menu-box > ul > li:nth-child(1) > a {
+.left-box > .menu-box-t > ul > .profile > a {
     background-color: #FF416C;
     color: #fff;
 }
 
-.left-box > .menu-box > ul > li > a:hover {
+.left-box > .menu-box-t > ul > li > a:hover {
     background-color: #FF416C;
 }
 
-.left-box > .menu-box > ul > li > a > span {
+.left-box > .menu-box-t > ul > li > a > span {
     font-size: 17px;
     font-weight: 700;
 }
 
-.left-box > .menu-box > ul > li > a:hover > span {
+.left-box > .menu-box-t > ul > li > a:hover > span {
     color: #fff;
 }
 
