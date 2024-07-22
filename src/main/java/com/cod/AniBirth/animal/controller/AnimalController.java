@@ -7,7 +7,10 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -15,24 +18,12 @@ import org.springframework.web.bind.annotation.*;
 public class AnimalController {
     private final AnimalService animalService;
 
-    @Data
-    public static class ListRequest {
-        @NotBlank
-        private String name;
-
-        @NotBlank
-        private String haircolor;
+    @GetMapping("/list")
+    public String getAnimals(Model model) {
+        List<Animal> animals = animalService.findAll();
+        model.addAttribute("animals", animals);
+        return "animalList";
     }
 
-    @PostMapping("/list")
-    public Animal list(@Valid @RequestBody ListRequest listRequest, HttpServletResponse resp) {
 
-        // 테스트용
-//        resp.addHeader("Authentication", "JWT Token");
-
-//        String accessToken = animalService.genAccessToken(listRequest.getName());
-//        resp.addHeader("Authentication", accessToken);
-
-        return animalService.findByName(listRequest.getName()).orElse(null);
-    }
 }

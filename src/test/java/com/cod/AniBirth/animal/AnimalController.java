@@ -52,20 +52,24 @@ public class AnimalController {
         resultActions
                 .andExpect(status().is2xxSuccessful());
 
-//        MvcResult mvcResult = resultActions.andReturn();
-//
-//        MockHttpServletResponse response = mvcResult.getResponse();
-//
-//        String authentication = response.getHeader("Authentication");
-//        System.out.println("authentication : " + authentication);
-//
-//        assertThat(authentication).isNotEmpty();
+        MvcResult mvcResult = resultActions.andReturn();
+
+        MockHttpServletResponse response = mvcResult.getResponse();
+
+        // 전체 응답을 출력
+        System.out.println("Response: " + response.getContentAsString());
+
+        // Authentication 헤더 출력
+        String authentication = response.getHeader("Authentication");
+        System.out.println("authentication : " + authentication);
+
+        assertThat(authentication).isNotEmpty();
 
     }
 
-//    @Test
-//    @DisplayName("로그인 토큰 발급 검증")
-//    void t2() throws Exception {
-//
-//    }
+    @Test
+    @DisplayName("로그인 토큰 발급 검증")
+    void t2() throws Exception {
+
+    }
 }

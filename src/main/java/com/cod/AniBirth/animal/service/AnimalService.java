@@ -1,11 +1,16 @@
 package com.cod.AniBirth.animal.service;
 
+import com.cod.AniBirth.ApiResponse;
 import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.animal.repository.AnimalRepository;
 
+import com.cod.global.jwt.JwtProvider;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,34 +18,21 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AnimalService {
     private final AnimalRepository animalRepository;
-//    private final JwtProvider jwtProvider;
+    private final JwtProvider jwtProvider;
     public List<Animal> getList() {
         return animalRepository.findAll();
     }
 
-    public Optional<Animal> findByName(String name) {
-        return animalRepository.findByName(name);
+    public List<Animal> findAll() {
+        return animalRepository.findAll();
     }
 
-    public Animal create(String name, String color, String classification) {
-        Animal animal = Animal.builder()
-                .name(name)
-                .hairColor(color)
-                .age(11)
-                .classification(classification)
-                .build();
+    public void saveAnimals(String json) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ApiResponse apiResponse = objectMapper.readValue(json, ApiResponse.class);
+        List<Animal> animals = apiResponse.getMsgBody().getItems();
 
-        animalRepository.save(animal);
-
-        return animal;
+        animalRepository.saveAll(animals);
     }
 
-//    public String genAccessToken (String name) {
-//        Animal animal = findByName(name).orElse(null);
-//
-//        if ( animal == null ) return null;
-//
-//        return jwtProvider.genToken(animal.toClaims(), 60 * 60 * 24 * 365);
-//
-//    }
 }

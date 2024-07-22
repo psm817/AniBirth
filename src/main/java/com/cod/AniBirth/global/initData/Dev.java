@@ -23,14 +23,13 @@ public class Dev {
             Member member4 = memberService.signup("user1", "user1", "user1", "user1@test.com","010-1111-2222", "대전광역시 서구 청사로 281","/images/profile_default.jpg", 2, 1);
             Member member5 = memberService.signup("user2", "user2", "user2", "user2@test.com","010-1111-2222", "대전광역시 서구 청사로 281","/images/profile_default.jpg", 2, 1);
 
-            Animal animal1 = animalService.create("복순이", "브라운", "개");
-            Animal animal2 = animalService.create("복자", "검정", "고양이");
 
             Account account1 = accountService.createOrUpdate(member1, "123-1234-1234", 0L);
             Account account2 = accountService.createOrUpdate(member2, "123-1234-1234", 0L);
             Account account3 = accountService.createOrUpdate(member3, "123-1234-1234", 0L);
             Account account4 = accountService.createOrUpdate(member4, "123-1234-1234", 0L);
             Account account5 = accountService.createOrUpdate(member5, "123-1234-1234", 0L);
+
         };
     }
 }
