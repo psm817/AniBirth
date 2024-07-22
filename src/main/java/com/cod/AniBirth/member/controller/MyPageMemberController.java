@@ -3,15 +3,16 @@ package com.cod.AniBirth.member.controller;
 import com.cod.AniBirth.account.entity.Account;
 import com.cod.AniBirth.account.service.AccountService;
 import com.cod.AniBirth.member.entity.Member;
+import com.cod.AniBirth.member.repository.MemberRepository;
 import com.cod.AniBirth.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 @RequestMapping("/member/myPage")
@@ -19,17 +20,30 @@ import java.security.Principal;
 public class MyPageMemberController {
     private final MemberService memberService;
     private final AccountService accountService;
+    private final MemberRepository memberRepository;
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/myProfile")
     public String myPage(Model model, Principal principal) {
         Member member = memberService.findByUsername(principal.getName());
         Account account = accountService.findByMember(member);
+        List<Member> memberList = memberService.getAllMember();
 
         model.addAttribute("member", member);
         model.addAttribute("account", account);
+        model.addAttribute("memberList", memberList);
 
         return "member/myPage/myProfile";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/approve")
+    public String approve(@RequestParam(value = "username", defaultValue = "") String username ) {
+        Member member = memberService.findByUsername(username);
+        member.setIsActive(1);
+        memberRepository.save(member);
+
+        return "redirect:/member/myPage/myProfile";
     }
 
     @PreAuthorize("isAuthenticated()")

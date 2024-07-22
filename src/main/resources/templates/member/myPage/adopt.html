@@ -13,8 +13,11 @@
             </div>
             <div class="menu-box-a card-header">
                 <ul class="list-group list-group-flush gap-6 mt-2">
-                    <li class="list-group-item flex justify-center items-center profile">
+                    <li th:if="${member.authority} != 0" class="list-group-item flex justify-center items-center profile">
                         <a th:href="@{/member/myPage/myProfile}"><span>마이프로필</span></a>
+                    </li>
+                    <li th:if="${member.authority} == 0" class="list-group-item flex justify-center items-center profile">
+                        <a th:href="@{/member/myPage/myProfile}"><span>회원목록</span></a>
                     </li>
                     <li class="list-group-item flex justify-center items-center volunteer">
                         <a th:href="@{/member/myPage/volunteer}"><span>봉사내역</span></a>
@@ -36,6 +39,7 @@
                 <div class="total-box">
                     <span th:if="${member.authority} == 2" th:text="${member.username} + '님이 입양하신 유기동물은 총 0 마리입니다.'"></span>
                     <span th:if="${member.authority} == 1" th:text="${member.username} + '님이 입양 등록하신 유기동물은 총 0 마리입니다.'"></span>
+                    <span th:if="${member.authority} == 0" th:text="'애니버스에 등록된 입양내역은 총 0건입니다.'"></span>
                 </div>
                 <!-- 일반 회원일때 리스트 항목 -->
                 <div class="adopt-box-title card-body" th:if="${member.authority} == 2">
@@ -50,16 +54,17 @@
                         </li>
                     </ul>
                 </div>
-                <!-- 보호소 회원일때 리스트 항목 -->
-                <div class="adopt-box-title card-body" th:if="${member.authority} == 1">
+                <!-- 최고/중간 관리자일때 리스트 항목 -->
+                <div class="adopt-box-title card-body" th:if="${member.authority} == 1 or ${member.authority} == 0">
                     <ul class="list-group list-group-flush gap-6">
                         <li class="list-group-item flex items-center">
                             <span class="number w-[5%]">번호</span>
                             <span class="date w-[20%]">등록날짜</span>
-                            <span class="name w-[20%]">유기동물 이름</span>
-                            <span class="type w-[20%]">유기동물 종류</span>
-                            <span class="adoptCheck w-[20%]">입양여부</span>
-                            <span class="adoptDate w-[20%]">입양예정날짜</span>
+                            <span class="name w-[15%]">유기동물 이름</span>
+                            <span class="type w-[15%]">유기동물 종류</span>
+                            <span class="shelter w-[20%]">소속보호소</span>
+                            <span class="adoptCheck w-[15%]">입양여부</span>
+                            <span class="adoptDate w-[10%]">입양예정날짜</span>
                         </li>
                     </ul>
                 </div>
@@ -79,17 +84,18 @@
                         </li>
                     </ul>
                 </div>
-                <!-- 보호소 회원일때 리스트 내용 -->
-                <div class="adopt-box-detail card-body" th:if="${member.authority == 1}">
+                <!-- 최고/중간 관리자일때 리스트 내용 -->
+                <div class="adopt-box-detail card-body" th:if="${member.authority} == 1 or ${member.authority} == 0">
                     <ul class="list-group list-group-flush">
                         <!-- th:each로 반복문 돌려야됨  -->
                         <li class="list-group-item flex items-center">
                             <span class="number w-[5%]">1</span>
                             <span class="date w-[20%]">2024-07-02</span>
-                            <span class="name w-[20%]">뽀삐</span>
-                            <span class="type w-[20%]">강아지</span>
-                            <span class="adoptCheck w-[20%]">미정</span>
-                            <span class="adoptDate w-[20%]">-</span>
+                            <span class="name w-[15%]">뽀삐</span>
+                            <span class="type w-[15%]">강아지</span>
+                            <span class="shelter w-[20%]">대전유기견보호센터</span>
+                            <span class="adoptCheck w-[15%]">미정</span>
+                            <span class="adoptDate w-[10%]">-</span>
                         </li>
                     </ul>
                 </div>
