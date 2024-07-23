@@ -82,6 +82,7 @@ public class MemberService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
     }
 
+
     public List<Member> getAllMember() {
         return memberRepository.findAll();
     }
@@ -115,5 +116,9 @@ public class MemberService {
         member.setThumbnailImg(imageFileName);
 
         memberRepository.save(member);
+    }
+    public List<Member> getShelters() {
+        return memberRepository.findByAuthority(1);
+
     }
 }

@@ -1,39 +1,39 @@
 package com.cod.AniBirth.point.service;
 
+import com.cod.AniBirth.account.entity.Account;
+import com.cod.AniBirth.account.repository.AccountRepository;
 import com.cod.AniBirth.member.entity.Member;
-import com.cod.AniBirth.point.entity.Point;
-import com.cod.AniBirth.point.repository.PointRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class PointService {
-    private final PointRepository pointRepository;
+    private final AccountRepository accountRepository;
 
-    public Point getOrCreatePoint(Member member) {
-        return pointRepository.findByMemberId(member.getId())
+    public Account getOrCreateAccount(Member member) {
+        return accountRepository.findByMemberId(member.getId())
                 .orElseGet(() -> {
-                    Point newPoint = Point.builder()
+                    Account newAccount = Account.builder()
                             .member(member)
-                            .balance(0)
+                            .aniPoint(0L)
                             .build();
-                    return pointRepository.save(newPoint);
+                    return accountRepository.save(newAccount);
                 });
     }
 
     public void rechargePoints(Member member, int amount) {
-        Point point = getOrCreatePoint(member);
-        point.setBalance(point.getBalance() + amount);
-        pointRepository.save(point);
+        Account account = getOrCreateAccount(member);
+        account.setAniPoint(account.getAniPoint() + amount);
+        accountRepository.save(account);
     }
 
-    public void save(Point point) {
-        pointRepository.save(point);
+    public Long getBalance(Member member) {
+        Account account = getOrCreateAccount(member);
+        return account.getAniPoint();
+    }
+    public void save(Account account) {
+        accountRepository.save(account);
     }
 
-    public int getBalance(Member member) {
-        Point point = getOrCreatePoint(member);
-        return point.getBalance();
-    }
 }

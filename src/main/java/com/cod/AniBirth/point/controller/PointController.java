@@ -1,8 +1,8 @@
 package com.cod.AniBirth.point.controller;
 
+import com.cod.AniBirth.account.entity.Account;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
-import com.cod.AniBirth.point.entity.Point;
 import com.cod.AniBirth.point.service.PointService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -52,11 +52,11 @@ public class PointController {
     @GetMapping("/balance")
     @PreAuthorize("isAuthenticated()")
     @ResponseBody
-    public Map<String, Integer> getBalance() {
+    public Map<String, Long> getBalance() {
         Member member = memberService.getCurrentMember();
-        Point point = pointService.getOrCreatePoint(member);
-        Map<String, Integer> response = new HashMap<>();
-        response.put("balance", point.getBalance());
+        Account account = pointService.getOrCreateAccount(member);
+        Map<String, Long> response = new HashMap<>();
+        response.put("balance", account.getAniPoint());
         return response;
     }
 
