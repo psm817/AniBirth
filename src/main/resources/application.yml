@@ -8,7 +8,7 @@ spring:
         registration:
           kakao:
             clientId:
-            scope: profile_nickname
+            scope: profile_nickname, account_email
             client-name: Kakao
             authorization-grant-type: authorization_code
             redirect-uri: http://localhost:8040/login/oauth2/code/kakao

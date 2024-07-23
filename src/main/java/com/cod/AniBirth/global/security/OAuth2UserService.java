@@ -50,12 +50,14 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
                     Map attributesProperties = (Map) attributes.get("properties");
                     Map attributesKakaoAcount = (Map) attributes.get("kakao_account");
                     String nickname = (String) attributesProperties.get("nickname");
+                    String email = (String) ((Map<String, Object>) attributes.get("kakao_account")).get("email");
                     String username = "KAKAO_%s".formatted(oauthId);
 
                     member = Member.builder()
                             .username(username)
                             .nickname(nickname)
                             .password("")
+                            .email(email)
                             .isActive(1)
                             .authority(2)
                             .thumbnailImg("/images/profile_default.jpg")
