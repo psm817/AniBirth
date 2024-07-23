@@ -43,9 +43,9 @@ public class Member extends BaseEntity {
     @LazyCollection(LazyCollectionOption.EXTRA)
     private Account account;
 
-    @OneToMany(mappedBy = "donor")
+    @OneToMany(mappedBy = "donor", cascade = CascadeType.REMOVE)
     private List<Donation> donationsAsDonor;
 
-    @OneToMany(mappedBy = "recipient")
+    @OneToMany(mappedBy = "recipient", cascade = CascadeType.REMOVE)
     private List<Donation> donationsAsRecipient;
 }
