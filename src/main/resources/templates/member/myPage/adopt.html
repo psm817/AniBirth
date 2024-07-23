@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html layout:decorate="~{/layout/layout}">
 <section layout:fragment="content" class="flex-1 flex justify-center items-center">
-    <div class="container flex h-full">
+    <div class="container h-full">
         <div class="left-box card w-[500px]">
             <div class="profile-box card-header flex flex-col items-center">
                 <div class="profile-img mt-[10px]">
@@ -84,8 +84,29 @@
                         </li>
                     </ul>
                 </div>
-                <!-- 최고/중간 관리자일때 리스트 내용 -->
-                <div class="adopt-box-detail card-body" th:if="${member.authority} == 1 or ${member.authority} == 0">
+                <!-- 최고관리자일때 리스트 내용 -->
+                <div class="adopt-box-detail card-body" th:if="${member.authority} == 0">
+                    <ul class="list-group list-group-flush">
+                        <!-- th:each로 반복문 돌려야됨  -->
+                        <li class="list-group-item flex items-center" th:each="animal, loop : ${animalList}">
+                            <span class="number w-[5%]" th:text="${loop.index} + 1"></span>
+                            <span class="date w-[20%]" th:text="${#temporals.format(animal.createDate, 'yyyy-MM-dd')}"></span>
+                            <span class="name w-[15%]" th:if="${animal.gender} == 1" th:text="'암컷'"></span>
+                            <span class="name w-[15%]" th:if="${animal.gender} == 2" th:text="'수컷'"></span>
+                            <span class="name w-[15%]" th:if="${animal.gender} == 4" th:text="'중성화'"></span>
+                            <span class="type w-[15%]" th:if="${animal.classification} == 1" th:text="'강아지'"></span>
+                            <span class="type w-[15%]" th:if="${animal.classification} == 2" th:text="'고양이'"></span>
+                            <span class="type w-[15%]" th:if="${animal.classification} == 3" th:text="'기타동물'"></span>
+                            <span class="shelter w-[20%]">대전유기견보호센터</span>
+                            <span class="adoptCheck w-[15%]">미정</span>
+                            <span class="picture w-[15%]">
+                                <a class="btn btn-link" th:href="@{|http://www.daejeon.go.kr/${animal.filePath}|}">미리보기</a>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 중간 관리자일때 리스트 내용 -->
+                <div class="adopt-box-detail card-body" th:if="${member.authority} == 1">
                     <ul class="list-group list-group-flush">
                         <!-- th:each로 반복문 돌려야됨  -->
                         <li class="list-group-item flex items-center" th:each="animal, loop : ${animalList}">

@@ -1,6 +1,6 @@
 .signup-box {
     width: 100%;
-    height: 100%;
+    height: 300px;
     display: flex;
 }
 
@@ -9,13 +9,21 @@
     display: flex;
 }
 
-.signup-box > .card > .img-box {
+.signup-box > .cardM-img {
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    height: 100%;
+    display: flex;
+}
+
+.signup-box > .cardM-img > .img-box {
     height: 100%;
 }
 
-.signup-box > .card > .img-box > img {
+.signup-box > .cardM-img > .img-box > img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 /* 회원가입 입력 폼 */

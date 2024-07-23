@@ -12,7 +12,7 @@
 .signup-box > .card-img {
     border: 1px solid rgba(0, 0, 0, .125);
     border-radius: .25rem;
-    height: 695px;
+    height: 100%;
     display: flex;
 }
 
@@ -150,6 +150,10 @@
     }
 
     /* 회원가입 입력 폼 */
+    .card {
+        height: 650px !important;
+    }
+
     .signup-form {
         height: 100%;
         display: block !important;

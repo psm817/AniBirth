@@ -9,14 +9,23 @@
     display: flex;
 }
 
-.signup-box > .card > .img-box {
+.signup-box > .cardSM-img {
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    height: 100%;
+    display: flex;
+}
+
+.signup-box > .cardSM-img > .img-box {
     height: 100%;
 }
 
-.signup-box > .card > .img-box > img {
+.signup-box > .cardSM-img > .img-box > img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
+
 
 /* 회원가입 입력 폼 */
 .signup-form {
