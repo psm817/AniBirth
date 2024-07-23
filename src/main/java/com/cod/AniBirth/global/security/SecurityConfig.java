@@ -28,11 +28,11 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .cors().disable()
-                .csrf().disable()
-                .sessionManagement( sessionManagement ->
-                        sessionManagement.sessionCreationPolicy(STATELESS)
-                )
+//                .cors().disable()
+//                .csrf().disable()
+//                .sessionManagement( sessionManagement ->
+//                        sessionManagement.sessionCreationPolicy(STATELESS)
+//                )
                 .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
                         .requestMatchers(new AntPathRequestMatcher("/**")).permitAll())
                 .formLogin((formLogin) -> formLogin
