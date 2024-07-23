@@ -1,5 +1,6 @@
 package com.cod.AniBirth.member.service;
 
+import com.cod.AniBirth.account.service.AccountService;
 import com.cod.AniBirth.global.security.DataNotFoundException;
 
 import com.cod.AniBirth.member.entity.Member;
@@ -14,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,6 +23,7 @@ import java.util.Optional;
 public class MemberService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
+    private final AccountService accountService;
 
 
     public Member signup(String username, String password, String nickname, String email,
@@ -42,7 +45,10 @@ public class MemberService {
             member.setIsActive(1);
         }
 
-        return memberRepository.save(member);
+        memberRepository.save(member);
+        accountService.createOrUpdate(member, "", 0L);
+
+        return member;
     }
 
     public boolean usernameExists(String username) {
@@ -74,5 +80,40 @@ public class MemberService {
         String username = user.getUsername();
         return memberRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+    }
+
+    public List<Member> getAllMember() {
+        return memberRepository.findAll();
+    }
+
+    public Member getMemberById(Long id) {
+        Optional<Member> om = memberRepository.findById(id);
+
+        if(om.isPresent()) {
+            return om.get();
+        } else {
+            throw new DataNotFoundException("member not found");
+        }
+    }
+
+    public void modify(Member member, String password, String nickname, String email, String phone, String address, String imageFileName) {
+        member.setPassword(passwordEncoder.encode(password));
+        member.setNickname(nickname);
+        member.setEmail(email);
+        member.setPhone(phone);
+        member.setAddress(address);
+        member.setThumbnailImg(imageFileName);
+
+        memberRepository.save(member);
+    }
+
+    public void socialModify(Member member, String nickname, String email, String phone, String address, String imageFileName) {
+        member.setNickname(nickname);
+        member.setEmail(email);
+        member.setPhone(phone);
+        member.setAddress(address);
+        member.setThumbnailImg(imageFileName);
+
+        memberRepository.save(member);
     }
 }

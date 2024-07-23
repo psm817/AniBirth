@@ -1,13 +1,5 @@
 // 회원정보 입력 안하면 alert
-function submitWriteForm(form) {
-    form.username.value = form.username.value.trim();
-
-    if ( form.username.value.length == 0 ) {
-        alert("ID를 입력해주세요.");
-        form.username.focus();
-        return;
-    }
-
+function submitModifyForm(form) {
     form.password.value = form.password.value.trim();
 
     if ( form.password.value.length == 0 ) {
@@ -27,14 +19,6 @@ function submitWriteForm(form) {
     if(form.password.value != form.password_confirm.value) {
         alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
         form.password.focus();
-        return;
-    }
-
-    form.authority.value = form.authority.value.trim();
-
-    if ( form.authority.value === "" ) {
-        alert("권한을 선택해주세요.");
-        form.authority.focus();
         return;
     }
 
@@ -76,29 +60,5 @@ function submitWriteForm(form) {
         return;
     }
 
-
     form.submit();
-}
-
-function validateForm() {
-    const submitButton = document.getElementById("submitButton");
-    const usernameInput = document.getElementById("username");
-    // Get the value of the username input field
-    const username = usernameInput.value.trim();
-    // Check if the username is not empty
-    if (username !== "") {
-        // Send an AJAX request to the server to check for duplicate username
-        fetch("/member/check-username?username=" + username)
-            .then(response => response.json())
-            .then(data => {
-                if (data.exists) {
-                    alert("이미 존재하는 아이디입니다.");
-                } else {
-                    alert("입력하신 아이디는 사용 가능합니다.");
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    }
 }

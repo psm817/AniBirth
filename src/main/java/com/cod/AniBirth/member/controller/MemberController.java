@@ -1,5 +1,7 @@
 package com.cod.AniBirth.member.controller;
 
+import com.cod.AniBirth.account.entity.Account;
+import com.cod.AniBirth.account.service.AccountService;
 import com.cod.AniBirth.email.service.EmailService;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.form.MemberForm;
@@ -11,10 +13,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -32,6 +32,7 @@ public class MemberController {
     private final EmailService emailService;
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
+    private final AccountService accountService;
 
     @PreAuthorize("isAnonymous()")
     @GetMapping("/login")
@@ -60,7 +61,7 @@ public class MemberController {
                 memberForm.getEmail(), memberForm.getPhone(), memberForm.getAddress(),
                 imageFileName, memberForm.getAuthority(), memberForm.getIsActive());
 
-        String subject = "애니버스 가입을 환영합니다!";
+        String subject = "애니버스 - 서비스 가입 환영";
 
         String body = String.format(
                 "안녕하세요, <b>%s</b>님<br><br>"+
@@ -88,8 +89,6 @@ public class MemberController {
 
     public String storeProfilePicture(MultipartFile profilePicture) {
         // 이미지 저장 디렉토리 경로
-
-
         String uploadDir = "C:\\work\\AniBirth\\src\\main\\resources\\static\\images\\profile";
 
         // 디렉토리가 존재하지 않으면 생성
@@ -174,5 +173,56 @@ public class MemberController {
 
         // 이메일 주소가 일치하지 않거나 회원이 존재하지 않는 경우
         return "redirect:/member/login?incorrect=true";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/modify/{id}")
+    public String modify(@PathVariable("id") Long id, Model model) {
+        Member member = memberService.getMemberById(id);
+        model.addAttribute("member", member);
+
+        // 소셜로그인은 비밀번호 변경 불가라 다른 폼으로 이동
+        if(member.getUsername().startsWith("KAKAO") || member.getUsername().startsWith("NAVER") || member.getUsername().startsWith("GOOGLE")) {
+            return "/member/social_modify";
+        } else {
+            return "/member/modify";
+        }
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/modify/{id}")
+    public String modify(@PathVariable("id") Long id, @RequestParam("password") String password,
+                         @RequestParam("nickname") String nickname, @RequestParam("email") String email,
+                         @RequestParam("phone") String phone, @RequestParam("address") String address, @RequestParam("thumbnailImg") MultipartFile thumbnailImg) {
+        Member member = memberService.getMemberById(id);
+        Account account = accountService.findByMember(member);
+
+        String imageFileName = null;
+        if(thumbnailImg != null && !thumbnailImg.isEmpty()) {
+            imageFileName = storeProfilePicture(thumbnailImg);
+        }
+
+        memberService.modify(member, password, nickname, email, phone, address, imageFileName);
+        accountService.createOrUpdate(member, account.getAccount_number(), account.getAniPoint());
+
+        return "redirect:/member/logout";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/socialModify/{id}")
+    public String socialModify(@PathVariable("id") Long id, @RequestParam("nickname") String nickname, @RequestParam("email") String email,
+                         @RequestParam("phone") String phone, @RequestParam("address") String address, @RequestParam("thumbnailImg") MultipartFile thumbnailImg) {
+        Member member = memberService.getMemberById(id);
+        Account account = accountService.findByMember(member);
+
+        String imageFileName = null;
+        if(thumbnailImg != null && !thumbnailImg.isEmpty()) {
+            imageFileName = storeProfilePicture(thumbnailImg);
+        }
+
+        memberService.socialModify(member, nickname, email, phone, address, imageFileName);
+        accountService.createOrUpdate(member, account.getAccount_number(), account.getAniPoint());
+
+        return "redirect:/member/logout";
     }
 }

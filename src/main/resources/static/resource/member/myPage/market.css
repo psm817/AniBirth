@@ -29,14 +29,14 @@
     font-weight: 700;
 }
 
-.left-box > .menu-box-v > ul > li {
+.left-box > .menu-box-d > ul > li {
     background-color: transparent;
     height: 50px;
     padding: 0;
     border: transparent;
 }
 
-.left-box > .menu-box-v > ul > li > a {
+.left-box > .menu-box-d > ul > li > a {
     border: 1.5px solid #FF416C;
     border-radius: 10px;
     width: 140px;
@@ -46,25 +46,25 @@
     box-sizing: border-box;
 }
 
-.left-box > .menu-box-v > ul > .volunteer > a {
+.left-box > .menu-box-d > ul > .donation > a {
     background-color: #FF416C;
     color: #fff;
 }
 
-.left-box > .menu-box-v > ul > li > a:hover {
+.left-box > .menu-box-d > ul > li > a:hover {
     background-color: #FF416C;
 }
 
-.left-box > .menu-box-v > ul > li > a > span {
+.left-box > .menu-box-d > ul > li > a > span {
     font-size: 17px;
     font-weight: 700;
 }
 
-.left-box > .menu-box-v > ul > li > a:hover > span {
+.left-box > .menu-box-d > ul > li > a:hover > span {
     color: #fff;
 }
 
-/* 우측 봉사내역 */
+/* 우측 프로필 정보 */
 .right-box > .title-box {
     height: 100px;
 }
@@ -80,6 +80,7 @@
 
 .right-box > .content-box > .total-box {
     height: 60px;
+    margin-bottom: 10px;
 }
 
 .right-box > .content-box > .total-box > span {
@@ -90,43 +91,43 @@
 }
 
 /* 리스트 번호 구분 */
-.right-box > .content-box > .volunteer-box-title {
+.right-box > .content-box > .market-box-title {
     border-bottom: 1px solid #121212;
     padding: 0;
     height: 50px;
 }
 
-.right-box > .content-box > .volunteer-box-title > ul {
+.right-box > .content-box > .market-box-title > ul {
     height: 100%;
 }
 
-.right-box > .content-box > .volunteer-box-title > ul > li {
+.right-box > .content-box > .market-box-title > ul > li {
     height: 100%;
     background-color: transparent;
 }
 
-.right-box > .content-box > .volunteer-box-title > ul > li > span {
+.right-box > .content-box > .market-box-title > ul > li > span {
     font-size: 16px;
     text-align: center;
 }
 
 /* 리스트 내용 */
-.right-box > .content-box > .volunteer-box-detail {
+.right-box > .content-box > .market-box-detail {
     max-height: 450px;
     overflow-y: auto;
     padding: 0;
 }
 
-.right-box > .content-box > .volunteer-box-detail > ul {
+.right-box > .content-box > .market-box-detail > ul {
     height: 100%:
 }
 
-.right-box > .content-box > .volunteer-box-detail > ul > li {
+.right-box > .content-box > .market-box-detail > ul > li {
     height: 100%;
     background-color: transparent;
 }
 
-.right-box > .content-box > .volunteer-box-detail > ul > li > span {
+.right-box > .content-box > .market-box-detail > ul > li > span {
     font-size: 16px;
     text-align: center;
 }
