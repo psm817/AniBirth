@@ -48,6 +48,7 @@ public class AnimalService {
         List<Animal> animals = apiResponse.getMsgBody().getItems();
 
 
+
         animalRepository.saveAll(animals);
     }
 

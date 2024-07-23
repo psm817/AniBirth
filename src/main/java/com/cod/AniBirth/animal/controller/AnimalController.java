@@ -20,17 +20,4 @@ import java.util.List;
 public class AnimalController {
     private final AnimalService animalService;
 
-    @GetMapping("/list")
-    public String getAnimals(Model model,
-                             @RequestParam(value = "page", defaultValue = "0") int page,
-                             @RequestParam(value = "kw", defaultValue = "") String kw
-    ) {
-        Page<Animal> paging = animalService.getList(page, kw);
-        List<Animal> animals = animalService.findAll();
-        model.addAttribute("paging", paging);
-        model.addAttribute("kw", kw);
-        model.addAttribute("animals", animals);
-        return "animalList";
-    }
-
 }
