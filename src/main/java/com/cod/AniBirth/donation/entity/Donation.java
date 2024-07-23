@@ -1,7 +1,8 @@
 package com.cod.AniBirth.donation.entity;
 
 import com.cod.AniBirth.base.entity.BaseEntity;
-import com.cod.AniBirth.shelter.entity.Shelter;
+import com.cod.AniBirth.member.entity.Member;
+
 import jakarta.persistence.*;
 import lombok.Setter;
 
@@ -15,6 +16,11 @@ public class Donation extends BaseEntity {
     private BigDecimal amount;
 
     @ManyToOne
-    @JoinColumn(name = "shelter_id", nullable = false)
-    private Shelter shelter;
+    @JoinColumn(name = "donor_id", nullable = false)
+    private Member donor;
+
+    @ManyToOne
+    @JoinColumn(name = "recipient_id", nullable = false)
+    private Member recipient;
+
 }

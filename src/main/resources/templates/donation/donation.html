@@ -34,15 +34,18 @@
             <span class="close">&times;</span>
             <h2>후원하기</h2>
             <div class="modal-body">
-                <label for="shelter">센터 선택:</label>
-                <select id="shelter" name="shelter">
-                    <option value="shelter1">보호소 1</option>
-                    <option value="shelter2">보호소 2</option>
-                    <option value="shelter3">보호소 3</option>
-                </select>
-                <label for="amount">금액 입력:</label>
-                <input type="number" id="amount" name="amount" placeholder="금액을 입력하세요">
-                <button id="submitDonation">후원하기</button>
+                <form action="/donation/submit" method="post">
+                    <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+                    <label for="recipient">센터 선택:</label>
+                    <select id="recipient" name="recipientId">
+                        <option th:each="recipient : ${recipients}"
+                                th:value="${recipient.id}"
+                                th:text="${recipient.nickname}"></option>
+                    </select>
+                    <label for="amount">금액 입력:</label>
+                    <input type="number" id="amount" name="amount" placeholder="금액을 입력하세요">
+                    <button type="submit">후원하기</button>
+                </form>
             </div>
         </div>
     </div>

@@ -2,6 +2,7 @@ package com.cod.AniBirth.member.entity;
 
 import com.cod.AniBirth.account.entity.Account;
 import com.cod.AniBirth.base.entity.BaseEntity;
+import com.cod.AniBirth.donation.entity.Donation;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
@@ -12,6 +13,8 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -39,4 +42,10 @@ public class Member extends BaseEntity {
     @OneToOne(mappedBy = "member", cascade = CascadeType.REMOVE)
     @LazyCollection(LazyCollectionOption.EXTRA)
     private Account account;
+
+    @OneToMany(mappedBy = "donor")
+    private List<Donation> donationsAsDonor;
+
+    @OneToMany(mappedBy = "recipient")
+    private List<Donation> donationsAsRecipient;
 }
