@@ -9,6 +9,7 @@ import com.cod.AniBirth.member.repository.MemberRepository;
 import com.cod.AniBirth.member.service.MemberService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -16,12 +17,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.security.Principal;
 import java.util.UUID;
 
 @Controller
@@ -222,6 +225,18 @@ public class MemberController {
 
         memberService.socialModify(member, nickname, email, phone, address, imageFileName);
         accountService.createOrUpdate(member, account.getAccount_number(), account.getAniPoint());
+
+        return "redirect:/member/logout";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Long id, Principal principal) {
+        Member member = memberService.getMemberById(id);
+
+        if(!member.getUsername().equals(principal.getName())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "삭제권한이 없습니다.");
+        }
 
         return "redirect:/member/logout";
     }

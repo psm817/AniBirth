@@ -141,7 +141,7 @@
                 </ul>
                 <div class="btn-box card-body flex items-center justify-center mt-[10px]">
                     <a th:href="@{|/member/modify/${member.id}|}" class="modify-btn mr-[30px]">프로필 수정</a>
-                    <a href="#" class="delete-btn ml-[30px]" onclick="return confirmDelete()">탈퇴하기</a>
+                    <a th:href="@{|/member/delete/${member.id}|}" class="delete-btn ml-[30px]" onclick="return confirmDelete()">탈퇴하기</a>
                 </div>
             </div>
         </div>
