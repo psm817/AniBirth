@@ -97,6 +97,8 @@ ul, li {
 .container > .signup-check-box > .button {
     display: flex;
     justify-content: flex-end;
+    margin-top: 50px;
+    padding-bottom: 20px;
 }
 
 .container > .signup-check-box > .button > button {
