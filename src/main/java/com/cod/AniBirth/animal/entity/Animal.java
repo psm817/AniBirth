@@ -36,5 +36,4 @@ public class Animal {
     private String rescueDate;
     private String species;
     private String weight;
-
 }
