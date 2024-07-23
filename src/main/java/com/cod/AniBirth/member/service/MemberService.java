@@ -85,4 +85,35 @@ public class MemberService {
     public List<Member> getAllMember() {
         return memberRepository.findAll();
     }
+
+    public Member getMemberById(Long id) {
+        Optional<Member> om = memberRepository.findById(id);
+
+        if(om.isPresent()) {
+            return om.get();
+        } else {
+            throw new DataNotFoundException("member not found");
+        }
+    }
+
+    public void modify(Member member, String password, String nickname, String email, String phone, String address, String imageFileName) {
+        member.setPassword(passwordEncoder.encode(password));
+        member.setNickname(nickname);
+        member.setEmail(email);
+        member.setPhone(phone);
+        member.setAddress(address);
+        member.setThumbnailImg(imageFileName);
+
+        memberRepository.save(member);
+    }
+
+    public void socialModify(Member member, String nickname, String email, String phone, String address, String imageFileName) {
+        member.setNickname(nickname);
+        member.setEmail(email);
+        member.setPhone(phone);
+        member.setAddress(address);
+        member.setThumbnailImg(imageFileName);
+
+        memberRepository.save(member);
+    }
 }
