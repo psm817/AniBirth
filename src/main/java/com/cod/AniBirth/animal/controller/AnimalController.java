@@ -7,23 +7,30 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 @RequestMapping("/animal")
 public class AnimalController {
     private final AnimalService animalService;
 
     @GetMapping("/list")
-    public String getAnimals(Model model) {
+    public String getAnimals(Model model,
+                             @RequestParam(value = "page", defaultValue = "0") int page,
+                             @RequestParam(value = "kw", defaultValue = "") String kw
+    ) {
+        Page<Animal> paging = animalService.getList(page, kw);
         List<Animal> animals = animalService.findAll();
+        model.addAttribute("paging", paging);
+        model.addAttribute("kw", kw);
         model.addAttribute("animals", animals);
         return "animalList";
     }
-
 
 }
