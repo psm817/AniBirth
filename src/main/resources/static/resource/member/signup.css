@@ -150,10 +150,6 @@
     }
 
     /* 회원가입 입력 폼 */
-    .card {
-        height: 650px !important;
-    }
-
     .signup-form {
         height: 100%;
         display: block !important;
