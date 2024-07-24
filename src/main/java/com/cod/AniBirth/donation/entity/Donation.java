@@ -17,10 +17,10 @@ public class Donation extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "donor_id", nullable = false)
-    private Member donor;
+    private Member donor; // 후원 보내는 사람
 
     @ManyToOne
     @JoinColumn(name = "recipient_id", nullable = false)
-    private Member recipient;
+    private Member recipient; // 후원 받는 센터
 
 }

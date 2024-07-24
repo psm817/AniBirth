@@ -1,42 +1,59 @@
-body {
+html,body {
+   position: relative;
    margin:0;
    padding:0;
    list-style:none;
    font-family: 'Pretendard-Regular';
    text-underline-position: under;
+   text-align: center;
 }
-.container {
-    width: 100%;
-    padding: 0 20px;
-    box-sizing: border-box;
+.container-box {
+  width: 100%;
 }
-.content {
-    position: relative;
-    text-align: center;
-    color: white;
+html > body .container-box > .donation {
+  width: 100%;
+  height: 360px;
+  margin-bottom: 20px;
 }
-.background-image {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
+
+html > body .donation-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+html > body .donation-banner {
+  text-align: center;
+  font-size: 18px;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.donation-banner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /*object-fit: cover;*/
 }
 .text-overlay {
     position: absolute;
     top: 15%;
     left: 180px;
     width: 900px;
-    height: 300px;
+    height: 360px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: left;
-    margin-top: 300px;
+    margin-top: 100px;
     padding: 30px;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 .text-overlay h1 {
-    margin: 0;
+    margin-right: auto;
     font-size: 3em;
 }
 .text-overlay p {
@@ -45,12 +62,29 @@ body {
     text-align: left;
     max-width: 80%;
 }
-.donation-section {
+
+html > body .container > .donation-section {
     display: flex;
     justify-content: space-around;
     width: 100%;
     margin-top: 20px;
+    margin-bottom: 30px;
 }
+
+html > body .container .donation-section > .donation-bg-img {
+    display: flex;
+    justify-content: center;
+    width: 760px;
+}
+
+html > body .container .donation-section .donation-bg-img > .center-background-image{
+    width: 330px;
+    height: 330px;
+    border-radius: 50%;
+    box-shadow: 3px 3px 3px 3px #555555;
+    object-fit: cover;
+}
+
 .donation-box {
     text-align: left;
     padding: 20px;
@@ -68,11 +102,7 @@ body {
     text-decoration: none;
     border-radius: 5px;
 }
-.donation-box img {
-    max-width: 100px;
-    margin-bottom: 35px;
-    object-fit: cover;
-}
+
 .donation-box p {
     font-size: 18px;
     font-weight: bold;
@@ -80,13 +110,6 @@ body {
 }
 .donation-box h2 {
     font-size: 2rem;
-}
-.center-background-image {
-    width: 25%;
-    height: 25%;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 3px 3px 3px 3px #555555;
 }
 
 /* Modal Styles */
@@ -146,46 +169,31 @@ body {
 .modal-body button:hover {
     background-color: #FF416C;
 }
-@media (max-width: 768px) {
-    .text-overlay {
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 90%;
-        padding: 20px;
-    }
-    .text-overlay h1 {
-        font-size: 2em;
-    }
-    .text-overlay p {
-        font-size: 1em;
-    }
-}
 
 @media (max-width: 480px) {
     .text-overlay {
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 90%;
-        padding: 10px;
+        width: 100%;
+        padding: 26px;
+        margin-top: 270px;
     }
     .text-overlay h1 {
-        font-size: 1.5em;
+        font-size: 2.0em;
     }
     .text-overlay p {
         font-size: 0.9em;
     }
-}
-@media (max-width: 640px) {
     .donation-section {
         flex-direction: column;
         align-items: center;
     }
+    .donation-bg-img {
+        width: 280px;
+        height: 280px;
+    }
     .donation-box {
         width: 90%;
         margin-top: 20px;
-    }
-    .center-background-image {
-        width: 50%;
-        height: auto;
     }
 }
