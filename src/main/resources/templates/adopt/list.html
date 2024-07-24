@@ -9,17 +9,17 @@
         </div>
       </div>
     </div>
-    <div class="container">
-      <h1 class="text-[1.5rem] font-bold">입양동물 공고</h1>
-      <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px] mt-3">
+    <div class="container adoptlist">
+      <h1 class="adoptnotice text-[1.5rem] font-bold">입양동물 공고</h1>
+      <ul class="adopt-notice-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px] mt-3">
         <li th:each="animal, loop : ${animals}" class="flex flex-col">
-          <a th:href="@{|/animal/detail/${animal.animalSeq}|}"
+          <a th:href="@{|/adopt/detail/${animal.id}|}"
              class="border border-black h-[250px] transition duration-300 rounded-lg hover:rounded-lg hover:-translate-y-1.5 hover:transition hover:duration-300 hover:shadow-md">
             <img class="block w-full" th:src="@{|http://www.daejeon.go.kr/${animal.filePath}|}" alt="이미지가 존재하지 않습니다.">
           </a>
-          <a th:href="@{|/animal/detail/${animal.animalSeq}|}" th:text="${animal.species}" class="text-center mt-2"></a>
-          <a th:href="@{|/animal/detail/${animal.animalSeq}|}" th:text="${animal.gender}" class="text-center mt-2"></a>
-          <a th:href="@{|/animal/detail/${animal.animalSeq}|}" th:text="${animal.age}" class="text-center mt-2"></a>
+          <a th:href="@{|/adopt/detail/${animal.id}|}" th:text="${animal.species}" class="text-center mt-2"></a>
+          <a th:href="@{|/adopt/detail/${animal.id}|}" th:text="${animal.gender}" class="text-center mt-2"></a>
+          <a th:href="@{|/adopt/detail/${animal.id}|}" th:text="${animal.age}" class="text-center mt-2"></a>
         </li>
       </ul>
       <!-- 페이징 처리 시작 -->

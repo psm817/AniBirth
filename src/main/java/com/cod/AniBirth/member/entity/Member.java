@@ -1,6 +1,7 @@
 package com.cod.AniBirth.member.entity;
 
 import com.cod.AniBirth.account.entity.Account;
+import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.base.entity.BaseEntity;
 import com.cod.AniBirth.donation.entity.Donation;
 import jakarta.persistence.Column;
@@ -48,4 +49,10 @@ public class Member extends BaseEntity {
 
     @OneToMany(mappedBy = "recipient", cascade = CascadeType.REMOVE)
     private List<Donation> donationsAsRecipient;
+
+    @OneToMany(mappedBy = "adopter", cascade = CascadeType.REMOVE)
+    private List<Animal> animalsAdoter;
+
+    @OneToMany(mappedBy = "adoptee", cascade = CascadeType.REMOVE)
+    private List<Animal> animalsAdoptee;
 }
