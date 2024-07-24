@@ -15,6 +15,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @ToString(callSuper = true)
 public class Animal extends BaseEntity {
+
     private String animalSeq;
 
     //Todo 0일때 입양대기, 1이면 입양완료 기본값을 0으로 변경 데이터를 불러
