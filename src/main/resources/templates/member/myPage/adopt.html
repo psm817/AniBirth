@@ -37,8 +37,8 @@
             </div>
             <div class="content-box card-header pl-[40px]">
                 <div class="total-box">
-                    <span th:if="${member.authority} == 2" th:text="${member.username} + '님이 입양하신 유기동물은 총 0 마리입니다.'"></span>
-                    <span th:if="${member.authority} == 1" th:text="${member.username} + '님이 등록하신 유기동물은 총 0 마리입니다.'"></span>
+                    <span th:if="${member.authority} == 2" th:text="${member.nickname} + '님이 입양하신 유기동물은 총 0 마리입니다.'"></span>
+                    <span th:if="${member.authority} == 1" th:text="${member.nickname} + '님이 등록하신 유기동물은 총 0 마리입니다.'"></span>
                     <span th:if="${member.authority} == 0" th:utext="'애니버스에 등록된 유기동물은 총 <strong>' + ${#lists.size(animalList)} + '</strong>마리 입니다.'"></span>
                 </div>
                 <!-- 일반 회원일때 리스트 항목 -->
