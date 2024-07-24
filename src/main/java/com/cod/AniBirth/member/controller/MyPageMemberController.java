@@ -2,6 +2,8 @@ package com.cod.AniBirth.member.controller;
 
 import com.cod.AniBirth.account.entity.Account;
 import com.cod.AniBirth.account.service.AccountService;
+import com.cod.AniBirth.animal.entity.Animal;
+import com.cod.AniBirth.animal.service.AnimalService;
 import com.cod.AniBirth.email.service.EmailService;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.repository.MemberRepository;
@@ -23,6 +25,7 @@ public class MyPageMemberController {
     private final AccountService accountService;
     private final MemberRepository memberRepository;
     private final EmailService emailService;
+    private final AnimalService animalService;
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/myProfile")
@@ -80,8 +83,10 @@ public class MyPageMemberController {
     @GetMapping("/adopt")
     public String myAdopt(Model model, Principal principal) {
         Member member = memberService.findByUsername(principal.getName());
+        List<Animal> animalList = animalService.findAll();
 
         model.addAttribute("member", member);
+        model.addAttribute("animalList", animalList);
 
         return "member/myPage/adopt";
     }

@@ -43,6 +43,7 @@ ul, li, a {
 header > .menu-bar {
     height: 130px;
     display: flex;
+    width: 100%;
 }
 
 header > .menu-bar > .logo-box {
@@ -88,4 +89,44 @@ header > .menu-bar > .menu-box > ul > li > a > span {
 
 header > .menu-bar > .menu-box > ul > li > a > span:hover {
     color: #FF416C;
+}
+
+/* 반응형 시작 */
+@media (max-width: 392px) {
+    header > .menu-bar {
+        height: 100%;
+        display: block;
+        width: 100%;
+    }
+
+    header > .menu-bar > .logo-box > a {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    header > .menu-bar > .logo-box > a > img {
+        width: 150px;
+        height: 100%;
+    }
+
+    header > .menu-bar > .menu-box > ul {
+        width: 100%;
+        height: 100%;
+    }
+
+    header > .menu-bar > .menu-box > ul > li {
+        text-align: center;
+    }
+
+    header > .menu-bar > .menu-box > ul > li > a > span {
+        color: #323232;
+        font-weight: 800 !important;
+        font-size: 14px;
+    }
+
+    header > .menu-bar > .menu-box > ul > li > a > span:hover {
+        color: #FF416C;
+    }
 }

@@ -85,13 +85,13 @@
             </div>
         </div>
     </nav>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary menu-bar">
-        <div class="container-fluid logo-box">
+    <div class="menu-bar">
+        <div class="logo-box">
             <a href="/">
                 <img th:src="@{/images/logo/logo.png}" alt="로고이미지">
             </a>
         </div>
-        <div class="container-fluid menu-box">
+        <div class="menu-box mb-[5px]">
             <ul class="menu-title">
                 <li class="menu-text">
                     <a href="#">
@@ -104,12 +104,12 @@
                     </a>
                 </li>
                 <li class="menu-text">
-                    <a href="adopt/list">
+                    <a th:href="@{/adopt/list}">
                         <span>입양하기</span>
                     </a>
                 </li>
                 <li class="menu-text">
-                    <a href="/donation/donate">
+                    <a th:href="@{/donation/donate}">
                         <span>후원하기</span>
                     </a>
                 </li>
@@ -124,9 +124,8 @@
                     </a>
                 </li>
             </ul>
-            </div>
         </div>
-    </nav>
+    </div>
 </header>
 <section class="flex-1 flex flex-col">
     <!-- Content Start -->
@@ -135,7 +134,7 @@
 </section>
 
 <footer class="footer py-3 bg-light">
-    <div class="container text-center">
+    <div class="container text-center flex justify-center">
         <span class="text-muted">상호명 : 애니버스</span><br>
         <span class="text-muted">공동 개발자 : 김지영, 김태우, 박상민, 박현철</span>
     </div>

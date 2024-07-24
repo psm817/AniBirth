@@ -1,20 +1,29 @@
 .signup-box {
     width: 100%;
-    height: 100%;
-}
-
-.signup-box > .card {
-    height: 695px;
+    height: 300px;
     display: flex;
 }
 
-.signup-box > .card > .img-box {
+.signup-box > .card {
+    height: 100%;
+    display: flex;
+}
+
+.signup-box > .cardM-img {
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    height: 100%;
+    display: flex;
+}
+
+.signup-box > .cardM-img > .img-box {
     height: 100%;
 }
 
-.signup-box > .card > .img-box > img {
+.signup-box > .cardM-img > .img-box > img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 /* 회원가입 입력 폼 */
@@ -104,4 +113,72 @@
 
 .modify-box > form > .signup-btn > .check {
     margin-left: 20px;
+}
+
+/* 반응형 시작 */
+@media (max-width: 392px) {
+    .signup-box {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .signup-box > .cardM-img {
+        width: 100%;
+        height: 200px;
+    }
+
+    .signup-box > .cardM-img > .img-box {
+        width: 100%;
+        height: 100%;
+    }
+
+    .signup-box > .cardM-img > .img-box > img {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* 회원가입 입력 폼 */
+    .signup-form > .modify-box {
+        height: 100%;
+        padding-left: 5px !important;
+    }
+
+    /* 권한 버튼 커스텀 */
+    /* 폼 커스텀 */
+    .modify-box > form {
+        display: block;
+        height: 100%;
+    }
+
+    .modify-box > form > .type-box {
+        width: 100%;
+        height: 60px;
+    }
+
+    .modify-box > form > .type-box > span {
+        font-weight: 700;
+        font-size: 13px;
+        margin-right: 0 !important;
+        width: 88px;
+    }
+
+    .modify-box > form > .type-box > input {
+        border: 1px solid #121212;
+        border-radius: 5px;
+        height: 70%;
+        width: 200px;
+        padding-left: 10px;
+    }
+
+    .modify-box > form > .id-box > button {
+        font-size: 11px;
+    }
+
+    .modify-box > form > .type-box > select {
+        border: 1px solid #121212;
+        border-radius: 5px;
+        width: 200px;
+        padding : 8px 0px 8px 10px;
+    }
 }
