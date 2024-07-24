@@ -2,6 +2,7 @@ package com.cod.AniBirth.adopt.controller;
 
 import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.animal.service.AnimalService;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,14 @@ public class AdoptController {
         model.addAttribute("animals", animals);
 
         return "adopt/list";
+    }
+
+    @GetMapping("/detail/{id}")
+    public String detail(@PathVariable("id") Long id, Model model) {
+        Animal animal = animalService.getAnimal(id);
+
+        model.addAttribute("animal", animal);
+        return "adopt/detail";
     }
 
 }
