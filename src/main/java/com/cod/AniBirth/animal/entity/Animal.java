@@ -20,6 +20,7 @@ public class Animal extends BaseEntity {
 
     @Column(nullable = false)
     private String adoptionStatusCd = "1"; //입양상태,  1:공고중,2:입양가능,3:입양예정,4:입양완료,7:주인반환
+    //Todo 입양날짜 생성, 입양보내는 멤버, 입양을 하는 멤버
 
 
     private String age;
