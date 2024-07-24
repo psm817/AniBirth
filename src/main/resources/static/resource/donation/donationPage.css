@@ -1,3 +1,15 @@
+body {
+   margin:0;
+   padding:0;
+   list-style:none;
+   font-family: 'Pretendard-Regular';
+   text-underline-position: under;
+}
+.container {
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
 .content {
     position: relative;
     text-align: center;
@@ -76,41 +88,6 @@
     border-radius: 50%;
     box-shadow: 3px 3px 3px 3px #555555;
 }
-/* Media Queries */
-@media (max-width: 768px) {
-    .text-overlay {
-        margin-top: 150px;
-        padding: 20px;
-    }
-    .text-overlay h1 {
-        font-size: 2em;
-    }
-    .text-overlay p {
-        font-size: 1em;
-    }
-    .center-background-image {
-        width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .text-overlay {
-        margin-top: 100px;
-        padding: 10px;
-    }
-    .text-overlay h1 {
-        font-size: 1.5em;
-    }
-    .text-overlay p {
-        font-size: 0.9em;
-    }
-    .center-background-image {
-        width: 90%;
-    }
-    .donation-box {
-        width: 100%;
-    }
-}
 
 /* Modal Styles */
 .modal {
@@ -168,4 +145,47 @@
 }
 .modal-body button:hover {
     background-color: #FF416C;
+}
+@media (max-width: 768px) {
+    .text-overlay {
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        padding: 20px;
+    }
+    .text-overlay h1 {
+        font-size: 2em;
+    }
+    .text-overlay p {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .text-overlay {
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        padding: 10px;
+    }
+    .text-overlay h1 {
+        font-size: 1.5em;
+    }
+    .text-overlay p {
+        font-size: 0.9em;
+    }
+}
+@media (max-width: 640px) {
+    .donation-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    .donation-box {
+        width: 90%;
+        margin-top: 20px;
+    }
+    .center-background-image {
+        width: 50%;
+        height: auto;
+    }
 }

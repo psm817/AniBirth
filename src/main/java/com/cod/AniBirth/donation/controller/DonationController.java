@@ -9,10 +9,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -53,6 +51,12 @@ public class DonationController {
             return "donation/fail";
         }
     }
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public String handleMissingParams(MissingServletRequestParameterException ex, Model model) {
+        model.addAttribute("message", "모든 필드를 입력하세요.");
+        return "donation/fail";
+    }
+
     @GetMapping("/donation/fail")
     public String donationFail(Model model) {
         model.addAttribute("message", "후원에 실패했습니다. 다시 시도해주세요.");
