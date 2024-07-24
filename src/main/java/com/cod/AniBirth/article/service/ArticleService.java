@@ -49,4 +49,20 @@ public Page<Article> getList(Pageable pageable) {
         return article.orElse(null);
     }
 
+    public Article getPreviousArticle(Long id) {
+        return articleRepository.findFirstByIdLessThanOrderByIdDesc(id);
+    }
+
+    public Article getNextArticle(Long id) {
+        return articleRepository.findFirstByIdGreaterThanOrderByIdAsc(id);
+    }
+
+    public void deleteArticle(Long id) {
+        // 삭제할 Article이 존재하는지 확인
+        if (!articleRepository.existsById(id)) {
+            throw new IllegalArgumentException("Article with ID " + id + " not found");
+        }
+        // Article 삭제
+        articleRepository.deleteById(id);
+    }
 }

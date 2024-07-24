@@ -85,7 +85,47 @@ public class ArticleController {
             article.setViewCount(article.getViewCount() + 1);
             articleService.saveArticle(article);
         }
+        Article prevArticle = articleService.getPreviousArticle(id);
+        Article nextArticle = articleService.getNextArticle(id);
+
         model.addAttribute("article", article);
+        model.addAttribute("prevArticleId", prevArticle != null ? prevArticle.getId() : null);
+        model.addAttribute("nextArticleId", nextArticle != null ? nextArticle.getId() : null);
         return "article/detail";
+    }
+    @GetMapping("/edit/{id}")
+    public String editForm(@PathVariable("id") Long id, Model model) {
+        Article article = articleService.getArticleById(id);
+        if (article == null) {
+            throw new DataNotFoundException("Article not found");
+        }
+        model.addAttribute("article", article);
+        return "article/form";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String edit(@PathVariable("id") Long id, @ModelAttribute Article article) {
+        Article existingArticle = articleService.getArticleById(id);
+        if (existingArticle == null) {
+            throw new DataNotFoundException("Article not found");
+        }
+
+        // 기존 Article 객체의 필드를 새로운 값으로 업데이트
+        existingArticle.setTitle(article.getTitle());
+        existingArticle.setContent(article.getContent());
+        // 업데이트된 Article 저장
+        articleService.saveArticle(existingArticle);
+
+        return "redirect:/article/" + id;
+    }
+
+    @PostMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Long id) {
+        Article article = articleService.getArticleById(id);
+        if (article == null) {
+            throw new DataNotFoundException("Article not found");
+        }
+        articleService.deleteArticle(id);
+        return "redirect:/article/list";
     }
 }

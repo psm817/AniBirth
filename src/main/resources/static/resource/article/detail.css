@@ -1,4 +1,5 @@
 /* detail.css */
+
 .container {
     width: 100%;
     max-width: 1200px;
@@ -43,34 +44,22 @@ hr {
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
     text-decoration: none;
+    text-align: center;
 }
 
 .btn-primary:hover {
     background-color: #0056b3;
 }
 
-.btn-warning {
-    background-color: #fbbf24;
+.btn-disabled {
+    background-color: #d3d3d3;
     color: #ffffff;
     font-weight: 700;
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
     text-decoration: none;
+    text-align: center;
+    pointer-events: none; /* 클릭 비활성화 */
 }
 
-.btn-warning:hover {
-    background-color: #f59e0b;
-}
 
-.btn-danger {
-    background-color: #ef4444;
-    color: #ffffff;
-    font-weight: 700;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
-    text-decoration: none;
-}
-
-.btn-danger:hover {
-    background-color: #dc2626;
-}
