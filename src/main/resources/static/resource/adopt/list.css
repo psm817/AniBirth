@@ -98,7 +98,7 @@ html > body .container-box .adoptlist > .adopt-notice-list {
     }
 }
 
-@media all and (max-width:391px) {
+@media all and (max-width:400px) {
     html > body .container-box > .adopt {
             display: none;
         }

@@ -68,6 +68,13 @@ public class AnimalService {
             } else if ("2".equals(animal.getGender())) {
                 animal.setGender("수");
             }
+            if ("1".equals(animal.getClassification())) {
+                animal.setClassification("개");
+            } else if ("2".equals(animal.getClassification())) {
+                animal.setClassification("고양이");
+            } else {
+                animal.setClassification("기타동물");
+            }
 
             // gu 변환
             switch (animal.getGu()) {
