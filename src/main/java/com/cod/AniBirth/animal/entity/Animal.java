@@ -20,6 +20,7 @@ public class Animal extends BaseEntity {
     //Todo 0일때 입양대기, 1이면 입양완료 기본값을 0으로 변경 데이터를 불러
     @Column(nullable = false)
     private String adoptionStatusCd = "1"; //입양상태,  1:공고중,2:입양가능,3:입양예정,4:입양완료,7:주인반환
+    //Todo 입양날짜 생성, 입양보내는 멤버, 입양을 하는 멤버
 
     private String age;
     private String classification; //1:개 , 2:고양이,3:기타동물
