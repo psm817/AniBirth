@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -30,35 +31,19 @@ public class ArticleController {
     @GetMapping("/list")
     public String list(Model model,
                        @RequestParam(value = "page", defaultValue = "0") int page,
-                       @RequestParam(value = "size", defaultValue = "20") int size) {
-        // 현재 로그인된 사용자 정보 가져오기
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = "";
+                       @RequestParam(value = "size", defaultValue = "10") int size,
+                       Authentication authentication) {
 
-        if (authentication.getPrincipal() instanceof UserDetails) {
-            username = ((UserDetails) authentication.getPrincipal()).getUsername();
-        } else if (authentication.getPrincipal() instanceof String) {
-            username = (String) authentication.getPrincipal();
-        } else {
-            throw new IllegalStateException("Unknown principal type");
-        }
-
-        // 사용자 정보를 가져옴
         Member member = null;
-        try {
-            member = memberService.findByUsername(username);
-        } catch (Exception e) {
-            // Handle the case where the member is not found or other exceptions
-            e.printStackTrace();
-        }
 
-        // 현재 로그인된 사용자의 권한을 확인
-        boolean isAdmin = member != null && member.getAuthority() == 0;
+        if(authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
 
         Pageable pageable = PageRequest.of(page, size); // 페이지당 항목 수를 size로 설정
         Page<Article> paging = articleService.getList(pageable); // Pageable을 이용하여 페이지네이션을 수행
         model.addAttribute("paging", paging);
-        model.addAttribute("isAdmin", isAdmin); // 모델에 isAdmin 속성 추가
+        model.addAttribute("member", member); // 모델에 isAdmin 속성 추가
         return "article/list";
     }
 
@@ -93,6 +78,7 @@ public class ArticleController {
         model.addAttribute("nextArticleId", nextArticle != null ? nextArticle.getId() : null);
         return "article/detail";
     }
+
     @GetMapping("/edit/{id}")
     public String editForm(@PathVariable("id") Long id, Model model) {
         Article article = articleService.getArticleById(id);

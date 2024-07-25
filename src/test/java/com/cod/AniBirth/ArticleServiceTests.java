@@ -15,7 +15,7 @@ public class ArticleServiceTests {
     @Test
     @DisplayName("테스트 공지사항 생성")
     void testCreateArticles() {
-        for (int i = 1; i <= 200; i++) {
+        for (int i = 1; i <= 100; i++) {
             String title = String.format("테스트 공지사항:[%03d]", i);
             String content = String.format("테스트 내용 %03d", i);
             articleService.create(title, content);

@@ -25,9 +25,16 @@ public class QaController {
     private final MemberService memberService;
 
     @GetMapping("/list")
-    public String list(Model model) {
+    public String list(Model model, Authentication authentication) {
         List<Qa> qaList = qaService.getAllQas();
+        Member member = null;
+
+        if(authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
+
         model.addAttribute("qaList", qaList);
+        model.addAttribute("member", member);
         return "qa/list";
     }
 

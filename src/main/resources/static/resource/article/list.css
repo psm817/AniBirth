@@ -1,24 +1,18 @@
-/* list.css */
-
 /* 전체 페이지 스타일 */
-body {
+.body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f8f9fa;
 }
 
-section {
+.section {
+
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 2rem;
-}
 
-/* 헤더 스타일 */
-h1 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
 }
 
 /* 링크 네비게이션 스타일 */
@@ -30,7 +24,7 @@ h1 {
 }
 
 .link {
-    color: #007bff;
+    color: #141214;
     text-decoration: none;
     margin: 0 0.5rem;
     font-weight: bold;
@@ -38,10 +32,11 @@ h1 {
 
 .link:hover {
     text-decoration: underline;
+    color: #c23273;
 }
 
 .link.active {
-    color: #0056b3;
+    color: #c23273;
 }
 
 /* 구분 기호 스타일 */
@@ -51,32 +46,47 @@ h1 {
 }
 
 /* 컨테이너 스타일 */
-.container {
+.container-list {
     width: 100%;
-    max-width: 2000px;
-    padding:0 1rem;
+    max-width: 1000px;
+    padding: 0 1rem;
     box-sizing: border-box;
 }
 
-/* 목록 스타일 */
-.list-wrapper {
-    border: 1px solid #ddd;
-    border-radius: 0.25rem;
-    overflow: hidden;
-    background-color: #fff;
-}
 /* 테이블 래퍼 스타일 */
 .table-wrapper {
-    width: 200%;
+    width: 100%;
     overflow-x: auto;
     margin: 0 auto;
-    position: relative; /* 절대 위치 조정용 */
-    left: -50%; /* 래퍼를 왼쪽으로 이동시켜서 가운데 정렬 */
 }
+
 /* 테이블 스타일 */
 table {
-    width: 100%; /* 테이블이 컨테이너 너비에 맞게 설정 */
-    border-collapse: collapse; /* 경계가 겹치지 않도록 설정 */
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th, td {
+    padding: 0.5rem;
+    text-align: center; /* 중앙 정렬 */
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f1f1f1;
+}
+
+td a {
+    color: #007bff;
+    text-decoration: none;
+}
+td.view-count {
+    padding-right: 2rem; /* 오른쪽 여백을 추가하여 오른쪽으로 이동 */
+}
+
+td a:hover {
+    text-decoration: underline;
 }
 
 /* 버튼 스타일 */
@@ -96,37 +106,23 @@ table {
 .button:hover {
     background-color: #0056b3;
 }
-/* 버튼 스타일 */
-.button-edit, .button-delete {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    margin: 0.25rem;
+
+/* 관리 링크 스타일 */
+.link-manage {
+    color: #007bff;
     text-decoration: none;
-    border-radius: 0.25rem;
-    font-size: 0.875rem;
-    color: #fff;
+    margin: 0 0.25rem;
 }
 
-.button-edit {
-    background-color: #4CAF50;
+.link-manage:hover {
+    text-decoration: underline;
 }
 
-.button-edit:hover {
-    background-color: #45a049;
-}
-
-.button-delete {
-    background-color: #f44336;
-}
-
-.button-delete:hover {
-    background-color: #e53935;
-}
 /* 페이지네이션 스타일 */
 .pagination-container {
     display: flex;
     justify-content: center;
-    margin-top: 2rem; /* 페이지네이션과 목록 간의 간격 */
+    margin-top: 2rem;
 }
 
 .pagination-button, .pagination-number {

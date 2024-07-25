@@ -121,4 +121,14 @@ public class MemberService {
         return memberRepository.findByAuthority(1);
 
     }
+
+    public Member getMemberByUsername(String name) {
+        Optional<Member> om = memberRepository.findByUsername(name);
+
+        if(om.isPresent()) {
+            return om.get();
+        } else {
+            throw new DataNotFoundException("member not found");
+        }
+    }
 }
