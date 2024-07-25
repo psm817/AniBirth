@@ -1,0 +1,64 @@
+html, body {
+    position: relative;
+    height: 100%;
+}
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+html > body .adopt-detail-head {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* 입양 상세 내용 스타일 */
+html > body .adopt-detail-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 입양 항목의 이미지와 콘텐츠를 좌우로 배치 */
+html > body .adopt-detail-content > .row-adopt {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    gap: 20px; /* 이미지와 콘텐츠 사이의 간격 */
+}
+
+/* 이미지와 콘텐츠 각각 50% 차지하도록 설정 */
+.adopt.img,
+.adopt.content {
+    flex: 1;
+    max-width: 50%;
+    box-sizing: border-box;
+}
+
+/* 이미지 스타일 */
+.adopt-img-big img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 반응형 디자인: 작은 화면에서는 세로로 배치 */
+@media (max-width: 768px) {
+    .row-adopt {
+        flex-direction: column;
+    }
+
+    .adopt.img,
+    .adopt.content {
+        max-width: 100%;
+    }
+}
+
+
