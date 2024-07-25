@@ -14,8 +14,8 @@
       <ul class="adopt-notice-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px] mt-3">
         <li th:each="animal, loop : ${animals}" class="flex flex-col">
           <a th:href="@{|/adopt/detail/${animal.id}|}"
-             class="border border-black h-[250px] transition duration-300 rounded-lg hover:rounded-lg hover:-translate-y-1.5 hover:transition hover:duration-300 hover:shadow-md">
-            <img class="block w-full" th:src="@{|http://www.daejeon.go.kr/${animal.filePath}|}" alt="이미지가 존재하지 않습니다.">
+             class="border border-black h-[280px] transition duration-300 rounded-lg hover:rounded-lg hover:-translate-y-1.5 hover:transition hover:duration-300 hover:shadow-md">
+            <img class="block w-full h-full rounded-lg hover:rounded-lg" th:src="@{|http://www.daejeon.go.kr/${animal.filePath}|}" alt="이미지가 존재하지 않습니다.">
           </a>
           <a th:href="@{|/adopt/detail/${animal.id}|}" th:text="${animal.species}" class="text-center mt-2"></a>
           <a th:href="@{|/adopt/detail/${animal.id}|}" th:text="${animal.gender}" class="text-center mt-2"></a>
