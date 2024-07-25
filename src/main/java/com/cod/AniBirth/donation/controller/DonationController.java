@@ -23,15 +23,14 @@ public class DonationController {
     private final MemberService memberService;
 
     @GetMapping("/donate")
-    @PreAuthorize("isAuthenticated()")
-    public String showDonatePage(Model model) {
+    public String showDonatePage(Model model, Authentication authentication) {
         List<Member> recipients = donationService.getAllRecipients();
         model.addAttribute("recipients", recipients);
+        model.addAttribute("isAuthenticated", authentication != null && authentication.isAuthenticated());
         return "donation/donation";
     }
 
     @PostMapping("/submit")
-    @PreAuthorize("isAuthenticated()")
     public String donate(
             @RequestParam("recipientId") Long recipientId,
             @RequestParam("amount") Long amount,
