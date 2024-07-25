@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/layout}">
+<section layout:fragment="content" class="flex-1 justify-center items-center">
+    <div class="container volunteer-box">
+        <div class="card w-[100%]">
+            <div class="create-form">
+                <div class="title-box">
+                    <h1>봉사활동 > 등록하기</h1>
+                </div>
+                <div class="create-input">
+                    <form th:action="@{/volunteer/create}" method="POST" onsubmit="submitVolunteerForm(this); return false;" enctype="multipart/form-data">
+                        <div class="type-box name-box">
+                            <span class="font-weight">봉사명<span class="text-red-600">*</span></span>
+                            <input type="text" id="title" maxlength="200" name="title" placeholder="봉사명을 입력하세요.">
+                        </div>
+                        <div class="type-box date-box">
+                            <span>봉사 시작 날짜<span class="text-red-600">*</span></span>
+                            <input type="date" id="startDate" name="startDate">
+                        </div>
+                        <div class="type-box date-box">
+                            <span>봉사 끝나는 날짜<span class="text-red-600">*</span></span>
+                            <input type="date" id="endDate" name="endDate">
+                        </div>
+                        <div class="type-box date-box">
+                            <span>신청 마감 날짜<span class="text-red-600">*</span></span>
+                            <input type="date" id="deadLineDate" name="deadLineDate">
+                        </div>
+                        <div class="type-box location-box">
+                            <span>봉사 장소<span class="text-red-600">*</span></span>
+                            <input type="text" name="location" id="location" placeholder="봉사장소를 입력하세요.">
+                        </div>
+                        <div class="type-box limit-box">
+                            <span>최대 신청인원<span class="text-red-600">*</span></span>
+                            <input type="number" name="limit" id="limit">
+                        </div>
+                        <div class="type-box img-box">
+                            <span>대표 이미지<span class="text-red-600">*</span></span>
+                            <input class="file-box" type="file" name="thumbnailImg">
+                        </div>
+                        <div class="type-box content-box">
+                            <span>봉사 내용<span class="text-red-600">*</span></span>
+                            <textarea name="content" id="content" class="form-control" rows="7" placeholder="봉사내용을 입력하세요."></textarea>
+                        </div>
+                        <div class="type-box signup-btn flex justify-center">
+                            <button class="btn btn-primary cancel" type="button" onclick="if(confirm('봉사활동을 등록을 취소하시겠습니까?')) { window.location.href='/'; }">취소</button>
+                            <button class="btn btn-primary check" type="submit" id="submitButton">등록</button>
+                        </div>
+                        <div class="absolute-box">
+                            <img src="" alt="대표이미지 미리보기">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</html>

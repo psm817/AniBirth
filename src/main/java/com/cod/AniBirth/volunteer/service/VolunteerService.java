@@ -18,7 +18,6 @@ import java.util.List;
 public class VolunteerService {
     private final VolunteerRepository volunteerRepository;
 
-
     public Volunteer create(String title, String content, String location, String startDate,
                             String endDate, String deadLineDate, String thumbnailImg, int limit, Member member) {
         Volunteer volunteer = Volunteer.builder()

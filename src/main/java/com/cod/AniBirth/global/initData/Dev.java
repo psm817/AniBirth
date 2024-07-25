@@ -2,7 +2,6 @@ package com.cod.AniBirth.global.initData;
 
 import com.cod.AniBirth.account.entity.Account;
 import com.cod.AniBirth.account.service.AccountService;
-import com.cod.AniBirth.animal.service.AnimalService;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
 import com.cod.AniBirth.product.service.ProductService;
@@ -17,8 +16,8 @@ import org.springframework.context.annotation.Profile;
 @Profile("dev")
 public class Dev {
     @Bean
-    public ApplicationRunner init(MemberService memberService, AnimalService animalService,
-                                  AccountService accountService, ProductService productService, VolunteerService volunteerService) {
+    public ApplicationRunner init(MemberService memberService, AccountService accountService,
+                                  ProductService productService, VolunteerService volunteerService) {
         return args -> {
             Member member1 = memberService.signup("admin", "admin", "admin", "admin@test.com","010-1111-2222", "대전광역시 서구 청사로 281","/images/profile_default.jpg", 0, 1);
             Member member2 = memberService.signup("company1", "company1", "company1", "company1@test.com","010-1111-2222", "대전광역시 서구 청사로 281","/images/profile_default.jpg", 1, 1);

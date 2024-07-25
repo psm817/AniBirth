@@ -92,6 +92,17 @@
     margin-left: 35px;
 }
 
+.summary-box > .volunteer-section > .title-box > a {
+    border: 2px solid #FF416C;
+    border-radius: 10px;
+    margin-left: 15px;
+}
+
+.summary-box > .volunteer-section > .title-box > a:hover {
+    background-color: #FF416C;
+    color: #fff;
+}
+
 .summary-box > .volunteer-section > .title-box > span:nth-child(2) {
     font-weight: 500;
     font-size: 15px;
@@ -188,6 +199,21 @@
         font-weight: 700;
         font-size: 18px;
         margin-left: 10px;
+    }
+
+    .summary-box > .volunteer-section > .title-box > a {
+        margin-left: 10px;
+        margin-top: 5px;
+        font-size: 15px;
+    }
+
+    .summary-box > .volunteer-section > .title-box > a:hover {
+        background-color: #FF416C;
+        color: #fff;
+    }
+
+    .summary-box > .volunteer-section > .totalList-box {
+        margin-top: 15px;
     }
 
     .summary-box > .calendar-section > #calendar {
