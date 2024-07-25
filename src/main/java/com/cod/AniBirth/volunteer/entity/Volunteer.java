@@ -2,14 +2,15 @@ package com.cod.AniBirth.volunteer.entity;
 
 import com.cod.AniBirth.base.entity.BaseEntity;
 import com.cod.AniBirth.member.entity.Member;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -19,9 +20,9 @@ import java.util.List;
 @AllArgsConstructor
 @SuperBuilder
 public class Volunteer extends BaseEntity {
-    private LocalDateTime startDate;        // 봉사시작날짜
-    private LocalDateTime endDate;          // 봉사끝나는날짜
-    private LocalDateTime deadLineDate;     // 신청마감날짜
+    private String startDate;        // 봉사시작날짜
+    private String endDate;          // 봉사끝나는날짜
+    private String deadLineDate;     // 신청마감날짜
     private String location;                // 봉사 장소
     private String title;                   // 봉사명
     private String content;                 // 봉사내용
