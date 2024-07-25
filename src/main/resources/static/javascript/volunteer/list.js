@@ -7,9 +7,16 @@ document.addEventListener('DOMContentLoaded', function() {
             center: 'title',
             right: 'dayGridMonth,timeGridDay'
         },
+        buttonText: {
+            month: '월간',
+            week: '주간',
+            day: '일간',
+            list: '목록'
+        },
         selectable: true,
         selectHelper: true,
         events: '/calendar/events',
+        locale: 'ko',
         select: function(info) {
             var title = prompt('봉사활동 일정을 등록하세요');
             if (title) {

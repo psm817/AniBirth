@@ -1,13 +1,11 @@
 .main-container-box {
   width: 100%;
   height: 100%;
-  border: 1px solid red;
 }
 
 .main-container-box > .volunteer {
   width: 100%;
   height: 100%;
-  border: 1px solid orange;
 }
 
 .main-container-box > .volunteer > .volunteer-wrapper {
@@ -49,7 +47,6 @@
 }
 
 .summary-box {
-    border: 1px solid green;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -117,13 +114,48 @@
     text-align: center;
 }
 
+/* 캘린더 시작 */
 .summary-box > .calendar-section {
-    border: 1px solid red;
     margin-top: 50px;
 }
 
+.summary-box > .calendar-section > .title-box {
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.summary-box > .calendar-section > .title-box > span {
+    font-weight: 700;
+    font-size: 23px;
+    margin-left: 35px;
+}
+
+.summary-box > .calendar-section > #calendar {
+    padding-left: 35px;
+    padding-right: 35px;
+    height: 700px;
+}
+
+/* 년월 날짜 커스텀 */
+.fc-toolbar-title {
+    font-weight: bold;
+    padding-right: 50px;
+}
+
+/* 캘린더 버튼 커스텀 */
+.fc-header-toolbar > .fc-toolbar-chunk > .fc-button-group > button {
+    background-color: #FF416C;
+    border: transparent;
+}
+
+/* 6주차 숨기기 */
+.fc-scrollgrid-sync-table > tbody > tr:last-child {
+    display: none;
+}
+
 /* 반응형 시작 */
-@media (max-width: 392px) {
+@media (max-width: 394px) {
     .text-overlay-v {
         left: 50%;
         transform: translate(-50%, -50%);
@@ -136,5 +168,48 @@
     }
     .text-overlay-v p {
         font-size: 0.9em;
+    }
+
+    .summary-box > .volunteer-section > .title-box {
+        margin-top: 15px;
+        height: 70px;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .summary-box > .volunteer-section > .title-box > span {
+        font-weight: 700;
+        font-size: 18px;
+        margin-left: 10px;
+    }
+
+    .summary-box > .calendar-section > .title-box > span {
+        font-weight: 700;
+        font-size: 18px;
+        margin-left: 10px;
+    }
+
+    .summary-box > .calendar-section > #calendar {
+        padding-left: 0px;
+        padding-right: 0px;
+        height: 700px;
+    }
+
+    .summary-box > .volunteer-section > .title-box > span:nth-child(2) {
+        font-weight: 500;
+        font-size: 13px;
+        margin-left: 10px;
+    }
+
+    /* 년월 날짜 커스텀 */
+    .fc-header-toolbar > .fc-toolbar-chunk:nth-child(1) {
+        width: 82px;
+    }
+
+    .fc-toolbar-title {
+        font-weight: bold;
+        font-size: 16px !important;
+        padding-right: 0px;
     }
 }

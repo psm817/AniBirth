@@ -116,7 +116,7 @@
 }
 
 /* 반응형 시작 */
-@media (max-width: 392px) {
+@media (max-width: 394px) {
     .signup-box {
         display: block;
         width: 100%;

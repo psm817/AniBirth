@@ -96,7 +96,7 @@ html > body .adopt-detail-content .row-adopt .content .space-1
 
 
 /* 반응형 디자인: 작은 화면에서는 세로로 배치 */
-@media (max-width: 391px) {
+@media (max-width: 394px) {
     .row-adopt {
         flex-direction: column;
     }
