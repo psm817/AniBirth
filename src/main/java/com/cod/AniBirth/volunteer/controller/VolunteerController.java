@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class VolunteerController {
     private final MemberService memberService;
 
-    @GetMapping("/")
+    @GetMapping("/list")
     public String volunteer(Authentication authentication, Model model) {
         Member member = null;
 
@@ -25,6 +25,6 @@ public class VolunteerController {
 
         model.addAttribute("member", member);
 
-        return "volunteer/main";
+        return "volunteer/list";
     }
 }

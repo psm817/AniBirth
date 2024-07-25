@@ -30,6 +30,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+    <!-- 풀캘린더 -->
+    <link href='fullcalendar-5.11.3/lib/main.css' rel='stylesheet' />
+    <script src='fullcalendar-5.11.3/lib/main.js'></script>
+
     <!-- 커스텀 css모음 -->
     <link href="/resource/common/common.css" rel="stylesheet" type="text/css"/>
     <link href="/resource/home/main.css" rel="stylesheet" type="text/css"/>
@@ -44,7 +48,7 @@
     <link href="/resource/adopt/list.css" rel="stylesheet" type="text/css"/>
     <link href="/resource/adopt/detail.css" rel="stylesheet" type="text/css"/>
     <link href="/resource/donation/donationPage.css" rel="stylesheet">
-    <link href="/resource/volunteer/main.css" rel="stylesheet">
+    <link href="/resource/volunteer/list.css" rel="stylesheet">
 
 
     <!-- 커스텀 js모음 -->
@@ -55,6 +59,7 @@
     <script defer src="/javascript/member/social_modify.js"></script>
     <script src="https://js.tosspayments.com/v1"></script>
     <script src="/donation/donationscript.js"></script>
+    <script src="/javascript/volunteer/list.js"></script>
 
 
 
@@ -108,7 +113,7 @@
                     </a>
                 </li>
                 <li class="menu-text">
-                    <a th:href="@{/volunteer/}">
+                    <a th:href="@{/volunteer/list}">
                         <span>봉사활동</span>
                     </a>
                 </li>

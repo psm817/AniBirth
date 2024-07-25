@@ -1,38 +1,28 @@
-.container-box {
+.main-container-box {
   width: 100%;
   height: 100%;
   border: 1px solid red;
 }
 
-.container-box > .volunteer {
+.main-container-box > .volunteer {
   width: 100%;
-  height: 360px;
-  margin-bottom: 20px;
+  height: 100%;
   border: 1px solid orange;
 }
 
-html > body .volunteer-wrapper {
+.main-container-box > .volunteer > .volunteer-wrapper {
   width: 100%;
-  height: 100%;
+  height: 360px;
 }
 
-html > body .volunteer-banner {
-  text-align: center;
-  font-size: 18px;
-  height: 100%;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.volunteer-banner img {
+.main-container-box > .volunteer > .volunteer-wrapper > img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.text-overlay {
+
+.text-overlay-v {
     position: absolute;
     top: 15%;
     left: 180px;
@@ -42,16 +32,16 @@ html > body .volunteer-banner {
     flex-direction: column;
     justify-content: center;
     align-items: left;
-    margin-top: 100px;
-    padding: 30px;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
-.text-overlay h1 {
+
+.text-overlay-v h1 {
     margin-right: auto;
     font-size: 3em;
 }
-.text-overlay p {
+
+.text-overlay-v p {
     margin: 0;
     font-size: 1.2em;
     text-align: left;
@@ -62,11 +52,46 @@ html > body .volunteer-banner {
     border: 1px solid green;
     display: flex;
     flex-direction: column;
-    height: 100%;
 }
 
+/* 소메뉴 */
+.summary-box > .tiny-menu-box {
+    margin-top: 20px;
+    display: flex;
+    justify-content: start;
+}
+
+.summary-box > .tiny-menu-box > a {
+    cursor: pointer;
+    padding: 10px;
+    display: block;
+    font-size: 16px;
+}
+
+.summary-box > .tiny-menu-box > a:nth-child(1) {
+    font-weight: 700;
+    color: #FF416C;
+}
+
+.summary-box > .tiny-menu-box > a:hover {
+    color: #FF416C;
+}
+
+/* 봉사 리스트 */
 .summary-box > .volunteer-section {
-    border: 1px solid blue;
+    height: 70px;
+}
+
+.summary-box > .volunteer-section > .title-box {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.summary-box > .volunteer-section > .title-box > span {
+    font-weight: 700;
+    font-size: 23px;
+    margin-left: 10px;
 }
 
 .summary-box > .calendar-section {

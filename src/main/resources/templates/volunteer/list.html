@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/layout}">
+<section layout:fragment="content" class="flex-1 flex justify-center items-center">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <link href="/resource/css/admCreate.css" rel="stylesheet" type="text/css" />
+        <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css' rel='stylesheet' />
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="main-container-box">
+            <div class="volunteer">
+                <div class="volunteer-wrapper">
+                    <img src="https://cdn.healingnlife.com/news/photo/202103/1042_1700_155.jpg" alt="Dog Shelter"
+                         class="background-image grid w-full h-[500px] ">
+                </div>
+                <div class="text-overlay-v">
+                    <h1 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold">봉사활동</h1>
+                    <h1 th:if="${#authorization.expression('isAuthenticated()')} and ${member.authority} == 0"  th:text="${member.nickname}"></h1>
+                    <br>
+                    <p class="mt-4 text-sm sm:text-base md:text-lg lg:text-xl">애니버스의 봉사활동은 유기동물들이 따뜻한 가정을 찾을 수 있도록 돕는 것을 목표로 합니다.<br>
+                        여러분의 작은 손길이 큰 사랑이 되어, 유기동물들에게 새로운 희망을 선물할 수 있습니다.<br>
+                    </p>
+                </div>
+                <div class="container summary-box">
+                    <!-- 소메뉴 뽑기 -->
+                    <div class="tiny-menu-box">
+                        <a href="#">봉사활동</a>
+                        <a href="#">봉사후기</a>
+                    </div>
+                    <!-- 기준을 뭘로삼든 4개만 컨트롤러에서 뽑기 -->
+                    <div class="volunteer-section">
+                        <div class="title-box">
+                            <span>전체 봉사활동</span>
+                        </div>
+                        <div class="popular-box">
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-3">
+                                <li></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="calendar-section">
+                        <div class="title-box">
+                            <span>전체 봉사일정</span>
+                        </div>
+                        <div id='calendar'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</section>
+</html>
