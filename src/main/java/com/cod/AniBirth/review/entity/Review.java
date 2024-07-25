@@ -20,9 +20,11 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 public class Review extends BaseEntity {
     private String content;
+    private int starRating;
 
     @ManyToOne
     private Member member;
     @ManyToOne
     private Product product;
+
 }

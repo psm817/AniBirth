@@ -1,6 +1,5 @@
 package com.cod.AniBirth.review.service;
 
-
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.product.entity.Product;
 import com.cod.AniBirth.review.entity.Review;
@@ -13,37 +12,39 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class ReviewService {
-    private final ReviewRepository questionRepository;
+    private final ReviewRepository reviewRepository;
 
-    public void create(Product product, Member member, String content) {
-        Review q = Review.builder()
+    public void create(Product product, Member member, String content, int starRating) {
+        Review review = Review.builder()
                 .member(member)
                 .product(product)
                 .content(content)
+                .starRating(starRating)
                 .build();
 
-        questionRepository.save(q);
+        reviewRepository.save(review);
     }
 
-    public Review getQuestion(Long id) {
-        Optional<Review> question = questionRepository.findById(id);
+    public Review getReview(Long id) {
+        Optional<Review> review = reviewRepository.findById(id);
 
-        if (question.isPresent()) {
-            return question.get();
+        if (review.isPresent()) {
+            return review.get();
         } else {
-            throw new RuntimeException("question not found");
+            throw new RuntimeException("review not found");
         }
     }
 
-    public void modify(Review question, String content) {
-        Review modifyQuestion = question.toBuilder()
+    public void modify(Review review, String content, int starRating) {
+        Review modifyReview = review.toBuilder()
                 .content(content)
+                .starRating(starRating)
                 .build();
 
-        questionRepository.save(modifyQuestion);
+        reviewRepository.save(modifyReview);
     }
 
-    public void delete(Review question) {
-        questionRepository.delete(question);
+    public void delete(Review review) {
+        reviewRepository.delete(review);
     }
 }

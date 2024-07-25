@@ -1,70 +1,118 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout/layout}">
+<head>
+    <style>
+        .product-img {
+            display: block;
+            margin: 0 auto;
+            max-width: 300px;
+        }
+        .section-prod-list {
+            padding: 20px;
+        }
+        .container-box {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .card {
+            display: flex;
+            margin-bottom: 30px;
+        }
+        .card-header {
+            font-weight: bold;
+            background-color: #f8f9fa;
+        }
+        .btn-outline-dark {
+            width: 100%;
+            margin-top: 10px;
+        }
+        .list-group-item span {
+            display: inline-block;
+            min-width: 80px;
+        }
+        .review-stars {
+            display: flex;
+            align-items: center;
+        }
+        .review-stars span {
+            margin-right: 5px;
+        }
+        .review-stars .stars {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
 <section layout:fragment="content" class="section-prod-list">
-    <div class="container">
+    <div class="container-box">
+        <div class="img-container">
+            <img class="product-img" th:src="@{|/gen/${product.thumbnailImg}|}" alt="이미지가 존재하지 않습니다.">
+        </div>
         <div class="card">
             <div class="card-header">
                 상품상세정보
             </div>
 
-            <ul class="list-group list-group-flush gap-2">
-                <li class="list-group-item">
-                    <img class="w-full max-w-[300px]" th:src="@{|/gen/${product.thumbnailImg}|}" alt="상품이미지">
-                </li>
-                <li class="list-group-item">
-                    <span>번호 : </span>
-                    <span th:text="${product.id}"></span>
-                </li>
-                <li class="list-group-item">
-                    <span>등록날짜 : </span>
-                    <span th:text="${#temporals.format(product.createDate, 'yyyy-MM-dd HH:mm')}"></span>
-                </li>
-                <li class="list-group-item">
-                    <span>수정날짜 : </span>
-                    <span th:text="${#temporals.format(product.modifyDate, 'yyyy-MM-dd HH:mm')}"></span>
-                </li>
-                <li class="list-group-item">
-                    <span>상품명 : </span>
-                    <span class="font-bold" th:text="${product.title}"></span>
-                </li>
-                <li class="list-group-item">
-                    <span>상품설명 : </span>
-                    <span th:text="${product.description}"></span>
-                </li>
-                <li class="list-group-item">
-                    <span>가격 : </span>
-                    <span th:text="${#numbers.formatInteger(product.price, 3, 'COMMA') + '원'}"></span>
-                </li>
-                <li class="list-group-item">
-                    <span>마켓 : </span>
-                    <span class="badge bg-dark">cod</span>
-                </li>
-            </ul>
+            <div class="card-body">
+
+                <ul class="list-group list-group-flush gap-2 mt-3">
+                    <li class="list-group-item">
+                        <span>번호:</span>
+                        <span th:text="${product.id}"></span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>등록날짜:</span>
+                        <span th:text="${#temporals.format(product.createDate, 'yyyy-MM-dd HH:mm')}"></span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>상품명:</span>
+                        <span class="font-bold" th:text="${product.title}"></span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>판매가:</span>
+                        <span th:text="${#numbers.formatInteger(product.price, 3, 'COMMA') + '원'}"></span>
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <div class="card mt-[30px]">
+        <div class="card">
             <div class="card-header">
-                장바구니 담기 & 수강신청
+                장바구니
             </div>
 
             <div class="card-body">
                 <form id="add-to-cart-form" th:action="@{|/cart/add/${product.id}|}" method="POST">
-                    <input type="button" onclick="addToCartAndConfirm()" value="장바구니 담기" class="btn btn-outline-dark">
+                    <input type="button" onclick="addToCartAndConfirm()" value="장바구니" class="btn btn-outline-dark">
                 </form>
             </div>
         </div>
 
-        <div class="card mt-[30px]">
+        <div class="card">
+            <li class="list-group-item">
+                <span>상품설명:</span>
+                <span th:text="${product.description}"></span>
+            </li>
             <div class="card-header">
-                질문등록
+                리뷰 등록
             </div>
 
             <div class="card-body">
-                <form sec:authorize="isAuthenticated()" th:action="@{|/question/create/${product.id}|}" method="POST">
+                <form sec:authorize="isAuthenticated()" th:action="@{|/review/create/${product.id}|}" method="POST">
                     <div class="mt-3">
                         <div class="mb-3">
                             <label for="content" class="form-label">내용</label>
-                            <textarea name="content" id="content" class="form-control" row="7"></textarea>
+                            <textarea name="content" id="content" class="form-control" rows="7"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="starRating" class="form-label">별점</label>
+                            <select name="starRating" id="starRating" class="form-select">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
                         </div>
                         <input type="submit" value="등록하기" class="btn btn-dark">
                     </div>
@@ -75,79 +123,79 @@
             </div>
         </div>
 
-        <div class="card mt-[30px]">
+        <div class="card">
             <div class="card-header">
-                질문 리스트
+                리뷰 리스트
             </div>
 
-            <ul th:if="${#lists.size(product.questionList) > 0}" class="list-group list-group-flush gap-2 card-body">
-                <li th:each="question : ${product.questionList}" class="list-group-item">
-                    <span th:text="${question.id}" class="mr-2"></span>
-                    <span th:text="${question.content}"></span>
+            <ul th:if="${#lists.size(product.reviewList) > 0}" class="list-group list-group-flush gap-2 card-body">
+                <li th:each="review : ${product.reviewList}" class="list-group-item">
+                    <span th:text="${review.id}" class="mr-2"></span>
+                    <span th:text="${review.content}"></span>
 
                     <a
-                        th:href="@{|/question/modify/${question.id}|}"
-                        class="btn btn-sm btn-link"
-                        sec:authorize="isAuthenticated()"
-                        th:if="${question.member != null and #authentication.getPrincipal().getUsername() == question.member.username}"
+                            th:href="@{|/review/modify/${review.id}|}"
+                            class="btn btn-sm btn-link"
+                            sec:authorize="isAuthenticated()"
+                            th:if="${review.member != null and #authentication.getPrincipal().getUsername() == review.member.username}"
                     >
                         수정
                     </a>
                     <a
-                        th:href="@{|/question/delete/${question.id}|}"
-                        class="btn btn-sm btn-link"
-                        onclick="if ( confirm('정말 삭제하시겠습니까?' ) == false ) return false;"
-                        sec:authorize="isAuthenticated()"
-                        th:if="${question.member != null and #authentication.getPrincipal().getUsername() == question.member.username}"
+                            th:href="@{|/review/delete/${review.id}|}"
+                            class="btn btn-sm btn-link"
+                            onclick="if ( confirm('정말 삭제하시겠습니까?' ) == false ) return false;"
+                            sec:authorize="isAuthenticated()"
+                            th:if="${review.member != null and #authentication.getPrincipal().getUsername() == review.member.username}"
                     >
                         삭제
                     </a>
                 </li>
             </ul>
-            <ul th:unless="${#lists.size(product.questionList) > 0}" class="card-body">
+            <ul th:unless="${#lists.size(product.reviewList) > 0}" class="card-body">
                 <div>
-                    질문이 아직 없습니다.
+                    리뷰가 아직 없습니다.
                 </div>
             </ul>
-            <script>
-
-                function addToCartAndConfirm() {
-                    const form = document.getElementById('add-to-cart-form');
-                    const action = form.getAttribute('action');
-
-                    fetch(action, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                        },
-                        body: new URLSearchParams(new FormData(form))
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            alert('상품이 장바구니에 추가되었습니다.');
-                            if (confirm('장바구니로 이동하시겠습니까?')) {
-                                window.location.href = '/cart/list';
-                            }
-                        } else {
-                            alert('상품을 장바구니에 추가하는 데 실패했습니다.');
-                        }
-                    })
-                    .catch(error => {
-                        alert('상품을 장바구니에 추가하는 중 오류가 발생했습니다.');
-                    });
-                }
-
-                $(window).on('beforeunload', function() {
-                    sessionStorage.setItem('scrollPosition', $(window).scrollTop());
-                });
-
-                if (sessionStorage.getItem('scrollPosition')) {
-                    $(window).scrollTop(sessionStorage.getItem('scrollPosition'));
-                    sessionStorage.removeItem('scrollPosition');
-                }
-
-            </script>
         </div>
+
+        <script>
+            function addToCartAndConfirm() {
+                const form = document.getElementById('add-to-cart-form');
+                const action = form.getAttribute('action');
+
+                fetch(action, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams(new FormData(form))
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert('상품이 장바구니에 추가되었습니다.');
+                        if (confirm('장바구니로 이동하시겠습니까?')) {
+                            window.location.href = '/cart/list';
+                        }
+                    } else {
+                        alert('상품을 장바구니에 추가하는 데 실패했습니다.');
+                    }
+                })
+                .catch(error => {
+                    alert('상품을 장바구니에 추가하는 중 오류가 발생했습니다.');
+                });
+            }
+
+            $(window).on('beforeunload', function() {
+                sessionStorage.setItem('scrollPosition', $(window).scrollTop());
+            });
+
+            if (sessionStorage.getItem('scrollPosition')) {
+                $(window).scrollTop(sessionStorage.getItem('scrollPosition'));
+                sessionStorage.removeItem('scrollPosition');
+            }
+        </script>
     </div>
 </section>
+</body>
 </html>

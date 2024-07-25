@@ -6,6 +6,7 @@ import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.animal.service.AnimalService;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
+import com.cod.AniBirth.product.service.ProductService;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +16,7 @@ import org.springframework.context.annotation.Profile;
 @Profile("dev")
 public class Dev {
     @Bean
-    public ApplicationRunner init(MemberService memberService, AnimalService animalService, AccountService accountService) {
+    public ApplicationRunner init(MemberService memberService, AnimalService animalService, AccountService accountService, ProductService productService) {
         return args -> {
             Member member1 = memberService.signup("admin", "admin", "admin", "admin@test.com","010-1111-2222", "대전광역시 서구 청사로 281","/images/profile_default.jpg", 0, 1);
             Member member2 = memberService.signup("company1", "company1", "company1", "company1@test.com","010-1111-2222", "대전광역시 서구 청사로 281","/images/profile_default.jpg", 1, 1);
@@ -40,6 +41,11 @@ public class Dev {
             Account account8 = accountService.createOrUpdate(member8, "123-1234-1234", 0L);
             Account account9 = accountService.createOrUpdate(member9, "123-1234-1234", 0L);
 
+
+            productService.create("타이틀1","1 설명입니다",10000);
+            productService.create("타이틀2","2 설명입니다",20000);
+            productService.create("타이틀3","3 설명입니다",30000);
+            productService.create("타이틀4","4 설명입니다",40000);
         };
     }
 }
