@@ -23,13 +23,15 @@ public class AdoptController {
     @GetMapping("/list")
     public String list(Model model,
                        @RequestParam(value = "page", defaultValue = "0") int page,
-                       @RequestParam(value = "kw", defaultValue = "") String kw,
-                       @RequestParam(value = "classification", required = false) Long classificationId,
-                       @RequestParam(value = "gender", required = false) Long genderId,
-                       @RequestParam(value = "weight", required = false) String weight,
-                       @RequestParam(value = "age", required = false) String age) {
+                       @RequestParam(value = "kw", defaultValue = "") String kw
+//                       @RequestParam(value = "classification", required = false) Long classificationId,
+//                       @RequestParam(value = "gender", required = false) Long genderId,
+//                       @RequestParam(value = "weight", required = false) String weight,
+//                       @RequestParam(value = "age", required = false) String age
+    ) {
 
-        Page<Animal> paging = animalService.getListByFilters(page, kw, classificationId, genderId, weight, age);
+        Page<Animal> paging = animalService.getList(page, kw);
+//        Page<Animal> paging = animalService.getListByFilters(page, kw, classificationId, genderId, weight, age);
 
 
         List<Category> classifications = categoryService.getClassificationCategories();
@@ -40,10 +42,10 @@ public class AdoptController {
 
         model.addAttribute("paging", paging);
         model.addAttribute("kw", kw);
-        model.addAttribute("classificationId", classificationId);
-        model.addAttribute("genderId", genderId);
-        model.addAttribute("weightId", weight);
-        model.addAttribute("ageId", age);
+//        model.addAttribute("classificationId", classificationId);
+//        model.addAttribute("genderId", genderId);
+//        model.addAttribute("weightId", weight);
+//        model.addAttribute("ageId", age);
         model.addAttribute("classifications", classifications);
         model.addAttribute("ages", ages);
         model.addAttribute("weights", weights);

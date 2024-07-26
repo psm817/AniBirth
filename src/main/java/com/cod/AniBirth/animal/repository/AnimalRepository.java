@@ -27,15 +27,15 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
     Page<Animal> findAllByCategory_Id(Long classificationId, Pageable pageable);
 
     Page<Animal> findAll(Specification<Animal> spec, Pageable pageable);
-    @Query("SELECT a FROM Animal a WHERE (:kw IS NULL OR a.name LIKE %:kw%) AND " +
-            "(:classification IS NULL OR a.classification = :classification) AND " +
-            "(:gender IS NULL OR a.gender = :gender) AND " +
-            "(:weight IS NULL OR a.weight = :weight) AND " +
-            "(:age IS NULL OR a.age = :age)")
-    Page<Animal> findAllByFilters(@Param("kw") String kw,
-                                  @Param("classificationId") Long classificationId,
-                                  @Param("genderId") Long genderId,
-                                  @Param("weightId") String weightId,
-                                  @Param("ageId") String ageId,
-                                  Pageable pageable);
+//    @Query("SELECT a FROM Animal a WHERE (:kw IS NULL OR a.name LIKE %:kw%) AND " +
+//            "(:classification IS NULL OR a.classification = :classification) AND " +
+//            "(:gender IS NULL OR a.gender = :gender) AND " +
+//            "(:weight IS NULL OR a.weight = :weight) AND " +
+//            "(:age IS NULL OR a.age = :age)")
+//    Page<Animal> findAllByFilters(@Param("kw") String kw,
+//                                  @Param("classificationId") Long classificationId,
+//                                  @Param("genderId") Long genderId,
+//                                  @Param("weightId") String weightId,
+//                                  @Param("ageId") String ageId,
+//                                  Pageable pageable);
 }

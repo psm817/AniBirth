@@ -21,20 +21,18 @@ public class Animal extends BaseEntity {
     @Column(nullable = false)
     private String adoptionStatusCd = "1"; //입양상태,  1:공고중,2:입양가능,3:입양예정,4:입양완료,7:주인반환
 
-    @ManyToOne
-    @JoinColumn(name = "age_id")
-    private Category age;
-    @ManyToOne
-    @JoinColumn(name = "classification_id")
-    private Category classification; //1:개 , 2:고양이,3:기타동물
+
+    private String age;
+
+    private String classification; //1:개 , 2:고양이,3:기타동물
 
     private String fileNm;
     private String filePath;
     private String foundPlace;
 
-    @ManyToOne
-    @JoinColumn(name = "gender_id")
-    private Category gender;//1:암, 2:수
+
+    private String gender;//1:암, 2:수
+
 
     private String gu;  //1:동구,2:중구,3:서구, 4:유성구,5:대덕구
     private String hairColor;
@@ -46,9 +44,8 @@ public class Animal extends BaseEntity {
     private String regId;
     private String rescueDate;
     private String species;
-    @ManyToOne
-    @JoinColumn(name = "weight_id")
-    private Category weight;
+
+    private String weight;
 
 
     //Todo 입양날짜 생성
