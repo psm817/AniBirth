@@ -4,6 +4,7 @@ import com.cod.AniBirth.account.entity.Account;
 import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.base.entity.BaseEntity;
 import com.cod.AniBirth.donation.entity.Donation;
+import com.cod.AniBirth.volunteer.entity.Volunteer;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
@@ -55,4 +56,7 @@ public class Member extends BaseEntity {
 
     @OneToMany(mappedBy = "adoptee", cascade = CascadeType.REMOVE)
     private List<Animal> animalsAdoptee;
+
+    @ManyToMany
+    private List<Volunteer> appliedVolunteers; // 회원이 신청한 봉사 리스트
 }

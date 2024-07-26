@@ -394,7 +394,7 @@ footer a {
     border: 1px solid transparent;
 }
 
-@media (max-width: 392px) {
+@media (max-width: 394px) {
     button {
     	border-radius: 20px;
     	border: 1px solid #FF4B2B;

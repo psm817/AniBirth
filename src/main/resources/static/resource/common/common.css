@@ -92,7 +92,7 @@ header > .menu-bar > .menu-box > ul > li > a > span:hover {
 }
 
 /* 반응형 시작 */
-@media (max-width: 392px) {
+@media (max-width: 394px) {
     header > .menu-bar {
         height: 100%;
         display: block;
@@ -112,6 +112,8 @@ header > .menu-bar > .menu-box > ul > li > a > span:hover {
     }
 
     header > .menu-bar > .menu-box > ul {
+        margin-top: 8px;
+        margin-bottom: 13px;
         width: 100%;
         height: 100%;
     }
