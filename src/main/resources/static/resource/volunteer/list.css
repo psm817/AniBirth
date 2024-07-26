@@ -94,13 +94,15 @@
 
 .summary-box > .volunteer-section > .title-box > a {
     border: 2px solid #FF416C;
+    background-color: #FF416C;
+    color: #fff;
     border-radius: 10px;
     margin-left: 15px;
 }
 
 .summary-box > .volunteer-section > .title-box > a:hover {
-    background-color: #FF416C;
-    color: #fff;
+    background-color: transparent;
+    color: #121212;
 }
 
 .summary-box > .volunteer-section > .title-box > span:nth-child(2) {
@@ -208,8 +210,8 @@
     }
 
     .summary-box > .volunteer-section > .title-box > a:hover {
-        background-color: #FF416C;
-        color: #fff;
+        background-color: transparent;
+        color: #121212;
     }
 
     .summary-box > .volunteer-section > .totalList-box {
