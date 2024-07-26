@@ -11,11 +11,90 @@
     </div>
     <div class="container adoptlist">
       <h1 class="adoptnotice text-[1.5rem] font-bold">입양동물 공고</h1>
+      <div class="category-box">
+        <form action="#" class="category-search-form" method="get">
+          <div class="category-box-line">
+            <div class="category-type">
+              <div class="classification-category">
+                <label class="d-block">
+                  <span class="h4 d-block text-dark font-weight-semi-bold mb-0">동물구분</span>
+                  <small class="d-block text-secondary">개/고양이/기타</small>
+                </label>
+                <div class="select-box">
+                  <div class="msg-aria">
+                    <select name="classification" id="classification" data-msg="동물구분을 선택해 주세요">
+                      <option value="#" th:selected="${categoryId == null}">All</option>
+                      <option th:each="classification : ${classifications}"
+                              th:value="${classification.id}"
+                              th:text="${classification.name}"
+                              th:selected="${classification.id == classificationId}"></option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="gender-category">
+                <label class="d-block">
+                  <span class="h4 d-block text-dark font-weight-semi-bold mb-0">성별</span>
+                  <small class="d-block text-secondary">암컷/수컷</small>
+                </label>
+                <div class="select-box">
+                  <div class="msg-aria">
+                    <select name="gender" id="gender" data-msg="성별을 선택해 주세요">
+                      <option value="#" th:selected="${categoryId == null}">All</option>
+                      <option th:each="gender : ${genders}"
+                              th:value="${gender.id}"
+                              th:text="${gender.name}"
+                              th:selected="${gender.id == genderId}"></option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="weight-category">
+                <label class="d-block">
+                  <span class="h4 d-block text-dark font-weight-semi-bold mb-0">크기</span>
+                  <small class="d-block text-secondary">소/중/대</small>
+                </label>
+                <div class="select-box">
+                  <div class="msg-aria">
+                    <select name="weight" id="weight" data-msg="동물구분을 선택해 주세요">
+                      <option value="#" th:selected="${categoryId == null}">All</option>
+                      <option th:each="weight : ${weights}"
+                              th:value="${weight.id}"
+                              th:text="${weight.name}"
+                              th:selected="${weight.id == weightId}"></option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="age-category">
+                <label class="d-block">
+                  <span class="h4 d-block text-dark font-weight-semi-bold mb-0">나이</span>
+                  <small class="d-block text-secondary">puppy/junior/adult/senior</small>
+                </label>
+                <div class="select-box">
+                  <div class="msg-aria">
+                    <select name="age" id="age" data-msg="동물구분을 선택해 주세요">
+                      <option value="#" th:selected="${categoryId == null}">All</option>
+                      <option th:each="age : ${ages}"
+                              th:value="${age.id}"
+                              th:text="${age.name}"
+                              th:selected="${age.id == ageId}"></option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <input type="text" name="kw" th:value="${kw}" placeholder="검색어를 입력하세요">
+          <button type="submit">검색</button>
+        </form>
+      </div>
       <ul class="adopt-notice-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px] mt-3">
-        <li th:each="animal, loop : ${animals}" class="flex flex-col">
+        <li th:each="animal, loop : ${paging}" class="flex flex-col">
           <a th:href="@{|/adopt/detail/${animal.id}|}"
              class="border border-black h-[280px] transition duration-300 rounded-lg hover:rounded-lg hover:-translate-y-1.5 hover:transition hover:duration-300 hover:shadow-md">
-            <img class="block w-full h-full rounded-lg hover:rounded-lg" th:src="@{|http://www.daejeon.go.kr/${animal.filePath}|}" alt="이미지가 존재하지 않습니다.">
+            <img class="block w-full h-full rounded-lg hover:rounded-lg"
+                 th:src="@{|http://www.daejeon.go.kr/${animal.filePath}|}" alt="이미지가 존재하지 않습니다.">
           </a>
           <a th:href="@{|/adopt/detail/${animal.id}|}" th:text="${animal.species}" class="text-center mt-2"></a>
           <a th:href="@{|/adopt/detail/${animal.id}|}" th:text="${animal.gender}" class="text-center mt-2"></a>

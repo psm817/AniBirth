@@ -3,6 +3,8 @@ package com.cod.AniBirth.animal.service;
 import com.cod.AniBirth.ApiResponse;
 import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.animal.repository.AnimalRepository;
+import com.cod.AniBirth.category.entity.Category;
+import com.cod.AniBirth.category.repository.CategoryRepository;
 import com.cod.AniBirth.global.security.DataNotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +29,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AnimalService {
     private final AnimalRepository animalRepository;
+    private final CategoryRepository categoryRepository;
 
     @Value("${custom.genFileDirPath}")
     private String imageDirectory;
@@ -64,17 +67,44 @@ public class AnimalService {
                 animal.setAdoptionStatusCd("기타상태");
             }
             if ("1".equals(animal.getGender())) {
-                animal.setGender("암");
+                Category genderCategory = categoryRepository.findByName("암");
+                if (genderCategory != null) {
+                    animal.setGender(genderCategory);
+                }
             } else if ("2".equals(animal.getGender())) {
-                animal.setGender("수");
+                Category genderCategory = categoryRepository.findByName("수");
+                if (genderCategory != null) {
+                    animal.setGender(genderCategory);
+                }
             }
             if ("1".equals(animal.getClassification())) {
-                animal.setClassification("개");
+                Category classificationCategory = categoryRepository.findByName("개");
+                if (classificationCategory != null) {
+                    animal.setClassification(classificationCategory);
+                }
             } else if ("2".equals(animal.getClassification())) {
-                animal.setClassification("고양이");
+                Category classificationCategory = categoryRepository.findByName("고양이");
+                if (classificationCategory != null) {
+                    animal.setClassification(classificationCategory);
+                }
             } else {
-                animal.setClassification("기타동물");
+                Category classificationCategory = categoryRepository.findByName("기타동물");
+                if (classificationCategory != null) {
+                    animal.setClassification(classificationCategory);
+                }
             }
+//            if ("1".equals(animal.getGender())) {
+//                animal.setGender("암");
+//            } else if ("2".equals(animal.getGender())) {
+//                animal.setGender("수");
+//            }
+//            if ("1".equals(animal.getClassification())) {
+//                animal.setClassification("개");
+//            } else if ("2".equals(animal.getClassification())) {
+//                animal.setClassification("고양이");
+//            } else {
+//                animal.setClassification("기타동물");
+//            }
 
             // gu 변환
             switch (animal.getGu()) {
@@ -98,7 +128,6 @@ public class AnimalService {
                     break;
             }
         }
-
         animalRepository.saveAll(animals);
     }
 
@@ -112,4 +141,32 @@ public class AnimalService {
         }
     }
 
+    public Page<Animal> getListByCategory(int page, String kw, Long categoryId) {
+        if ( categoryId == null) {
+            return getList(page, kw);
+        }
+        Pageable pageable = PageRequest.of(page, 12, Sort.by(Sort.Direction.DESC, "createDate"));
+        if (kw == null || kw.isBlank()) {
+            return animalRepository.findAllByCategory_Id(categoryId, pageable);
+        }
+        return animalRepository.findAll((root, query, criteriaBuilder) ->
+                criteriaBuilder.and(
+                        criteriaBuilder.equal(root.get("category").get("id"), categoryId),
+                        criteriaBuilder.like(root.get("title"), "%" + kw + "%")
+                ), pageable);
+    }
+
+    public Page<Animal> getListByFilters(int page, String kw, Long classificationId, Long genderId, String weightId, String ageId) {
+        if ( classificationId == null ) {
+            return getList(page, kw);
+        }
+
+        Pageable pageable = PageRequest.of(page, 12, Sort.by(Sort.Direction.DESC, "createDate"));
+
+        if (kw == null || kw.isBlank()) {
+            return animalRepository.findAllByCategory_Id(classificationId, pageable);
+        }
+
+        return animalRepository.findAllByFilters(kw, classificationId, genderId, weightId, ageId, pageable);
+    }
 }
