@@ -65,7 +65,7 @@ public class DonationService {
 
     public List<Object[]> getTopDonors() {
         List<Object[]> topDonors = donationRepository.findTopDonors();
-        log.info("Top Donors: {}", topDonors);  // Logging the top donors data
+        log.info("Top Donors: {}", topDonors);
         return topDonors.stream()
                 .limit(3) // 상위 3명으로 제한
                 .collect(Collectors.toList());
