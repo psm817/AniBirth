@@ -122,10 +122,10 @@
 #kakaoMapModal {
     display: none;
     position: fixed;
-    top: 49%;
+    top: 53%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #FF416C;
+    background-color: #46486e;
     box-shadow: 0px 4px 16px rgba(0,0,0,0.2);
     width: 550px;
     height: 760px;
@@ -141,26 +141,40 @@
     font-size: 18px;
 }
 
-#kakaoMapModal > .modal-content > input {
+#kakaoMapModal > .modal-content > .close {
+    position: absolute;
+    left: 92%;
+    top: -1.55%;
+    background-color: #fff;
+}
+
+#kakaoMapModal > .modal-content > .search-box {
+    display: flex;
+    justify-content: space-between;
+    height: 65px;
+}
+
+#kakaoMapModal > .modal-content > .search-box > input {
     border: 1px solid #121212;
     border-radius: 6px;
     padding: 5px 0px 5px 10px;
     margin-top: 20px;
     margin-bottom: 10px;
+    flex-grow: 3;
+    flex-basis: 0;
 }
 
-#kakaoMapModal > .modal-content > .button-box {
-    display: flex;
-    justify-content: space-around;
-}
-
-#kakaoMapModal > .modal-content > .button-box > button {
-    padding: 3px 50px 3px 50px;
+#kakaoMapModal > .modal-content > .search-box > button {
     background-color: #fffd8a;
     font-weight: 700;
+    flex-grow: 1;
+    flex-basis: 0;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 10px;
 }
 
-#kakaoMapModal > .modal-content > .button-box > button:hover {
+#kakaoMapModal > .modal-content > .search-box > button:hover {
     background-color: #636221;
     color: #fff;
 }
