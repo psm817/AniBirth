@@ -2,6 +2,10 @@ package com.cod.AniBirth.global.initData;
 
 import com.cod.AniBirth.account.entity.Account;
 import com.cod.AniBirth.account.service.AccountService;
+import com.cod.AniBirth.animal.entity.Animal;
+import com.cod.AniBirth.animal.service.AnimalService;
+import com.cod.AniBirth.category.entity.Category;
+import com.cod.AniBirth.category.service.CategoryService;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
 import com.cod.AniBirth.product.service.ProductService;
@@ -55,6 +59,7 @@ public class Dev {
             Volunteer volunteer9 = volunteerService.create("봉사활동 제목6", "봉사활동 내용6", "대전광역시 서구 청사로 281", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member3);
             Volunteer volunteer10 = volunteerService.create("봉사활동 제목6", "봉사활동 내용6", "대전광역시 서구 청사로 281", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member3);
             Volunteer volunteer11 = volunteerService.create("봉사활동 제목6", "봉사활동 내용6", "대전광역시 서구 청사로 281", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member3);
+
         };
     }
 }
