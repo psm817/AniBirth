@@ -76,7 +76,7 @@ function previewImage(event) {
     reader.readAsDataURL(event.target.files[0]);
 }
 
-// 카카오맵
+// 카카오맵 시작
 var map;
 var selectedPlace = null;
 var currentMarker = null; // 현재 마커를 추적하는 변수 추가

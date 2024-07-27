@@ -45,17 +45,17 @@ public class Dev {
             Account account9 = accountService.createOrUpdate(member9, "123-1234-1234", 0L);
 
 
-            Volunteer volunteer1 = volunteerService.create("봉사활동 제목1", "봉사활동 내용1", "대전광역시 유성구 금남구즉로 1234 (금고동) 대전광역시 동물보호센터", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member6);
-            Volunteer volunteer2 = volunteerService.create("봉사활동 제목2", "봉사활동 내용2", "세종특별자치시 전동면 미륵당1길 188 (전동면)", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member7);
-            Volunteer volunteer3 = volunteerService.create("봉사활동 제목3", "봉사활동 내용3", "충청남도 청양군 대치면 청산로 446-17 (대치면)", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member8);
-            Volunteer volunteer4 = volunteerService.create("봉사활동 제목4", "봉사활동 내용4", "강원특별자치도 원주시 호저면 칠봉로 109-17", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member9);
-            Volunteer volunteer5 = volunteerService.create("봉사활동 제목5", "봉사활동 내용5", "대전광역시 서구 청사로 281", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member2);
-            Volunteer volunteer6 = volunteerService.create("봉사활동 제목6", "봉사활동 내용6", "대전광역시 서구 청사로 281", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member3);
-            Volunteer volunteer7 = volunteerService.create("봉사활동 제목6", "봉사활동 내용6", "대전광역시 서구 청사로 281", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member3);
-            Volunteer volunteer8 = volunteerService.create("봉사활동 제목6", "봉사활동 내용6", "대전광역시 서구 청사로 281", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member3);
-            Volunteer volunteer9 = volunteerService.create("봉사활동 제목6", "봉사활동 내용6", "대전광역시 서구 청사로 281", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member3);
-            Volunteer volunteer10 = volunteerService.create("봉사활동 제목6", "봉사활동 내용6", "대전광역시 서구 청사로 281", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member3);
-            Volunteer volunteer11 = volunteerService.create("봉사활동 제목6", "봉사활동 내용6", "대전광역시 서구 청사로 281", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member3);
+            Volunteer volunteer1 = volunteerService.create("봉사활동 제목1", "봉사활동 내용1", "대전광역시 유성구 금남구즉로 1234 (금고동) 대전광역시 동물보호센터", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member6, 0);
+            Volunteer volunteer2 = volunteerService.create("봉사활동 제목2", "봉사활동 내용2", "세종특별자치시 전동면 미륵당1길 188 (전동면)", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member7, 0);
+            Volunteer volunteer3 = volunteerService.create("봉사활동 제목3", "봉사활동 내용3", "충청남도 청양군 대치면 청산로 446-17 (대치면)", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member8, 0);
+            Volunteer volunteer4 = volunteerService.create("봉사활동 제목4", "봉사활동 내용4", "강원특별자치도 원주시 호저면 칠봉로 109-17", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member9, 0);
+            Volunteer volunteer5 = volunteerService.create("봉사활동 제목5", "봉사활동 내용5", "대전광역시 서구 청사로 281", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member2, 0);
+            Volunteer volunteer6 = volunteerService.create("봉사활동 제목6", "봉사활동 내용6", "대전광역시 서구 청사로 281", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member3, 0);
+            Volunteer volunteer7 = volunteerService.create("봉사활동 제목6", "봉사활동 내용6", "대전광역시 서구 청사로 281", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member3, 0);
+            Volunteer volunteer8 = volunteerService.create("봉사활동 제목6", "봉사활동 내용6", "대전광역시 서구 청사로 281", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member3, 0);
+            Volunteer volunteer9 = volunteerService.create("봉사활동 제목6", "봉사활동 내용6", "대전광역시 서구 청사로 281", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member3, 0);
+            Volunteer volunteer10 = volunteerService.create("봉사활동 제목6", "봉사활동 내용6", "대전광역시 서구 청사로 281", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member3, 0);
+            Volunteer volunteer11 = volunteerService.create("봉사활동 제목6", "봉사활동 내용6", "대전광역시 서구 청사로 281", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member3, 0);
 
         };
     }
