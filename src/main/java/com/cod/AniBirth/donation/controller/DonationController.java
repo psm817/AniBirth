@@ -4,7 +4,7 @@ import com.cod.AniBirth.donation.service.DonationService;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -25,8 +25,19 @@ public class DonationController {
     @GetMapping("/donate")
     public String showDonatePage(Model model, Authentication authentication) {
         List<Member> recipients = donationService.getAllRecipients();
+        Member member = null;
+
+        if (authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
+
+        // Add top donors to the model
+        List<Object[]> topDonors = donationService.getTopDonors();
+        model.addAttribute("topDonors", topDonors);
+
         model.addAttribute("recipients", recipients);
         model.addAttribute("isAuthenticated", authentication != null && authentication.isAuthenticated());
+        model.addAttribute("member", member);
         return "donation/donation";
     }
 
@@ -50,6 +61,7 @@ public class DonationController {
             return "donation/fail";
         }
     }
+
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public String handleMissingParams(MissingServletRequestParameterException ex, Model model) {
         model.addAttribute("message", "모든 필드를 입력하세요.");

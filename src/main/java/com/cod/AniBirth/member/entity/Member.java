@@ -41,6 +41,7 @@ public class Member extends BaseEntity {
     private int authority;   // admin(0) or 보호소/기업(1) or 회원(2)
     private int isActive;   // 승인(1), 대기(0)
 
+
     @OneToOne(mappedBy = "member", cascade = CascadeType.REMOVE)
     @LazyCollection(LazyCollectionOption.EXTRA)
     private Account account;
@@ -57,6 +58,8 @@ public class Member extends BaseEntity {
     @OneToMany(mappedBy = "adoptee", cascade = CascadeType.REMOVE)
     private List<Animal> animalsAdoptee;
 
+
     @ManyToMany
     private List<Volunteer> appliedVolunteers; // 회원이 신청한 봉사 리스트
+
 }

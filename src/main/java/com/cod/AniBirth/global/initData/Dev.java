@@ -22,6 +22,7 @@ public class Dev {
     @Bean
     public ApplicationRunner init(MemberService memberService, AccountService accountService,
                                   ProductService productService, VolunteerService volunteerService) {
+
         return args -> {
             Member member1 = memberService.signup("admin", "admin", "admin", "admin@test.com","010-1111-2222", "대전광역시 서구 청사로 281","/images/profile_default.jpg", 0, 1);
             Member member2 = memberService.signup("company1", "company1", "company1", "company1@test.com","010-1111-2222", "대전광역시 서구 청사로 281","/images/profile_default.jpg", 1, 1);
@@ -43,10 +44,6 @@ public class Dev {
             Account account8 = accountService.createOrUpdate(member8, "123-1234-1234", 0L);
             Account account9 = accountService.createOrUpdate(member9, "123-1234-1234", 0L);
 
-            productService.create("타이틀1","1 설명입니다",10000);
-            productService.create("타이틀2","2 설명입니다",20000);
-            productService.create("타이틀3","3 설명입니다",30000);
-            productService.create("타이틀4","4 설명입니다",40000);
 
             Volunteer volunteer1 = volunteerService.create("봉사활동 제목1", "봉사활동 내용1", "대전광역시 유성구 금남구즉로 1234 (금고동) 대전광역시 동물보호센터", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member6);
             Volunteer volunteer2 = volunteerService.create("봉사활동 제목2", "봉사활동 내용2", "세종특별자치시 전동면 미륵당1길 188 (전동면)", "2024-07-11", "2024-07-11", "2024-07-01", "/images/volunteer/volunteer_default.jpg", 20, member7);

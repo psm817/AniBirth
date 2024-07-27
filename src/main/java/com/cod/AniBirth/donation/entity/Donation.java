@@ -13,7 +13,7 @@ public class Donation extends BaseEntity {
 
 
     @Column(nullable = false)
-    private BigDecimal amount;
+    private Long amount;
 
     @ManyToOne
     @JoinColumn(name = "donor_id", nullable = false)

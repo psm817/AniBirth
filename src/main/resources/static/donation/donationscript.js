@@ -1,21 +1,33 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const donateBtn = document.getElementById('btnDonate');
-    const modal = document.getElementById('donateModal');
-    const closeBtn = document.getElementsByClassName('close')[0];
+  var modal = document.getElementById("donateModal");
+  var btn = document.getElementById("btnDonate");
+  var span = document.getElementsByClassName("close")[0];
 
-    donateBtn.addEventListener('click', function() {
-        modal.style.display = 'block';
-    });
+  console.log("Modal:", modal);
+  console.log("Button:", btn);
+  console.log("Close Span:", span);
 
-    closeBtn.addEventListener('click', function() {
-        modal.style.display = 'none';
+  if (btn) {
+    btn.addEventListener('click', function() {
+      modal.style.display = "block";
     });
+  } else {
+    console.error("Button element not found!");
+  }
 
-    window.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
+  if (span) {
+    span.addEventListener('click', function() {
+      modal.style.display = "none";
     });
+  } else {
+    console.error("Close span element not found!");
+  }
+
+  window.addEventListener('click', function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  });
 
     const submitDonationBtn = document.getElementById('submitDonation');
     submitDonationBtn.addEventListener('click', function() {
