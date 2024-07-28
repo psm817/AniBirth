@@ -74,6 +74,7 @@
     font-weight: 700;
     font-size: 18px;
     width: 150px;
+    text-align: left;
 }
 
 .social-modify-box > form > .type-box > input {

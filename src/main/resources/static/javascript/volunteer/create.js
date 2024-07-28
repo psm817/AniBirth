@@ -1,5 +1,10 @@
 // 봉사정보 입력 안하면 alert
 function submitVolunteerForm(form) {
+    const now = new Date();
+    const startDate = new Date(form.startDate.value);
+    const endDate = new Date(form.endDate.value);
+    const deadLineDate = new Date(form.deadLineDate.value);
+
     form.title.value = form.title.value.trim();
 
     if ( form.title.value.length == 0 ) {
@@ -59,6 +64,31 @@ function submitVolunteerForm(form) {
     if ( form.content.value.length == 0 ) {
         alert("봉사 내용을 입력해주세요.");
         form.content.focus();
+        return;
+    }
+
+    // 현재 시간 비교해서 날짜 계산
+    if (startDate < now) {
+        alert("봉사 시작 날짜가 현재를 기준으로 이미 지나간 날짜입니다. \n날짜를 다시 선택해주세요.");
+        form.startDate.focus();
+        return;
+    }
+
+    if (endDate < now) {
+        alert("봉사 끝나는 날짜가 이미 지난 날짜입니다. \n날짜를 다시 선택해주세요.");
+        form.endDate.focus();
+        return;
+    }
+
+    if (startDate > endDate) {
+        alert("봉사 시작 날짜가 봉사 끝나는 날짜보다 더 늦습니다. \n날짜를 다시 선택해주세요.");
+        form.startDate.focus();
+        return;
+    }
+
+    if (deadLineDate >= startDate) {
+        alert("신청 마감 날짜는 봉사 시작 날짜보다 빨라야합니다. \n날짜를 다시 선택해주세요.");
+        form.deadLineDate.focus();
         return;
     }
 
