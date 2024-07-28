@@ -112,7 +112,7 @@ public class VolunteerController {
         // String 날짜 변환하기
         if (volunteer.getStartDate() != null) {
             DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-            DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH시 mm분");
+            DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분");
 
             LocalDateTime startDateTime = LocalDateTime.parse(volunteer.getStartDate(), inputFormatter);
             LocalDateTime endDateTime = LocalDateTime.parse(volunteer.getEndDate(), inputFormatter);

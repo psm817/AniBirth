@@ -50,17 +50,17 @@ public class Dev {
             Account account9 = accountService.createOrUpdate(member9, "123-1234-1234", 0L);
 
 
-            Volunteer volunteer1 = volunteerService.create("유기견 목욕시키기", "봉사활동 내용1", "대전광역시 유성구 금남구즉로 1234 (금고동) 대전광역시 동물보호센터", "2024-07-14T09:50", "2024-07-14T17:50", "2024-07-10", "/images/volunteer/volunteer_default.jpg", 20, member6, 0);
-            Volunteer volunteer2 = volunteerService.create("유기동물센터 환경미화 봉사활동", "봉사활동 내용2", "세종특별자치시 전동면 미륵당1길 188 (전동면)", "2024-07-16T10:00", "2024-07-17T10:00", "2024-07-13", "/images/volunteer/volunteer_default.jpg", 20, member7, 0);
-            Volunteer volunteer3 = volunteerService.create("번식장 구조견 돌봄 봉사활동", "봉사활동 내용3", "충청남도 청양군 대치면 청산로 446-17 (대치면)", "2024-07-20T13:50", "2024-07-20T19:50", "2024-07-15", "/images/volunteer/volunteer_default.jpg", 20, member8, 0);
-            Volunteer volunteer4 = volunteerService.create("유기동물 구조관련 세미나 및 환경 봉사활동", "봉사활동 내용4", "강원특별자치도 원주시 호저면 칠봉로 109-17", "2024-07-20T09:00", "2024-07-20T13:50", "2024-07-15", "/images/volunteer/volunteer_default.jpg", 20, member9, 0);
-            Volunteer volunteer5 = volunteerService.create("동물물품 지원 봉사활동", "봉사활동 내용5", "충청남도 청양군 대치면 청산로 446-17 (대치면)", "2024-07-22T11:00", "2024-07-22T14:00", "2024-07-20", "/images/volunteer/volunteer_default.jpg", 20, member2, 0);
-            Volunteer volunteer6 = volunteerService.create("사설보호소 지영이네 봉사활동", "봉사활동 내용6", "대전광역시 유성구 금남구즉로 1234 (금고동) 대전광역시 동물보호센터", "2024-07-23T13:00", "2024-07-23T19:00", "2024-07-20", "/images/volunteer/volunteer_default.jpg", 20, member3, 0);
-            Volunteer volunteer7 = volunteerService.create("유기견 목욕시키기", "봉사활동 내용6", "강원특별자치도 원주시 호저면 칠봉로 109-17", "2024-07-25T08:50", "2024-07-26T09:50", "2024-07-23", "/images/volunteer/volunteer_default.jpg", 20, member3, 0);
-            Volunteer volunteer8 = volunteerService.create("사설보호소 현철이네 봉사활동", "봉사활동 내용6", "충청남도 청양군 대치면 청산로 446-17 (대치면)", "2024-07-26T11:00", "2024-07-26T17:00", "2024-07-24", "/images/volunteer/volunteer_default.jpg", 20, member3, 0);
-            Volunteer volunteer9 = volunteerService.create("번식장 구조견 돌봄 봉사활동", "봉사활동 내용6", "대전광역시 유성구 금남구즉로 1234 (금고동) 대전광역시 동물보호센터", "2024-08-01T09:00", "2024-08-01T17:50", "2024-07-30", "/images/volunteer/volunteer_default.jpg", 20, member3, 0);
-            Volunteer volunteer10 = volunteerService.create("사설보호소 태우네 봉사활동", "봉사활동 내용6", "세종특별자치시 전동면 미륵당1길 188 (전동면)", "2024-07-28T07:50", "2024-07-28T14:50", "2024-07-27", "/images/volunteer/volunteer_default.jpg", 20, member3, 0);
-            Volunteer volunteer11 = volunteerService.create("사설보호소 상민이네 봉사활동", "봉사활동 내용6", "강원특별자치도 원주시 호저면 칠봉로 109-17", "2024-08-01T16:00", "2024-08-02T15:50", "2024-07-28", "/images/volunteer/volunteer_default.jpg", 20, member3, 0);
+            Volunteer volunteer1 = volunteerService.create("유기견 목욕시키기", "봉사활동 내용1", "대전 유성구 금남구즉로 1234", "2024-07-14T09:50", "2024-07-14T17:50", "2024-07-10", "/images/volunteer/volunteer_default.jpg", 20, member6, 0);
+            Volunteer volunteer2 = volunteerService.create("유기동물센터 환경미화 봉사활동", "봉사활동 내용2", "세종특별자치시 전동면 미륵당1길 117-16", "2024-07-16T10:00", "2024-07-17T10:00", "2024-07-13", "/images/volunteer/volunteer_default.jpg", 20, member7, 0);
+            Volunteer volunteer3 = volunteerService.create("번식장 구조견 돌봄 봉사활동", "봉사활동 내용3", "충남 청양군 대치면 청산로 420", "2024-07-20T13:50", "2024-07-20T19:50", "2024-07-15", "/images/volunteer/volunteer_default.jpg", 20, member2, 0);
+            Volunteer volunteer4 = volunteerService.create("유기동물 구조관련 세미나 및 환경 봉사활동", "봉사활동 내용4", "강원특별자치도 원주시 호저면 칠봉로 110-6", "2024-07-20T09:00", "2024-07-20T13:50", "2024-07-15", "/images/volunteer/volunteer_default.jpg", 20, member9, 0);
+            Volunteer volunteer5 = volunteerService.create("동물물품 지원 봉사활동", "봉사활동 내용5", "충남 청양군 대치면 청산로 420", "2024-07-22T11:00", "2024-07-22T14:00", "2024-07-20", "/images/volunteer/volunteer_default.jpg", 20, member9, 0);
+            Volunteer volunteer6 = volunteerService.create("사설보호소 지영이네 봉사활동", "봉사활동 내용6", "대전 유성구 금남구즉로 1234", "2024-07-23T13:00", "2024-07-23T19:00", "2024-07-20", "/images/volunteer/volunteer_default.jpg", 20, member8, 0);
+            Volunteer volunteer7 = volunteerService.create("유기견 목욕시키기", "봉사활동 내용6", "강원특별자치도 원주시 호저면 칠봉로 110-6", "2024-07-25T08:50", "2024-07-26T09:50", "2024-07-23", "/images/volunteer/volunteer_default.jpg", 20, member7, 0);
+            Volunteer volunteer8 = volunteerService.create("사설보호소 현철이네 봉사활동", "봉사활동 내용6", "충남 청양군 대치면 청산로 420", "2024-07-26T11:00", "2024-07-26T17:00", "2024-07-24", "/images/volunteer/volunteer_default.jpg", 20, member6, 0);
+            Volunteer volunteer9 = volunteerService.create("번식장 구조견 돌봄 봉사활동", "봉사활동 내용6", "대전 유성구 금남구즉로 1234", "2024-08-01T09:00", "2024-08-01T17:50", "2024-07-30", "/images/volunteer/volunteer_default.jpg", 20, member3, 0);
+            Volunteer volunteer10 = volunteerService.create("사설보호소 태우네 봉사활동", "봉사활동 내용6", "세종특별자치시 전동면 미륵당1길 117-16", "2024-07-28T07:50", "2024-07-28T14:50", "2024-07-27", "/images/volunteer/volunteer_default.jpg", 20, member2, 0);
+            Volunteer volunteer11 = volunteerService.create("사설보호소 상민이네 봉사활동", "봉사활동 내용6", "강원특별자치도 원주시 호저면 칠봉로 110-6", "2024-08-01T16:00", "2024-08-02T15:50", "2024-07-28", "/images/volunteer/volunteer_default.jpg", 20, member2, 0);
 
             // 캘린더 샘플 만들기
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");

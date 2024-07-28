@@ -1,50 +1,52 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout/layout}">
 <section layout:fragment="content" class="section-prod-list">
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-                봉사 상세 정보
+    <div class="container volunteer-detail">
+        <div class="card top-box">
+            <div class="thumbnail-box">
+                <img th:src="@{${volunteer.thumbnailImg}}" alt="상품이미지">
             </div>
-            <ul class="list-group list-group-flush gap-2 ml-3">
+            <ul class="detail-box list-group list-group-flush gap-2 ml-3">
                 <li class="list-group-item">
-                    <img class="w-full max-w-[300px]" th:src="@{${volunteer.thumbnailImg}}" alt="상품이미지">
-                </li>
-                <li class="list-group-item">
-                    <span>번호 : </span>
-                    <span class="badge bg-primary" th:text="${volunteer.id}"></span>
-                </li>
-                <li class="list-group-item">
-                    <span th:text="'봉사 시작 날짜 : ' + ${formattedStartDateTime}"></span>
-                </li>
-                <li class="list-group-item">
-                    <span th:text="'봉사 끝나는 날짜 : ' + ${formattedEndDateTime}"></span>
-                </li>
-                <li class="list-group-item">
-                    <span th:text="'신청 마감 날짜 : ' + ${volunteer.deadLineDate}"></span>
-                </li>
-                <li class="list-group-item">
-                    <span>봉사명 : </span>
                     <span class="font-bold" th:text="${volunteer.title}"></span>
                 </li>
                 <li class="list-group-item">
-                    <span>봉사내용 : </span>
-                    <span th:text="${volunteer.content}"></span>
+                    <span>주최 보호소</span>
+                    <span th:text="${volunteer.register.nickname}"></span>
+                </li>
+                <li class="list-group-item">
+                    <span>봉사 기간</span>
+                    <span th:text="${formattedStartDateTime} + ' ~ ' + ${formattedEndDateTime}"></span>
+                </li>
+                <li class="list-group-item">
+                    <span>신청 마감날짜</span>
+                    <span th:text="${volunteer.deadLineDate}"></span>
+                </li>
+                <li class="list-group-item">
+                    <span>신청 인원</span>
+                    <span th:text="${volunteer.applicant} + ' 명'"></span>
+                </li>
+                <li class="list-group-item">
+                    <span>모집 인원</span>
+                    <span th:text="${volunteer.limit} + ' 명'"></span>
+                </li>
+                <li class="list-group-item">
+                    <span>봉사 주소</span>
+                    <span th:text="${volunteer.location}"></span>
+                    <button type="button" class="btn btn-primary" onclick="openKakaoMapModal()">지도보기</button>
+                </li>
+                <li class="list-group-item apply-btn">
+                    <a class="btn btn-primary" href="#">신청하기</a>
                 </li>
             </ul>
         </div>
-        <div class="card mt-[30px]">
-            <div class="card-header">
-                봉사신청
+        <div class="card bottom-box">
+            <div class="title-box">
+                <h1>봉사 상세 내용</h1>
             </div>
-            <div class="card-body">
-                <form action="" method="POST">
-                    <input type="submit" value="장바구니 담기" class="btn btn-outline-dark">
-                </form>
-                <form action="" method="GET">
-                    <input type="hidden" name="productId" th:value="${volunteer.id}">
-                    <input type="submit" value="수강신청" class="btn btn-outline-dark mt-[10px]">
-                </form>
+            <!-- th:text 적용해야됨 -->
+            <div class="content-box">
+                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?</span>
             </div>
         </div>
     </div>
