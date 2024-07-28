@@ -11,10 +11,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -106,5 +103,30 @@ public class VolunteerController {
         }
         // 저장된 파일의 상대 경로를 반환합니다.
         return "/images/volunteer/" + imageFileName;
+    }
+
+    @GetMapping("/detail/{id}")
+    public String detail(@PathVariable("id") Long id, Model model) {
+        Volunteer volunteer = volunteerService.getVolunteerById(id);
+
+        // String 날짜 변환하기
+        if (volunteer.getStartDate() != null) {
+            DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+            DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH시 mm분");
+
+            LocalDateTime startDateTime = LocalDateTime.parse(volunteer.getStartDate(), inputFormatter);
+            LocalDateTime endDateTime = LocalDateTime.parse(volunteer.getEndDate(), inputFormatter);
+
+
+            String formattedStartDateTime = startDateTime.format(outputFormatter);
+            model.addAttribute("formattedStartDateTime", formattedStartDateTime);
+
+            String formattedEndDateTime = endDateTime.format(outputFormatter);
+            model.addAttribute("formattedEndDateTime", formattedEndDateTime);
+        }
+
+        model.addAttribute("volunteer", volunteer);
+
+        return "volunteer/detail";
     }
 }

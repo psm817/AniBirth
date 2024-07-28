@@ -5,6 +5,7 @@ import com.cod.AniBirth.member.entity.Member;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,6 +34,6 @@ public class Volunteer extends BaseEntity {
     @ManyToOne
     private Member register;                // 봉사를 등록한 보호소(회원)
 
-    @ManyToMany(mappedBy = "appliedVolunteers")
-    private List<Member> applicantsList;    // 봉사를 신청한 회원 리스트
+    @OneToMany(mappedBy = "volunteer")
+    private List<VolunteerApplication> volunteerApplications;
 }

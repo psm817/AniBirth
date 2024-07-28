@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/layout}">
+<section layout:fragment="content" class="section-prod-list">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                봉사 상세 정보
+            </div>
+            <ul class="list-group list-group-flush gap-2 ml-3">
+                <li class="list-group-item">
+                    <img class="w-full max-w-[300px]" th:src="@{${volunteer.thumbnailImg}}" alt="상품이미지">
+                </li>
+                <li class="list-group-item">
+                    <span>번호 : </span>
+                    <span class="badge bg-primary" th:text="${volunteer.id}"></span>
+                </li>
+                <li class="list-group-item">
+                    <span th:text="'봉사 시작 날짜 : ' + ${formattedStartDateTime}"></span>
+                </li>
+                <li class="list-group-item">
+                    <span th:text="'봉사 끝나는 날짜 : ' + ${formattedEndDateTime}"></span>
+                </li>
+                <li class="list-group-item">
+                    <span th:text="'신청 마감 날짜 : ' + ${volunteer.deadLineDate}"></span>
+                </li>
+                <li class="list-group-item">
+                    <span>봉사명 : </span>
+                    <span class="font-bold" th:text="${volunteer.title}"></span>
+                </li>
+                <li class="list-group-item">
+                    <span>봉사내용 : </span>
+                    <span th:text="${volunteer.content}"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="card mt-[30px]">
+            <div class="card-header">
+                봉사신청
+            </div>
+            <div class="card-body">
+                <form action="" method="POST">
+                    <input type="submit" value="장바구니 담기" class="btn btn-outline-dark">
+                </form>
+                <form action="" method="GET">
+                    <input type="hidden" name="productId" th:value="${volunteer.id}">
+                    <input type="submit" value="수강신청" class="btn btn-outline-dark mt-[10px]">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</html>

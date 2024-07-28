@@ -1,5 +1,6 @@
 package com.cod.AniBirth.volunteer.service;
 
+import com.cod.AniBirth.global.security.DataNotFoundException;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.volunteer.entity.Volunteer;
 import com.cod.AniBirth.volunteer.repository.VolunteerRepository;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -42,5 +44,15 @@ public class VolunteerService {
         Pageable pageable = PageRequest.of(page, 4, Sort.by(sorts));
 
         return volunteerRepository.findAll(pageable);
+    }
+
+    public Volunteer getVolunteerById(Long id) {
+        Optional<Volunteer> ov = volunteerRepository.findById(id);
+
+        if(ov.isPresent()) {
+            return ov.get();
+        } else {
+            throw new DataNotFoundException("volunteer not found");
+        }
     }
 }
