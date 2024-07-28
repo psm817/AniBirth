@@ -1,5 +1,6 @@
 package com.cod.AniBirth.volunteer.controller;
 
+import com.cod.AniBirth.calendar.service.CalendarService;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
 import com.cod.AniBirth.volunteer.entity.Volunteer;
@@ -10,7 +11,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -19,7 +23,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @Controller
@@ -28,6 +34,7 @@ import java.util.UUID;
 public class VolunteerController {
     private final MemberService memberService;
     private final VolunteerService volunteerService;
+    private final CalendarService calendarService;
 
     @GetMapping("/list")
     public String volunteer(Authentication authentication, Model model,
@@ -63,7 +70,13 @@ public class VolunteerController {
 
         Member member = memberService.getMemberByUsername(principal.getName());
 
-        volunteerService.create(title, content, location, startDate, endDate, deadLineDate, imageFileName, limit, member);
+        Volunteer volunteer = volunteerService.create(title, content, location, startDate, endDate, deadLineDate, imageFileName, limit, member, 0);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        LocalDateTime start = LocalDateTime.parse(startDate, formatter);
+        LocalDateTime end = LocalDateTime.parse(endDate, formatter);
+
+        calendarService.create(title, start, end);
 
         return "redirect:/volunteer/list";
     }

@@ -43,7 +43,7 @@
                             <ul class="volunteer-notice-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[80px] mt-3">
                                 <li th:each="volunteer, loop : ${paging}" class="group xl:w-[300px] w-full">
                                     <a href="#" class="border border-black h-[250px] transition duration-300 rounded-lg hover:rounded-lg hover:-translate-y-1.5 hover:transition hover:duration-300 hover:shadow-md">
-                                        <img class="object-cover object-center block w-full h-full rounded-lg" th:src="@{|${volunteer.thumbnailImg}|}" alt="이미지가 존재하지 않습니다.">
+                                        <img class="object-cover object-center block w-full h-full rounded-lg" th:src="@{${volunteer.thumbnailImg}}" alt="이미지가 존재하지 않습니다.">
                                     </a>
                                     <a href="#" th:text="'봉사명 : ' + ${volunteer.title}" class="text-center md:!text-left mt-3 mb-[8px]"></a>
                                     <a href="#" th:text="'신청 마감 예정일 : ' + ${volunteer.deadLineDate}" class="text-center md:!text-left"></a>

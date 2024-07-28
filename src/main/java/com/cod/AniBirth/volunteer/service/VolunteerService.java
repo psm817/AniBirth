@@ -19,7 +19,7 @@ public class VolunteerService {
     private final VolunteerRepository volunteerRepository;
 
     public Volunteer create(String title, String content, String location, String startDate,
-                            String endDate, String deadLineDate, String thumbnailImg, int limit, Member member) {
+                            String endDate, String deadLineDate, String thumbnailImg, int limit, Member member, int applicant) {
         Volunteer volunteer = Volunteer.builder()
                 .title(title)
                 .content(content)
@@ -30,6 +30,7 @@ public class VolunteerService {
                 .thumbnailImg(thumbnailImg)
                 .limit(limit)
                 .register(member)
+                .applicant(applicant)
                 .build();
 
         return volunteerRepository.save(volunteer);

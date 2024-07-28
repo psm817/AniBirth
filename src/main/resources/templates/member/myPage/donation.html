@@ -5,7 +5,7 @@
         <div class="left-box card w-[500px]">
             <div class="profile-box card-header flex flex-col items-center">
                 <div class="profile-img mt-[10px]">
-                    <img th:src="@{|${member.thumbnailImg}|}" alt="프로필사진">
+                    <img th:src="@{${member.thumbnailImg}}" alt="프로필사진">
                 </div>
                 <div class="profile-name mt-[15px]">
                     <span th:text="${member.nickname}"></span>

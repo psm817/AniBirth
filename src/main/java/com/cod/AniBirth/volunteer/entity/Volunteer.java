@@ -28,6 +28,7 @@ public class Volunteer extends BaseEntity {
     private String content;                 // 봉사내용
     private String thumbnailImg;            // 봉사사진
     private int limit;                      // 봉사최대인원 수
+    private int applicant;                 // 신청인원수
 
     @ManyToOne
     private Member register;                // 봉사를 등록한 보호소(회원)

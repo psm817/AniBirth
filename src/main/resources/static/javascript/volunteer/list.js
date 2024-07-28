@@ -1,3 +1,4 @@
+// 풀캘린더 시작
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -13,33 +14,26 @@ document.addEventListener('DOMContentLoaded', function() {
             day: '일간',
             list: '목록'
         },
-        selectable: true,
-        selectHelper: true,
-        events: '/calendar/events',
-        locale: 'ko',
-        select: function(info) {
-            var title = prompt('봉사활동 일정을 등록하세요');
-            if (title) {
-                var eventData = {
-                    title: title,
-                    start: info.startStr,
-                    end: info.endStr
-                };
-                calendar.addEvent(eventData);
-
-                $.ajax({
-                    url: '/calendar/calendars',
-                    type: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify(eventData)
-                });
+        events: async function(fetchInfo, successCallback, failureCallback) {
+            try {
+                const response = await fetch('/calendar/events');
+                const data = await response.json();
+                const events = data.map(event => ({
+                    title: event.title,
+                    start: event.startDate,  // Assuming startDate is in ISO format
+                    end: event.endDate     // Assuming endDate is in ISO format
+                }));
+                successCallback(events);
+            } catch (error) {
+                failureCallback(error);
             }
-            calendar.unselect();
-        }
+        },
+        locale: 'ko'
     });
     calendar.render();
 });
 
+// 봉사목록 페이지네이션
 $(document).ready(function () {
     $(".page-link").on("click", function () {
         $("#page").val($(this).data("page"));
