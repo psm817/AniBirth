@@ -15,6 +15,8 @@ import java.util.List;
 public interface CategoryRepository extends JpaRepository <Category, Long> {
 //    List<Animal> findByCategory(Category category);
     Category findByName(String name);
+    // 카테고리 타입으로 조회
+    List<Category> findByType(String type);
     List<Category> findByParent(Category parent);
     List<Category> findByParentName(String parentName);
 }
