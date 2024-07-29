@@ -56,7 +56,12 @@
 
 .volunteer-detail > .top-box > .detail-box > li:nth-child(1) > span {
     font-size: 22px;
-    width: 100%;
+    width: 280px;
+}
+
+.volunteer-detail > .top-box > .detail-box > li:nth-child(1) > .btn-link {
+    background-color: transparent;
+    padding: 0px;
 }
 
 /* 봉사 디테일 항목 내용 */
@@ -64,6 +69,10 @@
     width: 415px;
     margin-left: 30px;
     font-size: 16px;
+}
+
+.volunteer-detail > .top-box > .detail-box > .applicant-box > span:nth-child(2) {
+    width: 50px;
 }
 
 /* 지도보기 버튼 커스텀 */
@@ -76,6 +85,10 @@
 .volunteer-detail > .top-box > .detail-box > .apply-btn {
     display: flex;
     justify-content: center;
+}
+
+.volunteer-detail > .top-box > .detail-box > .apply-btn > span {
+    color: #d15a4f;
 }
 
 .volunteer-detail > .top-box > .detail-box > li > a {
@@ -211,7 +224,13 @@
     /* 봉사명 */
     .volunteer-detail > .top-box > .detail-box > li:nth-child(1) > span {
         font-size: 20px;
-        width: 100%;
+        width: 250px;
+        margin-top: 10px;
+    }
+
+    .volunteer-detail > .top-box > .detail-box > li:nth-child(1) > .btn-link {
+        background-color: transparent;
+        padding: 0px;
         margin-top: 10px;
     }
 

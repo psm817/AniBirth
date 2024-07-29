@@ -9,6 +9,7 @@
             <ul class="detail-box list-group list-group-flush gap-2 ml-3">
                 <li class="list-group-item">
                     <span class="font-bold" th:text="${volunteer.title}"></span>
+                    <a class="btn-link" th:href="@{/volunteer/list}">목록보기</a>
                 </li>
                 <li class="list-group-item">
                     <span>주최 보호소</span>
@@ -22,9 +23,10 @@
                     <span>신청 마감날짜</span>
                     <span th:text="${volunteer.deadLineDate}"></span>
                 </li>
-                <li class="list-group-item">
+                <li class="list-group-item applicant-box">
                     <span>신청 인원</span>
                     <span th:text="${#lists.size(ApplicationList)} + ' 명'"></span>
+                    <button th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or (${member.authority} == 1 and ${member.username} == ${volunteer.register.username}))" type="button" class="btn btn-primary" id="applicants">신청인원보기</button>
                 </li>
                 <li class="list-group-item">
                     <span>모집 인원</span>
@@ -36,7 +38,8 @@
                     <button type="button" class="btn btn-primary" id="show-map-btn">지도보기</button>
                 </li>
                 <li class="list-group-item apply-btn" th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 2 or ${member.authority} == 0)">
-                    <a class="btn btn-primary" th:href="@{|/volunteer/apply/${volunteer.id}|}">신청하기</a>
+                    <a class="btn btn-primary" th:if="${!alreadyApplied}" th:href="@{|/volunteer/apply/${volunteer.id}?apply=true|}" onclick="return confirmApply();">신청하기</a>
+                    <span th:if="${alreadyApplied}">신청완료</span>
                 </li>
                 <li class="list-group-item alarm-box" th:if="${#authorization.expression('isAnonymous()')}">
                     <span>※ 봉사활동 신청은 로그인 후 신청 가능합니다.</span>
