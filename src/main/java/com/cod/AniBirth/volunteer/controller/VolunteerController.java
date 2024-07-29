@@ -161,9 +161,9 @@ public class VolunteerController {
         if(volunteerApplicationList.size() >= volunteer.getLimit()) {
             model.addAttribute("error", "full");
             return "redirect:/volunteer/list?error=true";
-        } else {
-            volunteerApplicationService.create(member, volunteer);
         }
+
+        volunteerApplicationService.create(member, volunteer);
 
         return "redirect:/volunteer/detail/%s".formatted(id);
     }
