@@ -21,21 +21,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CategoryService {
     private final CategoryRepository categoryRepository;
-//    public Category create(String age, String classification, String gender, String hairColor, String weight) {
-//        Category category = Category.builder()
-//                .age(age)
-//                .classification(classification)
-//                .gender(gender)
-//                .hairColor(hairColor)
-//                .weight(weight)
-//                .build();
-//
-//        categoryRepository.save(category);
-//
-//        return category;
-//    }
-
-
 
     public List<Category> getClassificationCategories() {
         Category classification = categoryRepository.findByName("동물구분");
@@ -135,5 +120,21 @@ public class CategoryService {
                 .parent(age)
                 .build();
         categoryRepository.saveAll(Arrays.asList(Puppy, Junior, Adult, Senior));
+    }
+
+    public List<Category> getClassifications() {
+        return categoryRepository.findByParentName("동물구분");
+    }
+
+    public List<Category> getGenders() {
+        return categoryRepository.findByParentName("성별");
+    }
+
+    public List<Category> getWeights() {
+        return categoryRepository.findByParentName("크기");
+    }
+
+    public List<Category> getAges() {
+        return categoryRepository.findByParentName("연령");
     }
 }
