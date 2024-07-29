@@ -16,13 +16,17 @@ body {
 html > body .adopt-total {
     width: 1340px;
 }
+
 html > body .adopt-detail-head {
     width: 100%;
     margin-bottom: 20px;
 }
+
 html > body .adopt-total .adopt-detail-head .adopt-info > .h2 {
     font-weight: bold;
 }
+
+
 /* 입양 상세 내용 스타일 */
 html > body .adopt-detail-content {
     width: 100%;
@@ -38,6 +42,7 @@ html > body .adopt-detail-content > .row-adopt {
     align-items: flex-start;
     width: 100%;
     gap: 40px; /* 이미지와 콘텐츠 사이의 간격 */
+
 }
 
 /* 이미지와 콘텐츠 각각 50% 차지하도록 설정 */
@@ -97,6 +102,7 @@ html > body .adopt-detail-content .row-adopt .content .space-1
 
 /* 반응형 디자인: 작은 화면에서는 세로로 배치 */
 @media (max-width: 394px) {
+
     .row-adopt {
         flex-direction: column;
     }
@@ -105,6 +111,7 @@ html > body .adopt-detail-content .row-adopt .content .space-1
     .adopt.content {
         max-width: 100%;
     }
+
 
     html > body .adopt-detail-content .content > .mx-n2 {
         margin-left: -0.5rem !important;
@@ -115,6 +122,7 @@ html > body .adopt-detail-content .row-adopt .content .space-1
         padding-left: 0.5rem !important;
         padding-right: 0.5rem !important;
     }
+
 }
 
 

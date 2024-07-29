@@ -1,6 +1,8 @@
 package com.cod.AniBirth.animal.service;
 
 import com.cod.AniBirth.ApiResponse;
+import com.cod.AniBirth.animal.AnimalSearchDTO;
+import com.cod.AniBirth.animal.AnimalSpecification;
 import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.animal.repository.AnimalRepository;
 import com.cod.AniBirth.category.entity.Category;
@@ -13,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,12 +37,15 @@ public class AnimalService {
     @Value("${custom.genFileDirPath}")
     private String imageDirectory;
 
-    public Page<Animal> getList(int page, String kw) {
+    public Page<Animal> getList(int page, AnimalSearchDTO searchDTO) {
         List<Sort.Order> sorts = new ArrayList<>();
         sorts.add(Sort.Order.desc("noticeDate"));
         Pageable pageable = PageRequest.of(page, 8, Sort.by(sorts));
 
-        return animalRepository.findAllByKeyword(kw, pageable);
+//        return animalRepository.findAllByKeyword(kw, pageable);
+        Specification<Animal> spec = AnimalSpecification.searchWith(searchDTO);
+//        return animalRepository.findAll(spec, pageable);
+        return animalRepository.findAll(AnimalSpecification.searchWith(searchDTO), pageable);
     }
 
     public List<Animal> findAll() {
@@ -141,20 +147,20 @@ public class AnimalService {
         }
     }
 
-    public Page<Animal> getListByCategory(int page, String kw, Long categoryId) {
-        if ( categoryId == null) {
-            return getList(page, kw);
-        }
-        Pageable pageable = PageRequest.of(page, 12, Sort.by(Sort.Direction.DESC, "createDate"));
-        if (kw == null || kw.isBlank()) {
-            return animalRepository.findAllByCategory_Id(categoryId, pageable);
-        }
-        return animalRepository.findAll((root, query, criteriaBuilder) ->
-                criteriaBuilder.and(
-                        criteriaBuilder.equal(root.get("category").get("id"), categoryId),
-                        criteriaBuilder.like(root.get("title"), "%" + kw + "%")
-                ), pageable);
-    }
+//    public Page<Animal> getListByCategory(int page, String kw, Long categoryId) {
+//        if ( categoryId == null) {
+//            return getList(page, kw);
+//        }
+//        Pageable pageable = PageRequest.of(page, 12, Sort.by(Sort.Direction.DESC, "createDate"));
+//        if (kw == null || kw.isBlank()) {
+//            return animalRepository.findAllByCategory_Id(categoryId, pageable);
+//        }
+//        return animalRepository.findAll((root, query, criteriaBuilder) ->
+//                criteriaBuilder.and(
+//                        criteriaBuilder.equal(root.get("category").get("id"), categoryId),
+//                        criteriaBuilder.like(root.get("title"), "%" + kw + "%")
+//                ), pageable);
+//    }
 
 //    public Page<Animal> getListByFilters(int page, String kw, Long classificationId, Long genderId, String weightId, String ageId) {
 //        if ( classificationId == null ) {

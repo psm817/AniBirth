@@ -1,5 +1,6 @@
 package com.cod.AniBirth.adopt.controller;
 
+import com.cod.AniBirth.animal.AnimalSearchDTO;
 import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.animal.service.AnimalService;
 import com.cod.AniBirth.category.entity.Category;
@@ -23,33 +24,32 @@ public class AdoptController {
     @GetMapping("/list")
     public String list(Model model,
                        @RequestParam(value = "page", defaultValue = "0") int page,
-                       @RequestParam(value = "kw", defaultValue = "") String kw
+                       @RequestParam(value = "kw", defaultValue = "") String kw,
+                       AnimalSearchDTO searchDTO
 //                       @RequestParam(value = "classification", required = false) Long classificationId,
 //                       @RequestParam(value = "gender", required = false) Long genderId,
 //                       @RequestParam(value = "weight", required = false) String weight,
 //                       @RequestParam(value = "age", required = false) String age
     ) {
 
-        Page<Animal> paging = animalService.getList(page, kw);
-//        Page<Animal> paging = animalService.getListByFilters(page, kw, classificationId, genderId, weight, age);
+//        Page<Animal> paging = animalService.getList(page, kw);
+        Page<Animal> paging = animalService.getList(page, searchDTO);
 
 
-        List<Category> classifications = categoryService.getClassificationCategories();
-        List<Category> ages = categoryService.getAgeCategories();
-        List<Category> weights = categoryService.getWeightCategories();
-        List<Category> genders = categoryService.getGenderCategories();
+
+//        List<Category> classifications = categoryService.getClassificationCategories();
+//        List<Category> ages = categoryService.getAgeCategories();
+//        List<Category> weights = categoryService.getWeightCategories();
+//        List<Category> genders = categoryService.getGenderCategories();
 
 
         model.addAttribute("paging", paging);
-        model.addAttribute("kw", kw);
-//        model.addAttribute("classificationId", classificationId);
-//        model.addAttribute("genderId", genderId);
-//        model.addAttribute("weightId", weight);
-//        model.addAttribute("ageId", age);
-        model.addAttribute("classifications", classifications);
-        model.addAttribute("ages", ages);
-        model.addAttribute("weights", weights);
-        model.addAttribute("genders", genders);
+        model.addAttribute("kw", searchDTO.getKeyword());
+        model.addAttribute("searchDTO", searchDTO);
+        model.addAttribute("classifications", categoryService.getClassifications());
+        model.addAttribute("genders", categoryService.getGenders());
+        model.addAttribute("weights", categoryService.getWeights());
+        model.addAttribute("ages", categoryService.getAges());
 
         return "adopt/list";
     }

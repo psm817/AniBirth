@@ -12,7 +12,7 @@
     <div class="container adoptlist">
       <h1 class="adoptnotice text-[1.5rem] font-bold">입양동물 공고</h1>
       <div class="category-box">
-        <form action="#" class="category-search-form" method="get">
+        <form th:action="@{/adopt/list}" class="category-search-form" method="get">
           <div class="category-box-line">
             <div class="category-type">
               <div class="classification-category">
@@ -23,11 +23,11 @@
                 <div class="select-box">
                   <div class="msg-aria">
                     <select name="classification" id="classification" data-msg="동물구분을 선택해 주세요">
-                      <option value="#" th:selected="${categoryId == null}">All</option>
+                      <option value="" th:selected="${searchDTO.classification == null}">All</option>
                       <option th:each="classification : ${classifications}"
                               th:value="${classification.id}"
                               th:text="${classification.name}"
-                              th:selected="${classification.id == classificationId}"></option>
+                              th:selected="${classification.id == searchDTO.classification}"></option>
                     </select>
                   </div>
                 </div>
@@ -40,11 +40,11 @@
                 <div class="select-box">
                   <div class="msg-aria">
                     <select name="gender" id="gender" data-msg="성별을 선택해 주세요">
-                      <option value="#" th:selected="${categoryId == null}">All</option>
+                      <option value="" th:selected="${searchDTO.gender == null}">All</option>
                       <option th:each="gender : ${genders}"
                               th:value="${gender.id}"
                               th:text="${gender.name}"
-                              th:selected="${gender.id == genderId}"></option>
+                              th:selected="${gender.id == searchDTO.gender}"></option>
                     </select>
                   </div>
                 </div>
@@ -56,12 +56,12 @@
                 </label>
                 <div class="select-box">
                   <div class="msg-aria">
-                    <select name="weight" id="weight" data-msg="동물구분을 선택해 주세요">
-                      <option value="#" th:selected="${categoryId == null}">All</option>
+                    <select name="weight" id="weight" data-msg="크기를 선택해 주세요">
+                      <option value="" th:selected="${searchDTO.weight == null}">All</option>
                       <option th:each="weight : ${weights}"
                               th:value="${weight.id}"
                               th:text="${weight.name}"
-                              th:selected="${weight.id == weightId}"></option>
+                              th:selected="${weight.id == searchDTO.weight}"></option>
                     </select>
                   </div>
                 </div>
@@ -73,19 +73,19 @@
                 </label>
                 <div class="select-box">
                   <div class="msg-aria">
-                    <select name="age" id="age" data-msg="동물구분을 선택해 주세요">
-                      <option value="#" th:selected="${categoryId == null}">All</option>
+                    <select name="age" id="age" data-msg="나이를 선택해 주세요">
+                      <option value="" th:selected="${searchDTO.age == null}">All</option>
                       <option th:each="age : ${ages}"
                               th:value="${age.id}"
                               th:text="${age.name}"
-                              th:selected="${age.id == ageId}"></option>
+                              th:selected="${age.id == searchDTO.age}"></option>
                     </select>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <input type="text" name="kw" th:value="${kw}" placeholder="검색어를 입력하세요">
+          <input type="text" name="kw" th:value="${searchDTO.keyword}" placeholder="검색어를 입력하세요">
           <button type="submit">검색</button>
         </form>
       </div>
