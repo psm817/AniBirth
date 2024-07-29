@@ -23,15 +23,18 @@ public class ArticleService {
     }
 
     public void saveArticle(Article article) {
+//        if (article.getId() != null) {
+//            article.setModifyDate(LocalDateTime.now()); // 수정 시 updateDate 설정
+//        }
         articleRepository.save(article);
     }
 
 
 
-public Page<Article> getList(Pageable pageable) {
-    Pageable sortedByCreateDateDesc = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by(Sort.Direction.DESC, "createDate"));
-    return articleRepository.findAll(sortedByCreateDateDesc);
-}
+    public Page<Article> getList(Pageable pageable) {
+        Pageable sortedByCreateDateDesc = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by(Sort.Direction.DESC, "createDate"));
+        return articleRepository.findAll(sortedByCreateDateDesc);
+    }
 
 
     public void create(String title, String content) {
