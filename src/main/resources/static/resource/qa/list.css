@@ -3,7 +3,10 @@
     margin: 0 auto;
 }
 .container-all{
-    width: 800px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
 .container-qna{
@@ -15,10 +18,12 @@
     list-style: none;
     margin: 0;
     padding: 0;
+
 }
 .qna > li{
   padding: 10px 0;
   box-sizing: border-box;
+  text-align: left;
 }
 .qna > li:nth-child(n+2){ /* 아이템 구분 점선 */
   border-top: 1px dashed #aaa;
@@ -70,7 +75,8 @@
     display: flex;
     align-items: center;
     margin-bottom: 1.5rem;
-    font-size: 1rem;
+    font-size: 1.3rem;
+    margin: 40px;
 }
 
 .link {
@@ -98,8 +104,9 @@
 /* 컨테이너 스타일 */
 .container-list {
     width: 100%;
-    max-width: 1000px;
+    max-width: 1200px;
     padding: 0 1rem;
+    margin: 4rem auto; /* 전체 컨테이너에 상하 간격 추가 */
     box-sizing: border-box;
 }
 

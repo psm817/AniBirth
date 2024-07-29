@@ -8,7 +8,7 @@
 <section layout:fragment="content" class="flex-1 flex flex-col items-center py-8">
     <!-- 링크 네비게이션 -->
     <div class="link-navigation">
-        <a href=@{/article/list} class="link active">공지사항</a>
+        <a th:href=@{/article/list} class="link active">공지사항</a>
         <span class="divider">|</span>
         <a th:href="@{/qa/list}" class="link">Q&A</a>
     </div>
@@ -45,41 +45,41 @@
             </table>
 
 
-        <div th:if="${#lists.isEmpty(paging.content)}" class="text-center py-4">
-            <p>등록된 공지사항이 없습니다.</p>
-        </div>
+            <div th:if="${#lists.isEmpty(paging.content)}" class="text-center py-4">
+                <p>등록된 공지사항이 없습니다.</p>
+            </div>
 
-        <div th:if="${#authorization.expression('isAuthenticated()')} and ${member.authority} == 0" class="mt-7 text-right">
-            <a th:href="@{/article/create}" class="button">글쓰기</a>
-        </div>
+            <div th:if="${#authorization.expression('isAuthenticated()')} and ${member.authority} == 0" class="mt-7 text-right">
+                <a th:href="@{/article/create}" class="button">글쓰기</a>
+            </div>
 
-        <!-- 페이지네이션 -->
-        <div th:if="${!#lists.isEmpty(paging.content)}" class="pagination-container">
-            <!-- << 처음 페이지로 이동 -->
-            <a th:href="@{|/article/list?page=0&size=${paging.size}|}" class="pagination-button"
-               th:classappend="${!paging.hasPrevious()} ? 'disabled'"><<</a>
+            <!-- 페이지네이션 -->
+            <div th:if="${!#lists.isEmpty(paging.content)}" class="pagination-container">
+                <!-- << 처음 페이지로 이동 -->
+                <a th:href="@{|/article/list?page=0&size=${paging.size}|}" class="pagination-button"
+                   th:classappend="${!paging.hasPrevious()} ? 'disabled'"><<</a>
 
-            <!-- < 이전 페이지로 이동 -->
-            <a th:href="@{|/article/list?page=${paging.number - 1}&size=${paging.size}|}" class="pagination-button"
-               th:classappend="${!paging.hasPrevious()} ? 'disabled'"><</a>
+                <!-- < 이전 페이지로 이동 -->
+                <a th:href="@{|/article/list?page=${paging.number - 1}&size=${paging.size}|}" class="pagination-button"
+                   th:classappend="${!paging.hasPrevious()} ? 'disabled'"><</a>
 
-            <!-- 페이지 번호들 -->
-            <span th:each="page : ${#numbers.sequence(0, paging.totalPages - 1)}"
-                  th:if="${page >= paging.number - 2 and page <= paging.number + 2}">
+                <!-- 페이지 번호들 -->
+                <span th:each="page : ${#numbers.sequence(0, paging.totalPages - 1)}"
+                      th:if="${page >= paging.number - 2 and page <= paging.number + 2}">
                 <a th:href="@{|/article/list?page=${page}&size=${paging.size}|}" class="pagination-number"
                    th:classappend="${page == paging.number} ? 'active'">
                     <span th:text="${page + 1}"></span>
                 </a>
             </span>
 
-            <!-- > 다음 페이지로 이동 -->
-            <a th:href="@{|/article/list?page=${paging.number + 1}&size=${paging.size}|}" class="pagination-button"
-               th:classappend="${!paging.hasNext()} ? 'disabled'">></a>
+                <!-- > 다음 페이지로 이동 -->
+                <a th:href="@{|/article/list?page=${paging.number + 1}&size=${paging.size}|}" class="pagination-button"
+                   th:classappend="${!paging.hasNext()} ? 'disabled'">></a>
 
-            <!-- >> 마지막 페이지로 이동 -->
-            <a th:href="@{|/article/list?page=${paging.totalPages - 1}&size=${paging.size}|}" class="pagination-button"
-               th:classappend="${!paging.hasNext()} ? 'disabled'">>></a>
-        </div>
+                <!-- >> 마지막 페이지로 이동 -->
+                <a th:href="@{|/article/list?page=${paging.totalPages - 1}&size=${paging.size}|}" class="pagination-button"
+                   th:classappend="${!paging.hasNext()} ? 'disabled'">>></a>
+            </div>
         </div>
     </div>
 </section>

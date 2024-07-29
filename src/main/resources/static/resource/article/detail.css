@@ -1,6 +1,6 @@
 /* detail.css */
 
-.container {
+.container-all {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -27,6 +27,7 @@ hr {
 
 .text-lg {
     font-size: 1.125rem;
+    text-align:left;
 }
 
 .text-gray-800 {

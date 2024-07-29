@@ -7,12 +7,14 @@
 
 <body>
 <section layout:fragment="content" class="flex-1 flex flex-col items-center py-8">
-    <div class="container max-w-3xl p-6 bg-white shadow-md rounded-lg">
+    <div class="container-all max-w-3xl p-6 bg-white shadow-md rounded-lg">
         <!-- 제목과 메타 정보 -->
         <header class="mb-6">
             <h1 class="text-4xl font-bold mb-2" th:text="${article.title}"></h1>
             <div class="text-gray-600 text-sm">
                 <span th:text="${#temporals.format(article.createDate, 'yyyy-MM-dd HH:mm')}"></span>
+                <span th:if="${article.modifyDate != null}" class="mx-2">|</span>
+                <span th:if="${article.modifyDate != null}" th:text="'수정: ' + ${#temporals.format(article.modifyDate, 'yyyy-MM-dd HH:mm')}"></span>
                 <span class="mx-2">|</span>
                 조회수: <span th:text="${article.viewCount}"></span>
             </div>
