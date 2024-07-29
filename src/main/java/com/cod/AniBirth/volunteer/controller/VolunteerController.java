@@ -4,6 +4,8 @@ import com.cod.AniBirth.calendar.service.CalendarService;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
 import com.cod.AniBirth.volunteer.entity.Volunteer;
+import com.cod.AniBirth.volunteer.entity.VolunteerApplication;
+import com.cod.AniBirth.volunteer.service.VolunteerApplicationService;
 import com.cod.AniBirth.volunteer.service.VolunteerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -23,6 +25,8 @@ import java.security.Principal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Controller
@@ -32,6 +36,7 @@ public class VolunteerController {
     private final MemberService memberService;
     private final VolunteerService volunteerService;
     private final CalendarService calendarService;
+    private final VolunteerApplicationService volunteerApplicationService;
 
     @GetMapping("/list")
     public String volunteer(Authentication authentication, Model model,
@@ -131,9 +136,35 @@ public class VolunteerController {
             member = memberService.findByUsername(authentication.getName());
         }
 
+        List<VolunteerApplication> volunteerApplicationList = volunteerApplicationService.getAllById(id);
+
         model.addAttribute("volunteer", volunteer);
         model.addAttribute("member", member);
+        model.addAttribute("ApplicationList", volunteerApplicationList);
 
         return "volunteer/detail";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/apply/{id}")
+    public String apply(@PathVariable("id") Long id, Principal principal, Model model) {
+        // 신청한 사람 가져오기
+        Member member = memberService.getMemberByUsername(principal.getName());
+
+        // 신청할 봉사 가져오기
+        Volunteer volunteer = volunteerService.getVolunteerById(id);
+
+        // 특정 봉사활동에 대한 신청 리스트 가져오기
+        List<VolunteerApplication> volunteerApplicationList = volunteerApplicationService.getAllById(id);
+
+        // 신청인원이 다 차면 안됨, 중복 신청 막기
+        if(volunteerApplicationList.size() >= volunteer.getLimit()) {
+            model.addAttribute("error", "full");
+            return "redirect:/volunteer/list?error=true";
+        } else {
+            volunteerApplicationService.create(member, volunteer);
+        }
+
+        return "redirect:/volunteer/detail/%s".formatted(id);
     }
 }
