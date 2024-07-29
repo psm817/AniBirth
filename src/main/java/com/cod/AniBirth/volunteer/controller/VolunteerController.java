@@ -136,11 +136,16 @@ public class VolunteerController {
             member = memberService.findByUsername(authentication.getName());
         }
 
+        // 특정 봉사활동에 대한 신청 리스트 가져오기
         List<VolunteerApplication> volunteerApplicationList = volunteerApplicationService.getAllById(id);
+
+        // 특정 봉사활동에 대한 회원 가져오기
+        boolean alreadyApplied = volunteerApplicationService.existsByMemberAndVolunteer(member, volunteer);
 
         model.addAttribute("volunteer", volunteer);
         model.addAttribute("member", member);
         model.addAttribute("ApplicationList", volunteerApplicationList);
+        model.addAttribute("alreadyApplied", alreadyApplied);
 
         return "volunteer/detail";
     }
@@ -159,12 +164,11 @@ public class VolunteerController {
 
         // 신청인원이 다 차면 안됨, 중복 신청 막기
         if(volunteerApplicationList.size() >= volunteer.getLimit()) {
-            model.addAttribute("error", "full");
-            return "redirect:/volunteer/list?error=true";
+            return "redirect:/volunteer/detail/%s?error=full".formatted(id);
         }
 
         volunteerApplicationService.create(member, volunteer);
 
-        return "redirect:/volunteer/detail/%s".formatted(id);
+        return "redirect:/volunteer/detail/%s?applySuccess=true".formatted(id);
     }
 }

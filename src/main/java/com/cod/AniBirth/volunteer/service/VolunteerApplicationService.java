@@ -31,4 +31,8 @@ public class VolunteerApplicationService {
 
         volunteerApplicationRepository.save(volunteerApplication);
     }
+
+    public boolean existsByMemberAndVolunteer(Member member, Volunteer volunteer) {
+        return volunteerApplicationRepository.existsByMemberAndVolunteer(member, volunteer);
+    }
 }
