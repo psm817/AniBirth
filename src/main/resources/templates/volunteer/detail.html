@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/layout}">
+<section layout:fragment="content" class="section-prod-list">
+    <div class="container volunteer-detail">
+        <div class="card top-box">
+            <div class="thumbnail-box">
+                <img th:src="@{${volunteer.thumbnailImg}}" alt="상품이미지">
+            </div>
+            <ul class="detail-box list-group list-group-flush gap-2 ml-3">
+                <li class="list-group-item">
+                    <span class="font-bold" th:text="${volunteer.title}"></span>
+                </li>
+                <li class="list-group-item">
+                    <span>주최 보호소</span>
+                    <span th:text="${volunteer.register.nickname}"></span>
+                </li>
+                <li class="list-group-item">
+                    <span>봉사 기간</span>
+                    <span th:text="${formattedStartDateTime} + ' ~ ' + ${formattedEndDateTime}"></span>
+                </li>
+                <li class="list-group-item">
+                    <span>신청 마감날짜</span>
+                    <span th:text="${volunteer.deadLineDate}"></span>
+                </li>
+                <li class="list-group-item">
+                    <span>신청 인원</span>
+                    <span th:text="${volunteer.applicant} + ' 명'"></span>
+                </li>
+                <li class="list-group-item">
+                    <span>모집 인원</span>
+                    <span th:text="${volunteer.limit} + ' 명'"></span>
+                </li>
+                <li class="list-group-item">
+                    <span>봉사 주소</span>
+                    <span id="volunteer-location" th:text="${volunteer.location}"></span>
+                    <button type="button" class="btn btn-primary" id="show-map-btn">지도보기</button>
+                </li>
+                <li class="list-group-item apply-btn" th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 2 or ${member.authority} == 0)">
+                    <a class="btn btn-primary" href="#">신청하기</a>
+                </li>
+                <li class="list-group-item alarm-box" th:if="${#authorization.expression('isAnonymous()')}">
+                    <span>※ 봉사활동 신청은 로그인 후 신청 가능합니다.</span>
+                </li>
+            </ul>
+        </div>
+        <div class="card bottom-box">
+            <div class="title-box">
+                <h1>봉사 상세 내용</h1>
+            </div>
+            <!-- th:text 적용해야됨 -->
+            <div class="content-box">
+                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ea facilis ut dicta culpa nihil sed harum asperiores sequi reprehenderit minima laudantium beatae voluptatum, officia quisquam optio autem at vero?</span>
+            </div>
+        </div>
+    </div>
+    <!-- 모달 -->
+    <div id="map-modal" class="modal">
+        <div class="modal-content">
+            <span>지도보기</span>
+            <span class="close">&times;</span>
+            <div id="map"></div>
+        </div>
+    </div>
+</section>
+</html>

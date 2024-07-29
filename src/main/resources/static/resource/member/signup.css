@@ -46,6 +46,11 @@
     font-weight: 700;
 }
 
+.signup-form > .title-box > span {
+    margin-left: 20px;
+    color: red;
+}
+
 .signup-form > .input-box {
     height: 100%;
     display: flex;
@@ -72,6 +77,7 @@
     font-weight: 700;
     font-size: 18px;
     width: 150px;
+    text-align: left;
 }
 
 .input-box > form > .type-box > input {
@@ -162,12 +168,26 @@
     .signup-form > .title-box {
         height: 50px !important;
         padding-left: 5px !important;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
     }
 
     .signup-form > .title-box > h1 {
         font-size: 16px !important;
         font-weight: 700;
+        margin-top: 15px;
+        width: 100%;
+        text-align: left;
     }
+
+    .signup-form > .title-box > span {
+        margin-left: 0;
+        width: 100%;
+        text-align: left;
+        font-size: 13px;
+    }
+
 
     .signup-form > .input-box {
         height: 100%;
