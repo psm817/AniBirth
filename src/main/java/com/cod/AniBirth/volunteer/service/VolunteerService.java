@@ -3,6 +3,7 @@ package com.cod.AniBirth.volunteer.service;
 import com.cod.AniBirth.global.security.DataNotFoundException;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.volunteer.entity.Volunteer;
+import com.cod.AniBirth.volunteer.entity.VolunteerApplication;
 import com.cod.AniBirth.volunteer.repository.VolunteerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

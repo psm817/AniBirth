@@ -24,7 +24,7 @@
                 </li>
                 <li class="list-group-item">
                     <span>신청 인원</span>
-                    <span th:text="${volunteer.applicant} + ' 명'"></span>
+                    <span th:text="${#lists.size(ApplicationList)} + ' 명'"></span>
                 </li>
                 <li class="list-group-item">
                     <span>모집 인원</span>
@@ -36,7 +36,7 @@
                     <button type="button" class="btn btn-primary" id="show-map-btn">지도보기</button>
                 </li>
                 <li class="list-group-item apply-btn" th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 2 or ${member.authority} == 0)">
-                    <a class="btn btn-primary" href="#">신청하기</a>
+                    <a class="btn btn-primary" th:href="@{|/volunteer/apply/${volunteer.id}|}">신청하기</a>
                 </li>
                 <li class="list-group-item alarm-box" th:if="${#authorization.expression('isAnonymous()')}">
                     <span>※ 봉사활동 신청은 로그인 후 신청 가능합니다.</span>
