@@ -1,5 +1,6 @@
 // 카카오맵
 $(document).ready(function() {
+    // 카카오맵 모달 관련
     var mapModal = $('#map-modal');
     var span = $(".close");
 
@@ -26,15 +27,26 @@ $(document).ready(function() {
         });
     });
 
+    // 모달 닫기 관련
     span.on('click', function() {
-        mapModal.hide();
+        $(this).closest('.modal').hide();
     });
 
     $(window).on('click', function(event) {
-        if (event.target == mapModal[0]) {
-            mapModal.hide();
+        if ($(event.target).hasClass('modal')) {
+            $(event.target).hide();
         }
     });
+
+    // 신청인원보기 버튼 클릭 이벤트
+    const applicantsModal = $('#applicants-modal');
+    const showApplicantsBtn = $('#show-applicants-btn');
+    if (showApplicantsBtn.length) {
+        showApplicantsBtn.on('click', function() {
+            applicantsModal.show();
+            // 여기에 신청 인원 목록을 동적으로 로드하는 코드를 추가할 수 있습니다.
+        });
+    }
 });
 
 // 신청했을 때 알림

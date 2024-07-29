@@ -9,7 +9,6 @@
             <ul class="detail-box list-group list-group-flush gap-2 ml-3">
                 <li class="list-group-item">
                     <span class="font-bold" th:text="${volunteer.title}"></span>
-                    <a class="btn-link" th:href="@{/volunteer/list}">목록보기</a>
                 </li>
                 <li class="list-group-item">
                     <span>주최 보호소</span>
@@ -26,7 +25,7 @@
                 <li class="list-group-item applicant-box">
                     <span>신청 인원</span>
                     <span th:text="${#lists.size(ApplicationList)} + ' 명'"></span>
-                    <button th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or (${member.authority} == 1 and ${member.username} == ${volunteer.register.username}))" type="button" class="btn btn-primary" id="applicants">신청인원보기</button>
+                    <button th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or (${member.authority} == 1 and ${member.username} == ${volunteer.register.username}))" type="button" class="btn btn-primary" id="show-applicants-btn">신청인원보기</button>
                 </li>
                 <li class="list-group-item">
                     <span>모집 인원</span>
@@ -56,12 +55,39 @@
             </div>
         </div>
     </div>
-    <!-- 모달 -->
+    <!-- 카카오맵 모달 -->
     <div id="map-modal" class="modal">
         <div class="modal-content">
-            <span>지도보기</span>
-            <span class="close">&times;</span>
+            <div class="top-box">
+                <span>지도보기</span>
+                <span class="close">&times;</span>
+            </div>
             <div id="map"></div>
+        </div>
+    </div>
+    <!-- 신청인원 모달 -->
+    <div id="applicants-modal" class="modal">
+        <div class="modal-content">
+            <div class="top-box">
+                <span>신청 인원 목록</span>
+                <span class="close">&times;</span>
+            </div>
+            <div id="applicants-list">
+                <ul class="title-box">
+                    <li>
+                        <span class="id">번호</span>
+                        <span class="nickname">활동명</span>
+                        <span class="email">이메일</span>
+                    </li>
+                </ul>
+                <ul class="content-box">
+                    <li th:each="applicant, loop : ${ApplicationList}">
+                        <span class="id" th:text="${loop.index} + 1"></span>
+                        <span class="nickname" th:text="${applicant.member.nickname}"></span>
+                        <span class="email" th:text="${applicant.member.email}"></span>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </section>
