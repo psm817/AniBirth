@@ -106,7 +106,7 @@ public class VolunteerController {
     }
 
     @GetMapping("/detail/{id}")
-    public String detail(@PathVariable("id") Long id, Model model) {
+    public String detail(@PathVariable("id") Long id, Model model, Authentication authentication) {
         Volunteer volunteer = volunteerService.getVolunteerById(id);
 
         // String 날짜 변환하기
@@ -125,7 +125,14 @@ public class VolunteerController {
             model.addAttribute("formattedEndDateTime", formattedEndDateTime);
         }
 
+        Member member = null;
+
+        if(authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
+
         model.addAttribute("volunteer", volunteer);
+        model.addAttribute("member", member);
 
         return "volunteer/detail";
     }

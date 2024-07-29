@@ -85,6 +85,11 @@
     padding-right: 20px;
 }
 
+.volunteer-detail > .top-box > .detail-box > .alarm-box > span {
+    width: 400px !important;
+    color: #d15a4f;
+}
+
 /* 하단 봉사내용 박스 시작 */
 .volunteer-detail > .bottom-box {
     margin-top: 30px;

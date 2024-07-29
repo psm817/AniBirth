@@ -35,8 +35,11 @@
                     <span id="volunteer-location" th:text="${volunteer.location}"></span>
                     <button type="button" class="btn btn-primary" id="show-map-btn">지도보기</button>
                 </li>
-                <li class="list-group-item apply-btn">
+                <li class="list-group-item apply-btn" th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 2 or ${member.authority} == 0)">
                     <a class="btn btn-primary" href="#">신청하기</a>
+                </li>
+                <li class="list-group-item alarm-box" th:if="${#authorization.expression('isAnonymous()')}">
+                    <span>※ 봉사활동 신청은 로그인 후 신청 가능합니다.</span>
                 </li>
             </ul>
         </div>
