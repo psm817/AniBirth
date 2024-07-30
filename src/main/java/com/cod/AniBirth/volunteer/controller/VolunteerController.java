@@ -126,6 +126,17 @@ public class VolunteerController {
         return "redirect:/volunteer/list";
     }
 
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Long id) {
+        Volunteer volunteer = volunteerService.getVolunteerById(id);
+
+        volunteerService.delete(volunteer);
+
+        return "redirect:/volunteer/list";
+    }
+
+
     public String storeProfilePicture_v(MultipartFile profilePicture) {
         // 이미지 저장 디렉토리 경로
         String uploadDir = "C:\\work\\AniBirth\\src\\main\\resources\\static\\images\\volunteer";

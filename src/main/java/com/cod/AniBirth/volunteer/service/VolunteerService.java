@@ -72,4 +72,8 @@ public class VolunteerService {
 
         volunteerRepository.save(volunteer);
     }
+
+    public void delete(Volunteer volunteer) {
+        volunteerRepository.delete(volunteer);
+    }
 }
