@@ -22,10 +22,10 @@
 
 .text-overlay-v {
     position: absolute;
-    top: 15%;
+    top: 35%;
     left: 180px;
     width: 900px;
-    height: 360px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
