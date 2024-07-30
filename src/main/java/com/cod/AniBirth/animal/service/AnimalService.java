@@ -37,15 +37,18 @@ public class AnimalService {
     @Value("${custom.genFileDirPath}")
     private String imageDirectory;
 
-    public Page<Animal> getList(int page, AnimalSearchDTO searchDTO) {
+    public Page<Animal> getList(int page, String kw, AnimalSearchDTO searchDTO) {
         List<Sort.Order> sorts = new ArrayList<>();
         sorts.add(Sort.Order.desc("noticeDate"));
         Pageable pageable = PageRequest.of(page, 8, Sort.by(sorts));
 
-//        return animalRepository.findAllByKeyword(kw, pageable);
+
         Specification<Animal> spec = AnimalSpecification.searchWith(searchDTO);
 //        return animalRepository.findAll(spec, pageable);
-        return animalRepository.findAll(AnimalSpecification.searchWith(searchDTO), pageable);
+//        return animalRepository.findAll(AnimalSpecification.searchWith(searchDTO), pageable);
+        return animalRepository.findAllByKeyword(kw, pageable);
+//        return animalRepository.findByFilters(kw, searchDTO.getClassification(), searchDTO.getGender(),
+//                searchDTO.getWeight(), searchDTO.getAge(), pageable);
     }
 
     public List<Animal> findAll() {
