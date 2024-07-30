@@ -1,6 +1,10 @@
 package com.cod.AniBirth;
 
+import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.animal.service.AnimalService;
+import com.cod.AniBirth.category.entity.Category;
+import com.cod.AniBirth.category.repository.CategoryRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -11,12 +15,16 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.List;
 
 @Component
 public class ApiExplorer implements CommandLineRunner {
 
     @Autowired
     private AnimalService animalService;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Override
     public void run(String... args) throws Exception{
@@ -53,5 +61,39 @@ public class ApiExplorer implements CommandLineRunner {
 
         // Save to database
         animalService.saveAnimals(json);
+    }
+    private void processJsonData(String json) {
+        // JSON 데이터 파싱
+        ObjectMapper objectMapper = new ObjectMapper();
+        ApiResponse apiResponse;
+        try {
+            apiResponse = objectMapper.readValue(json, ApiResponse.class);
+            List<Animal> animals = apiResponse.getMsgBody().getItems();
+
+            for (Animal animal : animals) {
+                // Classification 값으로 카테고리 설정
+                setCategoryForAnimal(animal);
+
+                // Animal 엔티티 저장
+                animalService.saveAnimal(animal);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void setCategoryForAnimal(Animal animal) {
+        // Classification 값을 사용하여 Category 엔티티를 찾거나 생성
+        String classification = animal.getClassification();
+        if (classification != null) {
+            Category category = categoryRepository.findByName(classification);
+            if (category == null) {
+                // 필요한 경우 카테고리 생성 (옵션)
+                category = new Category();
+                category.setName(classification);
+                category.setType("classification");
+                categoryRepository.save(category);
+            }
+            animal.setCategory(category);
+        }
     }
 }

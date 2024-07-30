@@ -137,6 +137,37 @@ public class AnimalService {
         animalRepository.saveAll(animals);
     }
 
+    public void saveAnimal(Animal animal) {
+        // 카테고리 설정
+//        setCategory(animal);
+
+        // Animal 엔티티 저장
+        animalRepository.save(animal);
+    }
+
+    private void setCategory(Animal animal) {
+        String gender = animal.getGender(); // 예: "1" 또는 "Male"
+        String age = animal.getAge(); // 예: "Puppy"
+        String classification = animal.getClassification(); // 예: "Dog"
+        String weight = animal.getWeight(); // 예: "Small"
+
+        // Gender 카테고리 설정
+        Category genderCategory = categoryRepository.findByName(gender);
+        animal.setCategory(genderCategory);
+
+        // Age 카테고리 설정
+        Category ageCategory = categoryRepository.findByName(age);
+        animal.setCategory(ageCategory);
+
+        // Classification 카테고리 설정
+        Category classificationCategory = categoryRepository.findByName(classification);
+        animal.setCategory(classificationCategory);
+
+        // Weight 카테고리 설정
+        Category weightCategory = categoryRepository.findByName(weight);
+        animal.setCategory(weightCategory);
+    }
+
     public Animal getAnimal(Long id) {
         Optional<Animal> animal = animalRepository.findById(id);
 
