@@ -54,6 +54,16 @@ function confirmApply() {
     return confirm('봉사활동을 신청하시겠습니까?');
 }
 
+// 봉사 삭제했을 때 알림
+function volunteerDelete() {
+    return confirm('봉사활동을 삭제하시겠습니까?');
+}
+
+// 봉사 수정했을 때 알림
+function volunteerModify() {
+    return confirm('봉사활동을 수정하시겠습니까?');
+}
+
 // Check for the apply error parameter and show the alert if it's set
 window.onload = function() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -61,5 +71,13 @@ window.onload = function() {
         alert('봉사활동이 신청되었습니다.');
     } else if (urlParams.has('error') && urlParams.get('error') === 'full') {
         alert('신청인원이 가득 찼습니다.');
+    }
+
+    if (urlParams.has('deleteSuccess')) {
+        alert('봉사활동이 삭제되었습니다.');
+    }
+
+    if (urlParams.has('modifySuccess')) {
+        alert('봉사활동이 수정되었습니다.');
     }
 };

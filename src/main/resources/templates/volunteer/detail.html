@@ -44,8 +44,8 @@
                 </li>
                 <!-- 관리자, 중간관리자일 때 수정, 삭제  -->
                 <li class="list-group-item modify-btn" th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or (${member.authority} == 1 and ${member.username} == ${volunteer.register.username}))">
-                    <a class="btn btn-primary" th:href="@{|/volunteer/modify/${volunteer.id}|}">수정</a>
-                    <a class="btn btn-primary" th:href="@{|/volunteer/delete/${volunteer.id}|}" onclick="return confirm('봉사활동을 삭제하시겠습니까?')">삭제</a>
+                    <a class="btn btn-primary" th:href="@{|/volunteer/modify/${volunteer.id}|}" onclick="return volunteerModify();">수정</a>
+                    <a class="btn btn-primary" th:href="@{|/volunteer/delete/${volunteer.id}|}" onclick="return volunteerDelete();">삭제</a>
                 </li>
                 <!-- 미로그인 시 알림 -->
                 <li class="list-group-item alarm-box" th:if="${#authorization.expression('isAnonymous()')}">
