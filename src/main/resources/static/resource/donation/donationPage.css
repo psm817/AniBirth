@@ -311,6 +311,10 @@ html > body .container .donation-section .donation-bg-img > .center-background-i
 }
 
 @media (max-width: 394px) {
+    .donor-div {
+        flex-
+    }
+
     .text-overlay {
         left: 50%;
         transform: translate(-50%, -50%);
@@ -337,4 +341,5 @@ html > body .container .donation-section .donation-bg-img > .center-background-i
         margin-top: 20px;
     }
 }
+
 

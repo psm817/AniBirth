@@ -23,7 +23,7 @@
         <div class="top-donors-section">
             <h2>애니버스에 도움을 준 사람들</h2>
             <div class="donor-card-container">
-                <div th:if="${topDonors != null and !#lists.isEmpty(topDonors)}" style="display: flex; gap: 120px;">
+                <div class="donor-div" th:if="${topDonors != null and !#lists.isEmpty(topDonors)}" style="display: flex; gap: 120px;">
                     <div class="donor-card" th:each="donorStat, iterStat : ${topDonors}">
 
                         <div class="donor-card-content">
