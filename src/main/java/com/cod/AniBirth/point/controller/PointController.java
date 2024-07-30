@@ -18,7 +18,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class PointController {
     private final PointService pointService;
-        private final MemberService memberService;
+    private final MemberService memberService;
 
 
 
@@ -28,15 +28,16 @@ public class PointController {
         return "points/recharge";
     }
 
+
     @GetMapping("/success")
     @PreAuthorize("isAuthenticated()")
     public String rechargeSuccess(@RequestParam("paymentKey") String paymentKey,
                                   @RequestParam("amount") int amount,
                                   @RequestParam("orderId") String orderId,
                                   Model model) {
-        // 현재 로그인된 회원 정보를 가져옵니다.
         Member member = memberService.getCurrentMember();
-        pointService.rechargePoints(member, amount);
+        String transactionId = paymentKey + "-" + orderId; // Generate a unique transaction ID
+        pointService.rechargePoints(member, amount, transactionId);
         model.addAttribute("message", "포인트 충전이 완료되었습니다.");
         return "points/success";
     }

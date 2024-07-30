@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html layout:decorate="~{layout/layout}">
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/layout}">
 <section layout:fragment="content" class="flex-1 flex justify-center items-center">
     <div class="container-box">
         <div class="donation">
@@ -20,12 +20,12 @@
             </div>
         </div>
 
-
         <div class="top-donors-section">
             <h2>애니버스에 도움을 준 사람들</h2>
             <div class="donor-card-container">
-                <div th:if="${topDonors != null and !#lists.isEmpty(topDonors)}">
-                    <div class="donor-card shadow" th:each="donorStat, iterStat : ${topDonors}">
+                <div th:if="${topDonors != null and !#lists.isEmpty(topDonors)}" style="display: flex; gap: 120px;">
+                    <div class="donor-card" th:each="donorStat, iterStat : ${topDonors}">
+
                         <div class="donor-card-content">
                             <div class="profile-img">
                                 <img th:src="@{|${donorStat[0].thumbnailImg}|}" alt="프로필사진">
@@ -53,9 +53,8 @@
         </div>
         <p>애니버스는 오직 시민의 후원으로 운영되며, 후원자의 지지가 있어 구조·정책·교육·돌봄 등 다양한 분야에서의 활동이 가능합니다.</p>
 
-
         <div class="container">
-            <div class="donation-section ">
+            <div class="donation-section">
                 <div class="donation-bg-img">
                     <img src="https://i.ibb.co/D79qTFk/001.png" alt="센터 후원" class="center-background-image">
                 </div>
@@ -67,13 +66,11 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 
     <!-- Modal -->
     <div id="donateModal" class="modal">
-        <div class="modal-content  w-full md:w-2/5 mt-5 text-center md:text-center p-5">
+        <div class="modal-content w-full md:w-2/5 mt-5 text-center md:text-center p-5">
             <span class="close">&times;</span>
             <h2>후원하기</h2>
             <div class="modal-body">
@@ -92,8 +89,10 @@
                         로그인 후 후원해주세요.
                     </div>
                 </form>
+                <p>포인트 충전은 마이페이지에서 충전 할 수 있습니다.</p>
             </div>
         </div>
     </div>
+
 </section>
 </html>
