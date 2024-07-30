@@ -311,10 +311,52 @@ html > body .container .donation-section .donation-bg-img > .center-background-i
 }
 
 @media (max-width: 394px) {
+
     .donor-div {
-        flex-
+      flex-direction: column;
+      gap: 10px;
+      width: 70%;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px;
     }
 
+     .donor-card {
+        width: 70%;
+        height: auto;
+        box-shadow: inset 0 -2em 2em rgba(0,0,0,0.1),
+                    0 0 0 1px rgb(190, 190, 190),
+                    0.2em 0.2em 0.8em rgba(0,0,0,0.3);
+     }
+
+      .ribbon {
+        width: 100%;
+        margin-top: 140px;
+        margin-left: 0;
+        font-size: 16px !important;
+      }
+
+      .ribbon span {
+        font-size: 24px !important;
+        padding: 10px 5px;
+      }
+
+      .donor-card-content {
+        padding: 10px;
+      }
+
+      .donor-card-content h3 {
+        font-size: 1.25rem !important;
+      }
+
+      .donor-card-content p {
+        font-size: 16px;
+      }
+
+      .profile-img {
+        width: 80px;
+        height: 80px;
+      }
     .text-overlay {
         left: 50%;
         transform: translate(-50%, -50%);
