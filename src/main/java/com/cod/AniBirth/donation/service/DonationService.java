@@ -23,12 +23,13 @@ public class DonationService {
     private final MemberRepository memberRepository;
     private final DonationRepository donationRepository;
 
+    // 권한이 1인 멤버들(기업/보호소)만 가져옴
     public List<Member> getAllRecipients() {
-        return memberRepository.findByAuthority(1); // 권한이 1인 멤버들(기업/보호소)만 가져옴
+        return memberRepository.findByAuthority(1);
     }
 
     @Transactional
-    public boolean donatePoints(Member donor, Long recipientId, Long amount) {
+    public boolean donatePoints(Member donor, Member recipient, Long amount) {
         try {
             Account donorAccount = accountRepository.findByMemberId(donor.getId())
                     .orElseThrow(() -> new IllegalArgumentException("Donor account not found"));
@@ -36,9 +37,6 @@ public class DonationService {
             if (donorAccount.getAniPoint() >= amount) {
                 donorAccount.setAniPoint(donorAccount.getAniPoint() - amount);
                 accountRepository.save(donorAccount);
-
-                Member recipient = memberRepository.findById(recipientId)
-                        .orElseThrow(() -> new IllegalArgumentException("Recipient not found"));
 
                 Account recipientAccount = accountRepository.findByMemberId(recipient.getId())
                         .orElseThrow(() -> new IllegalArgumentException("Recipient account not found"));
@@ -63,6 +61,7 @@ public class DonationService {
         }
     }
 
+    // 상위 기부자를 가져옵니다
     public List<Object[]> getTopDonors() {
         List<Object[]> topDonors = donationRepository.findTopDonors();
         log.info("Top Donors: {}", topDonors);

@@ -59,6 +59,15 @@ public class Member extends BaseEntity {
     @OneToMany(mappedBy = "adoptee", cascade = CascadeType.REMOVE)
     private List<Animal> animalsAdoptee;
 
+
     @OneToMany(mappedBy = "member")
     private List<VolunteerApplication> volunteerApplications;
+
+
+    @ManyToMany
+    private List<Volunteer> appliedVolunteers; // 회원이 신청한 봉사 리스트
+
+
+
+
 }
