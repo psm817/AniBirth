@@ -24,5 +24,15 @@ public class VolunteerApplicationService {
     }
 
     public void create(Member member, Volunteer volunteer) {
+        VolunteerApplication volunteerApplication = VolunteerApplication.builder()
+                .member(member)
+                .volunteer(volunteer)
+                .build();
+
+        volunteerApplicationRepository.save(volunteerApplication);
+    }
+
+    public boolean existsByMemberAndVolunteer(Member member, Volunteer volunteer) {
+        return volunteerApplicationRepository.existsByMemberAndVolunteer(member, volunteer);
     }
 }

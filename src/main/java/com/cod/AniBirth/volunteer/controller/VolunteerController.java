@@ -114,14 +114,13 @@ public class VolunteerController {
     public String detail(@PathVariable("id") Long id, Model model, Authentication authentication) {
         Volunteer volunteer = volunteerService.getVolunteerById(id);
 
-        // String 날짜 변환하기
+        // String 날짜 변환하기(시작, 끝나는날짜)
         if (volunteer.getStartDate() != null) {
             DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
             DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분");
 
             LocalDateTime startDateTime = LocalDateTime.parse(volunteer.getStartDate(), inputFormatter);
             LocalDateTime endDateTime = LocalDateTime.parse(volunteer.getEndDate(), inputFormatter);
-
 
             String formattedStartDateTime = startDateTime.format(outputFormatter);
             model.addAttribute("formattedStartDateTime", formattedStartDateTime);
@@ -130,17 +129,32 @@ public class VolunteerController {
             model.addAttribute("formattedEndDateTime", formattedEndDateTime);
         }
 
+        // 마감날짜 변환
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate deadlineDate = LocalDate.parse(volunteer.getDeadLineDate(), formatter);
+
+        // 날짜 비교
+        boolean isDeadlinePassed = deadlineDate.isBefore(today);
+        model.addAttribute("isDeadlinePassed", isDeadlinePassed);
+
+        // 로그인된 회원 가져오기
         Member member = null;
 
         if(authentication != null && authentication.isAuthenticated()) {
             member = memberService.findByUsername(authentication.getName());
         }
 
+        // 특정 봉사활동에 대한 신청 리스트 가져오기
         List<VolunteerApplication> volunteerApplicationList = volunteerApplicationService.getAllById(id);
+
+        // 특정 봉사활동에 대한 회원 가져오기
+        boolean alreadyApplied = volunteerApplicationService.existsByMemberAndVolunteer(member, volunteer);
 
         model.addAttribute("volunteer", volunteer);
         model.addAttribute("member", member);
         model.addAttribute("ApplicationList", volunteerApplicationList);
+        model.addAttribute("alreadyApplied", alreadyApplied);
 
         return "volunteer/detail";
     }
@@ -159,12 +173,11 @@ public class VolunteerController {
 
         // 신청인원이 다 차면 안됨, 중복 신청 막기
         if(volunteerApplicationList.size() >= volunteer.getLimit()) {
-            model.addAttribute("error", "full");
-            return "redirect:/volunteer/list?error=true";
-        } else {
-            volunteerApplicationService.create(member, volunteer);
+            return "redirect:/volunteer/detail/%s?error=full".formatted(id);
         }
 
-        return "redirect:/volunteer/detail/%s".formatted(id);
+        volunteerApplicationService.create(member, volunteer);
+
+        return "redirect:/volunteer/detail/%s?applySuccess=true".formatted(id);
     }
 }
