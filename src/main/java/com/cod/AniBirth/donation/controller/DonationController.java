@@ -1,5 +1,6 @@
 package com.cod.AniBirth.donation.controller;
 
+import com.cod.AniBirth.donation.entity.Donation;
 import com.cod.AniBirth.donation.service.DonationService;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
@@ -80,9 +81,10 @@ public class DonationController {
         return "donation/fail";
     }
 
-    @GetMapping("/donation/fail")
+    @GetMapping("/fail")
     public String donationFail(Model model) {
         model.addAttribute("message", "후원에 실패했습니다. 다시 시도해주세요.");
-        return "fail"; // Thymeleaf 템플릿의 이름 (fail.html)
+        return "donation/fail"; // Thymeleaf 템플릿의 이름 (fail.html)
     }
+
 }

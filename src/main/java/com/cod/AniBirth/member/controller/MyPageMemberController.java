@@ -4,11 +4,14 @@ import com.cod.AniBirth.account.entity.Account;
 import com.cod.AniBirth.account.service.AccountService;
 import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.animal.service.AnimalService;
+import com.cod.AniBirth.donation.entity.Donation;
+import com.cod.AniBirth.donation.service.DonationService;
 import com.cod.AniBirth.email.service.EmailService;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.repository.MemberRepository;
 import com.cod.AniBirth.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,12 +23,14 @@ import java.util.List;
 @Controller
 @RequestMapping("/member/myPage")
 @RequiredArgsConstructor
+@Slf4j
 public class MyPageMemberController {
     private final MemberService memberService;
     private final AccountService accountService;
     private final MemberRepository memberRepository;
     private final EmailService emailService;
     private final AnimalService animalService;
+    private final DonationService donationService;
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/myProfile")
@@ -96,9 +101,16 @@ public class MyPageMemberController {
     public String myDonation(Model model, Principal principal) {
         Member member = memberService.findByUsername(principal.getName());
         Account account = accountService.findByMember(member);
+        List<Donation> donations = donationService.getDonationsByDonor(member);
+        Long donationCount = donationService.getDonationCountByDonor(member);
+
+        log.info("Member: {}", member);  // Log the member details
+        log.info("Donations: {}", donations);  // Log the donation records
 
         model.addAttribute("member", member);
         model.addAttribute("account", account);
+        model.addAttribute("donationRecords", donations);
+        model.addAttribute("donationCount", donationCount);
 
         return "member/myPage/donation";
     }

@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -61,6 +62,8 @@ public class DonationService {
         }
     }
 
+
+
     // 상위 기부자를 가져옵니다
     public List<Object[]> getTopDonors() {
         List<Object[]> topDonors = donationRepository.findTopDonors();
@@ -69,4 +72,13 @@ public class DonationService {
                 .limit(3) // 상위 3명으로 제한
                 .collect(Collectors.toList());
     }
+
+    public List<Donation> getDonationsByDonor(Member donor) {
+        return donationRepository.findByDonor(donor);
+    }
+
+    public Long getDonationCountByDonor(Member donor) {
+        return donationRepository.countByDonorId(donor.getId());
+    }
+
 }
