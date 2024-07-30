@@ -1,10 +1,13 @@
 package com.cod.AniBirth.adopt.controller;
 
+import com.cod.AniBirth.adopt.AdoptForm;
+import com.cod.AniBirth.adopt.service.AdoptService;
 import com.cod.AniBirth.animal.AnimalSearchDTO;
 import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.animal.service.AnimalService;
 import com.cod.AniBirth.category.entity.Category;
 import com.cod.AniBirth.category.service.CategoryService;
+import jakarta.validation.Valid;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -20,31 +23,20 @@ import java.util.List;
 public class AdoptController {
     private final AnimalService animalService;
     private final CategoryService categoryService;
+    private final AdoptService adoptService;
 
     @GetMapping("/list")
     public String list(Model model,
                        @RequestParam(value = "page", defaultValue = "0") int page,
                        @RequestParam(value = "kw", defaultValue = "") String kw,
-                       AnimalSearchDTO searchDTO
-//                       @RequestParam(value = "classification", required = false) Long classificationId,
-//                       @RequestParam(value = "gender", required = false) Long genderId,
-//                       @RequestParam(value = "weight", required = false) String weight,
-//                       @RequestParam(value = "age", required = false) String age
+                       @ModelAttribute AnimalSearchDTO searchDTO
     ) {
 
 //        Page<Animal> paging = animalService.getList(page, kw);
-        Page<Animal> paging = animalService.getList(page, searchDTO);
-
-
-
-//        List<Category> classifications = categoryService.getClassificationCategories();
-//        List<Category> ages = categoryService.getAgeCategories();
-//        List<Category> weights = categoryService.getWeightCategories();
-//        List<Category> genders = categoryService.getGenderCategories();
-
+        Page<Animal> paging = animalService.getList(page, kw, searchDTO);
 
         model.addAttribute("paging", paging);
-        model.addAttribute("kw", searchDTO.getKeyword());
+        model.addAttribute("kw", kw);
         model.addAttribute("searchDTO", searchDTO);
         model.addAttribute("classifications", categoryService.getClassifications());
         model.addAttribute("genders", categoryService.getGenders());
@@ -60,6 +52,18 @@ public class AdoptController {
 
         model.addAttribute("animal", animal);
         return "adopt/detail";
+    }
+
+    @GetMapping("/apply")
+    public String showApplyForm(AdoptForm adoptForm) {
+        return "adopt/form";
+    }
+
+    @PostMapping("/apply")
+    public String submitApplyForm(@Valid AdoptForm adoptForm) {
+        adoptService.apply(adoptForm.getName(),adoptForm.getPhone());
+
+        return "redirect:/adopt/list";
     }
 
 }
