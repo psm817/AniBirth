@@ -212,7 +212,13 @@
     }
 
     .container > .right-box > .content-box > ul > li > .charge-box {
-        display: none;
+        margin-left: 5px;
+        padding: -5px 5px -5px 5px;
+    }
+
+    .container > .right-box > .content-box > ul > li > .charge-box > a {
+        font-size: 13px;
+        font-weight: 500;
     }
 
     /* 최고관리자일 때 회원목록 */

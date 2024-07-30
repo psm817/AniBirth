@@ -36,11 +36,18 @@
                     <span id="volunteer-location" th:text="${volunteer.location}"></span>
                     <button type="button" class="btn btn-primary" id="show-map-btn">지도보기</button>
                 </li>
-                <li class="list-group-item apply-btn" th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 2 or ${member.authority} == 0)">
+                <!-- 일반회원일 때 신청, 완료, 마감 표시  -->
+                <li class="list-group-item apply-btn" th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 2)">
                     <a class="btn btn-primary" th:if="${!alreadyApplied} and ${!isDeadlinePassed}" th:href="@{|/volunteer/apply/${volunteer.id}?apply=true|}" onclick="return confirmApply();">신청하기</a>
                     <span th:if="${alreadyApplied}">신청완료</span>
                     <span th:if="${isDeadlinePassed}">신청마감</span>
                 </li>
+                <!-- 관리자, 중간관리자일 때 수정, 삭제  -->
+                <li class="list-group-item modify-btn" th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or (${member.authority} == 1 and ${member.username} == ${volunteer.register.username}))">
+                    <a class="btn btn-primary" th:href="@{|/volunteer/modify/${volunteer.id}|}">수정</a>
+                    <a class="btn btn-primary" th:href="@{|/volunteer/delete/${volunteer.id}|}">삭제</a>
+                </li>
+                <!-- 미로그인 시 알림 -->
                 <li class="list-group-item alarm-box" th:if="${#authorization.expression('isAnonymous()')}">
                     <span>※ 봉사활동 신청은 로그인 후 신청 가능합니다.</span>
                 </li>

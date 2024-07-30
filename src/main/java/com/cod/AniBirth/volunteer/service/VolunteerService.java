@@ -56,4 +56,20 @@ public class VolunteerService {
             throw new DataNotFoundException("volunteer not found");
         }
     }
+
+    public void modify(Volunteer volunteer, String title, String content, String location, String startDate,
+                       String endDate, String deadLineDate, String imageFileName, int limit, Member member, int size) {
+        volunteer.setTitle(title);
+        volunteer.setContent(content);
+        volunteer.setLocation(location);
+        volunteer.setStartDate(startDate);
+        volunteer.setEndDate(endDate);
+        volunteer.setDeadLineDate(deadLineDate);
+        volunteer.setThumbnailImg(imageFileName);
+        volunteer.setLimit(limit);
+        volunteer.setRegister(member);
+        volunteer.setApplicant(size);
+
+        volunteerRepository.save(volunteer);
+    }
 }

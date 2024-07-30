@@ -1,5 +1,6 @@
 package com.cod.AniBirth.volunteer.controller;
 
+import com.cod.AniBirth.calendar.entity.Calendar;
 import com.cod.AniBirth.calendar.service.CalendarService;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
@@ -78,7 +79,49 @@ public class VolunteerController {
         LocalDateTime start = LocalDateTime.parse(startDate, formatter);
         LocalDateTime end = LocalDateTime.parse(endDate, formatter);
 
-        calendarService.create(title, start, end);
+        calendarService.create(title, start, end, volunteer);
+
+        return "redirect:/volunteer/list";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/modify/{id}")
+    public String modify(@PathVariable("id") Long id, Model model) {
+        Volunteer volunteer = volunteerService.getVolunteerById(id);
+
+        model.addAttribute("volunteer", volunteer);
+
+        return "volunteer/modify";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/modify/{id}")
+    public String modify(@PathVariable("id") Long id, @RequestParam("title") String title, @RequestParam("startDate") String startDate,
+                         @RequestParam("endDate") String endDate, @RequestParam("deadLineDate") String deadLineDate,
+                         @RequestParam("location") String location, @RequestParam("limit") int limit,
+                         @RequestParam("thumbnailImg") MultipartFile thumbnailImg, @RequestParam("content") String content,
+                         Principal principal) {
+        String imageFileName = storeProfilePicture_v(thumbnailImg);
+
+        // 등록한 보호소 회원
+        Member member = memberService.getMemberByUsername(principal.getName());
+
+        // 수정할 봉사활동
+        Volunteer volunteer = volunteerService.getVolunteerById(id);
+
+        // 특정 봉사활동에 대한 신청 리스트 가져오기
+        List<VolunteerApplication> volunteerApplicationList = volunteerApplicationService.getAllById(id);
+
+        volunteerService.modify(volunteer, title, content, location, startDate, endDate, deadLineDate, imageFileName, limit, member, volunteerApplicationList.size());
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        LocalDateTime start = LocalDateTime.parse(startDate, formatter);
+        LocalDateTime end = LocalDateTime.parse(endDate, formatter);
+
+        // 봉사활동에 맞는 캘린더 가져오기
+        Calendar calendar = calendarService.getByVolunteer(volunteer);
+
+        calendarService.modify(calendar, title, start, end, volunteer);
 
         return "redirect:/volunteer/list";
     }
