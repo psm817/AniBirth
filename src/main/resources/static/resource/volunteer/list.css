@@ -130,6 +130,7 @@
 /* 캘린더 시작 */
 .summary-box > .calendar-section {
     margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 .summary-box > .calendar-section > .title-box {
