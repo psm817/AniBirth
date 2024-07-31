@@ -23,9 +23,9 @@ public class ArticleService {
     }
 
     public void saveArticle(Article article) {
-//        if (article.getId() != null) {
-//            article.setModifyDate(LocalDateTime.now()); // 수정 시 updateDate 설정
-//        }
+        if (article.getId() != null) {
+            article.setModifyDate(LocalDateTime.now()); // 수정 시 updateDate 설정
+        }
         articleRepository.save(article);
     }
 

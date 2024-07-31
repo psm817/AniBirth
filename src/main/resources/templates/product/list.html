@@ -21,6 +21,10 @@
             </li>
         </ul>
 
+        <div th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or ${member.authority} == 1)" class="mt-7 text-right">
+            <a th:href="@{/product/create}" class="button">등록하기</a>
+        </div>
+
         <!-- 페이징 처리 시작 -->
         <ul th:if="${!paging.isEmpty()}" class="pagination flex justify-center mt-5">
             <li class="page-item" th:classappend="${!paging.hasPrevious} ? 'disabled'">
@@ -62,5 +66,5 @@
             });
         });
     </script>
-</section>?
+</section>
 </html>
