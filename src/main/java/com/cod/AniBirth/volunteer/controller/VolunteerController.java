@@ -86,7 +86,7 @@ public class VolunteerController {
 
         calendarService.create(title, start, end, volunteer);
 
-        return "redirect:/volunteer/list";
+        return "redirect:/volunteer/list?createVolunteerSuccess=true";
     }
 
     // 봉사활동 수정
@@ -264,8 +264,22 @@ public class VolunteerController {
     }
 
     // 후기 작성
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/review/create")
     public String reviewCreate() {
         return "volunteer/reviewCreate";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/review/create")
+    public String reviewCreate(@RequestParam("title") String title, @RequestParam("body") String body,
+                               @RequestParam("thumbnailImg") MultipartFile thumbnailImg, Principal principal) {
+        String imageFileName = storeProfilePicture_v(thumbnailImg);
+
+        Member member = memberService.getMemberByUsername(principal.getName());
+
+        volunteerReviewService.create(title, body, 0, member, imageFileName);
+
+        return "redirect:/volunteer/review?createSuccess=true";
     }
 }

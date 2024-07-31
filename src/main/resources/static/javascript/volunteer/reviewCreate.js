@@ -14,11 +14,11 @@ function reviewSubmitButton(form) {
         return;
     }
 
-    form.content.value = form.content.value.trim();
+    form.body.value = form.body.value.trim();
 
-    if ( form.content.value.length == 0 ) {
+    if ( form.body.value.length == 0 ) {
         alert("내용을 입력해주세요.");
-        form.content.focus();
+        form.body.focus();
         return;
     }
 
@@ -52,3 +52,10 @@ function addImageInput() {
         alert('첨부 이미지는 최대 3개까지 첨부할 수 있습니다.');
     }
 }
+
+window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('createSuccess')) {
+        alert('봉사후기가 등록되었습니다.');
+    }
+};

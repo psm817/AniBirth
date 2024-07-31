@@ -106,6 +106,13 @@ function previewImage(event) {
     reader.readAsDataURL(event.target.files[0]);
 }
 
+window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('createVolunteerSuccess')) {
+        alert('봉사활동이 등록되었습니다.');
+    }
+};
+
 // 카카오맵 시작
 var map;
 var selectedPlace = null;

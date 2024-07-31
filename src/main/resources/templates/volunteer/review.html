@@ -24,7 +24,7 @@
                     <div class="title-box">
                         <span>전체 봉사후기</span>
                         <span>(※ 봉사 후기 이미지 또는 제목을 클릭하면 상세내용을 확인하실 수 있습니다.)</span>
-                        <a th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or ${member.authority} == 1)"
+                        <a th:if="${#authorization.expression('isAuthenticated()')} and ${member.authority} == 2"
                            th:href="@{/volunteer/review/create}" class="btn btn_link">작성하기</a>
                     </div>
                     <div class="totalList-box">
