@@ -266,8 +266,6 @@ public class VolunteerController {
     // 후기 작성
     @GetMapping("/review/create")
     public String reviewCreate() {
-
-
         return "volunteer/reviewCreate";
     }
 }
