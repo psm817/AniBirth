@@ -20,15 +20,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 const data = await response.json();
                 const events = data.map(event => ({
                     title: event.title,
-                    start: event.startDate,  // Assuming startDate is in ISO format
-                    end: event.endDate     // Assuming endDate is in ISO format
+                    start: event.startDate,
+                    end: event.endDate,
+                    url: event.volunteer ? `/volunteer/detail/${event.volunteer.id}` : null
                 }));
                 successCallback(events);
             } catch (error) {
                 failureCallback(error);
             }
         },
-        locale: 'ko'
+        locale: 'ko',
+        eventClick: function(info) {
+            if (info.event.url) {
+                window.location.href = info.event.url;
+            }
+            info.jsEvent.preventDefault(); // prevent the browser from following the href
+        }
     });
     calendar.render();
 });

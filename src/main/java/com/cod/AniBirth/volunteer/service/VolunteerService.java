@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -55,5 +56,26 @@ public class VolunteerService {
         } else {
             throw new DataNotFoundException("volunteer not found");
         }
+    }
+
+    public void modify(Volunteer volunteer, String title, String content, String location, String startDate,
+                       String endDate, String deadLineDate, String imageFileName, int limit, Member member, int size) {
+        volunteer.setTitle(title);
+        volunteer.setContent(content);
+        volunteer.setLocation(location);
+        volunteer.setStartDate(startDate);
+        volunteer.setEndDate(endDate);
+        volunteer.setDeadLineDate(deadLineDate);
+        volunteer.setThumbnailImg(imageFileName);
+        volunteer.setLimit(limit);
+        volunteer.setRegister(member);
+        volunteer.setApplicant(size);
+        volunteer.setModifyDate(LocalDateTime.now());
+
+        volunteerRepository.save(volunteer);
+    }
+
+    public void delete(Volunteer volunteer) {
+        volunteerRepository.delete(volunteer);
     }
 }

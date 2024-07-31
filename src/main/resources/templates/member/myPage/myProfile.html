@@ -122,7 +122,7 @@
                     </li>
                     <li class="list-group-item flex items-center" th:if="${member.authority} == 2">
                         <span>애니포인트</span>
-                        <div class="text-box flex items-center">
+                        <div class="text-box authority-box flex items-center">
                             <span th:text="${account.aniPoint} + ' 원'"></span>
                         </div>
                         <div class="charge-box ml-[30px]">
@@ -131,7 +131,7 @@
                     </li>
                     <li class="list-group-item flex items-center" th:if="${member.authority} == 1">
                         <span>계좌번호</span>
-                        <div class="text-box flex items-center">
+                        <div class="text-box authority-box flex items-center">
                             <span th:text="${account.account_number}"></span>
                         </div>
                         <div class="charge-box ml-[30px]">

@@ -1,16 +1,16 @@
 package com.cod.AniBirth.volunteer.entity;
 
 import com.cod.AniBirth.base.entity.BaseEntity;
+import com.cod.AniBirth.calendar.entity.Calendar;
 import com.cod.AniBirth.member.entity.Member;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import java.util.List;
 
@@ -34,6 +34,10 @@ public class Volunteer extends BaseEntity {
     @ManyToOne
     private Member register;                // 봉사를 등록한 보호소(회원)
 
-    @OneToMany(mappedBy = "volunteer")
+    @OneToMany(mappedBy = "volunteer", cascade = CascadeType.REMOVE)
     private List<VolunteerApplication> volunteerApplications;
+
+    @OneToOne(mappedBy = "volunteer", cascade = CascadeType.REMOVE)
+    @LazyCollection(LazyCollectionOption.EXTRA)
+    private Calendar calendar;
 }

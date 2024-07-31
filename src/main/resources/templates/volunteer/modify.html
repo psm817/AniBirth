@@ -3,15 +3,15 @@
 <section layout:fragment="content" class="flex-1 justify-center items-center">
     <div class="container volunteer-box">
         <div class="card w-[100%]">
-            <div class="create-form">
+            <div class="modify-form">
                 <div class="title-box">
-                    <h1>봉사활동 > 등록하기</h1>
+                    <h1>봉사활동 > 수정하기</h1>
                 </div>
-                <div class="create-input">
-                    <form th:action="@{/volunteer/create}" method="POST" onsubmit="submitVolunteerForm(this); return false;" enctype="multipart/form-data">
+                <div class="modify-input">
+                    <form th:action="@{|/volunteer/modify/${volunteer.id}|}" method="POST" onsubmit="submitVolunteerForm(this); return false;" enctype="multipart/form-data">
                         <div class="type-box name-box">
                             <span class="font-weight">봉사명<span class="text-red-600">*</span></span>
-                            <input type="text" id="title" maxlength="200" name="title" placeholder="봉사명을 입력하세요.">
+                            <input type="text" id="title" maxlength="200" name="title" th:placeholder="${volunteer.title}">
                         </div>
                         <div class="type-box date-box">
                             <span>봉사 시작 날짜<span class="text-red-600">*</span></span>
@@ -40,14 +40,14 @@
                         </div>
                         <div class="type-box content-box">
                             <span>봉사 내용<span class="text-red-600">*</span></span>
-                            <textarea name="content" id="content" class="form-control" rows="7" placeholder="봉사내용을 입력하세요."></textarea>
+                            <textarea name="content" id="content" class="form-control" rows="7" th:placeholder="${volunteer.title}"></textarea>
                         </div>
                         <div class="type-box signup-btn flex justify-center">
-                            <button class="btn btn-primary cancel" type="button" onclick="if(confirm('봉사활동 등록을 취소하시겠습니까?')) { window.location.href='/volunteer/list'; }">취소</button>
-                            <button class="btn btn-primary check" type="submit" id="submitButton">등록</button>
+                            <button class="btn btn-primary cancel" type="button" onclick="if(confirm('봉사활동 수정을 취소하시겠습니까?')) { window.location.href='/volunteer/list'; }">취소</button>
+                            <button class="btn btn-primary check" type="submit" id="submitButton">수정</button>
                         </div>
                         <div class="absolute-box">
-                            <img id="preview" th:src="@{/images/default_img.png}" alt="대표이미지 미리보기">
+                            <img id="preview" src="" alt="대표이미지 미리보기">
                         </div>
                     </form>
                 </div>

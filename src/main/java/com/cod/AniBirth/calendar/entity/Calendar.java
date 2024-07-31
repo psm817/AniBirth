@@ -1,9 +1,8 @@
 package com.cod.AniBirth.calendar.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.cod.AniBirth.volunteer.entity.Volunteer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -22,4 +21,9 @@ public class Calendar {
     private String title;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
+
+    @OneToOne
+    @JoinColumn(name = "volunteer_id", unique = true)
+    @JsonIgnore
+    private Volunteer volunteer;
 }

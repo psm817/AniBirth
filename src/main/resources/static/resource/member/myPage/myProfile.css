@@ -178,6 +178,10 @@
         width: 150px;
     }
 
+    .container > .right-box {
+        height: 700px !important;
+    }
+
     /* 중간/일반회원일 때 프로필 정보 */
     .container > .right-box > .title-box {
         padding-left: 5px !important;
@@ -211,8 +215,18 @@
         font-size: 15px;
     }
 
+    .container > .right-box > .content-box > ul > li > .authority-box {
+        width: 340px;
+    }
+
     .container > .right-box > .content-box > ul > li > .charge-box {
-        display: none;
+        margin-left: 5px;
+        padding: -5px 5px -5px 5px;
+    }
+
+    .container > .right-box > .content-box > ul > li > .charge-box > a {
+        font-size: 13px;
+        font-weight: 500;
     }
 
     /* 최고관리자일 때 회원목록 */

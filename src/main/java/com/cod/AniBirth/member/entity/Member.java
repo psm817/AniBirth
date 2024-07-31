@@ -6,6 +6,7 @@ import com.cod.AniBirth.base.entity.BaseEntity;
 import com.cod.AniBirth.donation.entity.Donation;
 import com.cod.AniBirth.volunteer.entity.Volunteer;
 import com.cod.AniBirth.volunteer.entity.VolunteerApplication;
+import com.cod.AniBirth.volunteer.entity.VolunteerReview;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
@@ -62,6 +63,9 @@ public class Member extends BaseEntity {
 
     @OneToMany(mappedBy = "member")
     private List<VolunteerApplication> volunteerApplications;
+
+    @OneToMany(mappedBy = "writer", cascade = CascadeType.REMOVE)
+    private List<VolunteerReview> volunteerReviewList;
 
 
     @ManyToMany

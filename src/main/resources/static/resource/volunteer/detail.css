@@ -86,6 +86,16 @@
     color: #d15a4f;
 }
 
+/* 수정, 삭제하기 버튼 커스텀 */
+.volunteer-detail > .top-box > .detail-box > .modify-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.volunteer-detail > .top-box > .detail-box > .modify-btn > a:nth-child(1) {
+    margin-right: 40px;
+}
+
 .volunteer-detail > .top-box > .detail-box > li > a {
     border: transparent;
     background-color: #FF416C;
