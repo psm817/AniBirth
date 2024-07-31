@@ -18,13 +18,14 @@ import java.util.List;
 public class VolunteerReviewService {
     private final VolunteerReviewRepository volunteerReviewRepository;
 
-    public void create(String title, String body, int hit, Member member, String thumbnailImg) {
+    public void create(String title, String body, int hit, Member member, String thumbnailImg, List<String> subImages) {
         VolunteerReview volunteerReview = VolunteerReview.builder()
                 .title(title)
                 .body(body)
                 .hit(hit)
                 .writer(member)
                 .thumbnailImg(thumbnailImg)
+                .subImages(subImages)
                 .build();
 
         volunteerReviewRepository.save(volunteerReview);

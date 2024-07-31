@@ -28,6 +28,7 @@ import java.security.Principal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -273,12 +274,23 @@ public class VolunteerController {
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/review/create")
     public String reviewCreate(@RequestParam("title") String title, @RequestParam("body") String body,
-                               @RequestParam("thumbnailImg") MultipartFile thumbnailImg, Principal principal) {
+                               @RequestParam("thumbnailImg") MultipartFile thumbnailImg,
+                               @RequestParam(value = "subImg", required = false) List<MultipartFile> subImgs, Principal principal) {
         String imageFileName = storeProfilePicture_v(thumbnailImg);
+
+        List<String> subImageNames = new ArrayList<>();
+        if (subImgs != null) {
+            for (MultipartFile subImg : subImgs) {
+                if (!subImg.isEmpty()) {
+                    String subImageName = storeProfilePicture_v(subImg);
+                    subImageNames.add(subImageName);
+                }
+            }
+        }
 
         Member member = memberService.getMemberByUsername(principal.getName());
 
-        volunteerReviewService.create(title, body, 0, member, imageFileName);
+        volunteerReviewService.create(title, body, 0, member, imageFileName, subImageNames);
 
         return "redirect:/volunteer/review?createSuccess=true";
     }

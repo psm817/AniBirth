@@ -106,15 +106,15 @@ public class Dev {
             calendarService.create(volunteer11.getTitle(), start11, end11, volunteer11);
 
             // 봉사후기 샘플
-            volunteerReviewService.create("제목1", "내용1", 0, member4, "/images/volunteer/volunteer_default.jpg");
-            volunteerReviewService.create("제목2", "내용2", 0, member5, "/images/volunteer/volunteer_default.jpg");
-            volunteerReviewService.create("제목3", "내용3", 0, member10, "/images/volunteer/volunteer_default.jpg");
-            volunteerReviewService.create("제목4", "내용4", 0, member4, "/images/volunteer/volunteer_default.jpg");
-            volunteerReviewService.create("제목5", "내용5", 0, member5, "/images/volunteer/volunteer_default.jpg");
-            volunteerReviewService.create("제목6", "내용6", 0, member10, "/images/volunteer/volunteer_default.jpg");
-            volunteerReviewService.create("제목6", "내용6", 0, member10, "/images/volunteer/volunteer_default.jpg");
-            volunteerReviewService.create("제목6", "내용6", 0, member10, "/images/volunteer/volunteer_default.jpg");
-            volunteerReviewService.create("제목6", "내용6", 0, member10, "/images/volunteer/volunteer_default.jpg");
+            volunteerReviewService.create("제목1", "내용1", 0, member4, "/images/volunteer/volunteer_default.jpg", null);
+            volunteerReviewService.create("제목2", "내용2", 0, member5, "/images/volunteer/volunteer_default.jpg", null);
+            volunteerReviewService.create("제목3", "내용3", 0, member10, "/images/volunteer/volunteer_default.jpg", null);
+            volunteerReviewService.create("제목4", "내용4", 0, member4, "/images/volunteer/volunteer_default.jpg", null);
+            volunteerReviewService.create("제목5", "내용5", 0, member5, "/images/volunteer/volunteer_default.jpg", null);
+            volunteerReviewService.create("제목6", "내용6", 0, member10, "/images/volunteer/volunteer_default.jpg", null);
+            volunteerReviewService.create("제목6", "내용6", 0, member10, "/images/volunteer/volunteer_default.jpg", null);
+            volunteerReviewService.create("제목6", "내용6", 0, member10, "/images/volunteer/volunteer_default.jpg", null);
+            volunteerReviewService.create("제목6", "내용6", 0, member10, "/images/volunteer/volunteer_default.jpg", null);
         };
     }
 }

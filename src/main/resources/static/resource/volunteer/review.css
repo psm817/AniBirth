@@ -166,6 +166,7 @@
 
 .review-box > .review-section > .totalList-box > .review-notice-list > li > .right-detail-box > a {
     margin-top: 10px;
+    text-align: left;
 }
 
 .review-box > .review-section > .totalList-box > .review-notice-list > li > .right-detail-box > a > span {
