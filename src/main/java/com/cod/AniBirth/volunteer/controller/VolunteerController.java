@@ -39,6 +39,7 @@ public class VolunteerController {
     private final CalendarService calendarService;
     private final VolunteerApplicationService volunteerApplicationService;
 
+    // 전체 봉사 리스트
     @GetMapping("/list")
     public String volunteer(Authentication authentication, Model model,
                             @RequestParam(value = "page", defaultValue = "0") int page) {
@@ -56,6 +57,7 @@ public class VolunteerController {
         return "volunteer/list";
     }
 
+    // 봉사활동 등록
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/create")
     public String create() {
@@ -84,6 +86,7 @@ public class VolunteerController {
         return "redirect:/volunteer/list";
     }
 
+    // 봉사활동 수정
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/modify/{id}")
     public String modify(@PathVariable("id") Long id, Model model) {
@@ -126,6 +129,7 @@ public class VolunteerController {
         return "redirect:/volunteer/list?modifySuccess=true";
     }
 
+    // 봉사활동 삭제
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
@@ -136,7 +140,7 @@ public class VolunteerController {
         return "redirect:/volunteer/list?deleteSuccess=true";
     }
 
-
+    // 봉사 대표이미지 저장경로
     public String storeProfilePicture_v(MultipartFile profilePicture) {
         // 이미지 저장 디렉토리 경로
         String uploadDir = "C:\\work\\AniBirth\\src\\main\\resources\\static\\images\\volunteer";
@@ -164,6 +168,7 @@ public class VolunteerController {
         return "/images/volunteer/" + imageFileName;
     }
 
+    // 봉사활동 상세정보
     @GetMapping("/detail/{id}")
     public String detail(@PathVariable("id") Long id, Model model, Authentication authentication) {
         Volunteer volunteer = volunteerService.getVolunteerById(id);
@@ -213,6 +218,7 @@ public class VolunteerController {
         return "volunteer/detail";
     }
 
+    //봉사활동 신청
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/apply/{id}")
     public String apply(@PathVariable("id") Long id, Principal principal, Model model) {
@@ -233,5 +239,19 @@ public class VolunteerController {
         volunteerApplicationService.create(member, volunteer);
 
         return "redirect:/volunteer/detail/%s?applySuccess=true".formatted(id);
+    }
+
+    // 봉사활동 후기
+    @GetMapping("/review")
+    public String reviewList(Authentication authentication, Model model) {
+        Member member = null;
+
+        if(authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
+
+        model.addAttribute("member", member);
+
+        return "volunteer/review";
     }
 }

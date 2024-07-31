@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/layout}">
+<section layout:fragment="content" class="flex-1 flex justify-center items-center">
+    <div class="main-container-box">
+        <div class="volunteer-review">
+            <div class="volunteer-wrapper">
+                <img src="https://cdn.healingnlife.com/news/photo/202103/1042_1700_155.jpg" alt="Dog Shelter"
+                     class="background-image grid w-full h-[500px] ">
+            </div>
+            <div class="text-overlay-vr">
+                <h1 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold">봉사활동</h1>
+                <br>
+                <p class="mt-4 text-sm sm:text-base md:text-lg lg:text-xl">애니버스의 봉사활동은 유기동물들이 따뜻한 가정을 찾을 수 있도록 돕는 것을 목표로 합니다.<br>
+                    여러분의 작은 손길이 큰 사랑이 되어, 유기동물들에게 새로운 희망을 선물할 수 있습니다.<br>
+                </p>
+            </div>
+            <div class="container review-box">
+                <!-- 소메뉴 뽑기 -->
+                <div class="tiny-menu-box">
+                    <a th:href="@{/volunteer/list}">봉사활동</a>
+                    <a th:href="@{/volunteer/review}">봉사후기</a>
+                </div>
+                <!-- 기준을 뭘로삼든 4개만 컨트롤러에서 뽑기 -->
+                <div class="review-section">
+                    <div class="title-box">
+                        <span>전체 봉사후기</span>
+                        <span>(※ 봉사 후기 이미지 또는 제목을 클릭하면 상세내용을 확인하실 수 있습니다.)</span>
+                        <a th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or ${member.authority} == 1)"
+                           th:href="@{/volunteer/review/create}" class="btn btn_link">등록하기</a>
+                    </div>
+                    <div class="totalList-box">
+                        <ul class="review-notice-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-[80px] mt-3">
+                            <li><span>항목</span></li>
+                            <li><span>항목</span></li>
+                            <li><span>항목</span></li>
+                            <li><span>항목</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</html>
