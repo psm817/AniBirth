@@ -234,17 +234,11 @@
 
     .review-box > .review-section > .totalList-box {
         margin-top: 5px;
-        border: 1px solid red;
         padding-left: 0px;
         padding-right: 0px;
     }
 
-    .review-box > .review-section > .totalList-box > ul {
-        border: 1px solid orange;
-    }
-
     .review-box > .review-section > .totalList-box > .review-notice-list > li {
-        border: 1px solid green;
         flex-direction: column;
         height: 350px;
     }

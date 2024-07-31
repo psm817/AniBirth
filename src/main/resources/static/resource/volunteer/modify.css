@@ -221,9 +221,8 @@
         height: 100%;
     }
 
-    /* 회원가입 입력 폼 */
-    .card {
-        height: 650px !important;
+    .volunteer-box > .card {
+        height: 100% !important;
     }
 
     .modify-form {

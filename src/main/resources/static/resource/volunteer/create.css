@@ -223,7 +223,7 @@
 
     /* 회원가입 입력 폼 */
     .card {
-        height: 650px !important;
+        height: 100% !important;
     }
 
     .create-form {
