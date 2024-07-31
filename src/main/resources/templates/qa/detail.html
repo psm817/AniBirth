@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html layout:decorate="~{/layout/layout}">
+<html layout:decorate="~{layout/layout}">
 <head>
     <title>Q&A 상세</title>
     <link rel="stylesheet" type="text/css" th:href="@{/resource/qa/detail.css}">
@@ -20,7 +20,7 @@
         <div th:if="${member != null and qa.member.username == member.username}">
             <a th:href="@{|/qa/edit/${qa.id}|}" class="button">수정</a>
             <form th:action="@{|/qa/delete/${qa.id}|}" method="post" style="display:inline;">
-                <button type="submit" class="button">삭제</button>
+                <button type="submit" class="link-manage" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</button>
             </form>
         </div>
 

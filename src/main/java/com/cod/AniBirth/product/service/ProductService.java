@@ -39,7 +39,13 @@ public class ProductService {
         String thumbnailRelPath = "product/" + UUID.randomUUID().toString() + ".jpg";
         File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
 
-        thumbnailFile.mkdir();
+//        thumbnailFile.mkdir();
+
+        // 부모 디렉토리 생성
+        File parentDir = thumbnailFile.getParentFile();
+        if (!parentDir.exists()) {
+            parentDir.mkdirs();
+        }
 
         try {
             thumbnail.transferTo(thumbnailFile);

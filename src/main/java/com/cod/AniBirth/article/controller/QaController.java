@@ -120,10 +120,10 @@ public class QaController {
 
         existingQa.setTitle(qa.getTitle());
         existingQa.setContent(qa.getContent());
-        existingQa.setModifyDate(LocalDateTime.now());  // 수정 시간 업데이트
+//        existingQa.setModifyDate(LocalDateTime.now());
         qaService.saveQa(existingQa);
 
-        return "redirect:/qa/" + id;  // 수정 후 상세 페이지로 리다이렉트
+        return "redirect:/qa/" + id;
     }
 
     @PostMapping("/delete/{id}")
