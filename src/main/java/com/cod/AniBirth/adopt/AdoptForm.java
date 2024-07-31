@@ -18,4 +18,6 @@ public class AdoptForm {
     @NotEmpty(message="내용은 필수항목입니다.")
     @Size(max=20000, message = "내용을 20000자 이하로 입력해주세요.")
     private String phone;
+
+    private boolean isSupport;
 }

@@ -1,14 +1,68 @@
 <!DOCTYPE html>
 <html layout:decorate="~{/layout/layout}">
 <section layout:fragment="content" class="flex-1 flex justify-center items-center">
-  <section class="adopt-total">
-    <div class="container adopt-detail-head">
-      <div class="adopt-info">
-        <h1 class="h2 g-font-size-28 g-line-height-1">입양신청</h1>
-        <h2>평생 책임질 준비 되셨나요?
-          구조된 동물들에게 입양은 마지막 기회이자 유일한 희망입니다.</h2>
+  <div class="apply-container-box">
+    <div class="apply-total">
+      <div class="container applyform-head">
+        <div class="apply-info">
+          <h1 class="h2 g-font-size-28 g-line-height-1">입양신청</h1>
+          <h2>평생 책임질 준비 되셨나요?
+            구조된 동물들에게 입양은 마지막 기회이자 유일한 희망입니다.</h2>
+        </div>
+      </div>
+      <div class="apply">
+        <div class="apply-wrapper">
+          <div class="apply-banner">
+            <img th:src="@{/images/banner/입양.png}" alt="배너1">
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+    <div class="container apply-content">
+      <div class="apply-content-name">
+        <h1 class="h4 g-color-primary font-weight-bold mt-5">
+          <span class="apply-content-header">입양 신청서</span>
+        </h1>
+        <hr class="my-2">
+      </div>
+      <div class="personal-data">
+        <h5 class="font-bold">개인정보</h5>
+      </div>
+      <div class="personal-data-input">
+        <form action="" method="POST" th:action="@{/adopt/apply}" th:object="${adoptForm}">
+          <div class="input-box name">
+            <span>1. 성명</span>
+            <input type="text" id="name" name="name">
+          </div>
+          <div class="input-box phone">
+            <span>2. 연락처</span>
+            <input type="text" id="phone" name="phone">
+          </div>
+          <div class="input-box email">
+            <span>3. 이메일 주소</span>
+            <input type="email" id="email" name="phone">
+          </div>
+          <div class="input-box gender">
+            <span>4. 성별</span>
+            <label>
+              <input type="radio" id="maleRadio" name="isSupport" value="true" th:checked="${adoptForm.isSupport == true}"> 남
+            </label>
+            <label>
+              <input type="radio" id="femaleRadio" name="isSupport" value="false" th:checked="${adoptForm.isSupport == false}"> 여
+            </label>
+          </div>
+          <div class="input-box age">
+            <span>5. 나이</span>
+            <input type="text" id="age" name="age">
+          </div>
+          <div class="input-box company">
+            <span>3. 이메일 주소</span>
+            <input type="text" id="company" name="company">
+          </div>
+          <div class="input-box married"></div>
+        </form>
+      </div>
+    </div>
+  </div>
 </section>
 </html>
