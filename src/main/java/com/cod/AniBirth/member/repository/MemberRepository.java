@@ -22,6 +22,8 @@ public interface MemberRepository extends JpaRepository <Member, Long> {
 
     List<Member> findByAuthority(int authority);
 
+    List<Member> findByAuthorityIn(List<Integer> authorities);
+
 
 
 }

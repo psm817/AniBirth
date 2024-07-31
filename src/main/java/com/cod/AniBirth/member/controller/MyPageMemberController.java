@@ -101,11 +101,21 @@ public class MyPageMemberController {
     public String myDonation(Model model, Principal principal) {
         Member member = memberService.findByUsername(principal.getName());
         Account account = accountService.findByMember(member);
-        List<Donation> donations = donationService.getDonationsByDonor(member);
-        Long donationCount = donationService.getDonationCountByDonor(member);
 
-        log.info("Member: {}", member);  // Log the member details
-        log.info("Donations: {}", donations);  // Log the donation records
+        List<Donation> donations;
+        Long donationCount;
+
+        if (member.getAuthority() == 2) { // 일반 회원
+            donations = donationService.getDonationsByDonor(member);
+            donationCount = donationService.getDonationCountByDonor(member);
+        } else {
+            // 중간 관리자 및 최고 관리자를 위한 모든 기부 기록 가져오기
+            donations = donationService.findAll();
+            donationCount = (long) donations.size();
+        }
+
+        log.info("Member: {}", member);
+        log.info("Donations: {}", donations);
 
         model.addAttribute("member", member);
         model.addAttribute("account", account);
@@ -114,6 +124,7 @@ public class MyPageMemberController {
 
         return "member/myPage/donation";
     }
+
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/market")
