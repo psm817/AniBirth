@@ -26,4 +26,7 @@ public class VolunteerReview extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member writer;          // 작성자
+
+    // TODO : 대표이미지 하나, 첨부파일할 최대 3개 이미지 추가해야됨
+    private String thumbnailImg;            // 후기 대표 이미지
 }

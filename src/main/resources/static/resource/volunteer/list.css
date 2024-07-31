@@ -198,12 +198,6 @@
         margin-left: 10px;
     }
 
-    .summary-box > .calendar-section > .title-box > span {
-        font-weight: 700;
-        font-size: 18px;
-        margin-left: 10px;
-    }
-
     .summary-box > .volunteer-section > .title-box > a {
         margin-left: 10px;
         margin-top: 5px;
@@ -229,6 +223,7 @@
         font-weight: 500;
         font-size: 13px;
         margin-left: 10px;
+        text-align: left;
     }
 
     /* 년월 날짜 커스텀 */

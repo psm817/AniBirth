@@ -246,7 +246,8 @@ public class VolunteerController {
 
     // 봉사활동 후기
     @GetMapping("/review")
-    public String reviewList(Authentication authentication, Model model) {
+    public String reviewList(Authentication authentication, Model model,
+                             @RequestParam(value = "page", defaultValue = "0") int page) {
         Member member = null;
 
         if(authentication != null && authentication.isAuthenticated()) {
@@ -254,11 +255,19 @@ public class VolunteerController {
         }
 
         // 전체 후기 가져오기
-        List<VolunteerReview> volunteerReviewList = volunteerReviewService.getAll();
+        Page<VolunteerReview> paging = volunteerReviewService.getAll(page);
 
         model.addAttribute("member", member);
-        model.addAttribute("volunteerReviewList", volunteerReviewList);
+        model.addAttribute("paging", paging);
 
         return "volunteer/review";
+    }
+
+    // 후기 작성
+    @GetMapping("/review/create")
+    public String reviewCreate() {
+
+
+        return "volunteer/reviewCreate";
     }
 }
