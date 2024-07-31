@@ -11,6 +11,7 @@ import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
 import com.cod.AniBirth.product.service.ProductService;
 import com.cod.AniBirth.volunteer.entity.Volunteer;
+import com.cod.AniBirth.volunteer.service.VolunteerReviewService;
 import com.cod.AniBirth.volunteer.service.VolunteerService;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
@@ -26,9 +27,10 @@ public class Dev {
     @Bean
     public ApplicationRunner init(MemberService memberService, AccountService accountService,
                                   ProductService productService, VolunteerService volunteerService,
-                                  CalendarService calendarService) {
+                                  CalendarService calendarService, VolunteerReviewService volunteerReviewService) {
 
         return args -> {
+            // 회원 샘플
             Member member1 = memberService.signup("admin", "admin", "admin", "admin@test.com","010-1111-2222", "대전광역시 서구 청사로 281","/images/profile_default.jpg", 0, 1);
             Member member2 = memberService.signup("company1", "company1", "company1", "company1@test.com","010-1111-2222", "대전광역시 서구 청사로 281","/images/profile_default.jpg", 1, 1);
             Member member3 = memberService.signup("company2", "company2", "company2", "company2@test.com","010-1111-2222", "대전광역시 서구 청사로 281","/images/profile_default.jpg", 1, 0);
@@ -38,18 +40,20 @@ public class Dev {
             Member member7 = memberService.signup("company4", "company4", "세종유기동물보호센터", "company4@test.com","010-1111-2222", "세종특별자치시 전동면 미륵당1길 188 (전동면)","/images/profile_default.jpg", 1, 1);
             Member member8 = memberService.signup("company5", "company5", "청양보호소", "company5@test.com","010-1111-2222", "충청남도 청양군 대치면 청산로 446-17 (대치면)","/images/profile_default.jpg", 1, 1);
             Member member9 = memberService.signup("company6", "company6", "원주시동물보호센터", "company6@test.com","010-1111-2222", "강원특별자치도 원주시 호저면 칠봉로 109-17","/images/profile_default.jpg", 1, 1);
+            Member member10 = memberService.signup("user3", "user3", "user3", "user3@test.com","010-1111-2222", "대전광역시 서구 청사로 281","/images/profile_default.jpg", 2, 1);
 
-            Account account1 = accountService.createOrUpdate(member1, "123-1234-1234", 0L);
-            Account account2 = accountService.createOrUpdate(member2, "123-1234-1234", 0L);
-            Account account3 = accountService.createOrUpdate(member3, "123-1234-1234", 0L);
-            Account account4 = accountService.createOrUpdate(member4, "123-1234-1234", 0L);
-            Account account5 = accountService.createOrUpdate(member5, "123-1234-1234", 0L);
-            Account account6 = accountService.createOrUpdate(member6, "123-1234-1234", 0L);
-            Account account7 = accountService.createOrUpdate(member7, "123-1234-1234", 0L);
-            Account account8 = accountService.createOrUpdate(member8, "123-1234-1234", 0L);
-            Account account9 = accountService.createOrUpdate(member9, "123-1234-1234", 0L);
+            // 포인트 샘플
+            accountService.createOrUpdate(member1, "123-1234-1234", 0L);
+            accountService.createOrUpdate(member2, "123-1234-1234", 0L);
+            accountService.createOrUpdate(member3, "123-1234-1234", 0L);
+            accountService.createOrUpdate(member4, "123-1234-1234", 0L);
+            accountService.createOrUpdate(member5, "123-1234-1234", 0L);
+            accountService.createOrUpdate(member6, "123-1234-1234", 0L);
+            accountService.createOrUpdate(member7, "123-1234-1234", 0L);
+            accountService.createOrUpdate(member8, "123-1234-1234", 0L);
+            accountService.createOrUpdate(member9, "123-1234-1234", 0L);
 
-
+            // 봉사활동 샘플
             Volunteer volunteer1 = volunteerService.create("유기견 목욕시키기", "봉사활동 내용1", "대전 유성구 금남구즉로 1234", "2024-07-14T09:50", "2024-07-14T17:50", "2024-07-10", "/images/volunteer/volunteer_default.jpg", 20, member6, 0);
             Volunteer volunteer2 = volunteerService.create("유기동물센터 환경미화 봉사활동", "봉사활동 내용2", "세종특별자치시 전동면 미륵당1길 117-16", "2024-07-16T10:00", "2024-07-17T10:00", "2024-07-13", "/images/volunteer/volunteer_default.jpg", 20, member7, 0);
             Volunteer volunteer3 = volunteerService.create("번식장 구조견 돌봄 봉사활동", "봉사활동 내용3", "충남 청양군 대치면 청산로 420", "2024-07-20T13:50", "2024-07-20T19:50", "2024-07-15", "/images/volunteer/volunteer_default.jpg", 20, member7, 0);
@@ -100,6 +104,14 @@ public class Dev {
             calendarService.create(volunteer9.getTitle(), start9, end9, volunteer9);
             calendarService.create(volunteer10.getTitle(), start10, end10, volunteer10);
             calendarService.create(volunteer11.getTitle(), start11, end11, volunteer11);
+
+            // 봉사후기 샘플
+            volunteerReviewService.create("제목1", "내용1", 0, member4);
+            volunteerReviewService.create("제목2", "내용2", 0, member5);
+            volunteerReviewService.create("제목3", "내용3", 0, member10);
+            volunteerReviewService.create("제목4", "내용4", 0, member4);
+            volunteerReviewService.create("제목5", "내용5", 0, member5);
+            volunteerReviewService.create("제목6", "내용6", 0, member10);
         };
     }
 }

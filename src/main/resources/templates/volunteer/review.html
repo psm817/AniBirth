@@ -30,10 +30,9 @@
                     </div>
                     <div class="totalList-box">
                         <ul class="review-notice-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-[80px] mt-3">
-                            <li><span>항목</span></li>
-                            <li><span>항목</span></li>
-                            <li><span>항목</span></li>
-                            <li><span>항목</span></li>
+                            <li th:each="review, loop : ${volunteerReviewList}">
+                                <span th:text="${review.title}"></span>
+                            </li>
                         </ul>
                     </div>
                 </div>

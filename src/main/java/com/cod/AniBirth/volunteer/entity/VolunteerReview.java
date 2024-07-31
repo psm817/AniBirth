@@ -1,0 +1,29 @@
+package com.cod.AniBirth.volunteer.entity;
+
+import com.cod.AniBirth.base.entity.BaseEntity;
+import com.cod.AniBirth.member.entity.Member;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.SuperBuilder;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@SuperBuilder
+public class VolunteerReview extends BaseEntity {
+    private String title;
+    private String body;
+
+    private int hit;            // 조회수
+
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member writer;          // 작성자
+}

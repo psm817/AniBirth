@@ -6,7 +6,9 @@ import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
 import com.cod.AniBirth.volunteer.entity.Volunteer;
 import com.cod.AniBirth.volunteer.entity.VolunteerApplication;
+import com.cod.AniBirth.volunteer.entity.VolunteerReview;
 import com.cod.AniBirth.volunteer.service.VolunteerApplicationService;
+import com.cod.AniBirth.volunteer.service.VolunteerReviewService;
 import com.cod.AniBirth.volunteer.service.VolunteerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -38,6 +40,7 @@ public class VolunteerController {
     private final VolunteerService volunteerService;
     private final CalendarService calendarService;
     private final VolunteerApplicationService volunteerApplicationService;
+    private final VolunteerReviewService volunteerReviewService;
 
     // 전체 봉사 리스트
     @GetMapping("/list")
@@ -250,7 +253,11 @@ public class VolunteerController {
             member = memberService.findByUsername(authentication.getName());
         }
 
+        // 전체 후기 가져오기
+        List<VolunteerReview> volunteerReviewList = volunteerReviewService.getAll();
+
         model.addAttribute("member", member);
+        model.addAttribute("volunteerReviewList", volunteerReviewList);
 
         return "volunteer/review";
     }
