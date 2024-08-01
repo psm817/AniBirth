@@ -37,7 +37,7 @@
                             <span>전체 봉사활동</span>
                             <span>(※ 봉사활동 이미지나 봉사명을 클릭하면 상세정보를 확인하실 수 있습니다.)</span>
                             <a th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or ${member.authority} == 1)"
-                               th:href="@{/volunteer/create}" class="btn btn_link">등록하기</a>
+                               th:href="@{/volunteer/create}" class="btn btn_link" onclick="return volunteerCreate();">등록하기</a>
                         </div>
                         <div class="totalList-box">
                             <ul class="volunteer-notice-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[80px] mt-3">

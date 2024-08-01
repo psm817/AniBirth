@@ -10,7 +10,7 @@
 
 .main-container-box > .volunteer-review > .volunteer-wrapper {
   width: 100%;
-  height: 360px;
+  height: 380px;
 }
 
 .main-container-box > .volunteer-review > .volunteer-wrapper > img {
@@ -22,7 +22,7 @@
 
 .text-overlay-vr {
     position: absolute;
-    top: 35%;
+    top: 32%;
     left: 180px;
     width: 900px;
     height: 200px;

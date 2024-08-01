@@ -17,9 +17,11 @@
                     </div>
                     <div class="btn-box">
                         <a th:href="@{|/volunteer/review/modify/${volunteerReview.id}|}"
-                           th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or (${volunteerReview.writer.username} == ${member.username}))">수정</a>
+                           th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or (${volunteerReview.writer.username} == ${member.username}))"
+                           onclick="return reviewModify();">수정</a>
                         <a th:href="@{|/volunteer/review/delete/${volunteerReview.id}|}"
-                           th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or (${volunteerReview.writer.username} == ${member.username}))">삭제</a>
+                           th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or (${volunteerReview.writer.username} == ${member.username}))"
+                           onclick="return reviewDelete();">삭제</a>
                     </div>
                 </div>
             </div>

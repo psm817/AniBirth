@@ -236,7 +236,7 @@ public class VolunteerController {
         List<VolunteerApplication> volunteerApplicationList = volunteerApplicationService.getAllById(id);
 
         // 신청인원이 다 차면 안됨, 중복 신청 막기
-        if(volunteerApplicationList.size() > volunteer.getLimit()) {
+        if(volunteerApplicationList.size() >= volunteer.getLimit()) {
             return "redirect:/volunteer/detail/%s?error=full".formatted(id);
         }
 

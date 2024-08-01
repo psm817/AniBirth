@@ -69,6 +69,11 @@
     background-color: transparent;
 }
 
+/* 봉사기간 */
+.volunteer-detail > .top-box > .detail-box > li:nth-child(3) > span:nth-child(2)  {
+    width: 425px;
+}
+
 /* 봉사 디테일 항목 내용 */
 .volunteer-detail > .top-box > .detail-box > li > span:nth-child(2) {
     width: 415px;

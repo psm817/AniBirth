@@ -76,8 +76,9 @@ function submitWriteForm(form) {
         return;
     }
 
-
-    form.submit();
+    if (confirm("회원가입을 진행하시겠습니까? \n보호소/기업 회원은 관리자의 승인까지 대기가 필요합니다.")) {
+        form.submit();
+    }
 }
 
 function validateForm() {
