@@ -1,6 +1,7 @@
 package com.cod.AniBirth.adopt.controller;
 
 import com.cod.AniBirth.adopt.AdoptForm;
+import com.cod.AniBirth.adopt.entity.AdoptApply;
 import com.cod.AniBirth.adopt.service.AdoptService;
 import com.cod.AniBirth.animal.AnimalSearchDTO;
 import com.cod.AniBirth.animal.entity.Animal;
@@ -60,8 +61,10 @@ public class AdoptController {
     }
 
     @PostMapping("/apply")
-    public String submitApplyForm(@Valid AdoptForm adoptForm) {
-        adoptService.apply(adoptForm.getName(),adoptForm.getPhone());
+    public String submitApplyForm(@Valid AdoptForm adoptForm,@RequestParam("isGender") boolean isGender,@RequestParam("isMarried") boolean isMarried) {
+        adoptService.apply(adoptForm.getName(),adoptForm.getPhone(),adoptForm.getEmail(),adoptForm.getAge(),adoptForm.getCompany(),
+                adoptForm.getPostCode(),adoptForm.getAddress(),adoptForm.getDetailAddress(),adoptForm.getExtraAddress(),
+                isGender,isMarried);
 
         return "redirect:/adopt/list";
     }

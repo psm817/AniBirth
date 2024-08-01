@@ -67,7 +67,7 @@ html > body .apply-container-box .container .personal-data-input {
     align-items: center;
     margin: 10px 0;
     width: 100%; /* input-box의 너비를 100%로 설정 */
-    max-width: 600px; /* 최대 너비 설정 */
+    max-width: 800px; /* 최대 너비 설정 */
 }
 
 .personal-data-input > form > .input-box > span {
@@ -84,18 +84,36 @@ html > body .apply-container-box .container .personal-data-input {
     width: calc(100% - 160px); /* input 박스의 너비 계산 (전체 너비 - span 너비) */
     padding-left: 10px;
 }
-.personal-data-input > form > .input-box.gender {
+.personal-data-input > form > .input-box.gender,
+.personal-data-input > form > .input-box.married {
     flex-direction: row; /* 성별 선택을 가로로 배치 */
     justify-content: flex-start; /* 왼쪽 정렬 */
 }
 
-.personal-data-input > form > .input-box.gender > label {
+.personal-data-input > form > .input-box.gender > label,
+.personal-data-input > form > .input-box.married > label {
     margin-right: 10px; /* 라디오 버튼과 텍스트 사이의 간격 */
     display: flex;
     align-items: center;
 }
 
-.personal-data-input > form > .input-box.gender > label > input {
+.personal-data-input > form > .input-box.gender > label > input,
+.personal-data-input > form > .input-box.married > label > input {
     width: auto; /* 라디오 버튼의 너비를 자동으로 설정 */
     margin-right: 5px; /* 라디오 버튼과 텍스트 사이의 간격 */
+}
+.personal-data-input > form > .input-box.adress > #sample6_postcode {
+    margin-right: 10px;
+}
+.personal-data-input > form > .input-box.adress > #sample6_Daumpostcode {
+    padding: 0;
+}
+
+.personal-data-input > form > .input-box.adress2 > input {
+    width: 640px;
+    margin-left: 160px;
+}
+
+.personal-data-input > form > .input-box.adress3 > #sample6_detailAddress {
+    margin-left: 160px;
 }
