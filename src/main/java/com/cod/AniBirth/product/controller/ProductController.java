@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -52,32 +53,68 @@ public class ProductController {
     }
 
     @GetMapping("/detail/{id}")
-    public String detail(@PathVariable("id") Long id, Model model) {
+    public String detail(@PathVariable("id") Long id, Model model, Authentication authentication) {
         Product product = productService.getProduct(id);
 
+        Member member = null;
+        if (authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
+
         model.addAttribute("product", product);
+        model.addAttribute("member", member);
 
         return "product/detail";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/create")
-//    @PreAuthorize("hasAuthority('ADMIN')")
-    public String create(Model model) {
-        List<Product> productList = productService.getList();
-        
-        model.addAttribute("productList", productList);
+    public String create(Model model, Authentication authentication) {
+        Member member = memberService.findByUsername(authentication.getName());
+        model.addAttribute("member", member);
         return "product/create";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/create")
-//    @PreAuthorize("hasAuthority('ADMIN')")
     public String createContent(
-            @RequestParam("title") String title, @RequestParam("description") String description,
-            @RequestParam("price") int price,@RequestParam("thumbnail") MultipartFile thumbnail
-
+            @RequestParam("title") String title,
+            @RequestParam("description") String description,
+            @RequestParam("price") int price,
+            @RequestParam("thumbnail") MultipartFile thumbnail,
+            Authentication authentication
     ) {
-        productService.create(title, description, price, thumbnail);
+        Member member = memberService.findByUsername(authentication.getName());
+        productService.create(title, description, price, thumbnail, member);
 
-        return "product/create";
+        return "redirect:/product/list";
     }
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/modify/{id}")
+    public String modify(@PathVariable("id") Long id, Model model) {
+        Product product = productService.getProduct(id);
+        model.addAttribute("product", product);
+        return "product/modify";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/modify/{id}")
+    public String modifyContent(
+            @PathVariable("id") Long id,
+            @RequestParam("title") String title,
+            @RequestParam("description") String description,
+            @RequestParam("price") int price,
+            @RequestParam(value = "thumbnail", required = false) MultipartFile thumbnail
+    ) {
+        productService.modify(id, title, description, price, thumbnail);
+        return "redirect:/product/detail/" + id;
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Long id) {
+        productService.delete(id);
+        return "redirect:/product/list";
+    }
+
 }

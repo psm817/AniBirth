@@ -39,8 +39,8 @@
             <div class="content-box card-header pl-[40px]">
                 <div class="total-box">
                     <span th:if="${member.authority eq 2}" th:text="${member.nickname} + '님이 후원하신 후원내역은 총 ' + ${donationCount} + ' 건입니다.'"></span>
-                    <span th:if="${member.authority} == 1" th:text="${member.nickname} + '님이 등록하신 후원내역은 총 0 건입니다.'"></span>
-                    <span th:if="${member.authority} == 0" th:text="'애니버스에 등록된 후원내역은 총 0 건입니다.'"></span>
+                    <span th:if="${member.authority eq 1}" th:text="${member.nickname} + '님이 등록하신 후원내역은 총 ' + ${donationCount} + ' 건입니다.'"></span>
+                    <span th:if="${member.authority} == 0" th:text="'애니버스에 등록된 후원내역은 총 ' + ${donationCount} + ' 건입니다.'"></span>
                 </div>
                 <!-- 일반 회원일때 리스트 항목 -->
                 <div class="donation-box-title card-body" th:if="${member.authority} == 2">
@@ -76,26 +76,24 @@
                     </ul>
                 </div>
                 <!-- 최고 관리자일때 리스트 내용 -->
-                <div class="donation-box-detail card-body" th:if="${member.authority} == 0">
+                <div class="donation-box-detail card-body" th:if="${member.authority eq 0}">
                     <ul class="list-group list-group-flush">
-                        <!-- th:each로 반복문 돌려야됨  -->
-                        <li class="list-group-item flex items-center">
-                            <span class="number w-[10%]">1</span>
-                            <span class="date w-[30%]">2024-07-20</span>
-                            <span class="content w-[30%]">user1</span>
-                            <span class="totalAmount w-[30%]">60,000원</span>
+                        <li class="list-group-item flex items-center" th:each="donation, iterStat : ${donationRecords}">
+                            <span class="number w-[10%]" th:text="${iterStat.count}"></span>
+                            <span class="date w-[30%]" th:if="${donation.createDate != null}" th:text="${#temporals.format(donation.createDate, 'yyyy-MM-dd')}"></span>
+                            <span class="content w-[30%]" th:text="${donation.donor.nickname}"></span>
+                            <span class="totalAmount w-[30%]" th:text="${donation.amount} + ' 원'"></span>
                         </li>
                     </ul>
                 </div>
                 <!-- 중간 관리자일때 리스트 내용 -->
-                <div class="donation-box-detail card-body" th:if="${member.authority} == 1">
+                <div class="donation-box-detail card-body" th:if="${member.authority eq 1}">
                     <ul class="list-group list-group-flush">
-                        <!-- th:each로 반복문 돌려야됨  -->
-                        <li class="list-group-item flex items-center">
-                            <span class="number w-[10%]">1</span>
-                            <span class="date w-[30%]">2024-07-20</span>
-                            <span class="content w-[30%]">우리 아이들을 도와주세요</span>
-                            <span class="totalAmount w-[30%]">60,000원</span>
+                        <li class="list-group-item flex items-center" th:each="donation, iterStat : ${donationRecords}">
+                            <span class="number w-[10%]" th:text="${iterStat.count}"></span>
+                            <span class="date w-[30%]" th:if="${donation.createDate != null}" th:text="${#temporals.format(donation.createDate, 'yyyy-MM-dd')}"></span>
+                            <span class="content w-[30%]" th:text="${donation.donor.nickname}"></span>
+                            <span class="totalAmount w-[30%]" th:text="${donation.amount} + ' 원'"></span>
                         </li>
                     </ul>
                 </div>

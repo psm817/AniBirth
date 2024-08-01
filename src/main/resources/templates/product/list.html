@@ -21,7 +21,7 @@
             </li>
         </ul>
 
-        <div th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or ${member.authority} == 1)" class="mt-7 text-right">
+        <div th:if="${member != null and (member.authority == 0 or member.authority == 1)}" class="mt-7 text-right">
             <a th:href="@{/product/create}" class="button">등록하기</a>
         </div>
 

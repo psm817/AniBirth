@@ -1,6 +1,7 @@
 package com.cod.AniBirth.product.service;
 
 
+import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.product.entity.Product;
 import com.cod.AniBirth.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,10 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -35,13 +33,10 @@ public class ProductService {
         return productRepository.findAllByKeyword(kw, pageable);
     }
 
-    public void create(String title, String description, int price, MultipartFile thumbnail) {
+    public void create(String title, String description, int price, MultipartFile thumbnail, Member member) {
         String thumbnailRelPath = "product/" + UUID.randomUUID().toString() + ".jpg";
         File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
 
-//        thumbnailFile.mkdir();
-
-        // 부모 디렉토리 생성
         File parentDir = thumbnailFile.getParentFile();
         if (!parentDir.exists()) {
             parentDir.mkdirs();
@@ -49,17 +44,18 @@ public class ProductService {
 
         try {
             thumbnail.transferTo(thumbnailFile);
-        } catch ( IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        Product p = Product.builder()
-            .title(title)
-            .description(description)
-            .price(price)
-            .thumbnailImg(thumbnailRelPath)
-            .build();
-        productRepository.save(p);
+        Product product = Product.builder()
+                .title(title)
+                .description(description)
+                .price(price)
+                .thumbnailImg(thumbnailRelPath)
+                .member(member)
+                .build();
+        productRepository.save(product);
     }
 
     public void create(String title, String description, int price) {
@@ -82,7 +78,34 @@ public class ProductService {
         }
     }
 
-    public List<Product> getList() {
-        return productRepository.findAll();
+    public void modify(Long id, String title, String description, int price, MultipartFile thumbnail) {
+        Product product = getProduct(id);
+        product.setTitle(title);
+        product.setDescription(description);
+        product.setPrice(price);
+
+        if (thumbnail != null && !thumbnail.isEmpty()) {
+            String thumbnailRelPath = "product/" + UUID.randomUUID().toString() + ".jpg";
+            File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
+
+            File parentDir = thumbnailFile.getParentFile();
+            if (!parentDir.exists()) {
+                parentDir.mkdirs();
+            }
+
+            try {
+                thumbnail.transferTo(thumbnailFile);
+                product.setThumbnailImg(thumbnailRelPath);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        productRepository.save(product);
     }
+    public void delete(Long id) {
+        Product product = getProduct(id);
+        productRepository.delete(product);
+    }
+
 }

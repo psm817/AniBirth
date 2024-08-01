@@ -5,20 +5,15 @@ import com.cod.AniBirth.cart.entity.CartItem;
 import com.cod.AniBirth.member.entity.Member;
 
 import com.cod.AniBirth.review.entity.Review;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import jakarta.persistence.*;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
 @Entity
 @Getter
+@Setter
 @ToString
 @SuperBuilder
 @AllArgsConstructor
@@ -33,6 +28,7 @@ public class Product extends BaseEntity {
     private String thumbnailImg;
 
     @ManyToOne
+    @JoinColumn(name = "member_id")
     private Member member;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)

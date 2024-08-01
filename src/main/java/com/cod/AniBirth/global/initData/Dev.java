@@ -93,6 +93,7 @@ public class Dev {
             LocalDateTime end11 = LocalDateTime.parse(volunteer11.getEndDate(), formatter);
 
 
+
             calendarService.create(volunteer1.getTitle(), start1, end1, volunteer1);
             calendarService.create(volunteer2.getTitle(), start2, end2, volunteer2);
             calendarService.create(volunteer3.getTitle(), start3, end3, volunteer3);
@@ -115,6 +116,12 @@ public class Dev {
             volunteerReviewService.create("제목6", "내용6", 0, member10, "/images/volunteer/volunteer_default.jpg", null);
             volunteerReviewService.create("제목6", "내용6", 0, member10, "/images/volunteer/volunteer_default.jpg", null);
             volunteerReviewService.create("제목6", "내용6", 0, member10, "/images/volunteer/volunteer_default.jpg", null);
+
+
+            productService.create("타이틀1","1 설명입니다",10000);
+            productService.create("타이틀2","2 설명입니다",20000);
+            productService.create("타이틀3","3 설명입니다",30000);
+            productService.create("타이틀4","4 설명입니다",40000);
         };
     }
 }

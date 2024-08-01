@@ -4,6 +4,7 @@ import com.cod.AniBirth.account.entity.Account;
 import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.base.entity.BaseEntity;
 import com.cod.AniBirth.donation.entity.Donation;
+import com.cod.AniBirth.product.entity.Product;
 import com.cod.AniBirth.volunteer.entity.Volunteer;
 import com.cod.AniBirth.volunteer.entity.VolunteerApplication;
 import com.cod.AniBirth.volunteer.entity.VolunteerReview;
@@ -70,6 +71,9 @@ public class Member extends BaseEntity {
 
     @ManyToMany
     private List<Volunteer> appliedVolunteers; // 회원이 신청한 봉사 리스트
+
+    @OneToMany(mappedBy = "member")
+    private List<Product> products;
 
 
 
