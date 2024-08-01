@@ -105,3 +105,57 @@
     font-size: 18px;
 }
 
+/* 반응형 시작 */
+@media(max-width: 394px) {
+    .review-detail {
+        padding-top: 10px;
+    }
+
+    .review-detail > .top-box > .detail-box {
+        height: 210px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .review-detail > .top-box > .detail-box > span {
+        height: 70px;
+        font-size: 20px;
+        line-height: 70px;
+    }
+
+    .review-detail > .top-box > .detail-box > .flex-box {
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .review-detail > .top-box > .detail-box > .flex-box > .description-box {
+        flex-direction: column;
+        align-items: start;
+        width: 100%;
+        height: 110px;
+    }
+
+    .review-detail > .top-box > .detail-box > .flex-box > .description-box > .bar {
+        display: none;
+    }
+
+    .review-detail > .top-box > .detail-box > .flex-box > .btn-box {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        width: 100%;
+    }
+
+    .review-detail > .top-box > .content-box {
+        padding-left: 10px;
+        padding-right: 10px;
+        height: 100%;
+        width: 100%;
+    }
+
+    .review-detail > .top-box > .content-box > .subImg-box {
+        width: 100%;
+        height: 300px;
+        margin-top: 20px;
+    }
+}
