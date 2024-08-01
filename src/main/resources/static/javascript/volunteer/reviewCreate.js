@@ -52,10 +52,3 @@ function addImageInput() {
         alert('첨부 이미지는 최대 3개까지 첨부할 수 있습니다.');
     }
 }
-
-window.onload = function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('createSuccess')) {
-        alert('봉사후기가 등록되었습니다.');
-    }
-};

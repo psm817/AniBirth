@@ -56,4 +56,18 @@ public class VolunteerReviewService {
 
         volunteerReviewRepository.save(volunteerReview);
     }
+
+    public void modify(VolunteerReview volunteerReview, Member member, String title, String body, String imageFileName, List<String> subImageNames) {
+        volunteerReview.setWriter(member);
+        volunteerReview.setTitle(title);
+        volunteerReview.setBody(body);
+        volunteerReview.setThumbnailImg(imageFileName);
+        volunteerReview.setSubImages(subImageNames);
+
+        volunteerReviewRepository.save(volunteerReview);
+    }
+
+    public void delete(VolunteerReview volunteerReview) {
+        volunteerReviewRepository.delete(volunteerReview);
+    }
 }

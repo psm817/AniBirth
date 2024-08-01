@@ -41,14 +41,14 @@ ul, li, a {
 
 /* 헤더 시작 */
 header > .menu-bar {
-    height: 130px;
+    height: 100px;
     display: flex;
     width: 100%;
 }
 
 header > .menu-bar > .logo-box {
-    flex-grow: 1;
-    flex-basis: 0;
+    width: 10%;
+    margin-left: 20px;
 }
 
 header > .menu-bar > .logo-box > a {
@@ -59,17 +59,17 @@ header > .menu-bar > .logo-box > a {
 }
 
 header > .menu-bar > .logo-box > a > img {
-    width: 200px;
+    width: 100%;
     height: 100%;
 }
 
 header > .menu-bar > .menu-box {
-    flex-grow: 3;
-    flex-basis: 0;
+    width: 90%;
+    margin-left: 100px;
 }
 
 header > .menu-bar > .menu-box > ul {
-    width: 90%;
+    width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -84,7 +84,7 @@ header > .menu-bar > .menu-box > ul > li {
 header > .menu-bar > .menu-box > ul > li > a > span {
     color: #323232;
     font-weight: 800 !important;
-    font-size: 22px;
+    font-size: 20px;
 }
 
 header > .menu-bar > .menu-box > ul > li > a > span:hover {
@@ -99,6 +99,11 @@ header > .menu-bar > .menu-box > ul > li > a > span:hover {
         width: 100%;
     }
 
+    header > .menu-bar > .logo-box {
+        width: 100%;
+        margin-left: 0px;
+    }
+
     header > .menu-bar > .logo-box > a {
         width: 100%;
         height: 100%;
@@ -109,6 +114,11 @@ header > .menu-bar > .menu-box > ul > li > a > span:hover {
     header > .menu-bar > .logo-box > a > img {
         width: 150px;
         height: 100%;
+    }
+
+    header > .menu-bar > .menu-box {
+        width: 100%;
+        margin-left: 0px;
     }
 
     header > .menu-bar > .menu-box > ul {

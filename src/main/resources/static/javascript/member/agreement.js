@@ -8,10 +8,4 @@ document.addEventListener('DOMContentLoaded', function () {
             submitBtn.disabled = checkedCheckboxes.length !== checkboxes.length;
         });
     });
-
-    // URL 검사 및 리디렉션
-    var currentPage = window.location.href;
-    if (currentPage.indexOf('signup2.html') !== -1) {
-        window.location.href = 'signup.html';
-    }
 });
