@@ -20,6 +20,8 @@ import java.util.List;
 @SuperBuilder
 public class VolunteerReview extends BaseEntity {
     private String title;
+
+    @Column(columnDefinition = "TEXT")
     private String body;
 
     private int hit;            // 조회수
