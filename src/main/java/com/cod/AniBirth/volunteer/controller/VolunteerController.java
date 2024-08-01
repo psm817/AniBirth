@@ -294,4 +294,23 @@ public class VolunteerController {
 
         return "redirect:/volunteer/review?createSuccess=true";
     }
+
+    // 후기 디테일
+    @GetMapping("/review/detail/{id}")
+    public String reviewDetail(@PathVariable("id") Long id, Model model, Authentication authentication) {
+        VolunteerReview volunteerReview = volunteerReviewService.getReviewById(id);
+
+        Member member = null;
+
+        if(authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
+
+        volunteerReviewService.hit(volunteerReview);
+
+        model.addAttribute("volunteerReview", volunteerReview);
+        model.addAttribute("member", member);
+
+        return "volunteer/reviewDetail";
+    }
 }

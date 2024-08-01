@@ -3,6 +3,7 @@ package com.cod.AniBirth.volunteer.entity;
 import com.cod.AniBirth.base.entity.BaseEntity;
 import com.cod.AniBirth.calendar.entity.Calendar;
 import com.cod.AniBirth.member.entity.Member;
+import com.cod.global.util.HtmlUtils;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -40,4 +41,8 @@ public class Volunteer extends BaseEntity {
     @OneToOne(mappedBy = "volunteer", cascade = CascadeType.REMOVE)
     @LazyCollection(LazyCollectionOption.EXTRA)
     private Calendar calendar;
+
+    public String getFormattedBody() {
+        return HtmlUtils.convertLineBreaksToHtml(content);
+    }
 }
