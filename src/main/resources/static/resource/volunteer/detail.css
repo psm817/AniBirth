@@ -52,11 +52,21 @@
 /* 봉사명 */
 .volunteer-detail > .top-box > .detail-box > li:nth-child(1)  {
     border-bottom: transparent;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 
 .volunteer-detail > .top-box > .detail-box > li:nth-child(1) > span {
     font-size: 22px;
-    width: 100%;
+    flex-grow: 5;
+    flex-basis: 0;
+}
+
+.volunteer-detail > .top-box > .detail-box > li:nth-child(1) > a {
+    flex-grow: 1;
+    flex-basis: 0;
+    background-color: transparent;
 }
 
 /* 봉사 디테일 항목 내용 */
@@ -341,7 +351,7 @@
     }
 
     .volunteer-detail > .bottom-box > .content-box {
-        height: 800px !important;
+        height: 100% !important;
         margin: 10px 5px 20px 10px;
         overflow-y: auto;
     }

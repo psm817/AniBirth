@@ -1,5 +1,6 @@
 package com.cod.AniBirth.volunteer.service;
 
+import com.cod.AniBirth.global.security.DataNotFoundException;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.volunteer.entity.VolunteerReview;
 import com.cod.AniBirth.volunteer.repository.VolunteerReviewRepository;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -37,5 +39,21 @@ public class VolunteerReviewService {
         Pageable pageable = PageRequest.of(page, 6, Sort.by(sorts));
 
         return volunteerReviewRepository.findAll(pageable);
+    }
+
+    public VolunteerReview getReviewById(Long id) {
+        Optional<VolunteerReview> ovr = volunteerReviewRepository.findById(id);
+
+        if(ovr.isPresent()) {
+            return ovr.get();
+        } else {
+            throw new DataNotFoundException("review not found");
+        }
+    }
+
+    public void hit(VolunteerReview volunteerReview) {
+        volunteerReview.setHit(volunteerReview.getHit() + 1);
+
+        volunteerReviewRepository.save(volunteerReview);
     }
 }

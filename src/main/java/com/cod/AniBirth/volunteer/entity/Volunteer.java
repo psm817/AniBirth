@@ -3,6 +3,7 @@ package com.cod.AniBirth.volunteer.entity;
 import com.cod.AniBirth.base.entity.BaseEntity;
 import com.cod.AniBirth.calendar.entity.Calendar;
 import com.cod.AniBirth.member.entity.Member;
+import com.cod.global.util.HtmlUtils;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,7 +27,10 @@ public class Volunteer extends BaseEntity {
     private String deadLineDate;     // 신청마감날짜
     private String location;                // 봉사 장소
     private String title;                   // 봉사명
+
+    @Column(columnDefinition = "TEXT")
     private String content;                 // 봉사내용
+
     private String thumbnailImg;            // 봉사사진
     private int limit;                      // 봉사최대인원 수
     private int applicant;                 // 신청인원수
@@ -40,4 +44,8 @@ public class Volunteer extends BaseEntity {
     @OneToOne(mappedBy = "volunteer", cascade = CascadeType.REMOVE)
     @LazyCollection(LazyCollectionOption.EXTRA)
     private Calendar calendar;
+
+    public String getFormattedBody() {
+        return HtmlUtils.convertLineBreaksToHtml(content);
+    }
 }
