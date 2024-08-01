@@ -22,6 +22,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Configuration
+@Profile({"dev", "prod"})
 public class Dev {
     @Bean
     public ApplicationRunner init(MemberService memberService, AccountService accountService,

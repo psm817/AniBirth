@@ -27,7 +27,10 @@ public class Volunteer extends BaseEntity {
     private String deadLineDate;     // 신청마감날짜
     private String location;                // 봉사 장소
     private String title;                   // 봉사명
+
+    @Column(columnDefinition = "TEXT")
     private String content;                 // 봉사내용
+
     private String thumbnailImg;            // 봉사사진
     private int limit;                      // 봉사최대인원 수
     private int applicant;                 // 신청인원수
