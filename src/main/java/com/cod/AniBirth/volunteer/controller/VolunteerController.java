@@ -292,7 +292,7 @@ public class VolunteerController {
 
         volunteerReviewService.create(title, body, 0, member, imageFileName, subImageNames);
 
-        return "redirect:/volunteer/review?createSuccess=true";
+        return "redirect:/volunteer/review?reviewCreateSuccess=true";
     }
 
     // 후기 디테일
@@ -312,5 +312,53 @@ public class VolunteerController {
         model.addAttribute("member", member);
 
         return "volunteer/reviewDetail";
+    }
+
+    // 후기 수정
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/review/modify/{id}")
+    public String reviewModify(@PathVariable("id") Long id, Model model) {
+        VolunteerReview volunteerReview = volunteerReviewService.getReviewById(id);
+
+        model.addAttribute("volunteerReview", volunteerReview);
+
+        return "volunteer/reviewModify";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/review/modify/{id}")
+    public String reviewModify(@PathVariable("id") Long id, Principal principal, @RequestParam("title") String title,
+                               @RequestParam("body") String body, @RequestParam("thumbnailImg") MultipartFile thumbnailImg,
+                               @RequestParam(value = "subImg", required = false) List<MultipartFile> subImgs) {
+        Member member = memberService.getMemberByUsername(principal.getName());
+
+        VolunteerReview volunteerReview = volunteerReviewService.getReviewById(id);
+
+        String imageFileName = storeProfilePicture_v(thumbnailImg);
+
+        List<String> subImageNames = new ArrayList<>();
+        if (subImgs != null) {
+            for (MultipartFile subImg : subImgs) {
+                if (!subImg.isEmpty()) {
+                    String subImageName = storeProfilePicture_v(subImg);
+                    subImageNames.add(subImageName);
+                }
+            }
+        }
+
+        volunteerReviewService.modify(volunteerReview, member, title, body, imageFileName, subImageNames);
+
+        return "redirect:/volunteer/review/detail/%d?reviewModifySuccess=true".formatted(id);
+    }
+
+    // 후기 삭제
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/review/delete/{id}")
+    public String deleteReview(@PathVariable("id") Long id) {
+        VolunteerReview volunteerReview = volunteerReviewService.getReviewById(id);
+
+        volunteerReviewService.delete(volunteerReview);
+
+        return "redirect:/volunteer/review?reviewDeleteSuccess=true";
     }
 }

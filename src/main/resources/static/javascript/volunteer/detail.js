@@ -80,4 +80,20 @@ window.onload = function() {
     if (urlParams.has('modifySuccess')) {
         alert('봉사활동이 수정되었습니다.');
     }
+
+    if (urlParams.has('reviewCreateSuccess')) {
+        alert('봉사후기가 등록되었습니다.');
+    }
+
+    if (urlParams.has('reviewModifySuccess')) {
+        alert('봉사후기가 수정되었습니다.');
+    }
+
+    if (urlParams.has('createVolunteerSuccess')) {
+        alert('봉사활동이 등록되었습니다.');
+    }
+
+    if (urlParams.has('reviewDeleteSuccess')) {
+        alert('봉사후기가 삭제되었습니다.');
+    }
 };
