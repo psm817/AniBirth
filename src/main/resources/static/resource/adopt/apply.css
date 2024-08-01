@@ -18,7 +18,7 @@ html > body .apply-container-box {
 
 html > body .container-box > .apply-total {
   width: 100%;
-  height: 360px;
+  height: 380px;
   margin-bottom: 20px;
 }
 
@@ -117,3 +117,40 @@ html > body .apply-container-box .container .personal-data-input {
 .personal-data-input > form > .input-box.adress3 > #sample6_detailAddress {
     margin-left: 160px;
 }
+
+.personal-data-input > form > .privacy,
+.personal-data-input > form > .adopt-agreement {
+    width: 800px;
+    text-align: left;
+}
+.personal-data-input > form > .privacy > span,
+.personal-data-input > form > .adopt-agreement > span {
+    font-size: 18px;
+}
+
+.personal-data-input > form > .privacy > .privacy-raw {
+    background-color: #f2f6fc;
+    height: 92px;
+    display: flex;
+    align-items: center;
+}
+
+
+.personal-data-input > form > .adopt-agreement > .adopt-agreement-raw {
+    background-color: #f2f6fc;
+    height: 800px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.personal-data-input > form > .adopt-agreement > .adopt-agreement-raw > ul > li> label {
+    flex-direction: row;
+    justify-content: flex-start;
+    display: flex;
+}
+
+.personal-data-input > form > .adopt-agreement > .adopt-agreement-raw > ul> li> label > input {
+    margin-right: 5px;
+}
+
