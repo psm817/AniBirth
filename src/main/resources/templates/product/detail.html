@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout/layout}">
-<head>
-
-</head>
-<body>
 <section layout:fragment="content" class="section-prod-list">
-    <div class="container-box">
-        <div class="img-container">
+    <style>
+        /* Add the CSS code for the rating stars here */
+        .rating:not(:checked) > input {
+            position: absolute;
+            appearance: none;
+        }
+
+        .rating:not(:checked) > label {
+            float: right;
+            cursor: pointer;
+            font-size: 30px;
+            color: #666;
+        }
+
+        .rating:not(:checked) > label:before {
+            content: '★';
+        }
+
+        .rating > input:checked + label:hover,
+        .rating > input:checked + label:hover ~ label,
+        .rating > input:checked ~ label:hover,
+        .rating > input:checked ~ label:hover ~ label,
+        .rating > label:hover ~ input:checked ~ label {
+            color: #e58e09;
+        }
+
+        .rating:not(:checked) > label:hover,
+        .rating:not(:checked) > label:hover ~ label {
+            color: #ff9e0b;
+        }
+
+        .rating > input:checked ~ label {
+            color: #ffa723;
+        }
+    </style>
+    <div class="col-md-8 container-box" style="display: flex; flex-wrap: nowrap;">
+        <div class="col-md-4 img-container">
             <img class="product-img" th:src="@{|/gen/${product.thumbnailImg}|}" alt="이미지가 존재하지 않습니다.">
         </div>
         <div class="card">
@@ -34,6 +65,21 @@
                         <span th:text="${#numbers.formatInteger(product.price, 3, 'COMMA') + '원'}"></span>
                     </li>
                 </ul>
+                <div sec:authorize="isAuthenticated()">
+                    <a th:href="@{|/product/modify/${product.id}|}"
+                       th:if="${product.member != null and #authentication != null and (product.member.username == #authentication.getName() or member.authority == 0)}">
+                        수정
+                    </a>
+                    <a th:href="@{|/product/delete/${product.id}|}"
+                       onclick="return confirm('정말 삭제하시겠습니까?')"
+                       th:if="${product.member != null and #authentication != null and (product.member.username == #authentication.getName() or member.authority == 0)}">
+                        삭제
+                    </a>
+                </div>
+
+
+
+
             </div>
         </div>
 
@@ -43,12 +89,14 @@
             </div>
 
             <div class="card-body">
-                <form id="add-to-cart-form" th:action="@{|/cart/add/${product.id}|}" method="POST">
-                    <input type="button" onclick="addToCartAndConfirm()" value="장바구니" class="btn btn-outline-dark">
+                <form th:action="@{|/cart/add/${product.id}|}" method="POST">
+                    <input type="submit" value="장바구니" class="btn btn-outline-dark">
                 </form>
             </div>
         </div>
+    </div>
 
+    <div class="col-md-8 container-box">
         <div class="card">
             <li class="list-group-item">
                 <span>상품설명:</span>
@@ -67,13 +115,18 @@
                         </div>
                         <div class="mb-3">
                             <label for="starRating" class="form-label">별점</label>
-                            <select name="starRating" id="starRating" class="form-select">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
+                            <div class="rating">
+                                <input value="5" name="starRating" id="star5" type="radio">
+                                <label title="5 stars" for="star5"></label>
+                                <input value="4" name="starRating" id="star4" type="radio">
+                                <label title="4 stars" for="star4"></label>
+                                <input value="3" name="starRating" id="star3" type="radio">
+                                <label title="3 stars" for="star3"></label>
+                                <input value="2" name="starRating" id="star2" type="radio">
+                                <label title="2 stars" for="star2"></label>
+                                <input value="1" name="starRating" id="star1" type="radio">
+                                <label title="1 star" for="star1"></label>
+                            </div>
                         </div>
                         <input type="submit" value="등록하기" class="btn btn-dark">
                     </div>
@@ -86,7 +139,7 @@
 
         <div class="card">
             <div class="card-header">
-                리뷰 리스트
+                리뷰
             </div>
 
             <ul th:if="${#lists.size(product.reviewList) > 0}" class="list-group list-group-flush gap-2 card-body">
@@ -119,8 +172,6 @@
                 </div>
             </ul>
         </div>
-
     </div>
 </section>
-</body>
 </html>

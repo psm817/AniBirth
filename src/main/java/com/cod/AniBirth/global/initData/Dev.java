@@ -93,6 +93,7 @@ public class Dev {
             LocalDateTime end11 = LocalDateTime.parse(volunteer11.getEndDate(), formatter);
 
 
+
             calendarService.create(volunteer1.getTitle(), start1, end1, volunteer1);
             calendarService.create(volunteer2.getTitle(), start2, end2, volunteer2);
             calendarService.create(volunteer3.getTitle(), start3, end3, volunteer3);
@@ -115,6 +116,23 @@ public class Dev {
             volunteerReviewService.create("제목6", "내용6", 0, member10, "/images/volunteer/volunteer_default.jpg", null);
             volunteerReviewService.create("제목6", "내용6", 0, member10, "/images/volunteer/volunteer_default.jpg", null);
             volunteerReviewService.create("제목6", "내용6", 0, member10, "/images/volunteer/volunteer_default.jpg", null);
+
+            calendarService.create(volunteer1.getTitle(), start1, end1);
+            calendarService.create(volunteer2.getTitle(), start2, end2);
+            calendarService.create(volunteer3.getTitle(), start3, end3);
+            calendarService.create(volunteer4.getTitle(), start4, end4);
+            calendarService.create(volunteer5.getTitle(), start5, end5);
+            calendarService.create(volunteer6.getTitle(), start6, end6);
+            calendarService.create(volunteer7.getTitle(), start7, end7);
+            calendarService.create(volunteer8.getTitle(), start8, end8);
+            calendarService.create(volunteer9.getTitle(), start9, end9);
+            calendarService.create(volunteer10.getTitle(), start10, end10);
+            calendarService.create(volunteer11.getTitle(), start11, end11);
+
+            productService.create("타이틀1","1 설명입니다",10000);
+            productService.create("타이틀2","2 설명입니다",20000);
+            productService.create("타이틀3","3 설명입니다",30000);
+            productService.create("타이틀4","4 설명입니다",40000);
         };
     }
 }
