@@ -33,7 +33,7 @@ public class VolunteerService {
                 .deadLineDate(deadLineDate)
                 .thumbnailImg(thumbnailImg)
                 .limit(limit)
-                .register(member)
+                .member(member)
                 .applicant(applicant)
                 .build();
 
@@ -46,6 +46,10 @@ public class VolunteerService {
         Pageable pageable = PageRequest.of(page, 4, Sort.by(sorts));
 
         return volunteerRepository.findAll(pageable);
+    }
+
+    public List<Volunteer> getAllVolunteer() {
+        return volunteerRepository.findAll();
     }
 
     public Volunteer getVolunteerById(Long id) {
@@ -68,7 +72,7 @@ public class VolunteerService {
         volunteer.setDeadLineDate(deadLineDate);
         volunteer.setThumbnailImg(imageFileName);
         volunteer.setLimit(limit);
-        volunteer.setRegister(member);
+        volunteer.setMember(member);
         volunteer.setApplicant(size);
         volunteer.setModifyDate(LocalDateTime.now());
 
@@ -77,5 +81,9 @@ public class VolunteerService {
 
     public void delete(Volunteer volunteer) {
         volunteerRepository.delete(volunteer);
+    }
+
+    public List<Volunteer> getVolunteerByMember(Member member) {
+        return volunteerRepository.findByMember(member);
     }
 }

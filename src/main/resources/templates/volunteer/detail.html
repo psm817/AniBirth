@@ -13,7 +13,7 @@
                 </li>
                 <li class="list-group-item">
                     <span>주최 보호소</span>
-                    <span th:text="${volunteer.register.nickname}"></span>
+                    <span th:text="${volunteer.member.nickname}"></span>
                 </li>
                 <li class="list-group-item">
                     <span>봉사 기간</span>
@@ -26,7 +26,7 @@
                 <li class="list-group-item applicant-box">
                     <span>신청 인원</span>
                     <span th:text="${#lists.size(ApplicationList)} + ' 명'"></span>
-                    <button th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or (${member.authority} == 1 and ${member.username} == ${volunteer.register.username}))" type="button" class="btn btn-primary" id="show-applicants-btn">신청인원보기</button>
+                    <button th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or (${member.authority} == 1 and ${member.username} == ${volunteer.member.username}))" type="button" class="btn btn-primary" id="show-applicants-btn">신청인원보기</button>
                 </li>
                 <li class="list-group-item">
                     <span>모집 인원</span>
@@ -44,7 +44,7 @@
                     <span th:if="${isDeadlinePassed}">신청마감</span>
                 </li>
                 <!-- 관리자, 중간관리자일 때 수정, 삭제  -->
-                <li class="list-group-item modify-btn" th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or (${member.authority} == 1 and ${member.username} == ${volunteer.register.username}))">
+                <li class="list-group-item modify-btn" th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or (${member.authority} == 1 and ${member.username} == ${volunteer.member.username}))">
                     <a class="btn btn-primary" th:href="@{|/volunteer/modify/${volunteer.id}|}" onclick="return volunteerModify();">수정</a>
                     <a class="btn btn-primary" th:href="@{|/volunteer/delete/${volunteer.id}|}" onclick="return volunteerDelete();">삭제</a>
                 </li>

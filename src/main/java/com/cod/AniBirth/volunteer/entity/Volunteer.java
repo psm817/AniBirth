@@ -34,7 +34,7 @@ public class Volunteer extends BaseEntity {
     private int applicant;                 // 신청인원수
 
     @ManyToOne
-    private Member register;                // 봉사를 등록한 보호소(회원)
+    private Member member;                // 봉사를 등록한 보호소(회원)
 
     @OneToMany(mappedBy = "volunteer", cascade = CascadeType.REMOVE)
     private List<VolunteerApplication> volunteerApplications;
