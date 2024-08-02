@@ -1,80 +1,152 @@
-.section-prod-list {
+.prod-product-card-body{
+    margin: 50px;
+}
+.prod-navbar-brand span {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff416c;
+}
+.prod-navbar-nav .prod-nav-link {
+    font-size: 18px;
+    margin-right: 20px;
+    color: #343a40;
+}
+.prod-navbar-nav .prod-nav-link:hover {
+    color: #ff416c;
+}
+.prod-product-container-box, .prod-container-box {
+    background-color: white;
+    padding: 20px;
+    width: 80%;
+    margin: 0 auto;
+
+}
+.prod-product-card {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+
+}
+.prod-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.prod-product-img {
+    width: 400px;
+    border-radius: 10px;
+    padding: 0;
+    margin: 25px;
+    margin-right: 200px;
+}
+.prod-product-card-header {
+    flex: 1 1 55%;
+    font-weight: bold;
+    background-color: #ff416c;
+    color: black;
+    padding: 15px;
+    border-radius: 2px 2px 0 0;
+    margin-bottom: 20px;
+}
+.prod-list-group-item {
+    display: flex;
+    justify-content:left;
+    padding: 10px 15px;
+    border: none;
+    border-bottom: 1px solid #f0f0f0;
+}
+.prod-list-group-item:last-child {
+    border-bottom: none;
+}
+.prod-btn-outline-dark {
+    width: 100%;
+    margin-top: 20px;
+    border: 1px solid #ff416c;
+    color: #ff416c;
+}
+.prod-btn-outline-dark:hover {
+    background-color: #ff416c;
+    color: white;
+}
+.prod-rating input {
+    display: none;
+}
+.prod-rating label {
+    float: right;
+    font-size: 30px;
+    color: #ccc;
+    cursor: pointer;
+}
+.prod-rating label:before {
+    content: '★';
+}
+.prod-rating input:checked ~ label {
+    color: #ff9e0b;
+}
+.prod-rating label:hover,
+.prod-rating label:hover ~ label {
+    color: #ff9e0b;
+}
+.prod-card-header {
+    background-color: #ff416c;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 2px 2px 0 0;
+}
+.prod-card-body {
     padding: 20px;
 }
-.product-container-box {
-    display: flex;
-    width: 800px;
-    margin: 0 auto;
-    justify-content: center;
-}
-.product-card, .cart-add-card {
-    display: flex;
-}
-.product-card-header, .product-card-header{
-    width: 800px;
-    font-weight: bold;
-    background-color: rgb(255 65 108);
-    color: white;
-    padding: 10px;
-    border-radius: 10px;
-    align-items: center;
-
-}
-.btn-outline-dark {
+.prod-form-control {
+    border-radius: 5px;
+    border: 1px solid black;
     width: 100%;
-    margin-top: 10px;
 }
-.list-group-item span {
-    display: inline-block;
-    min-width: 80px;
+.prod-btn-dark {
+    background-color: #ff416c;
+    border: none;
+    border-radius: 5px;
+    width: 70px;
 }
-.img-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+.prod-btn-dark:hover {
+    background-color: #ff5779;
 }
-
-.product-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.prod-hero_area {
+    padding: 0;
 }
-
-
-
 /* 별점 css 시작 */
-.rating:not(:checked) > input {
+.prod-rating:not(:checked) > input {
     position: absolute;
     appearance: none;
 }
-
-.rating:not(:checked) > label {
+.prod-rating:not(:checked) > label {
     float: right;
     cursor: pointer;
     font-size: 30px;
     color: #666;
 }
-
-.rating:not(:checked) > label:before {
+.prod-rating:not(:checked) > label:before {
     content: '★';
 }
-
-.rating > input:checked + label:hover,
-.rating > input:checked + label:hover ~ label,
-.rating > input:checked ~ label:hover,
-.rating > input:checked ~ label:hover ~ label,
-.rating > label:hover ~ input:checked ~ label {
+.prod-rating > input:checked + label:hover,
+.prod-rating > input:checked + label:hover ~ label,
+.prod-rating > input:checked ~ label:hover,
+.prod-rating > input:checked ~ label:hover ~ label,
+.prod-rating > label:hover ~ input:checked ~ label {
     color: #e58e09;
 }
-
-.rating:not(:checked) > label:hover,
-.rating:not(:checked) > label:hover ~ label {
+.prod-rating:not(:checked) > label:hover,
+.prod-rating:not(:checked) > label:hover ~ label {
     color: #ff9e0b;
 }
-
-.rating > input:checked ~ label {
+.prod-rating > input:checked ~ label {
     color: #ffa723;
 }
 /* 별점 css 끝 */
+
+
+.prod-header_section {
+  background-color: #f9ece6;
+  padding: 10px 0;
+  border-radius: 15px 15px 0 0;
+}
