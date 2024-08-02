@@ -49,6 +49,26 @@ public class AdoptController {
 
         model.addAttribute("paging", paging);
         model.addAttribute("kw", kw);
+                       AnimalSearchDTO searchDTO
+//                       @RequestParam(value = "classification", required = false) Long classificationId,
+//                       @RequestParam(value = "gender", required = false) Long genderId,
+//                       @RequestParam(value = "weight", required = false) String weight,
+//                       @RequestParam(value = "age", required = false) String age
+    ) {
+
+//        Page<Animal> paging = animalService.getList(page, kw);
+        Page<Animal> paging = animalService.getList(page, searchDTO);
+
+
+
+//        List<Category> classifications = categoryService.getClassificationCategories();
+//        List<Category> ages = categoryService.getAgeCategories();
+//        List<Category> weights = categoryService.getWeightCategories();
+//        List<Category> genders = categoryService.getGenderCategories();
+
+
+        model.addAttribute("paging", paging);
+        model.addAttribute("kw", searchDTO.getKeyword());
         model.addAttribute("searchDTO", searchDTO);
         model.addAttribute("classifications", categoryService.getClassifications());
         model.addAttribute("genders", categoryService.getGenders());
