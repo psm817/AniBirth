@@ -85,8 +85,10 @@
               </div>
             </div>
           </div>
-          <input type="text" name="kw" th:value="${searchDTO.keyword}" placeholder="검색어를 입력하세요">
-          <button type="submit">검색</button>
+          <div class="category-search-section">
+            <input type="text" name="kw" th:value="${searchDTO.keyword}" placeholder="검색어를 입력하세요">
+            <button type="submit">검색</button>
+          </div>
         </form>
       </div>
       <ul class="adopt-notice-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px] mt-3">

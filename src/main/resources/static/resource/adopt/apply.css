@@ -144,13 +144,18 @@ html > body .apply-container-box .container .personal-data-input {
     padding: 20px;
 }
 
-.personal-data-input > form > .adopt-agreement > .adopt-agreement-raw > ul > li> label {
+.personal-data-input > form > .adopt-agreement > .adopt-agreement-raw > ul > li> label,
+.personal-data-input > form > .upload-file {
     flex-direction: row;
     justify-content: flex-start;
     display: flex;
+    align-items: center;
 }
 
 .personal-data-input > form > .adopt-agreement > .adopt-agreement-raw > ul> li> label > input {
     margin-right: 5px;
 }
 
+.personal-data-input > form > .upload-file > input {
+    margin-left: 10px;
+}

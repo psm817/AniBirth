@@ -34,4 +34,7 @@ public class AdoptForm {
     private boolean isGender; //성별
     private boolean isMarried; //결혼여부
 
+    @NotNull
+    private MultipartFile file;
+
 }
