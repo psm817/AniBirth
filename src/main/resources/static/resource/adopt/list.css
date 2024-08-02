@@ -50,6 +50,23 @@ html > body .container-box > .adoptlist {
     margin-top: 35px;
 }
 
+html > body .container > .category-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.category-type {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+/*html > body container-box .container.adoptlist .category-box .category-box-line > .category-type {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}*/
+
 html > body .container-box .adoptlist > .adopt-notice-list {
     padding-top: 25px;
 }

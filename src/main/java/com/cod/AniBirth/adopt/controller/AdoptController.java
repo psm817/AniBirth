@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -61,10 +62,10 @@ public class AdoptController {
     }
 
     @PostMapping("/apply")
-    public String submitApplyForm(@Valid AdoptForm adoptForm,@RequestParam("isGender") boolean isGender,@RequestParam("isMarried") boolean isMarried) {
+    public String submitApplyForm(@Valid AdoptForm adoptForm, @RequestParam("isGender") boolean isGender, @RequestParam("isMarried") boolean isMarried, @RequestParam("file")MultipartFile file) {
         adoptService.apply(adoptForm.getName(),adoptForm.getPhone(),adoptForm.getEmail(),adoptForm.getAge(),adoptForm.getCompany(),
                 adoptForm.getPostCode(),adoptForm.getAddress(),adoptForm.getDetailAddress(),adoptForm.getExtraAddress(),
-                isGender,isMarried);
+                isGender,isMarried,adoptForm.getFile());
 
         return "redirect:/adopt/list";
     }

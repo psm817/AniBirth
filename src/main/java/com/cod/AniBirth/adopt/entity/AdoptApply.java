@@ -8,6 +8,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Setter
@@ -29,5 +30,6 @@ public class AdoptApply extends BaseEntity {
 //    private boolean isMarried; //결혼여부
     private String gender; //성별
     private String marriedStatus; //결혼여부
+    private String file;
 
 }

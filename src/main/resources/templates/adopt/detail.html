@@ -11,8 +11,10 @@
       <div class="row-adopt" th:each="animal, loop : ${animal}">
         <div class="adopt img">
           <div class="adopt-img-big">
-            <img class="block " th:src="@{|http://www.daejeon.go.kr/${animal.filePath}|}"
-                 alt="이미지가 존재하지 않습니다.">
+            <a th:href="@{|http://www.daejeon.go.kr/${animal.filePath}|}">
+              <img class="block " th:src="@{|http://www.daejeon.go.kr/${animal.filePath}|}"
+                   alt="이미지가 존재하지 않습니다.">
+            </a>
           </div>
           <div class="adopt-img-small">
           </div>
@@ -110,7 +112,7 @@
             <!-- 입양하기 -->
             <!-- GA 클래스 추가 detail_adopt_application_event -->
             <a href="/adopt/apply" target="_blink">
-              <button class="btn btn-block btn-primary detail_adopt_application_event" type="button">
+              <button class="btn btn-block btn-primary detail_adopt_application_event" type="button" style="margin-top: 5px">
                 입양하기
               </button>
             </a>
