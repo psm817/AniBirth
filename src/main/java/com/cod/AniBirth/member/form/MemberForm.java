@@ -30,6 +30,9 @@ public class MemberForm {
     @NotBlank
     private String address;
 
+    @NotBlank
+    private String detailAddress;
+
     // 이미지 업로드를 위한 필드 추가
     private MultipartFile thumbnailImg;
 

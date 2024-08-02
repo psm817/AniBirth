@@ -7,11 +7,11 @@
 .signup-box > .card {
     height: 100%;
     display: flex;
+    border: transparent;
 }
 
 .signup-box > .card-img {
-    border: 1px solid rgba(0, 0, 0, .125);
-    border-radius: .25rem;
+    border-radius: 10px;
     height: 100%;
     display: flex;
 }
@@ -115,6 +115,35 @@
     height: 50%;
 }
 
+.input-box > form > .address-box > .total-box {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.input-box > form > .address-box > .total-box > .input-box > input {
+    border: 0.5px solid #121212;
+    border-radius: 5px;
+    height: 40px;
+    padding-left: 10px;
+    width: 230px;
+}
+
+.input-box > form > .address-box > .total-box > .address > input:nth-child(2) {
+    padding-left: 0px;
+}
+
+.input-box > form > .address-box > .total-box > .address > input:nth-child(2):hover {
+    border: transparent;
+    background-color: #FF416C;
+    color: #fff;
+}
+
+.input-box > form > .address-box > .total-box > .address2 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .input-box > form > .signup-btn > button {
     background-color: #FF416C;
     border: 1px solid transparent;
@@ -157,7 +186,7 @@
 
     /* 회원가입 입력 폼 */
     .signup-box > .card {
-        height: 680px !important;
+        height: 800px !important;
     }
 
     .signup-box > .card > .signup-form {
@@ -229,5 +258,31 @@
         border-radius: 5px;
         width: 200px;
         padding : 8px 0px 8px 10px;
+    }
+
+    .input-box > form > .address-box {
+        height: 172px;
+    }
+
+    .input-box > form > .address-box > .total-box {
+        padding-left: 0px;
+    }
+
+    .input-box > form > .address-box > .total-box > .address {
+        display: flex;
+    }
+
+    .input-box > form > .address-box > .total-box > .address > input:nth-child(1) {
+        width: 190px;
+    }
+
+    .input-box > form > .address-box > .total-box > .address3 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .input-box > form > .address-box > .total-box > .address3 > input:nth-child(2) {
+        margin-left: 0px;
+        margin-top: 5px;
     }
 }

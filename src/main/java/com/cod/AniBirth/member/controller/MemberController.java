@@ -60,8 +60,10 @@ public class MemberController {
     public String signupMember(@Valid MemberForm memberForm, @RequestParam("thumbnailImg") MultipartFile thumbnailImg) {
         String imageFileName = storeProfilePicture(memberForm.getThumbnailImg());
 
+        String address = memberForm.getAddress() + " " + memberForm.getDetailAddress();
+
         Member member = memberService.signup(memberForm.getUsername(), memberForm.getPassword(), memberForm.getNickname(),
-                memberForm.getEmail(), memberForm.getPhone(), memberForm.getAddress(),
+                memberForm.getEmail(), memberForm.getPhone(), address,
                 imageFileName, memberForm.getAuthority(), memberForm.getIsActive());
 
         String subject = "애니버스 - 서비스 가입 환영";
@@ -196,7 +198,8 @@ public class MemberController {
     @PostMapping("/modify/{id}")
     public String modify(@PathVariable("id") Long id, @RequestParam("password") String password,
                          @RequestParam("nickname") String nickname, @RequestParam("email") String email,
-                         @RequestParam("phone") String phone, @RequestParam("address") String address, @RequestParam("thumbnailImg") MultipartFile thumbnailImg) {
+                         @RequestParam("phone") String phone, @RequestParam("address") String address,
+                         @RequestParam("detailAddress") String detailAddress,@RequestParam("thumbnailImg") MultipartFile thumbnailImg) {
         Member member = memberService.getMemberById(id);
         Account account = accountService.findByMember(member);
 
@@ -205,7 +208,9 @@ public class MemberController {
             imageFileName = storeProfilePicture(thumbnailImg);
         }
 
-        memberService.modify(member, password, nickname, email, phone, address, imageFileName);
+        String totalAddress = address + " " + detailAddress;
+
+        memberService.modify(member, password, nickname, email, phone, totalAddress, imageFileName);
         accountService.createOrUpdate(member, account.getAccount_number(), account.getAniPoint());
 
         return "redirect:/member/logout";
@@ -214,7 +219,8 @@ public class MemberController {
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/socialModify/{id}")
     public String socialModify(@PathVariable("id") Long id, @RequestParam("nickname") String nickname, @RequestParam("email") String email,
-                         @RequestParam("phone") String phone, @RequestParam("address") String address, @RequestParam("thumbnailImg") MultipartFile thumbnailImg) {
+                               @RequestParam("phone") String phone, @RequestParam("address") String address, @RequestParam("detailAddress") String detailAddress,
+                               @RequestParam("thumbnailImg") MultipartFile thumbnailImg) {
         Member member = memberService.getMemberById(id);
         Account account = accountService.findByMember(member);
 
@@ -223,7 +229,9 @@ public class MemberController {
             imageFileName = storeProfilePicture(thumbnailImg);
         }
 
-        memberService.socialModify(member, nickname, email, phone, address, imageFileName);
+        String totalAddress = address + " " + detailAddress;
+
+        memberService.socialModify(member, nickname, email, phone, totalAddress, imageFileName);
         accountService.createOrUpdate(member, account.getAccount_number(), account.getAniPoint());
 
         return "redirect:/member/logout";
