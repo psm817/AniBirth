@@ -97,6 +97,7 @@ header > .menu-bar > .menu-box > ul > li > a > span:hover {
         height: 100%;
         display: block;
         width: 100%;
+        margin-top: 5px;
     }
 
     header > .menu-bar > .logo-box {

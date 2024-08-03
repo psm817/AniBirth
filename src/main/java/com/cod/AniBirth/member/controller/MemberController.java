@@ -188,9 +188,9 @@ public class MemberController {
 
         // 소셜로그인은 비밀번호 변경 불가라 다른 폼으로 이동
         if(member.getUsername().startsWith("KAKAO") || member.getUsername().startsWith("NAVER") || member.getUsername().startsWith("GOOGLE")) {
-            return "/member/social_modify";
+            return "member/social_modify";
         } else {
-            return "/member/modify";
+            return "member/modify";
         }
     }
 

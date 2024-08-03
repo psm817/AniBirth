@@ -41,8 +41,7 @@
 }
 
 .reviewCreate-input > form > .type-box {
-    flex-grow: 1;
-    flex-basis: 0;
+    height: 80px;
     display: flex;
     align-items: center;
 }
@@ -67,6 +66,10 @@
     height: 45px;
 }
 
+.reviewCreate-input > form > .detail-img-box {
+    height: 140px;
+}
+
 .reviewCreate-input > form > .detail-img-box > #imageContainer > .input-box {
     text-align: left;
     margin-top: 20px;
@@ -89,6 +92,10 @@
 .reviewCreate-input > form > .detail-img-box > #imageContainer > .input-box > .add-button:hover {
     color: #1450db;
     cursor: pointer;
+}
+
+.reviewCreate-input > form > .content-box {
+    height: 235px;
 }
 
 .reviewCreate-input > form > .content-box > textarea {

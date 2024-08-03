@@ -41,8 +41,7 @@
 }
 
 .modify-input > form > .type-box {
-    flex-grow: 1;
-    flex-basis: 0;
+    height: 60px;
     display: flex;
     align-items: center;
 }
@@ -75,6 +74,10 @@
     margin-left: 16px;
     background-color: #FF416C;
     border: transparent;
+}
+
+.modify-input > form > .content-box {
+    height: 200px;
 }
 
 .modify-input > form > .type-box > .file-box {

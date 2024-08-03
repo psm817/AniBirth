@@ -112,3 +112,25 @@ ul, li {
     cursor: pointer;
     border: 1px solid transparent;
 }
+
+@media(max-width: 394px) {
+    .container > .signup-check-box > .join_box > .checkBox > h3 {
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .container > .signup-check-box > .join_box > .checkBox > .chk-btn {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .container > .signup-check-box > .button {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 40px;
+    }
+
+    .container > .signup-check-box > .button > button:nth-child(2) {
+        margin-right: 0px;
+    }
+}

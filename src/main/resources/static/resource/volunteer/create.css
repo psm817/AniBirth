@@ -6,10 +6,11 @@
 
 .volunteer-box > .card {
     height: 100%;
+    width: 100%;
 }
 
 /* 봉사활동 입력 폼 */
-.create-form {
+.volunteer-box > .card > .create-form {
     display: flex;
     flex-direction: column;
     height: 100% !important;
@@ -41,8 +42,7 @@
 }
 
 .create-input > form > .type-box {
-    flex-grow: 1;
-    flex-basis: 0;
+    height: 60px;
     display: flex;
     align-items: center;
 }
@@ -75,6 +75,10 @@
     margin-left: 16px;
     background-color: #FF416C;
     border: transparent;
+}
+
+.create-input > form > .content-box {
+    height: 200px;
 }
 
 .create-input > form > .type-box > .file-box {
