@@ -5,6 +5,8 @@
 .container > .card {
     background-color: transparent;
     padding: 0;
+    height: 690px !important;
+    margin-top: 10px;
 }
 
 .card {

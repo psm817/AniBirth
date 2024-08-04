@@ -56,11 +56,12 @@ html > body .donation-banner {
     margin-right: auto;
     font-size: 3em;
 }
-.text-overlay p {
+.text-overlay > p {
     margin: 0;
     font-size: 1.2em;
     text-align: left;
     max-width: 80%;
+    color: #fff;
 }
 
 html > body .container > .donation-section {

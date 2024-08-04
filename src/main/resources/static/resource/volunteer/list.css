@@ -39,11 +39,12 @@
     font-size: 3em;
 }
 
-.text-overlay-v p {
+.text-overlay-v > p {
     margin: 0;
     font-size: 1.2em;
     text-align: left;
     max-width: 80%;
+    color: #fff;
 }
 
 .summary-box {
