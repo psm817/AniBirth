@@ -69,9 +69,11 @@
                     <ul class="list-group list-group-flush">
                         <!-- th:each로 반복문 돌려야됨  -->
                         <li class="list-group-item flex items-center" th:each="volunteer, loop : ${volunteerApplicationList}">
-                            <span class="number w-[10%]" th:text="${loop.index} + 1"></span>
-                            <span class="date w-[40%]" th:text="${volunteer.volunteer.startDate} + ' ~ ' + ${volunteer.volunteer.endDate}"></span>
-                            <span class="volunteer-name w-[50%]" th:text="${volunteer.volunteer.title}"></span>
+                            <a th:href="@{|/volunteer/detail/${volunteer.volunteer.id}|}">
+                                <span class="number w-[10%]" th:text="${loop.index} + 1"></span>
+                                <span class="date w-[40%]" th:text="${volunteer.volunteer.startDate} + ' ~ ' + ${volunteer.volunteer.endDate}"></span>
+                                <span class="volunteer-name w-[50%]" th:text="${volunteer.volunteer.title}"></span>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -80,12 +82,14 @@
                     <ul class="list-group list-group-flush">
                         <!-- th:each로 반복문 돌려야됨  -->
                         <li class="list-group-item flex items-center" th:each="volunteerList, loop : ${volunteerAllList}">
-                            <span class="number w-[10%]" th:text="${loop.index} + 1"></span>
-                            <span class="start-date w-[20%]" th:text="${#temporals.format(volunteerList.createDate, 'yyyy-MM-dd')}"></span>
-                            <span class="end-date w-[20%]" th:text="${volunteerList.deadLineDate}"></span>
-                            <span class="volunteer-name w-[20%]" th:text="${volunteerList.title}"></span>
-                            <span class="num w-[15%]" th:text="${volunteerList.applicant}"></span>
-                            <span class="maxNum w-[15%]" th:text="${volunteerList.limit}"></span>
+                            <a th:href="@{|/volunteer/detail/${volunteerList.id}|}">
+                                <span class="number w-[10%]" th:text="${loop.index} + 1"></span>
+                                <span class="start-date w-[20%]" th:text="${#temporals.format(volunteerList.createDate, 'yyyy-MM-dd')}"></span>
+                                <span class="end-date w-[20%]" th:text="${volunteerList.deadLineDate}"></span>
+                                <span class="volunteer-name w-[20%]" th:text="${volunteerList.title}"></span>
+                                <span class="num w-[15%]" th:text="${volunteerList.applicant}"></span>
+                                <span class="maxNum w-[15%]" th:text="${volunteerList.limit}"></span>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -94,12 +98,14 @@
                     <ul class="list-group list-group-flush">
                         <!-- th:each로 반복문 돌려야됨  -->
                         <li class="list-group-item flex items-center" th:each="volunteer2, loop : ${volunteerList}">
-                            <span class="number w-[10%]" th:text="${loop.index} + 1"></span>
-                            <span class="start-date w-[20%]" th:text="${#temporals.format(volunteer2.createDate, 'yyyy-MM-dd')}">2024-07-22</span>
-                            <span class="end-date w-[20%]" th:text="${volunteer2.deadLineDate}"></span>
-                            <span class="volunteer-name w-[20%]" th:text="${volunteer2.title}"></span>
-                            <span class="num w-[15%]" th:text="${volunteer2.applicant}"></span>
-                            <span class="maxNum w-[15%]" th:text="${volunteer2.limit}"></span>
+                            <a th:href="@{|/volunteer/detail/${volunteer2.id}|}">
+                                <span class="number w-[10%]" th:text="${loop.index} + 1"></span>
+                                <span class="start-date w-[20%]" th:text="${#temporals.format(volunteer2.createDate, 'yyyy-MM-dd')}">2024-07-22</span>
+                                <span class="end-date w-[20%]" th:text="${volunteer2.deadLineDate}"></span>
+                                <span class="volunteer-name w-[20%]" th:text="${volunteer2.title}"></span>
+                                <span class="num w-[15%]" th:text="${volunteer2.applicant}"></span>
+                                <span class="maxNum w-[15%]" th:text="${volunteer2.limit}"></span>
+                            </a>
                         </li>
                     </ul>
                 </div>

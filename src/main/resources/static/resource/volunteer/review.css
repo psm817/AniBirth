@@ -222,7 +222,8 @@
     }
 
     .review-box > .review-section > .title-box > a {
-        margin-left: 10px;
+        margin-left: auto;
+        margin-right: auto;
         margin-top: 5px;
         font-size: 15px;
     }

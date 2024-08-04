@@ -84,6 +84,58 @@
     padding-left: 40px;
 }
 
+.right-box > .content-box > .total-box {
+    height: 60px;
+}
+
+.right-box > .content-box > .total-box > span {
+    display: block;
+    height: 100%;
+    line-height: 60px;
+    font-size: 18px;
+}
+
+/* 리스트 번호 구분 */
+.right-box > .content-box > .profile-box-title {
+    border-bottom: 1px solid #121212;
+    padding: 0;
+    height: 50px;
+}
+
+.right-box > .content-box > .profile-box-title > ul {
+    height: 100%;
+}
+
+.right-box > .content-box > .profile-box-title > ul > li {
+    height: 100%;
+    background-color: transparent;
+}
+
+.right-box > .content-box > .profile-box-title > ul > li > span {
+    font-size: 16px;
+    text-align: center;
+}
+
+.right-box > .content-box > .profile-box-detail {
+    max-height: 450px;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.right-box > .content-box > .profile-box-detail > ul {
+    height: 100%:
+}
+
+.right-box > .content-box > .profile-box-detail > ul > li {
+    height: 100%;
+    background-color: transparent;
+}
+
+.right-box > .content-box > .profile-box-detail > ul > li > span {
+    font-size: 16px;
+    text-align: center;
+}
+
 .right-box > .content-box > ul > li {
     background-color: transparent;
     height: 50px;
@@ -133,6 +185,7 @@
     border: 1px solid #808080;
     border-radius: 10px;
     padding: 7px 15px 7px 15px;
+    margin-top: 30px;
 }
 
 .right-box > .content-box > .btn-box > a:hover {
@@ -234,22 +287,22 @@
         font-size: 16px;
     }
 
-    .container > .right-box > .content-box > .volunteer-box-title > ul {
+    .container > .right-box > .content-box > .profile-box-title > ul {
         overflow-x: auto;
         white-space: nowrap;
     }
 
-    .container > .right-box > .content-box > .volunteer-box-title > ul > li {
+    .container > .right-box > .content-box > .profile-box-title > ul > li {
         display: inline-block;
         min-width: 100%;
     }
 
-    .container > .right-box > .content-box > .volunteer-box-detail > ul {
+    .container > .right-box > .content-box > .profile-box-detail > ul {
         overflow-x: auto;
         white-space: nowrap;
     }
 
-    .container > .right-box > .content-box > .volunteer-box-detail > ul > li {
+    .container > .right-box > .content-box > .profile-box-detail > ul > li {
         display: inline-block;
         min-width: 100%;
     }

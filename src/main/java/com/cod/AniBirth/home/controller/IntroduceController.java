@@ -14,4 +14,9 @@ public class IntroduceController {
 
         return "introduce/anibirth";
     }
+
+    @GetMapping("/agreement")
+    public String agreement() {
+        return "introduce/agreement";
+    }
 }

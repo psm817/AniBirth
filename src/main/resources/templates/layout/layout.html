@@ -61,6 +61,7 @@
     <link href="/resource/volunteer/review.css" rel="stylesheet">
     <link href="/resource/volunteer/reviewCreate.css" rel="stylesheet">
     <link href="/resource/volunteer/reviewDetail.css" rel="stylesheet">
+    <link href="/resource/introduce/agreement.css" rel="stylesheet">
 
 
     <!-- 커스텀 js모음 -->
@@ -164,11 +165,73 @@
     <!-- Content End -->
 </section>
 
-<footer class="footer py-3 bg-light">
-    <div class="container text-center flex justify-center">
-        <span class="text-muted">상호명 : 애니버스</span><br>
-        <span class="text-muted">공동 개발자 : 김지영, 김태우, 박상민, 박현철</span>
+<footer class="footer bg-light">
+    <div class="top-box">
+        <div class="container">
+            <div class="left-box">
+                <a th:href="@{/introduce/agreement}">
+                    <span>이용약관 및 개인정보처리방침</span>
+                </a>
+                <a th:href="@{/volunteer/list}">
+                    <span>봉사활동</span>
+                </a>
+                <a th:href="@{/adopt/list}">
+                    <span>입양하기</span>
+                </a>
+                <a th:href="@{/donation/donate}">
+                    <span>후원하기</span>
+                </a>
+                <a th:href="@{/product/main}">
+                    <span>애니마켓</span>
+                </a>
+                <a th:href="@{/article/list}">
+                    <span>애니공지</span>
+                </a>
+            </div>
+            <div class="right-box">
+                <a href="#">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="#">
+                    <i class="fa-solid fa-comment"></i>
+                </a>
+                <a href="#">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+            </div>
+        </div>
     </div>
+    <div class="bottom-box">
+        <div class="container">
+            <div class="img-box">
+                <img th:src="@{/images/logo/logo.png}" alt="logo">
+            </div>
+            <div class="detail-box">
+                <div class="title-box common-box">
+                    <span class="text-muted">상호명 : 애니버스(AniBirth)</span>
+                    <span class="bar">|</span>
+                    <span class="text-muted">공동 대표자 : 김지영, 김태우, 박상민, 박현철</span>
+                </div>
+                <div class="contact-box common-box">
+                    <span class="text-muted">TEL : 042-123-4567</span>
+                    <span class="bar">|</span>
+                    <span class="text-muted">FAX : 042-123-9876</span>
+                    <span class="bar">|</span>
+                    <span class="text-muted">E-mail : 5004jse@gmail.com</span>
+                </div>
+                <div class="copy-box common-box">
+                    <span class="text-muted">Copyright © AniBirth, All Rights Reserved.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--    <div class="container text-center flex justify-center">-->
+<!--        <span class="text-muted">상호명 : 애니버스</span><br>-->
+<!--        <span class="text-muted">공동 개발자 : 김지영, 김태우, 박상민, 박현철</span>-->
+<!--    </div>-->
 </footer>
 
 </body>
