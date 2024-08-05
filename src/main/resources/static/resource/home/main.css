@@ -12,6 +12,7 @@ body {
   padding: 0;
 }
 
+/* 슬라이드 배너 */
 html > body .swiper {
   width: 100%;
   height: 380px;
@@ -33,6 +34,35 @@ html > body .swiper-slide {
   object-fit: cover;
 }
 
+/* 메인페이지 시작 */
+.main-box {
+    border: 1px solid red;
+    width: 100%;
+    height: 2000px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-box > .summary {
+    border: 1px solid orange;
+    height: 400px;
+    width: 100%;
+}
+
+.main-box > .summary > h1 {
+    border: 1px solid green;
+    text-align: left;
+    height: 30px;
+    line-height: 30px;
+}
+
+.main-box > .summary > .card {
+    border: 1px solid green;
+    height: 370px;
+}
+
+/* 반응형 시작 */
 @media (max-width: 394px) {
     .swiper {
       width: 100%;
