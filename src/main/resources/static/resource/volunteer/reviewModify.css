@@ -1,11 +1,11 @@
-.reviewCreate-box {
+.reviewModify-box {
     width: 100%;
     height: 100%;
     display: flex;
     margin-top: 20px;
 }
 
-.reviewCreate-box > .review-card {
+.reviewModify-box > .review-modify-card {
      height: 700px !important;
     width: 100%;
     border: transparent;
@@ -14,44 +14,44 @@
 }
 
 /* 봉사활동 입력 폼 */
-.create-form {
+.modify-form {
     display: flex;
     flex-direction: column;
     height: 100% !important;
 }
 
-.create-form > .title-box {
+.modify-form > .title-box {
     display: flex;
     align-items: center;
     height: 90px;
     padding-left: 50px;
 }
 
-.create-form > .title-box > h1 {
+.modify-form > .title-box > h1 {
     font-size: 24px;
     font-weight: 700;
 }
 
-.create-form > .reviewCreate-input {
+.modify-form > .reviewModify-input {
     height: 100%;
 }
 
 /* 권한 버튼 커스텀 */
 /* 폼 커스텀 */
-.reviewCreate-input > form {
+.reviewModify-input > form {
     display: flex;
     flex-direction: column;
     height: 100%;
     padding-left: 50px;
 }
 
-.reviewCreate-input > form > .type-box {
+.reviewModify-input > form > .type-box {
     height: 80px;
     display: flex;
     align-items: center;
 }
 
-.reviewCreate-input > form > .type-box > span {
+.reviewModify-input > form > .type-box > span {
     font-weight: 700;
     font-size: 18px;
     width: 130px;
@@ -59,7 +59,7 @@
     margin-right: 60px;
 }
 
-.reviewCreate-input > form > .type-box > input {
+.reviewModify-input > form > .type-box > input {
     border: 1px solid #121212;
     border-radius: 5px;
     height: 70%;
@@ -67,48 +67,48 @@
     padding-left: 10px;
 }
 
-.reviewCreate-input > form > .name-box > input {
+.reviewModify-input > form > .name-box > input {
     height: 45px;
 }
 
-.reviewCreate-input > form > .detail-img-box {
+.reviewModify-input > form > .detail-img-box {
     height: 140px;
 }
 
-.reviewCreate-input > form > .detail-img-box > #imageContainer > .input-box {
+.reviewModify-input > form > .detail-img-box > #imageContainer > .input-box {
     text-align: left;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-.reviewCreate-input > form > .detail-img-box > #imageContainer > .input-box > input {
+.reviewModify-input > form > .detail-img-box > #imageContainer > .input-box > input {
     width: 180px;
 }
 
-.reviewCreate-input > form > .detail-img-box > #imageContainer > .input-box > .add-button {
+.reviewModify-input > form > .detail-img-box > #imageContainer > .input-box > .add-button {
     font-weight: 700;
     margin-right: 10px;
 }
 
-.reviewCreate-input > form > .detail-img-box > #imageContainer > .input-box > .add-button > i {
+.reviewModify-input > form > .detail-img-box > #imageContainer > .input-box > .add-button > i {
     margin-right: 5px;
 }
 
-.reviewCreate-input > form > .detail-img-box > #imageContainer > .input-box > .add-button:hover {
+.reviewModify-input > form > .detail-img-box > #imageContainer > .input-box > .add-button:hover {
     color: #1450db;
     cursor: pointer;
 }
 
-.reviewCreate-input > form > .content-box {
+.reviewModify-input > form > .content-box {
     height: 235px;
 }
 
-.reviewCreate-input > form > .content-box > textarea {
+.reviewModify-input > form > .content-box > textarea {
     width: 1070px;
 }
 
 
-.reviewCreate-input > form > .signup-btn > button {
+.reviewModify-input > form > .signup-btn > button {
     background-color: #FF416C;
     border: 1px solid transparent;
     padding: 5px 20px 5px 20px;
@@ -116,15 +116,15 @@
     margin-bottom: 10px;
 }
 
-.reviewCreate-input > form > .signup-btn > .cancel {
+.reviewModify-input > form > .signup-btn > .cancel {
     margin-right: 20px;
 }
 
-.reviewCreate-input > form > .signup-btn > .check {
+.reviewModify-input > form > .signup-btn > .check {
     margin-left: 20px;
 }
 
-.reviewCreate-input > form > .absolute-box {
+.reviewModify-input > form > .absolute-box {
     position: absolute;
     width: 270px;
     height: 270px;
@@ -132,65 +132,65 @@
     top: 90px;
 }
 
-.reviewCreate-input > form > .absolute-box > img {
+.reviewModify-input > form > .absolute-box > img {
     width: 100%;
     height: 100%;
 }
 
 /* 반응형 시작 */
 @media (max-width: 394px) {
-    .reviewCreate-box {
+    .reviewModify-box {
         display: block;
         width: 100%;
         height: 100%;
     }
 
     /* 회원가입 입력 폼 */
-    .reviewCreate-box > .card {
+    .reviewModify-box > .card {
         height: 100% !important;
     }
 
-    .create-form {
+    .modify-form {
         height: 100%;
         display: block !important;
     }
 
-    .create-form > .title-box {
+    .modify-form > .title-box {
         height: 50px !important;
         padding-left: 5px !important;
     }
 
-    .create-form > .title-box > h1 {
+    .modify-form > .title-box > h1 {
         font-size: 16px !important;
         font-weight: 700;
     }
 
-    .create-form > .reviewCreate-input {
+    .modify-form > .reviewModify-input {
         height: 100%;
         padding-left: 5px !important;
     }
 
     /* 권한 버튼 커스텀 */
     /* 폼 커스텀 */
-    .reviewCreate-input > form {
+    .reviewModify-input > form {
         display: block;
         height: 100%;
         padding-left: 0px;
     }
 
-    .reviewCreate-input > form > .type-box {
+    .reviewModify-input > form > .type-box {
         width: 100%;
         height: 60px;
     }
 
-    .reviewCreate-input > form > .type-box > span {
+    .reviewModify-input > form > .type-box > span {
         font-weight: 700;
         font-size: 13px;
         margin-right: 0 !important;
         width: 80px;
     }
 
-    .reviewCreate-input > form > .type-box > input {
+    .reviewModify-input > form > .type-box > input {
         border: 1px solid #121212;
         border-radius: 5px;
         height: 70%;
@@ -199,44 +199,44 @@
         margin-left: 10px;
     }
 
-    .reviewCreate-input > form > .img-box > .input-box {
+    .reviewModify-input > form > .img-box > .input-box {
         margin-left: 10px;
         width: 200px;
     }
 
-    .reviewCreate-input > form > .detail-img-box {
+    .reviewModify-input > form > .detail-img-box {
         width: 100%;
         height: 230px;
     }
 
-    .reviewCreate-input > form > .detail-img-box > #imageContainer {
+    .reviewModify-input > form > .detail-img-box > #imageContainer {
         width: 230px;
         margin-left: 10px;
     }
 
-    .reviewCreate-input > form > .detail-img-box > #imageContainer > .input-box {
+    .reviewModify-input > form > .detail-img-box > #imageContainer > .input-box {
         display: flex;
         flex-direction: column;
         width: 100%;
         height: 100%;
     }
 
-    .reviewCreate-input > form > .content-box {
+    .reviewModify-input > form > .content-box {
         width: 100%;
         height: 200px;
     }
 
-    .reviewCreate-input > form > .content-box > textarea {
+    .reviewModify-input > form > .content-box > textarea {
         width: 270px;
         height: 100%;
         font-size: 13px;
     }
 
-    .reviewCreate-input > form > .signup-btn {
+    .reviewModify-input > form > .signup-btn {
         margin-top: 20px;
     }
 
-    .reviewCreate-input > form > .absolute-box {
+    .reviewModify-input > form > .absolute-box {
         display: none;
     }
 }

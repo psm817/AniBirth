@@ -2,18 +2,20 @@
     width: 100%;
     height: 100%;
     display: flex;
+    margin-top: 20px;
 }
 
-.signup-box > .card {
-    height: 100%;
+.signup-box > .signup-card {
+    height: 870px !important;
     display: flex;
     border: transparent;
+    margin-top: 0px !important;
 }
 
 .signup-box > .card-img {
     border: transparent;
     border-radius: 10px;
-    height: 100%;
+    height: 870px;
     display: flex;
     padding-left: 30px;
 }
@@ -25,39 +27,42 @@
 .signup-box > .card-img > .img-box > img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 /* 회원가입 입력 폼 */
-.signup-form {
+.signup-box > .signup-card > .signup-form {
     display: flex;
     flex-direction: column;
-    flex-grow: 2;
-    flex-basis: 0;
-    height: 100%;
+    height: 870px;
+    background-color: #fff;
+    border-radius: 10px;
 }
 
-.signup-form > .title-box {
+.signup-box > .signup-card > .signup-form > .title-box {
     display: flex;
     align-items: center;
     height: 90px;
-    padding-left: 100px;
+    padding-left: 50px;
+    margin-top: 30px;
 }
 
-.signup-form > .title-box > h1 {
+.signup-box > .signup-card > .signup-form > .title-box > h1 {
     font-size: 24px;
     font-weight: 700;
 }
 
-.signup-form > .title-box > span {
+.signup-box > .signup-card > .signup-form > .title-box > span {
     margin-left: 20px;
     color: red;
 }
 
-.signup-form > .input-box {
+.signup-box > .signup-card > .signup-form > .input-box {
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding-left: 100px;
+    padding-left: 50px;
+    margin-top: 40px;
 }
 
 /* 권한 버튼 커스텀 */
