@@ -5,7 +5,7 @@
     <div class="adopt">
       <div class="adopt-wrapper">
         <div class="adopt-banner">
-          <img th:src="@{/images/banner/입양.png}" alt="배너1">
+          <img th:src="@{/images/banner/입양리스트2.jpg}" alt="배너1">
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@
                 <div class="select-box">
                   <div class="msg-aria mb-3">
                     <select name="gender" id="gender" data-msg="성별을 선택해 주세요" class="custom-select">
-                      <option value="" th:selected="${searchDTO.gender == null}">All</option>
+                      <option value="" th:selected="${searchDTO.gender == null}">All <span><i class="fas fa-caret-down"></i></span></option>
                       <option th:each="gender : ${genders}"
                               th:value="${gender.id}"
                               th:text="${gender.name}"

@@ -25,25 +25,37 @@ public class ApiExplorer implements CommandLineRunner {
 
     @Autowired
     private CategoryRepository categoryRepository;
-
+    private static final String SERVICE_KEY = "no5Kx%2Bn4qn2kVYo3VLF%2BeQtRlsK9eQ%2FVDKn7dXtl%2BWWrs6j4Semu8NMnOUSdMGVcvp%2FdQx4IBt70JnXBHxwFSg%3D%3D";
     @Override
-    public void run(String... args) throws Exception{
-        StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/6300000/animalDaejeonService/animalDaejeonList"); /*URL*/
-        urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=no5Kx%2Bn4qn2kVYo3VLF%2BeQtRlsK9eQ%2FVDKn7dXtl%2BWWrs6j4Semu8NMnOUSdMGVcvp%2FdQx4IBt70JnXBHxwFSg%3D%3D"); /*Service Key*/
-        urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지 번호*/
-        urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*페이지당 게시물 수*/
+    public void run(String... args) throws Exception {
+        int totalCount = 200; // 총 데이터 개수
+        int numOfRows = 12; // 한 페이지당 가져올 데이터 수
+        int totalPage = (totalCount + numOfRows - 1) / numOfRows; // 전체 페이지 수
+
+        for (int pageNo = 1; pageNo <= totalPage; pageNo++) {
+            fetchDataFromApi(pageNo, numOfRows);
+        }
+    }
+
+    private void fetchDataFromApi(int pageNo, int numOfRows) throws IOException {
+        StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/6300000/animalDaejeonService/animalDaejeonList");
+        urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=" + SERVICE_KEY);
+        urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode(String.valueOf(pageNo), "UTF-8"));
+        urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode(String.valueOf(numOfRows), "UTF-8"));
 
         URL url = new URL(urlBuilder.toString());
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Content-type", "application/json");
         System.out.println("Response code: " + conn.getResponseCode());
+
         BufferedReader rd;
         if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
             rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         } else {
             rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
         }
+
         StringBuilder sb = new StringBuilder();
         String line;
         while ((line = rd.readLine()) != null) {
@@ -60,8 +72,9 @@ public class ApiExplorer implements CommandLineRunner {
         System.out.println("JSON Response: " + json);
 
         // Save to database
-        animalService.saveAnimals(json);
+        processJsonData(json);
     }
+
     private void processJsonData(String json) {
         // JSON 데이터 파싱
         ObjectMapper objectMapper = new ObjectMapper();
