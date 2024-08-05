@@ -44,7 +44,30 @@ html > body .apply-container-box > .container > .apply-content-name {
 
 html > body .apply-container-box > .container > .personal-data {
     padding: 10px;
+    width: 100%;
 }
+
+html > body .apply-container-box > .container .personal-data > .adopt-application-section {
+    width: 800px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+}
+
+html > body .apply-container-box > .container .personal-data .adopt-application-section > .personal-data-title {
+    font-weight: bold;
+    font-size: large;
+}
+
+html > body .apply-container-box > .container .personal-data .adopt-application-section > .adoption-application {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
 
 html > body .apply-container-box > .container > .personal-data> h5 {
     display: flex;

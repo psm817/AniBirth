@@ -61,11 +61,54 @@ html > body .container > .category-box {
     justify-content: space-around;
 }
 
-/*html > body container-box .container.adoptlist .category-box .category-box-line > .category-type {
+.select-box {
+    width: 152px;
+    height: 47.38px;
+}
+
+.select-box > .msg-aria {
+    height: 47.38px;
+}
+
+.custom-select {
+    display: inline-block;
+    width: 100%;
+    height: calc(1.5em + 1.5rem + 1px);
+    padding: 0.75rem 2rem 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #1e2022;
+    vertical-align: middle;
+    background: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e) no-repeat right 1rem center / 8px 10px;
+    background-color: #fff;
+    border: 1px solid #d5dae2;
+    border-radius: 0.3125rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.category-search-section {
+    width: 100%;
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
-}*/
+    padding: 15px 112px;
+
+}
+
+.category-search-section > .input-group {
+    margin-right: 40px;
+}
+
+.category-search-section > .search-group {
+    margin-right: 5px
+}
+.category-search-section > .search-group > .btn.btn-sm.btn-block.btn-primary {
+    background-color: #004ba0;
+    border-color: #004ba0;
+    height: 38px;
+}
 
 html > body .container-box .adoptlist > .adopt-notice-list {
     padding-top: 25px;
