@@ -40,7 +40,8 @@
                 <div class="select-box">
                   <div class="msg-aria mb-3">
                     <select name="gender" id="gender" data-msg="성별을 선택해 주세요" class="custom-select">
-                      <option value="" th:selected="${searchDTO.gender == null}">All <span><i class="fas fa-caret-down"></i></span></option>
+                      <option value="" th:selected="${searchDTO.gender == null}">All <span><i
+                          class="fas fa-caret-down"></i></span></option>
                       <option th:each="gender : ${genders}"
                               th:value="${gender.id}"
                               th:text="${gender.name}"
@@ -87,10 +88,13 @@
           </div>
           <div class="category-search-section">
             <div class="input-group">
-              <input class="form-control" type="text" name="kw" th:value="${searchDTO.keyword}" placeholder="검색어를 입력하세요">
+              <input class="form-control" type="text" name="kw" th:value="${searchDTO.keyword}"
+                     placeholder="검색어를 입력하세요">
             </div>
             <div class="search-group">
-              <button type="submit" class="btn btn-sm btn-block btn-primary transition-3d-hover mb-1" style="width: 150px">검색</button>
+              <button type="submit" class="btn btn-sm btn-block btn-primary transition-3d-hover mb-1"
+                      style="width: 150px">검색
+              </button>
             </div>
           </div>
         </form>
@@ -133,6 +137,21 @@
         <input type="hidden" id="page" name="page" th:value="${paging.number}">
       </form>
     </div>
+    <div class="adopt-list-bottom g-hidden-md-down">
+      <div style="height:100%; background-color: white;">
+        <div class="container adoption-procedure">
+          <!--          <h4 class="g-font-weight-600 g-mb-20">입양절차</h4>-->
+          <div class="adt-pro-title">
+            <h4>입양절차</h4>
+          </div>
+          <div class="adt-pro-icon">
+            <span class="u-icon-v2 u-icon-size--3xl g-brd-0 g-mb-25 g-pl-0" style="width: 8rem; height: 8rem; background-color: #2f80ed; border-radius: 50%;">
+              <span class="d-inline-block g-line-height-1_5 text-center g-font-size-14 font-weight-bold g-color-white mb-0 g-pt-35">입양신청서<br>작성</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <script layout:frgment="script" type="text/javascript">
     $(document).ready(function() {
@@ -152,3 +171,4 @@
   </script>
 </section>
 </html>
+<!--아직안됨-->
