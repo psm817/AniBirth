@@ -70,6 +70,14 @@ function submitWriteForm(form) {
         return;
     }
 
+    form.detailAddress.value = form.detailAddress.value.trim();
+
+    if ( form.detailAddress.value.length == 0 ) {
+        alert("주소를 입력해주세요.");
+        form.detailAddress.focus();
+        return;
+    }
+
     if (form.thumbnailImg.files.length === 0) {
         alert("프로필 사진을 선택해주세요.");
         form.thumbnailImg.focus();

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout/layout}">
 <section layout:fragment="content" class="flex-1 justify-center items-center">
-    <div class="container reviewCreate-box">
-        <div class="card w-[100%]">
-            <div class="create-form">
+    <div class="container reviewModify-box">
+        <div class="card w-[100%] review-modify-card">
+            <div class="modify-form">
                 <div class="title-box">
-                    <h1>봉사활동 > 후기작성</h1>
+                    <h1>봉사활동 > 후기수정</h1>
                 </div>
-                <div class="reviewCreate-input">
+                <div class="reviewModify-input">
                     <form th:action="@{|/volunteer/review/modify/${volunteerReview.id}|}" method="POST" onsubmit="reviewSubmitButton(this); return false;" enctype="multipart/form-data">
                         <div class="type-box name-box">
                             <span class="font-weight">제목<span class="text-red-600">*</span></span>

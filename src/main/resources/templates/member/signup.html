@@ -7,7 +7,7 @@
                 <img src="https://image.msscdn.net/images/goods_img/20231006/3610603/3610603_17043452588553_500.jpg" alt="">
             </div>
         </div>
-        <div class="card w-[100%]">
+        <div class="card w-[100%] signup-card">
             <div class="signup-form flex flex-col">
                 <div class="title-box">
                     <h1>회원가입 > 정보입력</h1>
@@ -68,7 +68,19 @@
                             <span class="mr-[110px]">주소
                                 <span class="text-red-600">*</span>
                             </span>
-                            <input type="text" name="address" placeholder="주소지를 입력하세요.">
+                            <div class="total-box">
+                                <div class="input-box address">
+                                    <input type="text" id="sample6_postcode" name="postCode" placeholder="우편번호">
+                                    <input type="button" id="sample6_Daumpostcode" onclick="sample6_execDaumPostcode()" style="width:76px" value="주소 찾기"><br>
+                                </div>
+                                <div class="input-box address2">
+                                    <input type="text" id="sample6_address" name="address" placeholder="주소">
+                                </div>
+                                <div class="input-box address3">
+                                    <input type="text" id="sample6_detailAddress" name="detailAddress" placeholder="상세주소">
+                                    <input class="ml-2" type="text" id="sample6_extraAddress" name="extraAddress" placeholder="참고항목">
+                                </div>
+                            </div>
                         </div>
                         <div class="type-box profile-picture-box">
                             <span class="mr-[100px]">프로필 사진

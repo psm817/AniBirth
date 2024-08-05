@@ -35,4 +35,8 @@ public class VolunteerApplicationService {
     public boolean existsByMemberAndVolunteer(Member member, Volunteer volunteer) {
         return volunteerApplicationRepository.existsByMemberAndVolunteer(member, volunteer);
     }
+
+    public List<VolunteerApplication> getAllByMember(Member member) {
+        return volunteerApplicationRepository.findByMember(member);
+    }
 }

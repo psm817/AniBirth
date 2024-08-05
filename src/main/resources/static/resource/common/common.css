@@ -47,7 +47,7 @@ header > .menu-bar {
 }
 
 header > .menu-bar > .logo-box {
-    width: 10%;
+    width: 11%;
     margin-left: 20px;
 }
 
@@ -64,7 +64,7 @@ header > .menu-bar > .logo-box > a > img {
 }
 
 header > .menu-bar > .menu-box {
-    width: 90%;
+    width: 89%;
     margin-left: 100px;
 }
 
@@ -91,12 +91,133 @@ header > .menu-bar > .menu-box > ul > li > a > span:hover {
     color: #FF416C;
 }
 
+/* 푸터 시작 */
+footer {
+    margin-top: 50px;
+}
+
+footer > .top-box {
+    width: 100%;
+    height: 60px;
+    background-color: #fad9e1;
+}
+
+footer > .top-box > .container {
+    height: 100%;
+    width: 100%;
+}
+
+footer > .top-box > .container > .left-box {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer > .top-box > .container > .left-box > a {
+    font-size: 16px;
+}
+
+footer > .top-box > .container > .left-box > a:nth-child(1) {
+    font-weight: 700;
+}
+
+footer > .top-box > .container > .right-box {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+footer > .top-box > .container > .right-box > a {
+    width: 90px;
+    height: 100%;
+    display: block;
+}
+
+footer > .top-box > .container > .right-box > a:nth-child(1) {
+    background-color: #3B5998;
+}
+
+footer > .top-box > .container > .right-box > a:nth-child(2) {
+    background-color: #3F729B;
+}
+
+footer > .top-box > .container > .right-box > a:nth-child(3) {
+    background-color: #F7E600;
+}
+
+footer > .top-box > .container > .right-box > a:nth-child(4) {
+    background-color: #C4302B;
+}
+
+footer > .top-box > .container > .right-box > a > i {
+    color: #fff;
+    font-size: 30px;
+    line-height: 60px;
+}
+
+footer > .top-box > .container > .right-box > a:nth-child(3) > i {
+    color: #000;
+}
+
+footer > .bottom-box {
+    width: 100%;
+    height: 120px;
+}
+
+footer > .bottom-box > .container {
+    width: 100%;
+    height: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+footer > .bottom-box > .container > .img-box {
+    width: 10%;
+    height: 100%;
+    margin-left: 10px;
+}
+
+footer > .bottom-box > .container > .img-box > img {
+    width: 100%;
+    height: 100%;
+}
+
+footer > .bottom-box > .container > .detail-box {
+    width: 90%;
+    height: 100%;
+    padding-left: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+footer > .bottom-box > .container > .detail-box > .common-box {
+    text-align: left;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+footer > .bottom-box > .container > .detail-box > .contact-box {
+    margin-top: -10px;
+}
+
+footer > .bottom-box > .container > .detail-box > .common-box > .bar {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 /* 반응형 시작 */
 @media (max-width: 394px) {
     header > .menu-bar {
         height: 100%;
         display: block;
         width: 100%;
+        margin-top: 5px;
     }
 
     header > .menu-bar > .logo-box {
@@ -140,5 +261,87 @@ header > .menu-bar > .menu-box > ul > li > a > span:hover {
 
     header > .menu-bar > .menu-box > ul > li > a > span:hover {
         color: #FF416C;
+    }
+
+    footer > .top-box {
+        height: 100px;
+    }
+
+    footer > .top-box > .container {
+        height: 100%;
+        width: 100%;
+        padding: 0px;
+    }
+
+    footer > .top-box > .container > .left-box {
+        width: 100%;
+        height: 50% !important;
+        display: flex;
+    }
+
+    footer > .top-box > .container > .left-box > a {
+        font-size: 12px;
+    }
+
+    footer > .top-box > .container > .left-box > a:nth-child(1) {
+        padding-left: 5px;
+    }
+
+    footer > .top-box > .container > .left-box > a:nth-child(6) {
+        padding-right: 5px;
+    }
+
+    footer > .top-box > .container > .right-box {
+        height: 50% !important;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    footer > .top-box > .container > .right-box > a {
+        width: 25%;
+        height: 100%;
+        display: block;
+    }
+
+    footer > .top-box > .container > .right-box > a > i {
+        line-height: 50px;
+    }
+
+    footer > .bottom-box {
+        width: 100%;
+        height: 120px;
+    }
+
+    footer > .bottom-box > .container {
+        width: 100%;
+        height: 100%;
+        padding: 0px;
+    }
+
+    footer > .bottom-box > .container > .img-box {
+        display: none;
+    }
+
+    footer > .bottom-box > .container > .detail-box {
+        width: 100%;
+        padding: 0px;
+    }
+
+    footer > .bottom-box > .container > .detail-box > .common-box {
+        text-align: left;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    footer > .bottom-box > .container > .detail-box > .common-box > span {
+        font-size: 12px;
+    }
+
+    footer > .bottom-box > .container > .detail-box > .contact-box {
+        margin-top: 0px;
+        text-align: center;
     }
 }

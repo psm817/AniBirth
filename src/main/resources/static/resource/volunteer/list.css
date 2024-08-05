@@ -34,22 +34,24 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-.text-overlay-v h1 {
+.text-overlay-v > h1 {
     margin-right: auto;
     font-size: 3em;
 }
 
-.text-overlay-v p {
+.text-overlay-v > p {
     margin: 0;
     font-size: 1.2em;
     text-align: left;
     max-width: 80%;
+    color: #fff;
 }
 
 .summary-box {
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-top: 20px;
 }
 
 /* 소메뉴 */
@@ -64,20 +66,29 @@
     padding: 10px;
     display: block;
     font-size: 18px;
+    padding: 10px 15px 10px 15px;
 }
 
 .summary-box > .tiny-menu-box > a:nth-child(1) {
-    font-weight: 700;
-    color: #FF416C;
+    color: #fff;
+    border: 1px solid red;
+    border-radius: 10px;
+    background-color: #FF416C;
+    margin-right: 15px;
 }
 
-.summary-box > .tiny-menu-box > a:hover {
+.summary-box > .tiny-menu-box > a:nth-child(2) {
+    margin-left: 15px;
+}
+
+.summary-box > .tiny-menu-box > a:nth-child(2):hover {
     color: #FF416C;
 }
 
 /* 봉사 리스트 */
 .summary-box > .volunteer-section {
     height: 100%;
+    margin-top: 30px;
 }
 
 .summary-box > .volunteer-section > .title-box {
@@ -199,7 +210,8 @@
     }
 
     .summary-box > .volunteer-section > .title-box > a {
-        margin-left: 10px;
+        margin-left: auto;
+        margin-right: auto;
         margin-top: 5px;
         font-size: 15px;
     }
@@ -224,6 +236,12 @@
         font-size: 13px;
         margin-left: 10px;
         text-align: left;
+    }
+
+    .summary-box > .calendar-section > .title-box > span {
+        font-weight: 700;
+        font-size: 18px;
+        margin-left: 10px;
     }
 
     /* 년월 날짜 커스텀 */

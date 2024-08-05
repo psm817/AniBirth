@@ -28,7 +28,7 @@
                            th:href="@{/volunteer/review/create}" class="btn btn_link" onclick="return reviewCreate();">작성하기</a>
                     </div>
                     <div class="totalList-box">
-                        <ul class="review-notice-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-[80px] mt-3">
+                        <ul class="review-notice-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-[25px] mt-3">
                             <li th:each="review, loop : ${paging}" class="transition duration-300 rounded-lg hover:rounded-lg hover:-translate-y-1.5 hover:transition hover:duration-300 hover:shadow-md">
                                 <div class="left-image-box">
                                     <a th:href="@{|/volunteer/review/detail/${review.id}|}">

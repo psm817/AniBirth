@@ -10,12 +10,19 @@ import com.cod.AniBirth.email.service.EmailService;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.repository.MemberRepository;
 import com.cod.AniBirth.member.service.MemberService;
+import com.cod.AniBirth.volunteer.entity.Volunteer;
+import com.cod.AniBirth.volunteer.entity.VolunteerApplication;
+import com.cod.AniBirth.volunteer.service.VolunteerApplicationService;
+import com.cod.AniBirth.volunteer.service.VolunteerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 import java.util.List;
@@ -31,6 +38,8 @@ public class MyPageMemberController {
     private final EmailService emailService;
     private final AnimalService animalService;
     private final DonationService donationService;
+    private final VolunteerService volunteerService;
+    private final VolunteerApplicationService volunteerApplicationService;
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/myProfile")
@@ -79,7 +88,19 @@ public class MyPageMemberController {
     public String myVolunteer(Model model, Principal principal) {
         Member member = memberService.findByUsername(principal.getName());
 
+        // 일반회원 봉사신청 리스트
+        List<VolunteerApplication> volunteerApplicationList = volunteerApplicationService.getAllByMember(member);
+
+        // 중간관리자 봉사등록 리스트
+        List<Volunteer> volunteerList = volunteerService.getVolunteerByMember(member);
+
+        // 최고관리자 봉사등록 리스트
+        List<Volunteer> volunteerAllList = volunteerService.getAllVolunteer();
+
         model.addAttribute("member", member);
+        model.addAttribute("volunteerApplicationList", volunteerApplicationList);
+        model.addAttribute("volunteerList", volunteerList);
+        model.addAttribute("volunteerAllList", volunteerAllList);
 
         return "member/myPage/volunteer";
     }

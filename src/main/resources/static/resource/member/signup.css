@@ -2,18 +2,22 @@
     width: 100%;
     height: 100%;
     display: flex;
+    margin-top: 20px;
 }
 
-.signup-box > .card {
-    height: 100%;
+.signup-box > .signup-card {
+    height: 870px !important;
     display: flex;
+    border: transparent;
+    margin-top: 0px !important;
 }
 
 .signup-box > .card-img {
-    border: 1px solid rgba(0, 0, 0, .125);
-    border-radius: .25rem;
-    height: 100%;
+    border: transparent;
+    border-radius: 10px;
+    height: 870px;
     display: flex;
+    padding-left: 30px;
 }
 
 .signup-box > .card-img > .img-box {
@@ -23,39 +27,42 @@
 .signup-box > .card-img > .img-box > img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 /* 회원가입 입력 폼 */
-.signup-form {
+.signup-box > .signup-card > .signup-form {
     display: flex;
     flex-direction: column;
-    flex-grow: 2;
-    flex-basis: 0;
-    height: 100%;
+    height: 870px;
+    background-color: #fff;
+    border-radius: 10px;
 }
 
-.signup-form > .title-box {
+.signup-box > .signup-card > .signup-form > .title-box {
     display: flex;
     align-items: center;
     height: 90px;
-    padding-left: 100px;
+    padding-left: 50px;
+    margin-top: 30px;
 }
 
-.signup-form > .title-box > h1 {
+.signup-box > .signup-card > .signup-form > .title-box > h1 {
     font-size: 24px;
     font-weight: 700;
 }
 
-.signup-form > .title-box > span {
+.signup-box > .signup-card > .signup-form > .title-box > span {
     margin-left: 20px;
     color: red;
 }
 
-.signup-form > .input-box {
+.signup-box > .signup-card > .signup-form > .input-box {
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding-left: 100px;
+    padding-left: 50px;
+    margin-top: 40px;
 }
 
 /* 권한 버튼 커스텀 */
@@ -67,8 +74,7 @@
 }
 
 .input-box > form > .type-box {
-    flex-grow: 1;
-    flex-basis: 0;
+    height: 60px;
     display: flex;
     align-items: center;
 }
@@ -115,6 +121,43 @@
     height: 50%;
 }
 
+.input-box > form > .address-box {
+    height: 155px;
+}
+
+.input-box > form > .address-box > .total-box {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.input-box > form > .address-box > .total-box > .input-box > input {
+    border: 0.5px solid #121212;
+    border-radius: 5px;
+    height: 40px;
+    padding-left: 10px;
+    width: 230px;
+}
+
+.input-box > form > .address-box > .total-box > .address > input:nth-child(2) {
+    padding-left: 0px;
+}
+
+.input-box > form > .address-box > .total-box > .address > input:nth-child(2):hover {
+    border: transparent;
+    background-color: #FF416C;
+    color: #fff;
+}
+
+.input-box > form > .address-box > .total-box > .address2 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.input-box > form > .signup-btn {
+    margin-top: 20px;
+}
+
 .input-box > form > .signup-btn > button {
     background-color: #FF416C;
     border: 1px solid transparent;
@@ -136,12 +179,13 @@
     .signup-box {
         display: block;
         width: 100%;
-        height: 100%;
+        height: 1050px !important;
     }
 
     .signup-box > .card-img {
         width: 100%;
         height: 200px;
+        padding-left: 0px;
     }
 
     .signup-box > .card-img > .img-box {
@@ -156,16 +200,17 @@
     }
 
     /* 회원가입 입력 폼 */
-    .signup-box > .card {
-        height: 680px !important;
+    .signup-box > .signup-card {
+        height: 100% !important;
     }
 
-    .signup-box > .card > .signup-form {
-        height: 100%;
+    .signup-box > .signup-card > .signup-form {
+        height: 850px !important;
         display: block !important;
     }
 
     .signup-form > .title-box {
+        margin-top: 10px !important;
         height: 50px !important;
         padding-left: 5px !important;
         display: flex;
@@ -189,7 +234,7 @@
     }
 
     .signup-form > .input-box {
-        height: 630px;
+        height: 780px !important;
         padding-left: 5px !important;
     }
 
@@ -229,5 +274,39 @@
         border-radius: 5px;
         width: 200px;
         padding : 8px 0px 8px 10px;
+    }
+
+    .input-box > form > .address-box {
+        height: 172px;
+    }
+
+    .input-box > form > .address-box > .total-box {
+        padding-left: 0px;
+    }
+
+    .input-box > form > .address-box > .total-box > .address {
+        display: flex;
+    }
+
+    .input-box > form > .address-box > .total-box > .address > input:nth-child(1) {
+        width: 190px;
+    }
+
+    .input-box > form > .address-box > .total-box > .address3 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .input-box > form > .address-box > .total-box > .address3 > input:nth-child(2) {
+        margin-left: 0px;
+        margin-top: 5px;
+    }
+
+    .input-box > form > .signup-btn {
+        margin-top: 5px;
+    }
+
+    .input-box > form > .signup-btn > button {
+        margin: 0px;
     }
 }
