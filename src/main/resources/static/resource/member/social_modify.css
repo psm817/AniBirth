@@ -1,18 +1,18 @@
-.signup-box {
+.social-modify-box {
     width: 100%;
     height: 100%;
     display: flex;
     margin-top: 20px;
 }
 
-.signup-box > .social-modify-card {
+.social-modify-box > .social-modify-card {
     height: 720px !important;
     display: flex;
     border: transparent;
     margin-top: 0px !important;
 }
 
-.signup-box > .cardSM-img {
+.social-modify-box > .cardSM-img {
     border: transparent;
     border-radius: 10px;
     height: 720px;
@@ -20,11 +20,11 @@
     padding-left: 30px;
 }
 
-.signup-box > .cardSM-img > .img-box {
+.social-modify-box > .cardSM-img > .img-box {
     height: 100%;
 }
 
-.signup-box > .cardSM-img > .img-box > img {
+.social-modify-box > .cardSM-img > .img-box > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -32,7 +32,7 @@
 
 
 /* 회원가입 입력 폼 */
-.signup-box > .social-modify-card > .signup-form {
+.social-modify-box > .social-modify-card > .signup-form {
     display: flex;
     flex-direction: column;
     height: 720px;
@@ -40,19 +40,19 @@
     border-radius: 10px;
 }
 
-.signup-box > .social-modify-card > .signup-form > .title-box {
+.social-modify-box > .social-modify-card > .signup-form > .title-box {
     display: flex;
     align-items: center;
     height: 90px;
     padding-left: 50px;
 }
 
-.signup-box > .social-modify-card > .signup-form > .title-box > h1 {
+.social-modify-box > .social-modify-card > .signup-form > .title-box > h1 {
     font-size: 24px;
     font-weight: 700;
 }
 
-.signup-box > .social-modify-card > .signup-form > .social-modify-box {
+.social-modify-box > .social-modify-card > .signup-form > .social-modify-box {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -163,30 +163,30 @@
 
 /* 반응형 시작 */
 @media (max-width: 394px) {
-    .signup-box {
+    .social-modify-box {
         display: block;
         width: 100%;
-        height: 100%;
+        height: 930px;
     }
 
-    .signup-box > .cardSM-img {
+    .social-modify-box > .cardSM-img {
         width: 100%;
         height: 200px;
         padding-left: 0px;
     }
 
-    .signup-box > .cardSM-img > .img-box {
+    .social-modify-box > .cardSM-img > .img-box {
         width: 100%;
         height: 100%;
     }
 
-    .signup-box > .cardSM-img > .img-box > img {
+    .social-modify-box > .cardSM-img > .img-box > img {
         width: 100%;
         height: 100%;
     }
 
-    .signup-box > .modify-card {
-        height: 700px !important;
+    .social-modify-box > .social-modify-card {
+        height: 100% !important;
     }
 
     /* 회원가입 입력 폼 */

@@ -181,12 +181,12 @@
     }
 
     /* 회원가입 입력 폼 */
-    .signup-box > .card {
-        height: 800px !important;
+    .signup-box > .modify-card {
+        height: 830px !important;
     }
 
-    .signup-box > .card > .signup-form {
-        height: 100%;
+    .signup-box > .modify-card > .signup-form {
+        height: 830px;
         display: block !important;
     }
 

@@ -238,6 +238,12 @@
         text-align: left;
     }
 
+    .summary-box > .calendar-section > .title-box > span {
+        font-weight: 700;
+        font-size: 18px;
+        margin-left: 10px;
+    }
+
     /* 년월 날짜 커스텀 */
     .fc-header-toolbar > .fc-toolbar-chunk:nth-child(1) {
         width: 82px;
