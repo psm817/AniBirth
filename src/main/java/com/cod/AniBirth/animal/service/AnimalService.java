@@ -40,7 +40,7 @@ public class AnimalService {
     public Page<Animal> getList(int page, String kw, AnimalSearchDTO searchDTO) {
         List<Sort.Order> sorts = new ArrayList<>();
         sorts.add(Sort.Order.desc("noticeDate"));
-        Pageable pageable = PageRequest.of(page, 8, Sort.by(sorts));
+        Pageable pageable = PageRequest.of(page, 16, Sort.by(sorts));
 
 
         Specification<Animal> spec = AnimalSpecification.searchWith(searchDTO);
