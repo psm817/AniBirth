@@ -109,6 +109,11 @@ html > body .container > .category-box {
     border-color: #004ba0;
     height: 38px;
 }
+/*html > body container-box .container.adoptlist .category-box .category-box-line > .category-type {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}*/
 
 html > body .container-box .adoptlist > .adopt-notice-list {
     padding-top: 25px;
