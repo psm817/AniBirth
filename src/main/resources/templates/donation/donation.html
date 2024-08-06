@@ -32,7 +32,8 @@
                                 <img th:src="@{|${donorStat[0].thumbnailImg}|}" alt="프로필사진">
                             </div>
                             <h3 th:text="${donorStat[0].nickname}"></h3>
-                            <p th:text="${donorStat[1]} + ' 원'"></p>
+                            <p th:text="${#numbers.formatDecimal(donorStat[1], 1, 'COMMA', 0, 'POINT')}+원"></p>
+
                         </div>
                         <div class="ribbon">
                             <div class="ribbon-stitches-top"></div>

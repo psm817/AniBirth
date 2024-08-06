@@ -39,6 +39,26 @@ ul, li, a {
     visibility: visible !important;
 }
 
+/* 페이지 네이션 */
+.pagination .page-link {
+    color: #FF416C; /* 링크 텍스트 색상 */
+}
+
+.pagination .page-link:hover {
+    color: #FF416C; /* 링크 텍스트 호버 색상 */
+    background-color: #FFE6EC; /* 링크 배경 호버 색상 (더 밝은 색상으로 설정) */
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #FF416C; /* 활성화된 링크 배경 색상 */
+    border-color: #FF416C; /* 활성화된 링크 테두리 색상 */
+    color: #ffffff; /* 활성화된 링크 텍스트 색상 */
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #FFB3C1; /* 비활성화된 링크 텍스트 색상 (더 밝은 색상으로 설정) */
+}
+
 /* 헤더 시작 */
 header > .menu-bar {
     height: 100px;

@@ -83,6 +83,7 @@
 
 .right-box > .content-box {
     height: 100%;
+    width: 100%;
     padding-left: 40px;
 }
 
@@ -158,6 +159,8 @@
     border-radius: 10px;
     height: 100%;
     width: 450px;
+    overflow-x: auto;
+    text-align: left;
 }
 
 .right-box > .content-box > ul > li > .text-box > span {
@@ -294,20 +297,100 @@
     .container > .right-box > .content-box > .profile-box-title > ul {
         overflow-x: auto;
         white-space: nowrap;
+        width: 100%;
     }
 
     .container > .right-box > .content-box > .profile-box-title > ul > li {
-        display: inline-block;
-        min-width: 100%;
+        width: 1500px !important;
+    }
+
+    .container > .right-box > .content-box > .profile-box-title > ul > li > span {
+        display: block;
+        width: 100%;
+    }
+
+    .container > .right-box > .content-box > .profile-box-title > ul > li > .number {
+        margin-right: 10px;
+        width: 5%;
+    }
+
+    .container > .right-box > .content-box > .profile-box-title > ul > li > .id {
+        margin-right: 10px;
+        width: 70%;
+    }
+
+    .container > .right-box > .content-box > .profile-box-title > ul > li > .authority {
+        margin-right: 10px;
+        width: 80%;
+    }
+
+    .container > .right-box > .content-box > .profile-box-title > ul > li > .phone {
+        margin-right: 10px;
+        width: 70%;
+    }
+
+    .container > .right-box > .content-box > .profile-box-title > ul > li > .email {
+        margin-right: 10px;
+        width: 80%;
+    }
+
+    .container > .right-box > .content-box > .profile-box-title > ul > li > .address {
+        margin-right: 10px;
+        width: 200%;
+    }
+
+    .container > .right-box > .content-box > .profile-box-title > ul > li > .isActive {
+        margin-right: 10px;
+        width: 50%;
     }
 
     .container > .right-box > .content-box > .profile-box-detail > ul {
         overflow-x: auto;
         white-space: nowrap;
+        width: 100%;
     }
 
     .container > .right-box > .content-box > .profile-box-detail > ul > li {
-        display: inline-block;
-        min-width: 100%;
+        width: 1500px !important;
+    }
+
+    .container > .right-box > .content-box > .profile-box-detail > ul > li > span {
+        display: block;
+        width: 100%;
+    }
+
+    .container > .right-box > .content-box > .profile-box-detail > ul > li > .number {
+        margin-right: 15px;
+        width: 10%;
+    }
+
+    .container > .right-box > .content-box > .profile-box-detail > ul > li > .id {
+        margin-right: 10px;
+        width: 70%;
+    }
+
+    .container > .right-box > .content-box > .profile-box-detail > ul > li > .authority {
+        margin-right: 10px;
+        width: 80%;
+    }
+
+    .container > .right-box > .content-box > .profile-box-detail > ul > li > .phone {
+        margin-right: 10px;
+        width: 70%;
+    }
+
+    .container > .right-box > .content-box > .profile-box-detail > ul > li > .email {
+        margin-right: 10px;
+        width: 80%;
+    }
+
+    .container > .right-box > .content-box > .profile-box-detail > ul > li > .address {
+        margin-right: 10px;
+        width: 200%;
+    }
+
+    .container > .right-box > .content-box > .profile-box-detail > ul > li > .isActive {
+        margin-right: 10px;
+        width: 50%;
     }
 }

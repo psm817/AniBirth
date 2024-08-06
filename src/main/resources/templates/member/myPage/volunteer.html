@@ -42,7 +42,7 @@
                     <span th:if="${member.authority} == 0" th:utext="'애니버스에 등록된 봉사활동은 총 <strong>' + ${#lists.size(volunteerAllList)} + '</strong> 건입니다.'"></span>
                 </div>
                 <!-- 일반 회원일때 리스트 항목 -->
-                <div class="volunteer-box-title card-body" th:if="${member.authority} == 2">
+                <div class="volunteer-box-title volunteer-member-title card-body" th:if="${member.authority} == 2">
                     <ul class="list-group list-group-flush gap-6">
                         <li class="list-group-item flex items-center">
                             <span class="number w-[10%]">번호</span>
@@ -52,7 +52,7 @@
                     </ul>
                 </div>
                 <!-- 최고/중간 관리자일때 리스트 항목 -->
-                <div class="volunteer-box-title card-body" th:if="${member.authority} == 1 or ${member.authority} == 0">
+                <div class="volunteer-box-title volunteer-admin-title card-body" th:if="${member.authority} == 1 or ${member.authority} == 0">
                     <ul class="list-group list-group-flush gap-6">
                         <li class="list-group-item flex items-center">
                             <span class="number w-[10%]">번호</span>
@@ -65,7 +65,7 @@
                     </ul>
                 </div>
                 <!-- 일반 회원일때 리스트 내용 -->
-                <div th:if="${member.authority} == 2" class="volunteer-box-detail card-body">
+                <div th:if="${member.authority} == 2" class="volunteer-box-detail volunteer-member-detail card-body">
                     <ul class="list-group list-group-flush">
                         <!-- th:each로 반복문 돌려야됨  -->
                         <li class="list-group-item flex items-center" th:each="volunteer, loop : ${volunteerApplicationList}">
@@ -78,7 +78,7 @@
                     </ul>
                 </div>
                 <!-- 최고 관리자일때 리스트 항목 -->
-                <div th:if="${member.authority} == 0" class="volunteer-box-detail card-body">
+                <div th:if="${member.authority} == 0" class="volunteer-box-detail volunteer-admin-detail card-body">
                     <ul class="list-group list-group-flush">
                         <!-- th:each로 반복문 돌려야됨  -->
                         <li class="list-group-item flex items-center" th:each="volunteerList, loop : ${volunteerAllList}">
@@ -94,7 +94,7 @@
                     </ul>
                 </div>
                 <!-- 중간 관리자일때 리스트 항목 -->
-                <div th:if="${member.authority} == 1" class="volunteer-box-detail card-body">
+                <div th:if="${member.authority} == 1" class="volunteer-box-detail volunteer-admin-detail card-body">
                     <ul class="list-group list-group-flush">
                         <!-- th:each로 반복문 돌려야됨  -->
                         <li class="list-group-item flex items-center" th:each="volunteer2, loop : ${volunteerList}">

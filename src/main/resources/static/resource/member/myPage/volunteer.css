@@ -188,20 +188,128 @@
     .container > .right-box > .content-box > .volunteer-box-title > ul {
         overflow-x: auto;
         white-space: nowrap;
+        width: 100%;
     }
 
-    .container > .right-box > .content-box > .volunteer-box-title > ul > li {
-        display: inline-block;
-        min-width: 100%;
+    .container > .right-box > .content-box > .volunteer-member-title > ul > li {
+        width: 800px !important;
+    }
+
+    .container > .right-box > .content-box > .volunteer-member-title > ul > li > .number {
+        margin-right: 10px;
+        width: 7%;
+    }
+
+    .container > .right-box > .content-box > .volunteer-member-title > ul > li > .date {
+        margin-right: 10px;
+        width: 60%;
+    }
+
+    .container > .right-box > .content-box > .volunteer-member-title > ul > li > .volunteer-name {
+        margin-right: 10px;
+        width: 50%;
+    }
+
+    .container > .right-box > .content-box > .volunteer-admin-title > ul > li {
+        width: 1000px !important;
+    }
+
+    .container > .right-box > .content-box > .volunteer-admin-title > ul > li > .number {
+        margin-right: 10px;
+        width: 7%;
+    }
+
+    .container > .right-box > .content-box > .volunteer-admin-title > ul > li > .start-date {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .volunteer-admin-title > ul > li > .end-date {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .volunteer-admin-title > ul > li > .volunteer-name {
+        margin-right: 10px;
+        width: 100%;
+    }
+
+    .container > .right-box > .content-box > .volunteer-admin-title > ul > li > .num {
+        margin-right: 10px;
+        width: 30%;
+    }
+
+    .container > .right-box > .content-box > .volunteer-admin-title > ul > li > .maxNum {
+        margin-right: 10px;
+        width: 30%;
     }
 
     .container > .right-box > .content-box > .volunteer-box-detail > ul {
         overflow-x: auto;
         white-space: nowrap;
+        width: 100%;
     }
 
-    .container > .right-box > .content-box > .volunteer-box-detail > ul > li {
-        display: inline-block;
-        min-width: 100%;
+    .container > .right-box > .content-box > .volunteer-member-detail > ul > li {
+        width: 800px !important;
+    }
+
+    .container > .right-box > .content-box > .volunteer-member-detail > ul > li > a {
+        width: 100% !important;
+        display: flex;
+    }
+
+    .container > .right-box > .content-box > .volunteer-member-detail > ul > li > a > .number {
+        margin-right: 10px;
+        width: 7%;
+    }
+
+    .container > .right-box > .content-box > .volunteer-member-detail > ul > li > a > .date {
+        margin-right: 10px;
+        width: 60%;
+    }
+
+    .container > .right-box > .content-box > .volunteer-member-detail > ul > li > a > .volunteer-name {
+        margin-right: 10px;
+        width: 50%;
+    }
+
+    .container > .right-box > .content-box > .volunteer-admin-detail > ul > li {
+        width: 1000px !important;
+    }
+
+    .container > .right-box > .content-box > .volunteer-admin-detail > ul > li > a {
+        width: 100% !important;
+        display: flex;
+    }
+
+    .container > .right-box > .content-box > .volunteer-admin-detail > ul > li > a > .number {
+        margin-right: 10px;
+        width: 7%;
+    }
+
+    .container > .right-box > .content-box > .volunteer-admin-detail > ul > li > a > .start-date {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .volunteer-admin-detail > ul > li > a > .end-date {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .volunteer-admin-detail > ul > li > a > .volunteer-name {
+        margin-right: 10px;
+        width: 100%;
+    }
+
+    .container > .right-box > .content-box > .volunteer-admin-detail > ul > li > a > .num {
+        margin-right: 10px;
+        width: 30%;
+    }
+
+    .container > .right-box > .content-box > .volunteer-admin-detail > ul > li > a > .maxNum {
+        margin-right: 10px;
+        width: 30%;
     }
 }
