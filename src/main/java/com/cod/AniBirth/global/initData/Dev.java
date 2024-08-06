@@ -7,6 +7,8 @@ import com.cod.AniBirth.animal.service.AnimalService;
 import com.cod.AniBirth.calendar.service.CalendarService;
 import com.cod.AniBirth.category.entity.Category;
 import com.cod.AniBirth.category.service.CategoryService;
+import com.cod.AniBirth.donation.entity.Donation;
+import com.cod.AniBirth.donation.service.DonationService;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
 import com.cod.AniBirth.product.service.ProductService;
@@ -27,7 +29,8 @@ public class Dev {
     @Bean
     public ApplicationRunner init(MemberService memberService, AccountService accountService,
                                   ProductService productService, VolunteerService volunteerService,
-                                  CalendarService calendarService, VolunteerReviewService volunteerReviewService) {
+                                  CalendarService calendarService, VolunteerReviewService volunteerReviewService,
+                                  DonationService donationService) {
 
         return args -> {
             // 회원 샘플
@@ -118,10 +121,29 @@ public class Dev {
             volunteerReviewService.create("제목6", "내용6", 0, member10, "/images/volunteer/volunteer_default.jpg", null);
 
 
-            productService.create("타이틀1","1 설명입니다",10000);
-            productService.create("타이틀2","2 설명입니다",20000);
-            productService.create("타이틀3","3 설명입니다",30000);
-            productService.create("타이틀4","4 설명입니다",40000);
+            productService.create("타이틀1","1 설명입니다",10000,3000);
+            productService.create("타이틀2","2 설명입니다",20000,3000);
+            productService.create("타이틀3","3 설명입니다",30000,3000);
+            productService.create("타이틀4","4 설명입니다",40000,3000);
+
+            // 후원 샘플
+            Donation donation1 = new Donation();
+            donation1.setAmount(10000000L);
+            donation1.setDonor(member4); // Example: user1
+            donation1.setRecipient(member6); // Example: company3
+            donationService.save(donation1);
+
+            Donation donation2 = new Donation();
+            donation2.setAmount(20000000L);
+            donation2.setDonor(member5); // Example: user2
+            donation2.setRecipient(member7); // Example: company4
+            donationService.save(donation2);
+
+            Donation donation3 = new Donation();
+            donation3.setAmount(30000000L);
+            donation3.setDonor(member10); // Example: user3
+            donation3.setRecipient(member8); // Example: company5
+            donationService.save(donation3);
         };
     }
 }

@@ -1,109 +1,143 @@
-/* detail.css */
+/* 컨테이너 설정 */
+.container-all, .container-comments {
+  border-radius: 8px;
+  border: 1px solid red;
 
-/* 전체 페이지 스타일 */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    margin: 0;
-    padding: 0;
+
 }
 
-/* 컨테이너 스타일 */
-.container-all {
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 80%;
-    max-width: 800px;
-    margin: 20px auto;
+/* 제목 스타일링 */
+h1 {
+  font-size: 2rem; /* 32px */
+  color: #333; /* 다크 회색 */
+  margin-bottom: 10px;
 }
 
-/* QA 박스 스타일 */
-.qa-box {
-    background: #e0e0e0; /* 연한 회색 배경 */
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
+h2 {
+  font-size: 1.5rem; /* 24px */
+  color: #444; /* 약간 더 밝은 다크 회색 */
+  margin-bottom: 10px;
 }
 
-.qa-box h2 {
-    margin-top: 0;
-    color: #333;
-    font-size: 24px;
+/* 버튼 스타일링 */
+.btn-primary {
+  background-color: #007BFF; /* 블루 */
+  color: #FFFFFF; /* 흰색 */
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
 }
 
-.qa-box .meta {
-    color: #555;
-    font-size: 14px;
-    margin: 5px 0;
+.btn-primary:hover {
+  background-color: #0056b3; /* 블루의 어두운 버전 */
 }
 
-.qa-content {
-    margin: 15px 0;
-    line-height: 1.6;
+.link-manage {
+  background: none;
+  color: #007BFF; /* 블루 */
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
-/* 수정/삭제 버튼 스타일 */
-.action-buttons {
-    margin-top: 15px;
+.link-manage:hover {
+  color: #0056b3; /* 블루의 어두운 버전 */
+}
+/* 구분선 */
+.jb-division-line {
+  border-top: 1px solid #444444;
+  margin: 30px 0px;
 }
 
-button, a.button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 15px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
+
+/* 댓글 리스트 */
+.comment-list {
+    border: 1px solid red;
+  list-style: none;
+
 }
 
-button:hover, a.button:hover {
-    background-color: #0056b3;
+.comment-list li {
+  border-bottom: 1px solid #E0E0E0; /* 연한 회색 */
+  display:inline-block;
+
 }
 
-/* 댓글 창 스타일 */
-.comment-section {
-    position: fixed;
-    bottom: 20px;
-    width: 80%;
-    max-width: 800px;
-    margin: 0 auto;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+.comment-list textarea {
+
+  border: 1px solid red;
+  width: 200%;
+  height: 200px;
+  border: 2px solid #D0D0D0; /* 연한 회색 */
+  border-radius: 4px;
+
+  margin-bottom: 10px;
+  resize: vertical; /* 수직으로만 크기 조정 가능 */
 }
 
-.form-group {
-    margin-bottom: 15px;
+.comment-list button {
+  background-color: #007BFF; /* 블루 */
+  color: #FFFFFF; /* 흰색 */
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
 }
+
+.comment-list button:hover {
+  background-color: #0056b3; /* 블루의 어두운 버전 */
+}
+
+.comment-summary{
+    width:800px;
+}
+.comment-summary > h2 {
+    text-align: left;
+}
+
+.container-comment-list{
+      border: 1px solid red;
+
+}
+
+
+.container-comment{
+      border: 1px solid red;
+      width:1000px;
+      display: flex;
+}
+.container-comment > button{
+    margin-left: auto;
+}
+
+/* 폼 스타일링 */
+
 
 textarea {
-    width: 100%;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    font-size: 16px;
-    box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #D0D0D0; /* 연한 회색 */
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  resize: vertical; /* 수직으로만 크기 조정 가능 */
 }
 
-.submit-button {
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 15px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+button[type="submit"] {
+  background-color: #007BFF; /* 블루 */
+  color: #FFFFFF; /* 흰색 */
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
 
-.submit-button:hover {
-    background-color: #218838;
+button[type="submit"]:hover {
+  background-color: #0056b3; /* 블루의 어두운 버전 */
 }
+
+

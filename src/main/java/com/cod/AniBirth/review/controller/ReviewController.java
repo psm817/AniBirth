@@ -51,13 +51,13 @@ public class ReviewController {
             @RequestParam("starRating") int starRating
     ) {
         Review review = reviewService.getReview(id);
-        reviewService.modify(review, content, starRating);
-        long productId = review.getProduct().getId();
-
         if (!review.getMember().getUsername().equals(principal.getName())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정 권한 없음");
         }
+        reviewService.modify(review, content, starRating); // starRating 추가
+        long productId = review.getProduct().getId();
 
         return String.format("redirect:/product/detail/%s", productId);
     }
+
 }

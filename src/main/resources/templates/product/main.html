@@ -4,7 +4,7 @@
 <head>
     <title>애니마켓</title>
 <!--    <link rel="stylesheet" type="text/css" th:href="css/bootstrap.css">-->
-    <link rel="stylesheet" type="text/css" th:href="@{/resource/product/main.css}">
+<!--    <link rel="stylesheet" type="text/css" th:href="@{/resource/product/main.css}">-->
 </head>
 <section layout:fragment="content" class="flex-1 justify-center items-center">
     <div class="hero_area">
@@ -68,7 +68,7 @@
                                 </h2>
                             </div>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium consectetur delectus dignissimos, dolorem et excepturi id iure laboriosam maiores nihil quae quo quos recusandae reiciendis similique sunt suscipit vel?
+                                애니 마켓은 당신의 소중한 반려동물을 위한 최고의 사료와 용품을 제공합니다. 우리는 건강한 먹거리부터 안전하고 재미있는 장난감, 편안한 잠자리를 위한 침대까지 다양한 제품을 갖추고 있습니다. 애니 마켓과 함께라면 반려동물의 행복과 건강을 한층 더 높여줄 수 있습니다.
                             </p>
                             <div class="btn-box">
                                 <a href="#" class="btn1">
@@ -96,208 +96,24 @@
                     BEST
                 </h2>
             </div>
-            <div class="row">
-                <div class="col-sm-6 col-md-4 col-lg-3">
+            <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-3">
+                <li th:each="product, loop : ${products}" class="flex flex-col group xl:w-[300px] w-full">
                     <div class="box">
-                        <a href="">
+                        <a th:href="@{|/product/detail/${product.id}|}">
                             <div class="img-box">
-                                <img src="https://thumbnail9.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/7295993519305983-34d2ca7f-5ca8-4a5e-ba39-b9776d147b49.jpg" alt="">
+                                <img class="object-cover object-center block w-full h-full rounded-lg" th:src="@{|/gen/${product.thumbnailImg}|}" alt="이미지가 존재하지 않습니다.">
                             </div>
                             <div class="detail-box">
+                                <h6 th:text="${product.title}"></h6>
                                 <h6>
-                                    Ring
-                                </h6>
-                                <h6>
-                                    Price
-                                    <span>
-                    $200
-                  </span>
+                                    <span th:text="${#numbers.formatInteger(product.price, 3, 'COMMA') + '원'}"></span>
                                 </h6>
                             </div>
-                            <div class="new">
-                <span>
-                  New
-                </span>
-                            </div>
+
                         </a>
                     </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="box">
-                        <a href="">
-                            <div class="img-box">
-                                <img src="https://thumbnail9.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/7295993519305983-34d2ca7f-5ca8-4a5e-ba39-b9776d147b49.jpg" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h6>
-                                    Watch
-                                </h6>
-                                <h6>
-                                    Price
-                                    <span>
-                    $300
-                  </span>
-                                </h6>
-                            </div>
-                            <div class="new">
-                <span>
-                  New
-                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="box">
-                        <a href="">
-                            <div class="img-box">
-                                <img src="https://thumbnail9.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/7295993519305983-34d2ca7f-5ca8-4a5e-ba39-b9776d147b49.jpg" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h6>
-                                    Teddy Bear
-                                </h6>
-                                <h6>
-                                    Price
-                                    <span>
-                    $110
-                  </span>
-                                </h6>
-                            </div>
-                            <div class="new">
-                <span>
-                  New
-                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="box">
-                        <a href="">
-                            <div class="img-box">
-                                <img src="https://thumbnail9.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/7295993519305983-34d2ca7f-5ca8-4a5e-ba39-b9776d147b49.jpg" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h6>
-                                    Flower Bouquet
-                                </h6>
-                                <h6>
-                                    Price
-                                    <span>
-                    $45
-                  </span>
-                                </h6>
-                            </div>
-                            <div class="new">
-                <span>
-                  New
-                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="box">
-                        <a href="">
-                            <div class="img-box">
-                                <img src="https://thumbnail9.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/7295993519305983-34d2ca7f-5ca8-4a5e-ba39-b9776d147b49.jpg" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h6>
-                                    Teddy Bear
-                                </h6>
-                                <h6>
-                                    Price
-                                    <span>
-                    $95
-                  </span>
-                                </h6>
-                            </div>
-                            <div class="new">
-                <span>
-                  New
-                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="box">
-                        <a href="">
-                            <div class="img-box">
-                                <img src="https://thumbnail9.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/7295993519305983-34d2ca7f-5ca8-4a5e-ba39-b9776d147b49.jpg" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h6>
-                                    Flower Bouquet
-                                </h6>
-                                <h6>
-                                    Price
-                                    <span>
-                    $70
-                  </span>
-                                </h6>
-                            </div>
-                            <div class="new">
-                <span>
-                  New
-                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="box">
-                        <a href="">
-                            <div class="img-box">
-                                <img src="https://thumbnail9.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/7295993519305983-34d2ca7f-5ca8-4a5e-ba39-b9776d147b49.jpg" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h6>
-                                    Watch
-                                </h6>
-                                <h6>
-                                    Price
-                                    <span>
-                    $400
-                  </span>
-                                </h6>
-                            </div>
-                            <div class="new">
-                <span>
-                  New
-                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="box">
-                        <a href="">
-                            <div class="img-box">
-                                <img src="https://thumbnail9.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/7295993519305983-34d2ca7f-5ca8-4a5e-ba39-b9776d147b49.jpg" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h6>
-                                    Ring
-                                </h6>
-                                <h6>
-                                    Price
-                                    <span>
-                    $450
-                  </span>
-                                </h6>
-                            </div>
-                            <div class="new">
-                <span>
-                  New
-                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
+                </li>
+            </ul>
             <div class="btn-box">
                 <a th:href="@{/product/list}">
                     모든 상품 보기

@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -25,10 +26,20 @@ public class ProductController {
     private final MemberService memberService;
 
     @GetMapping("/main")
-    public String product() {
+    public String product(Model model, Authentication authentication) {
+        // Fetch the list of products to display on the main page, limited to 8
+        List<Product> products = productService.getAllProducts().stream().limit(8).collect(Collectors.toList());
+
+        Member member = null;
+        if (authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
+
+        model.addAttribute("products", products);
+        model.addAttribute("member", member);
+
         return "product/main";
     }
-
 
     @GetMapping("/list")
     public String list(
@@ -55,6 +66,7 @@ public class ProductController {
     @GetMapping("/detail/{id}")
     public String detail(@PathVariable("id") Long id, Model model, Authentication authentication) {
         Product product = productService.getProduct(id);
+        double averageStarRating = productService.calculateAverageStarRating(product);
 
         Member member = null;
         if (authentication != null && authentication.isAuthenticated()) {
@@ -63,6 +75,7 @@ public class ProductController {
 
         model.addAttribute("product", product);
         model.addAttribute("member", member);
+        model.addAttribute("averageStarRating", averageStarRating);
 
         return "product/detail";
     }
@@ -82,13 +95,16 @@ public class ProductController {
             @RequestParam("description") String description,
             @RequestParam("price") int price,
             @RequestParam("thumbnail") MultipartFile thumbnail,
+            @RequestParam(value = "shippingFee", defaultValue = "3000") int shippingFee, // 배송비 기본값 설정
             Authentication authentication
     ) {
         Member member = memberService.findByUsername(authentication.getName());
-        productService.create(title, description, price, thumbnail, member);
+        productService.create(title, description, price, thumbnail, member, shippingFee);
 
         return "redirect:/product/list";
     }
+
+
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/modify/{id}")
     public String modify(@PathVariable("id") Long id, Model model) {
@@ -104,9 +120,10 @@ public class ProductController {
             @RequestParam("title") String title,
             @RequestParam("description") String description,
             @RequestParam("price") int price,
-            @RequestParam(value = "thumbnail", required = false) MultipartFile thumbnail
+            @RequestParam(value = "thumbnail", required = false) MultipartFile thumbnail,
+            @RequestParam(value = "shippingFee", defaultValue = "3000") int shippingFee // 배송비 기본값 설정
     ) {
-        productService.modify(id, title, description, price, thumbnail);
+        productService.modify(id, title, description, price, thumbnail, shippingFee);
         return "redirect:/product/detail/" + id;
     }
 

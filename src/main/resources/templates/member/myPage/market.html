@@ -35,7 +35,11 @@
             <div class="title-box card-header flex items-center pl-[40px]">
                 <span>후원 및 마켓내역</span>
                 <a th:href="@{/member/myPage/donation}" class="btn btn-link ml-[20px]">후원내역 보기</a>
+                <div th:if="${member != null and (member.authority == 0 or member.authority == 1)}" class="btn btn-link ml-[20px]" >
+                    <a th:href="@{/product/create}" class="button">상품 등록</a>
+                </div>
             </div>
+
             <div class="content-box card-header pl-[40px]">
                 <div class="total-box">
                     <span th:if="${member.authority} == 2" th:text="${member.nickname} + '님이 구매하신 마켓내역은 총 0 건입니다.'"></span>

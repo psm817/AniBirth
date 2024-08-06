@@ -66,6 +66,7 @@ spring:
       com.ll.rest_api: DEBUG
       org.hibernate.orm.jdbc.bind: TRACE
       org.hibernate.orm.jdbc.extract: TRACE
+      org.springframework.security: DEBUG
   custom:
     site:
       baseUrl: http://localhost

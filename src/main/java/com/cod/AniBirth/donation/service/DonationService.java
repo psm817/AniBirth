@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -68,9 +69,26 @@ public class DonationService {
     public List<Object[]> getTopDonors() {
         List<Object[]> topDonors = donationRepository.findTopDonors();
         log.info("Top Donors: {}", topDonors);
-        return topDonors.stream()
-                .limit(3) // 상위 3명으로 제한
-                .collect(Collectors.toList());
+
+        // 상위 3명만 재정렬합니다.
+        List<Object[]> reorderedTopDonors = new ArrayList<>();
+        if (topDonors.size() > 1) {
+            reorderedTopDonors.add(topDonors.get(1)); // 2등
+        }
+        if (topDonors.size() > 0) {
+            reorderedTopDonors.add(topDonors.get(0)); // 1등
+        }
+        if (topDonors.size() > 2) {
+            reorderedTopDonors.add(topDonors.get(2)); // 3등
+        }
+        // 나머지 등수를 추가합니다.
+        if (topDonors.size() > 3) {
+            for (int i = 3; i < topDonors.size(); i++) {
+                reorderedTopDonors.add(topDonors.get(i));
+            }
+        }
+
+        return reorderedTopDonors;
     }
 
     public List<Donation> getDonationsByDonor(Member donor) {
@@ -85,4 +103,15 @@ public class DonationService {
         return donationRepository.findAll();
     }
 
+    public void save(Donation donation) {
+        donationRepository.save(donation);
+    }
+
+    public List<Donation> getDonationsReceivedByMember(Member member) {
+        return donationRepository.findByRecipient(member);
+    }
+
+    public Long getDonationCountReceivedByMember(Member member) {
+        return donationRepository.countByRecipient(member);
+    }
 }

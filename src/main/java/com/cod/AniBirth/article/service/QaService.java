@@ -34,19 +34,6 @@ public class QaService {
         return qaRepository.findById(id).orElse(null);
     }
 
-//    public Qa saveQa(Qa qa) {
-//        if (qa.getId() != null) { // Q&A ID가 존재하면
-//            Qa existingQa = qaRepository.findById(qa.getId()).orElse(null);
-//            if (existingQa != null) {
-//                existingQa.setTitle(qa.getTitle());
-//                existingQa.setContent(qa.getContent());
-//                existingQa.setModifyDate(LocalDateTime.now());
-//                return qaRepository.save(existingQa);
-//            }
-//        }
-//
-//        return qaRepository.save(qa);
-//    }
 
     public void saveQa(Qa qa) {
         // ID가 있는 엔티티는 기존에 존재하는 엔티티를 업데이트
@@ -55,34 +42,26 @@ public class QaService {
                     .orElseThrow(() -> new DataNotFoundException("QA not found"));
             existingQa.setTitle(qa.getTitle());
             existingQa.setContent(qa.getContent());
-            // modifyDate는 자동으로 업데이트되므로, 직접 설정하지 않음
             qaRepository.save(existingQa);
-        } else {
-            // ID가 없으면 새로 추가
-            qa.setCreateDate(LocalDateTime.now()); // `@CreatedDate`가 자동으로 처리할 수 있음
+        }
+        else {
+//            // ID가 없으면 새로 추가
             qaRepository.save(qa);
         }
     }
 
 
-//    public void saveQa(Qa qa) {
-//        if (qa.getId() != null) {
-//            qa.setModifyDate(LocalDateTime.now()); // 수정 시 updateDate 설정
-//        }
-//        qaRepository.save(qa);
-//    }
 
     public void deleteQa(Long id) {
         qaRepository.deleteById(id);
     }
 
-    public void create(String title, String content, String username) {
-        Member member = memberService.findByUsername(username);
+    public void create(String title, String content, Member member, int viewCount) {
         Qa qa = Qa.builder()
                 .title(title)
                 .content(content)
-                .createDate(LocalDateTime.now())
                 .member(member)
+                .viewCount(viewCount)
                 .build();
 
         qaRepository.save(qa);
@@ -93,4 +72,53 @@ public class QaService {
         qa.setViewCount(qa.getViewCount() + 1);
         qaRepository.save(qa);
     }
+
+    public void edit(Qa existingQa, String title, String content) {
+        existingQa.setTitle(title);
+        existingQa.setContent(content);
+        existingQa.setModifyDate(LocalDateTime.now());
+
+        qaRepository.save(existingQa);
+
+    }
+
+    public void addAdminComment(Long id, String adminComment, Member member) {
+        Qa qa = getQaById(id);
+        if (qa == null) {
+            throw new DataNotFoundException("해당 QA를 찾을 수 없습니다.");
+        }
+        // 관리자 댓글 추가
+        qa.getAdminComments().add(adminComment);
+        qa.getCommentAuthors().add(member.getUsername());
+
+        qaRepository.save(qa);
+    }
+    public void modifyComment(Long id, String oldComment, String newComment, Member member) {
+        Qa qa = getQaById(id);
+        if (qa == null) {
+            throw new DataNotFoundException("해당 QA를 찾을 수 없습니다.");
+        }
+
+        int index = qa.getAdminComments().indexOf(oldComment);
+        if (index >= 0 && qa.getCommentAuthors().get(index).equals(member.getUsername())) {
+            qa.getAdminComments().set(index, newComment);
+            qaRepository.save(qa);
+        } else {
+            throw new SecurityException("댓글 수정 권한이 없습니다.");
+        }
+    }
+
+
+    public void removeComment(Long id, String comment, Member member) {
+        Qa qa = getQaById(id);
+        int index = qa.getAdminComments().indexOf(comment);
+        if (index >= 0 && qa.getCommentAuthors().get(index).equals(member.getUsername())) {
+            qa.getAdminComments().remove(index);
+            qa.getCommentAuthors().remove(index);
+            qaRepository.save(qa);
+        } else {
+            throw new SecurityException("댓글 삭제 권한이 없습니다.");
+        }
+    }
+
 }
