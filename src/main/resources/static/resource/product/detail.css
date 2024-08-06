@@ -1,38 +1,80 @@
+.section-prod-list {
+    padding: 20px;
+}
+.product-container-box {
+    display: flex;
+    width: 800px;
+    margin: 0 auto;
+    justify-content: center;
+}
+.product-card, .cart-add-card {
+    display: flex;
+}
+.product-card-header, .product-card-header{
+    width: 800px;
+    font-weight: bold;
+    background-color: rgb(255 65 108);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    align-items: center;
+
+}
+.btn-outline-dark {
+    width: 100%;
+    margin-top: 10px;
+}
+.list-group-item span {
+    display: inline-block;
+    min-width: 80px;
+}
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
 .product-img {
-            display: block;
-            margin: 0 auto;
-            max-width: 300px;
-        }
-        .section-prod-list {
-            padding: 20px;
-        }
-        .container-box {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .card {
-            display: flex;
-            margin-bottom: 30px;
-        }
-        .card-header {
-            font-weight: bold;
-            background-color: #f8f9fa;
-        }
-        .btn-outline-dark {
-            width: 100%;
-            margin-top: 10px;
-        }
-        .list-group-item span {
-            display: inline-block;
-            min-width: 80px;
-        }
-        .review-stars {
-            display: flex;
-            align-items: center;
-        }
-        .review-stars span {
-            margin-right: 5px;
-        }
-        .review-stars .stars {
-            color: gold;
-        }
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* 별점 css 시작 */
+.rating:not(:checked) > input {
+    position: absolute;
+    appearance: none;
+}
+
+.rating:not(:checked) > label {
+    float: right;
+    cursor: pointer;
+    font-size: 30px;
+    color: #666;
+}
+
+.rating:not(:checked) > label:before {
+    content: '★';
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #e58e09;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: #ff9e0b;
+}
+
+.rating > input:checked ~ label {
+    color: #ffa723;
+}
+/* 별점 css 끝 */
