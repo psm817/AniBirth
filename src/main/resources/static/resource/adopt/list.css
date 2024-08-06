@@ -53,6 +53,10 @@ html > body .container-box > .adoptlist {
 html > body .container > .category-box {
     display: flex;
     flex-direction: column;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px grey;
 }
 
 .category-type {
@@ -93,7 +97,7 @@ html > body .container > .category-box {
     width: 100%;
     display: flex;
     justify-content: space-around;
-    padding: 15px 112px;
+    padding: 15px 108px;
 
 }
 
@@ -119,8 +123,25 @@ html > body .container-box .adoptlist > .adopt-notice-list {
     padding-top: 25px;
 }
 
+html > body .container-box .adoptlist > .adopt-notice-list > .flex {
+    background-color: #fafbfc;
+    border-radius: 8px;
+    box-shadow: 0 0px 6px rgba(140, 152, 164, 0.5);
+}
+
+.animal-content-detail {
+    height: 153px;
+    padding: 15px 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+..animal-content-detail > .a {
+
+}
+
 .adopt-list-bottom {
-    height: 640px;
+    height: 620px;
 }
 
 .container.adoption-procedure {
@@ -135,6 +156,56 @@ html > body .container-box .adoptlist > .adopt-notice-list {
     margin-bottom: 20px;
     height: 31.5px;
     font-size: 28px;
+}
+
+.adt-pro-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 128px; /* 원형을 화면 중앙에 배치 */
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.adt-circle-1,
+.adt-circle-2,
+.adt-circle-3,
+.adt-circle-4 {
+    width: 8rem;
+    height: 8rem;
+    background-color: #ebf1fa;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.adt-circle-1 > span,
+.adt-circle-2 > span,
+.adt-circle-3 > span,
+.adt-circle-4 > span {
+    color: black;
+}
+
+.adt-prev-caution {
+    background-color: white;
+    width: 730px;
+    height: 260px;
+    margin-top: 30px;
+}
+.adt-prev-caution-content> ul {
+    list-style: disc;
+    list-style-position: inside;
+}
+
+.adt-prev-caution-content > li {
+    list-style: disc;
+    list-style-position: inside;
 }
 
 

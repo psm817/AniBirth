@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="container adoptlist">
-      <h1 class="adoptnotice text-[1.5rem] font-bold">입양동물 공고</h1>
+      <h1 class="adoptnotice text-[1.5rem] font-bold" style="margin-bottom: 20px;">입양동물 공고</h1>
       <div class="category-box">
         <form th:action="@{/adopt/list}" class="category-search-form" method="get">
           <div class="category-box-line">
@@ -106,9 +106,12 @@
             <img class="block w-full h-full rounded-lg hover:rounded-lg"
                  th:src="@{|http://www.daejeon.go.kr/${animal.filePath}|}" alt="이미지가 존재하지 않습니다.">
           </a>
-          <a th:href="@{|/adopt/detail/${animal.id}|}" th:text="${animal.species}" class="text-center mt-2"></a>
-          <a th:href="@{|/adopt/detail/${animal.id}|}" th:text="${animal.gender}" class="text-center mt-2"></a>
-          <a th:href="@{|/adopt/detail/${animal.id}|}" th:text="${animal.age}" class="text-center mt-2"></a>
+          <div class="animal-content-detail">
+            <a th:href="@{|/adopt/detail/${animal.id}|}" th:text="${animal.species}" class="text-left mt-2 text-lg font-semibold"></a>
+            <a th:href="@{|/adopt/detail/${animal.id}|}" th:text="${animal.gender}" class="text-left mt-2"></a>
+            <a th:href="@{|/adopt/detail/${animal.id}|}" th:text="${animal.age}" class="text-left mt-2"></a>
+            <a th:href="@{|/adopt/detail/${animal.id}|}" th:text="${animal.weight}" class="text-left mt-2"></a>
+          </div>
         </li>
       </ul>
       <!-- 페이징 처리 시작 -->
@@ -145,9 +148,43 @@
             <h4>입양절차</h4>
           </div>
           <div class="adt-pro-icon">
-            <span class="u-icon-v2 u-icon-size--3xl g-brd-0 g-mb-25 g-pl-0" style="width: 8rem; height: 8rem; background-color: #2f80ed; border-radius: 50%;">
-              <span class="d-inline-block g-line-height-1_5 text-center g-font-size-14 font-weight-bold g-color-white mb-0 g-pt-35">입양신청서<br>작성</span>
-            </span>
+            <div class="adt-circle-1">
+              <span>입양신청서<br>작성</span>
+            </div>
+            <span><i class="fa-solid fa-chevron-right"
+                     style="color: #2f80ed; font-size: 40px; margin:0px 13px;"></i></span>
+            <div class="adt-circle-2">
+              <span>신청서<br>검토</span>
+            </div>
+            <span><i class="fa-solid fa-chevron-right"
+                     style="color: #2f80ed; font-size: 40px; margin:0px 13px;"></i></span>
+            <div class="adt-circle-3">
+              <span>입양<br>상담</span>
+            </div>
+            <span><i class="fa-solid fa-chevron-right"
+                     style="color: #2f80ed; font-size: 40px; margin:0px 13px;"></i></span>
+            <div class="adt-circle-4">
+              <span>입양확정 후<br>가정방문</span>
+            </div>
+          </div>
+          <div class="row" style="width:100%; text-align:start;">
+            <div class="col-lg-8">
+              <p>입양신청서 작성 후 입양상담까지는 약 2-4주가 소요됩니다.</p>
+              <p>입양 상담은 선별된 분에 한하여 담당 활동가와 전화를 통해 진행되는 점 참고해 주세요.</p>
+              <div class="adt-prev-caution">
+                <p style="font-size:15px; font-weight:600; color:black; margin-bottom:10px;">입양 전 확인해 주세요</p>
+                <ul class="adt-prev-caution-content">
+                  <li>애니버스의 입양원칙에 동의하시는 분들만 입양신청이 가능합니다.</li>
+                  <li>입양 동물은 반드시 중성화 수술을 해주셔야 하며, 동의하지 않을 경우 입양신청이 어렵습니다.</li>
+                  <li>입양신청 서식에 모든 정보를 등록해 주셔야 상담이 진행됩니다.</li>
+                  <li>맞음비는 위기동물 치료비, 반려동물보호 복지 활동에 전액 사용됩니다.</li>
+                  <li>가족 구성원 전체의 동의를 얻지 않은 경우나 미성년자의 입양신청은 어렵습니다.</li>
+                  <li>개 입양 시 마당견으로의 반려는 불가능합니다.</li>
+                  <li>고양이 입양 시 외출냥이, 산책냥이로의 반려는 불가능합니다.</li>
+                  <li>임시보호 시 입양과 동일한 절차로 진행됩니다.</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -171,4 +208,3 @@
   </script>
 </section>
 </html>
-<!--아직안됨-->
