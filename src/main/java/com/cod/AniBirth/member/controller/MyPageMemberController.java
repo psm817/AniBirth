@@ -130,9 +130,9 @@ public class MyPageMemberController {
             donations = donationService.getDonationsByDonor(member);
             donationCount = donationService.getDonationCountByDonor(member);
         } else {
-            // 중간 관리자 및 최고 관리자를 위한 모든 기부 기록 가져오기
-            donations = donationService.findAll();
-            donationCount = (long) donations.size();
+            // 중간 관리자 및 최고 관리자가 받은 기부 기록 가져오기
+            donations = donationService.getDonationsReceivedByMember(member);
+            donationCount = donationService.getDonationCountReceivedByMember(member);
         }
 
         log.info("Member: {}", member);

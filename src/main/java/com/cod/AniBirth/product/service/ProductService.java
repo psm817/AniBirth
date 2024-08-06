@@ -4,6 +4,7 @@ package com.cod.AniBirth.product.service;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.product.entity.Product;
 import com.cod.AniBirth.product.repository.ProductRepository;
+import com.cod.AniBirth.review.entity.Review;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -33,7 +34,7 @@ public class ProductService {
         return productRepository.findAllByKeyword(kw, pageable);
     }
 
-    public void create(String title, String description, int price, MultipartFile thumbnail, Member member) {
+    public void create(String title, String description, int price, MultipartFile thumbnail, Member member, int shippingFee) {
         String thumbnailRelPath = "product/" + UUID.randomUUID().toString() + ".jpg";
         File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
 
@@ -54,15 +55,17 @@ public class ProductService {
                 .price(price)
                 .thumbnailImg(thumbnailRelPath)
                 .member(member)
+                .shippingFee(shippingFee) // 배송비 추가
                 .build();
         productRepository.save(product);
     }
 
-    public void create(String title, String description, int price) {
+    public void create(String title, String description, int price, int shippingFee) {
         Product p = Product.builder()
                 .title(title)
                 .description(description)
                 .price(price)
+                .shippingFee(shippingFee)
                 .thumbnailImg("product/9f0ad987-997c-4344-8f33-27210dc928b0.jpg")
                 .build();
         productRepository.save(p);
@@ -78,11 +81,12 @@ public class ProductService {
         }
     }
 
-    public void modify(Long id, String title, String description, int price, MultipartFile thumbnail) {
+    public void modify(Long id, String title, String description, int price, MultipartFile thumbnail, int shippingFee) {
         Product product = getProduct(id);
         product.setTitle(title);
         product.setDescription(description);
         product.setPrice(price);
+        product.setShippingFee(shippingFee); // 배송비 수정
 
         if (thumbnail != null && !thumbnail.isEmpty()) {
             String thumbnailRelPath = "product/" + UUID.randomUUID().toString() + ".jpg";
@@ -106,6 +110,22 @@ public class ProductService {
     public void delete(Long id) {
         Product product = getProduct(id);
         productRepository.delete(product);
+    }
+
+
+    public double calculateAverageStarRating(Product product) {
+        List<Review> reviews = product.getReviewList();
+        if (reviews == null || reviews.isEmpty()) {
+            return 0;
+        }
+        double sum = 0;
+        for (Review review : reviews) {
+            sum += review.getStarRating();
+        }
+        return sum / reviews.size();
+    }
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
     }
 
 }

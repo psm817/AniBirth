@@ -10,12 +10,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 
 @Controller
@@ -52,22 +56,15 @@ public class QaController {
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute Qa qa, Authentication authentication) {
-        String username = null;
-        if (authentication.getPrincipal() instanceof UserDetails) {
-            username = ((UserDetails) authentication.getPrincipal()).getUsername();
-        } else if (authentication.getPrincipal() instanceof String) {
-            username = (String) authentication.getPrincipal();
-        }
+    public String create(@RequestParam("title") String title,
+                         @RequestParam("content") String content,
+                         Authentication authentication) {
 
-        if (username == null) {
-            throw new IllegalStateException("User is not authenticated");
-        }
 
-        Member member = memberService.findByUsername(username);
-        qa.setMember(member);
-        qa.setCreateDate(LocalDateTime.now());
-        qaService.saveQa(qa);
+        Member member = memberService.findByUsername(authentication.getName());
+
+        qaService.create(title, content, member , 0);
+
         return "redirect:/qa/list";
     }
 
@@ -86,6 +83,8 @@ public class QaController {
 
         model.addAttribute("qa", qa);
         model.addAttribute("member", member);
+        model.addAttribute("isEditingComment", false); // 초기 상태는 수정 모드가 아님
+        model.addAttribute("editingComment", null); // 수정할 댓글 내용 초기화
 
         return "qa/detail";
     }
@@ -107,23 +106,16 @@ public class QaController {
     }
 
     @PostMapping("/edit/{id}")
-    public String edit(@PathVariable("id") Long id, @ModelAttribute Qa qa, Authentication authentication) {
+    public String edit(@PathVariable("id") Long id,
+                       @RequestParam("title") String title,
+                       @RequestParam("content") String content, Authentication authentication) {
         Qa existingQa = qaService.getQaById(id);
-        if (existingQa == null) {
-            throw new DataNotFoundException("해당 QA를 찾을 수 없습니다.");
-        }
 
-        String username = ((UserDetails) authentication.getPrincipal()).getUsername();
-        if (!existingQa.getMember().getUsername().equals(username)) {
-            throw new SecurityException("게시물 수정 권한이 없습니다.");
-        }
+        qaService.edit(existingQa,title, content);
 
-        existingQa.setTitle(qa.getTitle());
-        existingQa.setContent(qa.getContent());
-//        existingQa.setModifyDate(LocalDateTime.now());
-        qaService.saveQa(existingQa);
 
-        return "redirect:/qa/" + id;
+
+        return "redirect:/qa/list";
     }
 
     @PostMapping("/delete/{id}")
@@ -141,4 +133,69 @@ public class QaController {
         qaService.deleteQa(id);
         return "redirect:/qa/list";
     }
+
+    @PostMapping("/comment/{id}")
+    public String addAdminComment(@PathVariable("id") Long id,
+                                  @RequestParam("adminComment") String adminComment,
+                                  Authentication authentication) {
+
+        Member member = null;
+        if (authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
+
+        qaService.addAdminComment(id, adminComment, member);
+
+        return "redirect:/qa/" + id;
+    }
+
+
+    @PostMapping("/comment/modify/{id}")
+    public String modifyComment(@PathVariable("id") Long id,
+                                Principal principal,
+                                @RequestParam("oldComment") String oldComment,
+                                @RequestParam("adminComment") String adminComment,
+                                Model model) {
+        Member member = memberService.findByUsername(principal.getName());
+        qaService.modifyComment(id, oldComment, adminComment, member);
+        return "redirect:/qa/" + id;
+    }
+
+    @PostMapping("/comment/edit/{id}")
+    public String editCommentForm(@PathVariable("id") Long id,
+                                  @RequestParam("comment") String comment,
+                                  Model model,
+                                  Authentication authentication) {
+        Qa qa = qaService.getQaById(id);
+        if (qa == null) {
+            throw new DataNotFoundException("해당 QA를 찾을 수 없습니다.");
+        }
+
+        Member member = null;
+        if (authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
+
+        model.addAttribute("qa", qa);
+        model.addAttribute("member", member);
+        model.addAttribute("isEditingComment", true); // 수정 모드로 설정
+        model.addAttribute("editingComment", comment); // 수정할 댓글 내용 설정
+
+        return "qa/detail";
+    }
+
+
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/comment/remove/{id}")
+    public String removeComment(@PathVariable("id") Long id,
+                                @RequestParam("comment") String comment,
+                                Authentication authentication) {
+
+        Member member = memberService.findByUsername(authentication.getName());
+        qaService.removeComment(id, comment, member);
+        return "redirect:/qa/" + id;
+    }
+
+
 }

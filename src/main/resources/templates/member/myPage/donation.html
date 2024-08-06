@@ -13,10 +13,10 @@
             </div>
             <div class="menu-box-d card-header">
                 <ul class="list-group list-group-flush gap-6 mt-2">
-                    <li th:if="${member.authority} != 0" class="list-group-item flex justify-center items-center profile">
+                    <li th:if="${member.authority != 0}" class="list-group-item flex justify-center items-center profile">
                         <a th:href="@{/member/myPage/myProfile}"><span>마이프로필</span></a>
                     </li>
-                    <li th:if="${member.authority} == 0" class="list-group-item flex justify-center items-center profile">
+                    <li th:if="${member.authority == 0}" class="list-group-item flex justify-center items-center profile">
                         <a th:href="@{/member/myPage/myProfile}"><span>회원목록</span></a>
                     </li>
                     <li class="list-group-item flex justify-center items-center volunteer">
@@ -36,6 +36,7 @@
                 <span>후원 및 마켓내역</span>
                 <a th:href="@{/member/myPage/market}" class="btn btn-link ml-[20px]">마켓내역 보기</a>
             </div>
+
             <div class="content-box card-header pl-[40px]">
                 <div class="total-box">
                     <span th:if="${member.authority eq 2}" th:utext="${member.nickname} + '님이 후원하신 후원내역은 총 <strong>' + ${donationCount} + '</strong>건입니다.'"></span>
@@ -43,7 +44,7 @@
                     <span th:if="${member.authority} == 0" th:utext="'애니버스에 등록된 후원내역은 총 <strong>' + ${donationCount} + '</strong>건입니다.'"></span>
                 </div>
                 <!-- 일반 회원일때 리스트 항목 -->
-                <div class="donation-box-title card-body" th:if="${member.authority} == 2">
+                <div class="donation-box-title card-body" th:if="${member.authority eq 2}">
                     <ul class="list-group list-group-flush gap-6">
                         <li class="list-group-item flex items-center">
                             <span class="number w-[10%]">번호</span>
@@ -54,7 +55,7 @@
                     </ul>
                 </div>
                 <!-- 최고/중간 관리자일때 리스트 항목 -->
-                <div class="donation-box-title card-body" th:if="${member.authority} == 1 or ${member.authority} == 0">
+                <div class="donation-box-title card-body" th:if="${member.authority eq 1 or member.authority eq 0}">
                     <ul class="list-group list-group-flush gap-6">
                         <li class="list-group-item flex items-center">
                             <span class="number w-[10%]">번호</span>

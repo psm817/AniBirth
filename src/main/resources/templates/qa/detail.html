@@ -6,35 +6,84 @@
 </head>
 <body>
 <section layout:fragment="content" class="flex-1 flex flex-col items-center py-8">
-    <div class="container-all">
-        <h2 th:text="${qa.title}"></h2>
-        <p>작성자: <span th:text="${qa.member.username}"></span></p>
-        <p>작성일: <span th:text="${#temporals.format(qa.createDate, 'yyyy-MM-dd')}"></span></p>
-        <div th:text="${qa.content}"></div>
-        <div th:if="${qa.adminComment}">
-            <h3>관리자 댓글</h3>
-            <p th:text="${qa.adminComment}"></p>
+    <div class="container-all max-w-3xl p-6 bg-white shadow-md rounded-lg">
+        <header class="mb-6">
+            <h1 class="text-4xl font-bold mb-2" th:text="${qa.title}"></h1>
+            작성자:<span th:text="${qa.member.username}" class="mx-2">|</span>
+            작성일: <span th:text="${#temporals.format(qa.createDate, 'yyyy-MM-dd')}">|</span>
+            <span class="mx-2">|</span>
+            조회수: <span th:text="${qa.viewCount}"></span>
+            <hr class="my-4 border-gray-300">
+        </header>
+        <div class="content mb-6">
+            <div th:text="${qa.content}">내용</div>
         </div>
 
         <!-- 로그인한 사용자가 작성자인 경우에만 수정/삭제 버튼 보이기 -->
         <div th:if="${member != null and qa.member.username == member.username}">
-            <a th:href="@{|/qa/edit/${qa.id}|}" class="button">수정</a>
+            <a th:href="@{|/qa/edit/${qa.id}|}" class="btn-primary">수정</a>
             <form th:action="@{|/qa/delete/${qa.id}|}" method="post" style="display:inline;">
                 <button type="submit" class="link-manage" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</button>
             </form>
         </div>
+    </div>
 
-        <!-- 관리자 댓글 추가 폼 -->
-        <div th:if="${member != null and member.authority == 0}">
-            <form th:action="@{|/qa/comment/${qa.id}|}" method="post">
-                <div>
-                    <label for="adminComment">관리자 댓글</label>
-                    <textarea id="adminComment" name="adminComment" rows="4" cols="50"></textarea>
-                </div>
-                <button type="submit" class="button">댓글 추가</button>
+    <!-- 댓글 리스트 -->
+    <div class="jb-division-line"></div>
+    <div class="container-comment-list max-w-3xl p-6 mt-6">
+        <div th:if="${qa.adminComments != null and !qa.adminComments.isEmpty()}">
+
+            <div class="comment-summary mb-4">
+                <h2 class="text-2xl font-semibold">댓글 수 <span th:text="${#lists.size(qa.adminComments)}"></span>개)</h2>
+            </div>
+            <div class="jb-division-line"></div>
+
+            <ul class="comment-list">
+                <li th:each="adminComment, status : ${qa.adminComments}">
+                    <div th:text="${adminComment}">댓글 내용</div>
+                    <div>
+                        작성자: <span th:text="${qa.commentAuthors[status.index]}"></span>
+                    </div>
+                    <!-- 댓글 작성자와 현재 사용자 확인 -->
+                    <div th:if="${member != null and qa.commentAuthors[status.index] == member.username}">
+                        <form th:action="@{/qa/comment/edit/{id}(id=${qa.id})}" method="post" style="display:inline;">
+                            <input type="hidden" name="comment" th:value="${adminComment}"/>
+                            <button type="submit">수정</button>
+                        </form>
+                        <form th:action="@{|/qa/comment/remove/${qa.id}|}" method="post" style="display:inline;">
+                            <input type="hidden" name="comment" th:value="${adminComment}"/>
+                            <button type="submit" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</button>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="jb-division-line"></div>
+    <!-- 관리자 댓글 추가/수정 폼 -->
+    <div id="form-commentInfo" class="container-comment max-w-3xl p-6 mt-6">
+        <div th:if="${member != null and (member.authority == 0 or member.authority == 1)}" class="mt-6">
+            <form id="comment-form-edit" th:action="@{/qa/comment/modify/{id}(id=${qa.id})}" method="post">
+                <input type="hidden" name="oldComment" th:value="${editingComment}"/>
+                <textarea id="comment-input-edit" name="adminComment" placeholder="댓글을 입력해 주세요." required
+                          th:if="${isEditingComment}" th:text="${editingComment}"></textarea>
+                <textarea id="comment-input-new" name="adminComment" placeholder="댓글을 입력해 주세요." required
+                          th:if="${!isEditingComment}"></textarea>
+                <button class="btn-primary" th:if="${isEditingComment}">수정</button>
+                <button class="btn-primary" th:if="${!isEditingComment}">등록</button>
+                <button type="button" onclick="cancelEdit()" th:if="${isEditingComment}">취소</button>
             </form>
         </div>
     </div>
 </section>
+<script>
+    function cancelEdit() {
+        // Reset the form and hide the edit textarea
+        document.getElementById('comment-form-edit').reset();
+        document.getElementById('comment-input-edit').style.display = 'none';
+        document.getElementById('comment-input-new').style.display = 'block';
+    }
+</script>
 </body>
 </html>

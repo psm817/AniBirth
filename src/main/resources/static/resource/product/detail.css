@@ -38,12 +38,11 @@
     border-radius: 10px;
     padding: 0;
     margin: 25px;
-    margin-right: 200px;
+
 }
 .prod-product-card-header {
     flex: 1 1 55%;
     font-weight: bold;
-    background-color: #ff416c;
     color: black;
     padding: 15px;
     border-radius: 2px 2px 0 0;

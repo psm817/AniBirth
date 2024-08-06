@@ -106,4 +106,12 @@ public class DonationService {
     public void save(Donation donation) {
         donationRepository.save(donation);
     }
+
+    public List<Donation> getDonationsReceivedByMember(Member member) {
+        return donationRepository.findByRecipient(member);
+    }
+
+    public Long getDonationCountReceivedByMember(Member member) {
+        return donationRepository.countByRecipient(member);
+    }
 }

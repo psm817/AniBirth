@@ -121,10 +121,10 @@ public class Dev {
             volunteerReviewService.create("제목6", "내용6", 0, member10, "/images/volunteer/volunteer_default.jpg", null);
 
 
-            productService.create("타이틀1","1 설명입니다",10000);
-            productService.create("타이틀2","2 설명입니다",20000);
-            productService.create("타이틀3","3 설명입니다",30000);
-            productService.create("타이틀4","4 설명입니다",40000);
+            productService.create("타이틀1","1 설명입니다",10000,3000);
+            productService.create("타이틀2","2 설명입니다",20000,3000);
+            productService.create("타이틀3","3 설명입니다",30000,3000);
+            productService.create("타이틀4","4 설명입니다",40000,3000);
 
             // 후원 샘플
             Donation donation1 = new Donation();
