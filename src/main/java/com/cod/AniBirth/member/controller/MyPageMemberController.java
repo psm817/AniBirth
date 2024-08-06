@@ -124,6 +124,7 @@ public class MyPageMemberController {
         Member member = memberService.findByUsername(principal.getName());
         Account account = accountService.findByMember(member);
 
+
         // 일반 회원 기부 리스트
         List<Donation> donationList = donationService.getDonationsByDonor(member);
         Long donationCount = (long) donationList.size();
@@ -154,10 +155,6 @@ public class MyPageMemberController {
 
         return "member/myPage/donation";
     }
-
-
-
-
 
 
     @PreAuthorize("isAuthenticated()")

@@ -23,4 +23,5 @@ public interface DonationRepository extends JpaRepository<Donation, Long> {
     List<Donation> findByRecipient(Member recipient);
 
     Long countByRecipient(Member recipient);
+
 }

@@ -4,10 +4,14 @@
     <div class="container" style="display: flex; flex-wrap: wrap;">
         <div class="w-full text-center mb-8">
             <img th:src="@{/images/banner/banner-1.png}" alt="배너1" class="mx-auto">
-            <h2 class="text-xl font-bold mt-4">#여름템 #기획전</h2>
         </div>
 
-        <h2 class="w-full text-center text-2xl font-bold mb-4">BEST</h2>
+        <div class="product-title-box">
+            <span>전체 상품</span>
+            <span>(※ 상품 이미지나 상품명을 클릭하면 상세정보를 확인하실 수 있습니다.)</span>
+            <a th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or ${member.authority} == 1)"
+               th:href="@{/product/create}" class="button">등록하기</a>
+        </div>
 
         <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-3">
             <li th:each="product, loop : ${paging}" class="flex flex-col group xl:w-[300px] w-full">
@@ -20,9 +24,6 @@
             </li>
         </ul>
 
-        <div th:if="${member != null and (member.authority == 0 or member.authority == 1)}" class="mt-7 text-right">
-            <a th:href="@{/product/create}" class="button">등록하기</a>
-        </div>
 
         <!-- Pagination -->
         <div class="w-full mt-5">
