@@ -19,6 +19,7 @@ public class CartService {
         CartItem c = CartItem.builder()
             .product(product)
             .member(member)
+            .thumbnailImg(product.getThumbnailImg())
             .build();
 
         cartRepository.save(c);

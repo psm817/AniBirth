@@ -24,4 +24,6 @@ public class CartItem extends BaseEntity {
 
     @ManyToOne
     private Product product;
+
+    private String thumbnailImg;
 }

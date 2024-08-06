@@ -66,6 +66,7 @@
     <link href="/resource/volunteer/reviewModify.css" rel="stylesheet">
     <link href="/resource/product/main.css" rel="stylesheet">
     <link href="/resource/product/detail.css" rel="stylesheet">
+    <link href="/resource/product/list.css" rel="stylesheet">
 
 
 
@@ -110,7 +111,7 @@
                         <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/member/myPage/myProfile}">마이페이지</a>
                     </li>
                     <li class="nav-item text-left">
-                        <a class="nav-link" sec:authorize="isAuthenticated()" href="#">장바구니</a>
+                        <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/cart/list}">장바구니</a>
                     </li>
                     <li class="nav-item text-left">
                         <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/member/login}">로그인</a>

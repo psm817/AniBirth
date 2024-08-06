@@ -1,0 +1,26 @@
+.product-title-box {
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+.product-title-box > span {
+    font-weight: 700;
+    font-size: 23px;
+    margin-left: 35px;
+}
+.product-title-box > a {
+    border: 2px solid #FF416C;
+    background-color: #FF416C;
+    color: #fff;
+    border-radius: 10px;
+    margin-left: 15px;
+}
+.product-title-box > a:hover {
+    background-color: transparent;
+    color: #121212;
+}
+.product-title-box > span:nth-child(2) {
+    font-weight: 500;
+    font-size: 15px;
+    margin-left: 15px;
+}
