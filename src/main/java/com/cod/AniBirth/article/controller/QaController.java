@@ -149,43 +149,6 @@ public class QaController {
         return "redirect:/qa/" + id;
     }
 
-
-    @PostMapping("/comment/modify/{id}")
-    public String modifyComment(@PathVariable("id") Long id,
-                                Principal principal,
-                                @RequestParam("oldComment") String oldComment,
-                                @RequestParam("adminComment") String adminComment,
-                                Model model) {
-        Member member = memberService.findByUsername(principal.getName());
-        qaService.modifyComment(id, oldComment, adminComment, member);
-        return "redirect:/qa/" + id;
-    }
-
-    @PostMapping("/comment/edit/{id}")
-    public String editCommentForm(@PathVariable("id") Long id,
-                                  @RequestParam("comment") String comment,
-                                  Model model,
-                                  Authentication authentication) {
-        Qa qa = qaService.getQaById(id);
-        if (qa == null) {
-            throw new DataNotFoundException("해당 QA를 찾을 수 없습니다.");
-        }
-
-        Member member = null;
-        if (authentication != null && authentication.isAuthenticated()) {
-            member = memberService.findByUsername(authentication.getName());
-        }
-
-        model.addAttribute("qa", qa);
-        model.addAttribute("member", member);
-        model.addAttribute("isEditingComment", true); // 수정 모드로 설정
-        model.addAttribute("editingComment", comment); // 수정할 댓글 내용 설정
-
-        return "qa/detail";
-    }
-
-
-
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/comment/remove/{id}")
     public String removeComment(@PathVariable("id") Long id,

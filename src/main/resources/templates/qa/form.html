@@ -1,25 +1,42 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout/layout}">
 <head>
-    <title>Q&A 등록</title>
+    <title th:text="${qa.id == null} ? 'Q&A 등록' : 'Q&A 수정'"></title>
     <link rel="stylesheet" type="text/css" th:href="@{/resource/qa/form.css}">
 </head>
 <body>
-<section layout:fragment="content" class="flex-1 flex flex-col items-center py-8">
+<section layout:fragment="content" class="container-form">
     <div class="container-all">
-        <h2>Q&A 등록</h2>
-        <form th:action="@{/qa/create}" method="post">
-            <div>
-                <label for="title">제목</label>
-                <input type="text" id="title" name="title" th:value="${qa.title}" required>
+        <div class="container-head">
+            <h1 class="title" th:text="${qa.id == null} ? 'Q&A 등록' : 'Q&A 수정'"></h1>
+        </div>
+        <hr class="divider">
+
+        <form th:action="${qa.id == null} ? @{/qa/create} : @{/qa/edit/{id}(id=${qa.id})}" method="post" class="form">
+            <!-- 제목 입력 -->
+            <div class="container-title">
+                <div class="form-group">
+                    <label class="form-label" for="title">제목</label>
+                    <input class="form-input" id="title" type="text" name="title" placeholder="제목을 입력하세요"
+                           th:value="${qa.title}" required>
+                </div>
             </div>
-            <div>
-                <label for="content">내용</label>
-                <textarea id="content" name="content" rows="10" cols="50" th:text="${qa.content}" required></textarea>
+            <hr class="divider-dotted">
+            <!-- 내용 입력 -->
+            <div class="form-group">
+                <label class="form-label" for="content">내용</label>
+                <textarea class="form-textarea" id="content" name="content" rows="10" placeholder="내용을 입력하세요" required
+                          th:text="${qa.content}"></textarea>
             </div>
-            <button type="submit" class="button">등록</button>
+            <hr class="divider">
+            <!-- 버튼 -->
+            <div class="form-footer">
+                <button class="form-button" type="submit" th:text="${qa.id == null} ? '등록' : '수정'"></button>
+                <button class="form-button" type="button" onclick="window.history.back()">취소</button>
+            </div>
         </form>
     </div>
 </section>
+
 </body>
 </html>

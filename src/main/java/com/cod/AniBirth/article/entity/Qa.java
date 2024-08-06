@@ -23,7 +23,7 @@ public class Qa extends BaseEntity {
 
     private String title;
     private String content;
-    //    private String adminComment; // 관리자 댓글
+
     private int viewCount; // 조회수 추가
 
     @ElementCollection
