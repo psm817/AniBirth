@@ -40,8 +40,7 @@
                 <div class="select-box">
                   <div class="msg-aria mb-3">
                     <select name="gender" id="gender" data-msg="성별을 선택해 주세요" class="custom-select">
-                      <option value="" th:selected="${searchDTO.gender == null}">All <span><i
-                          class="fas fa-caret-down"></i></span></option>
+                      <option value="" th:selected="${searchDTO.gender == null}">All</option>
                       <option th:each="gender : ${genders}"
                               th:value="${gender.id}"
                               th:text="${gender.name}"
@@ -95,6 +94,9 @@
               <button type="submit" class="btn btn-sm btn-block btn-primary transition-3d-hover mb-1"
                       style="width: 150px">검색
               </button>
+            </div>
+            <div class="search-group">
+              <button type="submit" class="btn btn-sm btn-block btn-primary transition-3d-hover mb-1" style="width: 150px">검색</button>
             </div>
           </div>
         </form>
