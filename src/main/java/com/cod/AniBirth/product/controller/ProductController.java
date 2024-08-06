@@ -27,7 +27,6 @@ public class ProductController {
 
     @GetMapping("/main")
     public String product(Model model, Authentication authentication) {
-        // Fetch the list of products to display on the main page, limited to 8
         List<Product> products = productService.getAllProducts().stream().limit(8).collect(Collectors.toList());
 
         Member member = null;

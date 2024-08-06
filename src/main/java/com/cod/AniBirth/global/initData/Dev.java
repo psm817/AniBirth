@@ -122,6 +122,10 @@ public class Dev {
             productService.create("타이틀2","2 설명입니다",20000,3000);
             productService.create("타이틀3","3 설명입니다",30000,3000);
             productService.create("타이틀4","4 설명입니다",40000,3000);
+            productService.create("타이틀5","5 설명입니다",10000,3000);
+            productService.create("타이틀6","6 설명입니다",20000,3000);
+            productService.create("타이틀7","7 설명입니다",30000,3000);
+            productService.create("타이틀8","8 설명입니다",40000,3000);
 
             // 후원 샘플
             Donation donation1 = new Donation();
