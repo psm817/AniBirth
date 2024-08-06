@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -123,28 +124,40 @@ public class MyPageMemberController {
         Member member = memberService.findByUsername(principal.getName());
         Account account = accountService.findByMember(member);
 
-        List<Donation> donations;
-        Long donationCount;
+        // 일반 회원 기부 리스트
+        List<Donation> donationList = donationService.getDonationsByDonor(member);
+        Long donationCount = (long) donationList.size();
 
-        if (member.getAuthority() == 2) { // 일반 회원
-            donations = donationService.getDonationsByDonor(member);
-            donationCount = donationService.getDonationCountByDonor(member);
-        } else {
-            // 중간 관리자 및 최고 관리자가 받은 기부 기록 가져오기
-            donations = donationService.getDonationsReceivedByMember(member);
-            donationCount = donationService.getDonationCountReceivedByMember(member);
+        // 중간 관리자 및 최고 관리자가 받은 기부 리스트
+        List<Donation> receivedDonationList = donationService.getDonationsReceivedByMember(member);
+
+        // 기부 리스트를 저장할 리스트
+        List<Donation> allDonations = new ArrayList<>();
+
+        // 관리자 권한에 따른 기부 리스트 설정
+        if (member.getAuthority() == 0) { // 최고 관리자
+            allDonations = donationService.findAll();
+            donationCount = (long) allDonations.size();
+        } else if (member.getAuthority() == 1) { // 중간 관리자
+            allDonations = receivedDonationList;
+            donationCount = (long) receivedDonationList.size();
+        } else { // 일반 회원
+            donationCount = (long) donationList.size();
         }
-
-        log.info("Member: {}", member);
-        log.info("Donations: {}", donations);
 
         model.addAttribute("member", member);
         model.addAttribute("account", account);
-        model.addAttribute("donationRecords", donations);
+        model.addAttribute("donationList", donationList);
+        model.addAttribute("receivedDonationList", receivedDonationList);
+        model.addAttribute("allDonations", allDonations);
         model.addAttribute("donationCount", donationCount);
 
         return "member/myPage/donation";
     }
+
+
+
+
 
 
     @PreAuthorize("isAuthenticated()")

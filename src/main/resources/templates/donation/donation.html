@@ -76,8 +76,8 @@
             <span class="close">&times;</span>
             <h2>후원하기</h2>
             <div class="modal-body">
-                <form action="/donation/submit" method="post">
-                    <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+                <form id="donationForm" action="/donation/submit" method="post">
+                    <!-- CSRF Token Removed -->
                     <label for="recipient">센터 선택:</label>
                     <select id="recipient" name="recipientId">
                         <option th:each="recipient : ${recipients}"
