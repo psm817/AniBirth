@@ -4,7 +4,7 @@
     <div class="container volunteer-detail">
         <div class="card top-box">
             <div class="thumbnail-box">
-                <img th:src="@{${volunteer.thumbnailImg}}" alt="상품이미지">
+                <img th:src="@{|/gen/${volunteer.thumbnailImg}|}" alt="상품이미지">
             </div>
             <ul class="detail-box list-group list-group-flush gap-2 ml-3">
                 <li class="list-group-item">

@@ -11,6 +11,7 @@ import com.cod.AniBirth.volunteer.service.VolunteerApplicationService;
 import com.cod.AniBirth.volunteer.service.VolunteerReviewService;
 import com.cod.AniBirth.volunteer.service.VolunteerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -19,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -42,6 +44,9 @@ public class VolunteerController {
     private final CalendarService calendarService;
     private final VolunteerApplicationService volunteerApplicationService;
     private final VolunteerReviewService volunteerReviewService;
+
+    @Value("${custom.genFileDirPath}")
+    private String genFileDirPath;
 
     // 전체 봉사 리스트
     @GetMapping("/list")
@@ -75,11 +80,9 @@ public class VolunteerController {
                          @RequestParam("location") String location, @RequestParam("limit") int limit,
                          @RequestParam("thumbnailImg") MultipartFile thumbnailImg, @RequestParam("content") String content,
                          Principal principal) {
-        String imageFileName = storeProfilePicture_v(thumbnailImg);
-
         Member member = memberService.getMemberByUsername(principal.getName());
 
-        Volunteer volunteer = volunteerService.create(title, content, location, startDate, endDate, deadLineDate, imageFileName, limit, member, 0);
+        Volunteer volunteer = volunteerService.create(title, content, location, startDate, endDate, deadLineDate, thumbnailImg, limit, member, 0);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
         LocalDateTime start = LocalDateTime.parse(startDate, formatter);
@@ -108,8 +111,6 @@ public class VolunteerController {
                          @RequestParam("location") String location, @RequestParam("limit") int limit,
                          @RequestParam("thumbnailImg") MultipartFile thumbnailImg, @RequestParam("content") String content,
                          Principal principal) {
-        String imageFileName = storeProfilePicture_v(thumbnailImg);
-
         // 등록한 보호소 회원
         Member member = memberService.getMemberByUsername(principal.getName());
 
@@ -119,7 +120,7 @@ public class VolunteerController {
         // 특정 봉사활동에 대한 신청 리스트 가져오기
         List<VolunteerApplication> volunteerApplicationList = volunteerApplicationService.getAllById(id);
 
-        volunteerService.modify(volunteer, title, content, location, startDate, endDate, deadLineDate, imageFileName, limit, member, volunteerApplicationList.size());
+        volunteerService.modify(volunteer, title, content, location, startDate, endDate, deadLineDate, thumbnailImg, limit, member, volunteerApplicationList.size());
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
         LocalDateTime start = LocalDateTime.parse(startDate, formatter);
@@ -142,34 +143,6 @@ public class VolunteerController {
         volunteerService.delete(volunteer);
 
         return "redirect:/volunteer/list?deleteSuccess=true";
-    }
-
-    // 봉사 대표이미지 저장경로
-    public String storeProfilePicture_v(MultipartFile profilePicture) {
-        // 이미지 저장 디렉토리 경로
-        String uploadDir = "C:\\work\\AniBirth\\src\\main\\resources\\static\\images\\volunteer";
-
-        // 디렉토리가 존재하지 않으면 생성
-        Path uploadPath = Paths.get(uploadDir);
-        if (!Files.exists(uploadPath)) {
-            try {
-                Files.createDirectories(uploadPath);
-            } catch (IOException e) {
-                throw new IllegalStateException("Could not create upload directory", e);
-            }
-        }
-        // 파일명 중복을 피하기 위해 임의의 파일명을 생성합니다.
-        String fileName = UUID.randomUUID().toString(); // UUID로 파일명 생성
-        String imageFileName = fileName + ".png"; // 파일 확장자 지정
-        // 파일을 저장합니다.
-        try {
-            Path filePath = uploadPath.resolve(imageFileName);
-            Files.copy(profilePicture.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            throw new IllegalStateException("Could not store image file", e);
-        }
-        // 저장된 파일의 상대 경로를 반환합니다.
-        return "/images/volunteer/" + imageFileName;
     }
 
     // 봉사활동 상세정보
@@ -276,13 +249,12 @@ public class VolunteerController {
     public String reviewCreate(@RequestParam("title") String title, @RequestParam("body") String body,
                                @RequestParam("thumbnailImg") MultipartFile thumbnailImg,
                                @RequestParam(value = "subImg", required = false) List<MultipartFile> subImgs, Principal principal) {
-        String imageFileName = storeProfilePicture_v(thumbnailImg);
 
         List<String> subImageNames = new ArrayList<>();
         if (subImgs != null) {
             for (MultipartFile subImg : subImgs) {
                 if (!subImg.isEmpty()) {
-                    String subImageName = storeProfilePicture_v(subImg);
+                    String subImageName = storeProfilePicture(subImg);
                     subImageNames.add(subImageName);
                 }
             }
@@ -290,9 +262,27 @@ public class VolunteerController {
 
         Member member = memberService.getMemberByUsername(principal.getName());
 
-        volunteerReviewService.create(title, body, 0, member, imageFileName, subImageNames);
+        volunteerReviewService.create(title, body, 0, member, thumbnailImg, subImageNames);
 
         return "redirect:/volunteer/review?reviewCreateSuccess=true";
+    }
+
+    private String storeProfilePicture(MultipartFile subImg) {
+        String imageRelPath = "images/volunteer/" + UUID.randomUUID().toString() + ".jpg";
+        File imageFileObj = new File(genFileDirPath + "/" + imageRelPath);
+
+        File parentDir = imageFileObj.getParentFile();
+        if (!parentDir.exists()) {
+            parentDir.mkdirs();
+        }
+
+        try {
+            subImg.transferTo(imageFileObj);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        return imageRelPath;
     }
 
     // 후기 디테일
@@ -334,19 +324,17 @@ public class VolunteerController {
 
         VolunteerReview volunteerReview = volunteerReviewService.getReviewById(id);
 
-        String imageFileName = storeProfilePicture_v(thumbnailImg);
-
         List<String> subImageNames = new ArrayList<>();
         if (subImgs != null) {
             for (MultipartFile subImg : subImgs) {
                 if (!subImg.isEmpty()) {
-                    String subImageName = storeProfilePicture_v(subImg);
+                    String subImageName = storeProfilePicture(subImg);
                     subImageNames.add(subImageName);
                 }
             }
         }
 
-        volunteerReviewService.modify(volunteerReview, member, title, body, imageFileName, subImageNames);
+        volunteerReviewService.modify(volunteerReview, member, title, body, thumbnailImg, subImageNames);
 
         return "redirect:/volunteer/review/detail/%d?reviewModifySuccess=true".formatted(id);
     }

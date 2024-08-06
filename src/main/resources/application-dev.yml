@@ -15,4 +15,4 @@ spring:
       ddl-auto: create
 
 custom:
-  genFileDirPath: C:\work\genFile
+  genFileDirPath: C:\work\AniBirth\src\main\resources\static

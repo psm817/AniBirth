@@ -35,7 +35,7 @@ public class ProductService {
     }
 
     public void create(String title, String description, int price, MultipartFile thumbnail, Member member, int shippingFee) {
-        String thumbnailRelPath = "product/" + UUID.randomUUID().toString() + ".jpg";
+        String thumbnailRelPath = "images/product/" + UUID.randomUUID().toString() + ".jpg";
         File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
 
         File parentDir = thumbnailFile.getParentFile();
@@ -66,7 +66,7 @@ public class ProductService {
                 .description(description)
                 .price(price)
                 .shippingFee(shippingFee)
-                .thumbnailImg("product/9f0ad987-997c-4344-8f33-27210dc928b0.jpg")
+                .thumbnailImg("images/product/sample_product.jpg")
                 .build();
         productRepository.save(p);
     }

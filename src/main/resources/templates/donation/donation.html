@@ -29,7 +29,7 @@
 
                         <div class="donor-card-content">
                             <div class="profile-img">
-                                <img th:src="@{|${donorStat[0].thumbnailImg}|}" alt="프로필사진">
+                                <img th:src="@{|/gen/${donorStat[0].thumbnailImg}|}" alt="프로필사진">
                             </div>
                             <h3 th:text="${donorStat[0].nickname}"></h3>
                             <p th:text="${#numbers.formatDecimal(donorStat[1], 1, 'COMMA', 0, 'POINT')}+원"></p>

@@ -32,7 +32,7 @@
                             <li th:each="review, loop : ${paging}" class="transition duration-300 rounded-lg hover:rounded-lg hover:-translate-y-1.5 hover:transition hover:duration-300 hover:shadow-md">
                                 <div class="left-image-box">
                                     <a th:href="@{|/volunteer/review/detail/${review.id}|}">
-                                        <img th:src="@{${review.thumbnailImg}}" alt="대표이미지">
+                                        <img th:src="@{|/gen/${review.thumbnailImg}|}" alt="대표이미지">
                                     </a>
                                 </div>
                                 <div class="right-detail-box">

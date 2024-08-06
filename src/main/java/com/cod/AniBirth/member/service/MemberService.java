@@ -8,15 +8,20 @@ import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.repository.MemberRepository;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -25,9 +30,25 @@ public class MemberService {
     private final PasswordEncoder passwordEncoder;
     private final AccountService accountService;
 
+    @Value("${custom.genFileDirPath}")
+    private String genFileDirPath;
 
     public Member signup(String username, String password, String nickname, String email,
-                         String phone, String address, String thumbnailImg, int authority, int isActive) {
+                         String phone, String address, MultipartFile thumbnailImg, int authority, int isActive) {
+        String thumbnailRelPath = "images/profile/" + UUID.randomUUID().toString() + ".jpg";
+        File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
+
+        File parentDir = thumbnailFile.getParentFile();
+        if (!parentDir.exists()) {
+            parentDir.mkdirs();
+        }
+
+        try {
+            thumbnailImg.transferTo(thumbnailFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         Member member = Member.builder()
                 .username(username)
                 .password(passwordEncoder.encode(password))
@@ -35,7 +56,7 @@ public class MemberService {
                 .email(email)
                 .phone(phone)
                 .address(address)
-                .thumbnailImg(thumbnailImg)
+                .thumbnailImg(thumbnailRelPath)
                 .authority(authority)
                 .isActive(isActive)
                 .createDate(LocalDateTime.now())
@@ -51,11 +72,34 @@ public class MemberService {
         return member;
     }
 
+    public Member signup(String username, String password, String nickname, String email,
+                         String phone, String address, String thumbnailImgPath, int authority, int isActive) {
+        Member member = Member.builder()
+                .username(username)
+                .password(passwordEncoder.encode(password))
+                .nickname(nickname)
+                .email(email)
+                .phone(phone)
+                .address(address)
+                .thumbnailImg(thumbnailImgPath)
+                .authority(authority)
+                .isActive(isActive)
+                .createDate(LocalDateTime.now())
+                .build();
+
+        if (authority == 2) {
+            member.setIsActive(1);
+        }
+
+        memberRepository.save(member);
+        accountService.createOrUpdate(member, "", 0L);
+
+        return member;
+    }
+
     public boolean usernameExists(String username) {
         return memberRepository.existsByUsername(username);
     }
-
-
 
     public Member findByUsername(String name) {
         Optional<Member> member = memberRepository.findByUsername(name);
@@ -97,23 +141,55 @@ public class MemberService {
         }
     }
 
-    public void modify(Member member, String password, String nickname, String email, String phone, String address, String imageFileName) {
+    public void modify(Member member, String password, String nickname, String email, String phone, String address, MultipartFile imageFileName) {
         member.setPassword(passwordEncoder.encode(password));
         member.setNickname(nickname);
         member.setEmail(email);
         member.setPhone(phone);
         member.setAddress(address);
-        member.setThumbnailImg(imageFileName);
+
+        if (imageFileName != null && !imageFileName.isEmpty()) {
+            String thumbnailRelPath = "images/profile/" + UUID.randomUUID().toString() + ".jpg";
+            File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
+
+            File parentDir = thumbnailFile.getParentFile();
+            if (!parentDir.exists()) {
+                parentDir.mkdirs();
+            }
+
+            try {
+                imageFileName.transferTo(thumbnailFile);
+                member.setThumbnailImg(thumbnailRelPath);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
         memberRepository.save(member);
     }
 
-    public void socialModify(Member member, String nickname, String email, String phone, String address, String imageFileName) {
+    public void socialModify(Member member, String nickname, String email, String phone, String address, MultipartFile imageFileName) {
         member.setNickname(nickname);
         member.setEmail(email);
         member.setPhone(phone);
         member.setAddress(address);
-        member.setThumbnailImg(imageFileName);
+
+        if (imageFileName != null && !imageFileName.isEmpty()) {
+            String thumbnailRelPath = "images/profile/" + UUID.randomUUID().toString() + ".jpg";
+            File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
+
+            File parentDir = thumbnailFile.getParentFile();
+            if (!parentDir.exists()) {
+                parentDir.mkdirs();
+            }
+
+            try {
+                imageFileName.transferTo(thumbnailFile);
+                member.setThumbnailImg(thumbnailRelPath);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
         memberRepository.save(member);
     }
