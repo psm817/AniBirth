@@ -93,20 +93,7 @@ public class QaService {
 
         qaRepository.save(qa);
     }
-    public void modifyComment(Long id, String oldComment, String newComment, Member member) {
-        Qa qa = getQaById(id);
-        if (qa == null) {
-            throw new DataNotFoundException("해당 QA를 찾을 수 없습니다.");
-        }
 
-        int index = qa.getAdminComments().indexOf(oldComment);
-        if (index >= 0 && qa.getCommentAuthors().get(index).equals(member.getUsername())) {
-            qa.getAdminComments().set(index, newComment);
-            qaRepository.save(qa);
-        } else {
-            throw new SecurityException("댓글 수정 권한이 없습니다.");
-        }
-    }
 
 
     public void removeComment(Long id, String comment, Member member) {

@@ -83,7 +83,7 @@ public class ArticleController {
     public String editForm(@PathVariable("id") Long id, Model model) {
         Article article = articleService.getArticleById(id);
         if (article == null) {
-            throw new DataNotFoundException("Article not found");
+            throw new DataNotFoundException("공지사항을 찾을 수 없습니다.");
         }
         model.addAttribute("article", article);
         return "article/form";
@@ -93,7 +93,7 @@ public class ArticleController {
     public String edit(@PathVariable("id") Long id, @ModelAttribute Article article) {
         Article existingArticle = articleService.getArticleById(id);
         if (existingArticle == null) {
-            throw new DataNotFoundException("Article not found");
+            throw new DataNotFoundException("공지사항을 찾을 수 없습니다.");
         }
 
         // 기존 Article 객체의 필드를 새로운 값으로 업데이트

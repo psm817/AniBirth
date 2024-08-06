@@ -4,6 +4,8 @@ import com.cod.AniBirth.account.entity.Account;
 import com.cod.AniBirth.account.service.AccountService;
 import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.animal.service.AnimalService;
+import com.cod.AniBirth.article.service.ArticleService;
+import com.cod.AniBirth.article.service.QaService;
 import com.cod.AniBirth.calendar.service.CalendarService;
 import com.cod.AniBirth.category.entity.Category;
 import com.cod.AniBirth.category.service.CategoryService;
@@ -30,7 +32,8 @@ public class Dev {
     public ApplicationRunner init(MemberService memberService, AccountService accountService,
                                   ProductService productService, VolunteerService volunteerService,
                                   CalendarService calendarService, VolunteerReviewService volunteerReviewService,
-                                  DonationService donationService) {
+                                  DonationService donationService, ArticleService articleService,
+                                  QaService qaService) {
 
         return args -> {
             // 회원 샘플
@@ -96,7 +99,6 @@ public class Dev {
             LocalDateTime end11 = LocalDateTime.parse(volunteer11.getEndDate(), formatter);
 
 
-
             calendarService.create(volunteer1.getTitle(), start1, end1, volunteer1);
             calendarService.create(volunteer2.getTitle(), start2, end2, volunteer2);
             calendarService.create(volunteer3.getTitle(), start3, end3, volunteer3);
@@ -144,6 +146,36 @@ public class Dev {
             donation3.setDonor(member10); // Example: user3
             donation3.setRecipient(member8); // Example: company5
             donationService.save(donation3);
+
+            articleService.create("Sample Title 1", "언제나 애니버스를 지지해 주시는 후원자님들께 안내 말씀 드립니다.\n" +
+                    "\n" + "많은 후원자님들께서 애니버스 더봄센터에 후원해 주신 덕분에 애니버스 더봄센터는 무사히 완공이 되었습니다.\n" +
+                    "\n" + "이에 2021년부터는 애니버스 더봄센터의 '벽돌 후원'과 '놀이터 후원' 항목을 '더봄센터건립' 항목으로 통합하여 운영할 예정입니다.\n" +
+                    "\n" + "위와 같이 항목이 변경됨에 따라, 이전에 '벽돌 후원'과 '더봄센터 놀이터' 항목에 후원하셨던 후원자님들께서는 후원 항목의 명칭이 '더봄센터건립'으로 변경되더라도 혼동 없으시기를 바랍니다.\n" +
+                    "\n" + "애니버스 더봄센터는 미완성 시설의 마무리를 위해 여전히 노력 중이며 후원자님들께서 더봄센터로 보내주시는 모든 후원금은 더봄센터의 모든 시설과 운영, 동물 돌봄을 위해 사용됩니다.\n" +
+                    "\n" + "계속해서 애니버스 더봄센터에 많은 관심과 응원 부탁드립니다.\n" + "\n" + "애니버스에 후원해 주셔서 항상 감사합니다.", 0);
+            articleService.create("Sample Title 2", "This is a sample content for the article.", 1);
+            articleService.create("Sample Title 3", "This is a sample content for the article.", 2);
+            articleService.create("Sample Title 4", "This is a sample content for the article.", 3);
+            articleService.create("Sample Title 5", "This is a sample content for the article.", 4);
+            articleService.create("Sample Title 6", "This is a sample content for the article.", 5);
+            articleService.create("Sample Title 7", "This is a sample content for the article.", 6);
+            articleService.create("Sample Title 8", "This is a sample content for the article.", 7);
+            articleService.create("Sample Title 9", "This is a sample content for the article.", 8);
+            articleService.create("Sample Title 10", "This is a sample content for the article.", 9);
+            articleService.create("Sample Title 11", "This is a sample content for the article.", 10);
+
+            qaService.create("Sample Title 1", "This is a sample content for the qa.",member1, 0);
+            qaService.create("Sample Title 2", "This is a sample content for the qa.", member2,1);
+            qaService.create("Sample Title 3", "This is a sample content for the qa.", member6,2);
+            qaService.create("Sample Title 4", "This is a sample content for the qa.", member3,3);
+            qaService.create("Sample Title 5", "This is a sample content for the qa.", member4,4);
+            qaService.create("Sample Title 6", "This is a sample content for the qa.", member9,5);
+            qaService.create("Sample Title 7", "This is a sample content for the qa.", member1,6);
+            qaService.create("Sample Title 8", "This is a sample content for the qa.",member4, 7);
+            qaService.create("Sample Title 9", "This is a sample content for the qa.", member3,8);
+            qaService.create("Sample Title 10", "This is a sample content for the qa.", member2,9);
+            qaService.create("Sample Title 11", "This is a sample content for the qa.",member2, 10);
+
         };
     }
 }
