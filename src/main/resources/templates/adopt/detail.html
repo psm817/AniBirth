@@ -1,23 +1,11 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout/layout}">
 <section layout:fragment="content" class="flex-1 flex justify-center items-center">
-  <section class="adopt-total">
-    <div class="container adopt-detail-head">
-      <div class="adopt-info">
-        <h1 class="h2 g-font-size-28 g-line-height-1">입양동물 정보</h1>
-      </div>
-    </div>
-    <div class="container adopt-detail-content">
-      <div class="row-adopt" th:each="animal, loop : ${animal}">
-        <div class="adopt img">
-          <div class="adopt-img-big">
-            <a th:href="@{|http://www.daejeon.go.kr/${animal.filePath}|}">
-              <img class="block " th:src="@{|http://www.daejeon.go.kr/${animal.filePath}|}"
-                   alt="이미지가 존재하지 않습니다.">
-            </a>
-          </div>
-          <div class="adopt-img-small">
-          </div>
+    <section class="adopt-total">
+        <div class="container adopt-detail-head">
+            <div class="adopt-info">
+                <h1 class="h2 g-font-size-28 g-line-height-1">입양동물 정보</h1>
+            </div>
         </div>
         <div class="container adopt-detail-content">
             <div class="row-adopt" th:each="animal, loop : ${animal}">
