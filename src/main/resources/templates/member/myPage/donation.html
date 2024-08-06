@@ -72,7 +72,7 @@
                             <span class="number w-[10%]" th:text="${iterStat.count}"></span>
                             <span class="date w-[30%]" th:text="${#temporals.format(donation.createDate, 'yyyy-MM-dd')}"></span>
                             <span class="shelter w-[30%]" th:text="${donation.recipient.nickname}"></span>
-                            <span class="amount w-[30%]" th:text="${donation.amount} + ' 원'"></span>
+                            <span class="amount w-[30%]" th:text="${#numbers.formatDecimal(donation.amount, 1, 'COMMA', 0, 'POINT')}+원"></span>
                         </li>
                     </ul>
                 </div>
@@ -83,7 +83,7 @@
                             <span class="number w-[10%]" th:text="${iterStat.count}"></span>
                             <span class="date w-[30%]" th:text="${#temporals.format(donation.createDate, 'yyyy-MM-dd')}"></span>
                             <span class="content w-[30%]" th:text="${donation.donor.nickname}"></span>
-                            <span class="totalAmount w-[30%]" th:text="${donation.amount} + ' 원'"></span>
+                            <span class="totalAmount w-[30%]" th:text="${#numbers.formatDecimal(donation.amount, 1, 'COMMA', 0, 'POINT')}+원"></span>
                         </li>
                     </ul>
                 </div>
@@ -94,7 +94,7 @@
                             <span class="number w-[10%]" th:text="${iterStat.count}"></span>
                             <span class="date w-[30%]" th:text="${#temporals.format(donation.createDate, 'yyyy-MM-dd')}"></span>
                             <span class="content w-[30%]" th:text="${donation.donor.nickname}"></span>
-                            <span class="totalAmount w-[30%]" th:text="${donation.amount} + ' 원'"></span>
+                            <span class="totalAmount w-[30%]" th:text="${#numbers.formatDecimal(donation.amount, 1, 'COMMA', 0, 'POINT')}+원"></span>
                         </li>
                     </ul>
                 </div>
