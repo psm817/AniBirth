@@ -6,18 +6,17 @@ import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
 import com.cod.AniBirth.product.entity.Product;
 import com.cod.AniBirth.product.service.ProductService;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/cart")
@@ -32,8 +31,10 @@ public class CartController {
     public String list(Principal principal, Model model) {
         Member member = memberService.findByUsername(principal.getName());
         List<CartItem> cartList = cartService.getList(member);
+        int totalPrice = cartService.getTotalPrice(member);
 
         model.addAttribute("cartList", cartList);
+        model.addAttribute("totalPrice", totalPrice);
 
         return "cart/list";
     }
@@ -46,6 +47,28 @@ public class CartController {
 
         cartService.add(product, member);
 
+        return "redirect:/cart/list";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Long id) {
+        cartService.delete(id);
+        return "redirect:/cart/list";
+    }
+
+    @PostMapping("/update-quantity/{id}")
+    public String updateQuantity(
+            @PathVariable("id") Long id,
+            @RequestParam("quantity") Long quantity,
+            Authentication authentication
+    ) {
+        Member member = memberService.findByUsername(authentication.getName());
+        if (member == null) {
+            return "redirect:/login";
+        }
+
+        cartService.updateQuantity(id, quantity);
         return "redirect:/cart/list";
     }
 }

@@ -38,11 +38,9 @@
                         <div class="ribbon">
                             <div class="ribbon-stitches-top"></div>
                             <div class="ribbon-content">
-                                <span th:if="${iterStat.index == 0}" th:text="'&#129352;'"></span> <!-- 2등 -->
-                                <span th:if="${iterStat.index == 1}" th:text="'&#129351;'"></span> <!-- 1등 -->
+                                <span th:if="${iterStat.index == 0}" th:text="'&#129351;'"></span> <!-- 1등 -->
+                                <span th:if="${iterStat.index == 1}" th:text="'&#129352;'"></span> <!-- 2등 -->
                                 <span th:if="${iterStat.index == 2}" th:text="'&#129353;'"></span> <!-- 3등 -->
-                                <span th:unless="${iterStat.index == 0 or iterStat.index == 1 or iterStat.index == 2}"
-                                      th:text="${iterStat.index + 1} + 'th'"></span> <!-- 다른 등수 -->
                             </div>
                             <div class="ribbon-stitches-bottom"></div>
                         </div>

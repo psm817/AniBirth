@@ -45,4 +45,13 @@ public class AccountService {
 
         return accountRepository.save(account);
     }
+
+    @Transactional
+    public void addPoints(Member member, int points) {
+        Account account = accountRepository.findByMember(member)
+                .orElseThrow(() -> new DataNotFoundException("Account not found"));
+        account.setAniPoint(account.getAniPoint() + points);
+        accountRepository.save(account);
+    }
+
 }
