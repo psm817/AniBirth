@@ -124,14 +124,13 @@ public class ProductController {
             @RequestParam(value = "shippingFee", defaultValue = "3000") int shippingFee // 배송비 기본값 설정
     ) {
         productService.modify(id, title, description, price, thumbnail, shippingFee);
-        return "redirect:/product/detail/" + id;
+        return "redirect:/product/detail/%d?productModifySuccess=true".formatted(id);
     }
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
         productService.delete(id);
-        return "redirect:/product/list";
+        return "redirect:/product/list?productDeleteSuccess=true";
     }
-
 }
