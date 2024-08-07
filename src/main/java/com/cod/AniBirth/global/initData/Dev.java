@@ -118,14 +118,24 @@ public class Dev {
             volunteerReviewService.create("제목6", "내용6", 0, member10, "images/volunteer/volunteer_default.jpg", null);
 
 
-            productService.create("타이틀1","1 설명입니다",10000,3000);
-            productService.create("타이틀2","2 설명입니다",20000,3000);
-            productService.create("타이틀3","3 설명입니다",30000,3000);
-            productService.create("타이틀4","4 설명입니다",40000,3000);
-            productService.create("타이틀5","5 설명입니다",10000,3000);
-            productService.create("타이틀6","6 설명입니다",20000,3000);
-            productService.create("타이틀7","7 설명입니다",30000,3000);
-            productService.create("타이틀8","8 설명입니다",40000,3000);
+            productService.create("타이틀1","1 설명입니다",10000, member2, 3000);
+            productService.create("타이틀2","2 설명입니다",20000, member2, 3000);
+            productService.create("타이틀3","3 설명입니다",30000, member2, 3000);
+            productService.create("타이틀4","4 설명입니다",40000, member2, 3000);
+            productService.create("타이틀5","5 설명입니다",10000, member3, 3000);
+            productService.create("타이틀6","6 설명입니다",20000, member3, 3000);
+            productService.create("타이틀7","7 설명입니다",30000, member3, 3000);
+            productService.create("타이틀8","8 설명입니다",40000, member3, 3000);
+            productService.create("타이틀9","9 설명입니다",10000, member2, 3000);
+            productService.create("타이틀10","10 설명입니다",20000, member2, 3000);
+            productService.create("타이틀11","11 설명입니다",30000, member2, 3000);
+            productService.create("타이틀12","12 설명입니다",40000, member2, 3000);
+            productService.create("타이틀13","13 설명입니다",10000, member3, 3000);
+            productService.create("타이틀14","14 설명입니다",20000, member3, 3000);
+            productService.create("타이틀15","15 설명입니다",30000, member3, 3000);
+            productService.create("타이틀16","16 설명입니다",40000, member3, 3000);
+            productService.create("타이틀17","17 설명입니다",30000, member3, 3000);
+            productService.create("타이틀18","18 설명입니다",40000, member3, 3000);
 
             // 후원 샘플
             Donation donation1 = new Donation();

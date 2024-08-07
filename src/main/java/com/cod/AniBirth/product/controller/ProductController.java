@@ -49,7 +49,6 @@ public class ProductController {
     ) {
         Page<Product> paging = productService.getList(page, kw);
 
-
         Member member = null;
         if (authentication != null && authentication.isAuthenticated()) {
             member = memberService.findByUsername(authentication.getName());

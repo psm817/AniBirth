@@ -202,6 +202,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 3px 6px 14px gray;
 }
 
 .why_section > .container-why > .box > .img-box {
