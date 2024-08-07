@@ -430,6 +430,7 @@ html > body .container .donation-section .donation-bg-img > .center-background-i
         margin-top: 20px;
     }
 
+
     .donor-card-container .donor-card:nth-child(2) {
       width: 70%; /* 1등 카드도 다른 카드와 동일한 너비 */
       height: auto; /* 1등 카드도 다른 카드와 동일한 높이 */
@@ -494,6 +495,7 @@ html > body .container .donation-section .donation-bg-img > .center-background-i
         color: white;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     }
+
 }
 
 

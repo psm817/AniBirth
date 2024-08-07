@@ -125,6 +125,7 @@ public class MyPageMemberController {
         Account account = accountService.findByMember(member);
 
 
+
         // 일반 회원 기부 리스트
         List<Donation> donationList = donationService.getDonationsByDonor(member);
         Long donationCount = (long) donationList.size();
