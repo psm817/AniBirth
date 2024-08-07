@@ -1,4 +1,4 @@
-package com.cod.AniBirth.adopt;
+package com.cod.AniBirth.adopt.form;
 
 import jakarta.validation.constraints.*;
 import lombok.Getter;

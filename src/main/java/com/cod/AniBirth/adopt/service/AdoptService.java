@@ -1,7 +1,5 @@
 package com.cod.AniBirth.adopt.service;
 
-import com.cod.AniBirth.adopt.AdoptForm;
-import com.cod.AniBirth.adopt.entity.Adopt;
 import com.cod.AniBirth.adopt.entity.AdoptApply;
 import com.cod.AniBirth.adopt.repository.AdoptApplyRepository;
 import com.cod.AniBirth.adopt.repository.AdoptRepository;

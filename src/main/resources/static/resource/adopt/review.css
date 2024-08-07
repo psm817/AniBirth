@@ -1,0 +1,124 @@
+html, body {
+    position: relative;
+    height: 100%;
+}
+
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.container-box {
+  width: 100%;
+}
+
+html > body .container-box > .review {
+  width: 100%;
+  height: 380px;
+  margin-bottom: 20px;
+}
+
+html > body .review-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+html > body .review-banner {
+  text-align: center;
+  font-size: 18px;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.review-banner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+html > body .container-box > .reviewlist {
+    display: flex;
+    flex-direction: column;
+    margin-top: 35px;
+}
+
+/*소제목*/
+.reviewlist > .tiny-menu-box {
+    margin: 20px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.reviewlist > .tiny-menu-box > a {
+    cursor: pointer;
+    padding: 10px;
+    display: block;
+    font-size: 18px;
+    padding: 10px 15px 10px 15px;
+}
+
+.reviewlist > .tiny-menu-box > a:nth-child(3) {
+    color: #fff;
+    border: 1px solid red;
+    border-radius: 10px;
+    background-color: #FF416C;
+    margin-left: 15px;
+}
+
+.reviewlist > .tiny-menu-box > a:nth-child(1) {
+    margin-right: 15px;
+}
+
+.reviewlist > .tiny-menu-box > a:nth-child(1):hover {
+    color: #FF416C;
+}
+
+.reviewlist > .tiny-menu-box > a:nth-child(2) {
+    margin-right: 15px;
+}
+
+.reviewlist > .tiny-menu-box > a:nth-child(2):hover {
+    color: #FF416C;
+}
+
+html > body .container-box .reviewlist > .review-notice-list {
+    padding-top: 25px;
+}
+
+html > body .container-box .reviewlist > .review-notice-list > .flex {
+    background-color: #fafbfc;
+    border-radius: 8px;
+    box-shadow: 0 0px 6px rgba(140, 152, 164, 0.5);
+}
+
+
+
+
+
+
+
+
+/* 모바일 세로 (해상도 ~ 479px)*/
+
+@media all and (max-width:479px) {
+    html > body .adopt {
+        height: 150px;
+    }
+    .adopt-banner img {
+        height: 100%;
+    }
+}
+
+@media all and (max-width:394px) {
+    html > body .container-box > .adopt {
+            display: none;
+        }
+}
