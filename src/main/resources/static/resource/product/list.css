@@ -1,3 +1,4 @@
+
 /* gift_section*/
 .gift_list_section {
     width: 100%;
@@ -84,6 +85,7 @@
     align-items: center;
 }
 
+
 .product-list-container > .product-title-box > span {
     font-weight: 700;
     font-size: 23px;
@@ -91,6 +93,7 @@
 }
 
 .product-list-container > .product-title-box > a {
+
     border: 2px solid #FF416C;
     background-color: #FF416C;
     color: #fff;
@@ -142,4 +145,5 @@
 .product-list-container > ul > li > a > img {
     width: 100%;
     height: 100%;
+
 }
