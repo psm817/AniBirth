@@ -113,11 +113,19 @@ html > body .container > .category-box {
     border-color: #004ba0;
     height: 38px;
 }
-/*html > body container-box .container.adoptlist .category-box .category-box-line > .category-type {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}*/
+
+.category-search-section > .input-group {
+    margin-right: 40px;
+}
+
+.category-search-section > .search-group {
+    margin-right: 5px
+}
+.category-search-section > .search-group > .btn.btn-sm.btn-block.btn-primary {
+    background-color: #004ba0;
+    border-color: #004ba0;
+    height: 38px;
+}
 
 html > body .container-box .adoptlist > .adopt-notice-list {
     padding-top: 25px;
