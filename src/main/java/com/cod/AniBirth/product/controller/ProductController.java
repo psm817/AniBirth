@@ -101,7 +101,7 @@ public class ProductController {
         Member member = memberService.findByUsername(authentication.getName());
         productService.create(title, description, price, thumbnail, member, shippingFee);
 
-        return "redirect:/product/list";
+        return "redirect:/product/list?productCreateSuccess=true";
     }
 
 

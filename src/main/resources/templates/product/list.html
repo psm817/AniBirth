@@ -24,7 +24,7 @@
             <span>전체 상품</span>
             <span>(※ 상품 이미지나 상품명을 클릭하면 상세정보를 확인하실 수 있습니다.)</span>
             <a th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or ${member.authority} == 1)"
-               th:href="@{/product/create}" class="button">등록하기</a>
+               th:href="@{/product/create}" class="button" onclick="return productCreate();">등록하기</a>
         </div>
         <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-3">
             <li th:each="product, loop : ${paging}" class="group xl:w-[300px] w-full">

@@ -33,6 +33,11 @@ function reviewDelete() {
     return confirm('봉사후기를 삭제하시겠습니까?');
 }
 
+// 마켓 상품 등록할 떄 알림
+function productCreate() {
+    return confirm('애니마켓에 상품을 등록하시겠습니까?');
+}
+
 // Check for the apply error parameter and show the alert if it's set
 window.onload = function() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -64,5 +69,9 @@ window.onload = function() {
 
     if (urlParams.has('reviewDeleteSuccess')) {
         alert('봉사후기가 삭제되었습니다.');
+    }
+
+    if(urlParams.has('productCreateSuccess')) {
+        alert('상품등록이 완료되었습니다.')
     }
 };

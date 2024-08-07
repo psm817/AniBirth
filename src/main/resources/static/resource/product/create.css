@@ -1,0 +1,198 @@
+.market-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin-top: 20px;
+}
+
+.market-box > .market-card {
+    height: 630px !important;
+    width: 100%;
+    border: transparent;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 3px 6px 14px gray;
+}
+
+/* 애니마켓 입력 폼 */
+.market-box > .market-card > .market-create-form {
+    display: flex;
+    flex-direction: column;
+    height: 100% !important;
+    padding-top: 10px;
+}
+
+.market-create-form > .title-box {
+    display: flex;
+    align-items: center;
+    height: 90px;
+    padding-left: 50px;
+    margin-bottom: 20px;
+}
+
+.market-create-form > .title-box > h1 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.market-create-form > .market-create-input {
+    height: 100%;
+}
+
+/* 권한 버튼 커스텀 */
+/* 폼 커스텀 */
+.market-create-input > form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-left: 50px;
+}
+
+.market-create-input > form > .type-box {
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.market-create-input > form > .date-box > input {
+    padding-right: 20px;
+}
+
+.market-create-input > form > .type-box > span {
+    font-weight: 700;
+    font-size: 18px;
+    width: 130px;
+    text-align: left;
+    margin-right: 60px;
+}
+
+.market-create-input > form > .type-box > span > span {
+    margin-left: 3px;
+}
+
+.market-create-input > form > .type-box > input {
+    border: 1px solid #121212;
+    border-radius: 5px;
+    height: 70%;
+    width: 400px;
+    padding-left: 10px;
+}
+
+.market-create-input > form > .content-box {
+    height: 250px;
+}
+
+.market-create-input > form > .type-box > .file-box {
+    border: 0px;
+    height: 50%;
+    padding-left: 0px;
+}
+
+.market-create-input > form > .type-box > textarea {
+    width: 730px;
+}
+
+.market-create-input > form > .signup-btn > button {
+    background-color: #FF416C;
+    border: 1px solid transparent;
+    padding: 5px 20px 5px 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.market-create-input > form > .signup-btn > .cancel {
+    margin-right: 20px;
+}
+
+.market-create-input > form > .signup-btn > .check {
+    margin-left: 20px;
+}
+
+.market-create-input > form > .absolute-box {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    left: 72%;
+    top: 100px;
+}
+
+.market-create-input > form > .absolute-box > img {
+    width: 100%;
+    height: 100%;
+}
+
+/* 반응형 시작 */
+@media (max-width: 394px) {
+    .market-box {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* 회원가입 입력 폼 */
+    .card {
+        height: 100% !important;
+    }
+
+    .market-create-form {
+        height: 100%;
+        display: block !important;
+    }
+
+    .market-create-form > .title-box {
+        height: 50px !important;
+        padding-left: 5px !important;
+    }
+
+    .market-create-form > .title-box > h1 {
+        font-size: 16px !important;
+        font-weight: 700;
+    }
+
+    .market-create-form > .market-create-input {
+        height: 100%;
+        padding-left: 5px !important;
+    }
+
+    /* 권한 버튼 커스텀 */
+    /* 폼 커스텀 */
+    .market-create-input > form {
+        display: block;
+        height: 100%;
+        padding-left: 0px;
+    }
+
+    .market-create-input > form > .type-box {
+        width: 100%;
+        height: 60px;
+    }
+
+    .market-create-input > form > .type-box > span {
+        font-weight: 700;
+        font-size: 13px;
+        margin-right: 0 !important;
+        width: 95px;
+    }
+
+    .market-create-input > form > .type-box > input {
+        border: 1px solid #121212;
+        border-radius: 5px;
+        height: 70%;
+        width: 200px;
+        padding-left: 10px;
+    }
+
+    .market-create-input > form > .type-box > textarea {
+        height: 60px;
+        margin-left: 30px;
+        font-size: 13px;
+    }
+
+    .market-create-input > form > .signup-btn {
+        margin-top: 20px;
+    }
+
+    .market-create-input > form > .absolute-box {
+        display: none;
+    }
+}
