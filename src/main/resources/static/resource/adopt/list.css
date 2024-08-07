@@ -50,6 +50,45 @@ html > body .container-box > .adoptlist {
     margin-top: 35px;
 }
 
+/*소제목*/
+.adoptlist > .tiny-menu-box {
+    margin: 20px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.adoptlist > .tiny-menu-box > a {
+    cursor: pointer;
+    padding: 10px;
+    display: block;
+    font-size: 18px;
+    padding: 10px 15px 10px 15px;
+}
+
+.adoptlist > .tiny-menu-box > a:nth-child(2) {
+    color: #fff;
+    border: 1px solid red;
+    border-radius: 10px;
+    background-color: #FF416C;
+    margin: 0px 15px;
+}
+
+.adoptlist > .tiny-menu-box > a:nth-child(1) {
+    margin-right: 15px;
+}
+
+.adoptlist > .tiny-menu-box > a:nth-child(1):hover {
+    color: #FF416C;
+}
+
+.adoptlist > .tiny-menu-box > a:nth-child(3) {
+    margin-left: 15px;
+}
+
+.adoptlist > .tiny-menu-box > a:nth-child(3):hover {
+    color: #FF416C;
+}
+
 html > body .container > .category-box {
     display: flex;
     flex-direction: column;

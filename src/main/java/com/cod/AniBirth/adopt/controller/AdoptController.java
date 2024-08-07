@@ -1,23 +1,27 @@
 package com.cod.AniBirth.adopt.controller;
 
-import com.cod.AniBirth.adopt.AdoptForm;
-import com.cod.AniBirth.adopt.entity.AdoptApply;
+import com.cod.AniBirth.adopt.entity.AdoptReview;
+import com.cod.AniBirth.adopt.form.AdoptForm;
+import com.cod.AniBirth.adopt.form.CreateReviewForm;
+import com.cod.AniBirth.adopt.service.AdoptReviewService;
 import com.cod.AniBirth.adopt.service.AdoptService;
 import com.cod.AniBirth.animal.AnimalSearchDTO;
 import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.animal.service.AnimalService;
-import com.cod.AniBirth.category.entity.Category;
 import com.cod.AniBirth.category.service.CategoryService;
+import com.cod.AniBirth.member.entity.Member;
+import com.cod.AniBirth.member.service.MemberService;
 import jakarta.validation.Valid;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
+import javax.swing.plaf.multi.MultiListUI;
+import java.security.Principal;
 
 @Controller
 @RequiredArgsConstructor
@@ -26,6 +30,8 @@ public class AdoptController {
     private final AnimalService animalService;
     private final CategoryService categoryService;
     private final AdoptService adoptService;
+    private final AdoptReviewService adoptReviewService;
+    private final MemberService memberService;
 
     @GetMapping("/list")
     public String list(Model model,
@@ -68,6 +74,34 @@ public class AdoptController {
                 isGender,isMarried,adoptForm.getFile());
 
         return "redirect:/adopt/list";
+    }
+
+    @GetMapping("/review")
+    public String reviewlist(Model model,
+                             @RequestParam(value = "page", defaultValue = "0") int page,
+                             @RequestParam(value = "kw", defaultValue = "") String kw) {
+        Page<AdoptReview> paging = adoptReviewService.getList(page);
+//        Page<AdoptReview> paging = adoptReviewService.getList(page, kw);
+
+        model.addAttribute("paging", paging);
+        model.addAttribute("kw", kw);
+
+        return "adopt/review";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/create_review")
+    public String showcreateReviewForm(CreateReviewForm createReviewForm) {
+        return "adopt/create_review_form";
+    }
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/create_review")
+    public String submitCreateReview(@Valid CreateReviewForm createReviewForm, @RequestParam("images")MultipartFile images, Principal principal) {
+        Member member = memberService.getMemberByUsername(principal.getName());
+        adoptReviewService.create(createReviewForm.getTitle(),createReviewForm.getContent(),createReviewForm.getImages(), member);
+
+        return "redirect:/adopt/review";
+
     }
 
 }

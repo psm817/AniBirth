@@ -10,9 +10,14 @@
       </div>
     </div>
     <div class="container adoptlist">
-      <h1 class="adoptnotice text-[1.5rem] font-bold" style="margin-bottom: 20px;">입양동물 공고</h1>
+      <div class="tiny-menu-box">
+        <a id="adoptionProcedureLink" href="#">입양절차</a>
+        <a th:href="@{|/adopt/list|}">입양정보</a>
+        <a th:href="@{/volunteer/review}">입양후기</a>
+      </div>
       <div class="category-box">
         <form th:action="@{/adopt/list}" class="category-search-form" method="get">
+          <h1 class="adoptnotice text-[1.5rem] font-bold" style="margin-bottom: 20px;">입양동물 공고</h1>
           <div class="category-box-line">
             <div class="category-type">
               <div class="classification-category">
@@ -149,7 +154,7 @@
     </div>
     <div class="adopt-list-bottom g-hidden-md-down">
       <div style="height:100%; background-color: white;">
-        <div class="container adoption-procedure">
+        <div class="container adoption-procedure" id="adoptionProcedureSection">
           <!--          <h4 class="g-font-weight-600 g-mb-20">입양절차</h4>-->
           <div class="adt-pro-title">
             <h4>입양절차</h4>
@@ -198,6 +203,8 @@
     </div>
   </div>
   <script layout:frgment="script" type="text/javascript">
+
+
     $(document).ready(function() {
      // .page-link 클래스를 가진 모든 요소에 클릭 이벤트 리스너 추가
      $('.page-link').on('click', function() {
@@ -212,6 +219,10 @@
          $('#searchForm').submit(); // searchForm 폼 제출
      });
  });
+    document.getElementById('adoptionProcedureLink').addEventListener('click', function(event) {
+      event.preventDefault(); // 기본 동작(링크 이동)을 막습니다.
+      document.getElementById('adoptionProcedureSection').scrollIntoView({ behavior: 'smooth' }); // 스크롤 이동
+    });
   </script>
 </section>
 </html>

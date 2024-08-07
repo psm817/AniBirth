@@ -1,6 +1,7 @@
 package com.cod.AniBirth.member.entity;
 
 import com.cod.AniBirth.account.entity.Account;
+import com.cod.AniBirth.adopt.entity.AdoptReview;
 import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.base.entity.BaseEntity;
 import com.cod.AniBirth.donation.entity.Donation;
@@ -60,6 +61,9 @@ public class Member extends BaseEntity {
 
     @OneToMany(mappedBy = "adoptee", cascade = CascadeType.REMOVE)
     private List<Animal> animalsAdoptee;
+
+    @OneToMany(mappedBy = "writer", cascade = CascadeType.REMOVE)
+    private List<AdoptReview> adoptReviewList;
 
 
     @OneToMany(mappedBy = "member")
