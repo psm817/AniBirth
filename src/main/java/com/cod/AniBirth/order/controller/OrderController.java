@@ -1,3 +1,5 @@
+// OrderController.java
+
 package com.cod.AniBirth.order.controller;
 
 import com.cod.AniBirth.account.entity.Account;
@@ -168,6 +170,8 @@ public class OrderController {
                 .orderItemList(new ArrayList<>()) // orderItemList 초기화
                 .build();
 
+        int totalOrderPoints = totalPrice + shippingFee; // Calculate total points including shipping fee
+
         for (CartItem cartItem : cartItems) {
             OrderItem orderItem = OrderItem.builder()
                     .order(order)
@@ -181,7 +185,7 @@ public class OrderController {
 
             // 상품 등록자에게 포인트 적립
             Member productOwner = cartItem.getProduct().getMember();
-            int pointsToCredit = (int) (cartItem.getProduct().getPrice() * cartItem.getQuantity());
+            int pointsToCredit = (int) (cartItem.getProduct().getPrice() * cartItem.getQuantity() + ((double) shippingFee / cartItems.size()));
             accountService.addPoints(productOwner, pointsToCredit);
         }
 
@@ -189,5 +193,4 @@ public class OrderController {
         orderService.save(order);
         cartService.clearCart(member); // Clear cart after order creation
     }
-
 }
