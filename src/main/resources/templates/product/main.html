@@ -1,223 +1,96 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout/layout}" xmlns="http://www.w3.org/1999/html">
-
-<head>
-    <title>애니마켓</title>
-<!--    <link rel="stylesheet" type="text/css" th:href="css/bootstrap.css">-->
-<!--    <link rel="stylesheet" type="text/css" th:href="@{/resource/product/main.css}">-->
-</head>
 <section layout:fragment="content" class="flex-1 justify-center items-center">
-    <div class="hero_area">
-        <!-- header section strats -->
-        <header class="header_section">
-            <nav class="navbar navbar-expand-lg custom_nav-container ">
-                <a class="navbar-brand">
-          <span>
-            애니마켓
-          </span>
-                </a>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav  ">
-                        <li class="nav-item active">
-                            <a class="nav-link" th:href="@{/product/main}"> 애니마켓 </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">
-                                식품
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">
-                                악세서리
-                            </a>
-                        </li>
-                    </ul>
-
-                    <a href="">
-                        <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                    </a>
-                    <form class="form-inline ">
-
-                    </form>
+    <div class="gift_section layout_padding-bottom">
+        <div class="container-fluid">
+            <div class="col-md-5 img_container">
+                <div class="img-box">
+                    <img src="https://png.pngtree.com/png-vector/20240530/ourmid/pngtree-3d-a-cute-cat-sit-on-transparent-background-animal-png-image_12550161.png" alt="">
                 </div>
-
-            </nav>
-
-    </header>
+            </div>
+            <div class="col-md-7 detail-box">
+                <div class="heading_container">
+                    <h2>애니 마켓에 오신 것을 환영합니다</h2>
+                </div>
+                <p>애니마켓은 당신의 소중한 반려동물을 위한 최고의 사료와 용품을 제공합니다.<br>건강한 먹거리부터 안전하고 재미있는 장난감, 편안한 잠자리를 위한 침대까지 다양한 제품을 갖추고 있습니다.<br>애니 마켓과 함께라면 반려동물의 행복과 건강을 한층 더 높여줄 수 있습니다.</p>
+                <div class="btn-box">
+                    <a th:href="@{/product/list}" class="total-btn">전체 상품 보기</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- end header section -->
-
-    <section class="gift_section layout_padding-bottom">
-        <div class="box ">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="img_container">
-                            <div class="img-box">
-                                <img src="https://png.pngtree.com/png-vector/20240530/ourmid/pngtree-3d-a-cute-cat-sit-on-transparent-background-animal-png-image_12550161.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="detail-box">
-                            <div class="heading_container">
-                                <h2>
-                                    애니 마켓 <br>
-                                    환영합니다 !
-                                </h2>
-                            </div>
-                            <p>
-                                애니 마켓은 당신의 소중한 반려동물을 위한 최고의 사료와 용품을 제공합니다. 우리는 건강한 먹거리부터 안전하고 재미있는 장난감, 편안한 잠자리를 위한 침대까지 다양한 제품을 갖추고 있습니다. 애니 마켓과 함께라면 반려동물의 행복과 건강을 한층 더 높여줄 수 있습니다.
-                            </p>
-                            <div class="btn-box">
-                                <a href="#" class="btn1">
-                                    Buy Now
-                                </a>
-                                <a href="#" class="btn2">
-                                    See More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="container product-box">
+        <div class="product-section">
+            <div class="title-box">
+                <span>👍 BEST 👍</span>
             </div>
-        </div>
-    </section>
-
-
-
-    <!-- shop section -->
-
-    <section class="shop_section layout_padding">
-        <div class="container-shop">
-            <div class="heading_container heading_center">
-                <h2>
-                    BEST
-                </h2>
-            </div>
-            <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-3">
-                <li th:each="product, loop : ${products}" class="flex flex-col group xl:w-[300px] w-full">
-                    <div class="box">
-                        <a th:href="@{|/product/detail/${product.id}|}">
-                            <div class="img-box">
-                                <img class="object-cover object-center block w-full h-full rounded-lg" th:src="@{|/gen/${product.thumbnailImg}|}" alt="이미지가 존재하지 않습니다.">
-                            </div>
-                            <div class="detail-box">
-                                <h6 th:text="${product.title}"></h6>
-                                <h6>
-                                    <span th:text="${#numbers.formatInteger(product.price, 3, 'COMMA') + '원'}"></span>
-                                </h6>
-                            </div>
-
+            <div class="bestList-box">
+                <ul class="product-notice-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[80px] mt-3">
+                    <li th:each="product, loop : ${products}" class="group xl:w-[300px] w-full">
+                        <a th:href="@{|/product/detail/${product.id}|}" class="border border-black h-[250px] transition duration-300 rounded-lg hover:rounded-lg hover:-translate-y-1.5 hover:transition hover:duration-300 hover:shadow-md">
+                            <img class="object-cover object-center block w-full h-full rounded-lg" th:src="@{|/gen/${product.thumbnailImg}|}" alt="이미지가 존재하지 않습니다.">
                         </a>
-                    </div>
-                </li>
-            </ul>
-            <div class="btn-box">
-                <a th:href="@{/product/list}">
-                    모든 상품 보기
-                </a>
+                        <a th:href="@{|/product/detail/${product.id}|}" th:text="${product.title}" class="text-center md:!text-left mt-3 mb-[8px]"></a>
+                        <a th:href="@{|/product/detail/${product.id}|}" th:text="${#numbers.formatDecimal(product.price, 1, 'COMMA', 0, 'POINT')}+원" class="text-center md:!text-left"></a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </section>
-
-    <!-- saving section -->
-
-    <section class="saving_section ">
+    </div>
+    <div class="saving_section">
         <div class="box">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 row-img">
                         <div class="img-box">
-                            <img src="images/saving-img.png" alt="">
+                            <img th:src="@{/images/market-img.png}" alt="image">
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="detail-box">
                             <div class="heading_container">
-                                <h2>
-                                    최근 상품 <br>
-                                    따끈 따끈 신상
-                                </h2>
+                                <h2>따끈 따끈 신상 !~</h2>
                             </div>
-                            <p>
-                                Qui ex dolore at repellat, quia neque doloribus omnis adipisci, ipsum eos odio fugit ut eveniet blanditiis praesentium totam non nostrum dignissimos nihil eius facere et eaque. Qui, animi obcaecati.
-                            </p>
+                            <p>애니마켓은 오픈형 마켓입니다.<br>유기동물에 관심을 가진 기업이 한데 모여 최고의 품질을 자랑하는 제품을 판매하고 있습니다.<br>지금 바로 따끈따끈한 신상을 확인하러 가볼까요?</p>
                             <div class="btn-box">
-                                <a href="#" class="btn1">
-                                    Buy Now
-                                </a>
-                                <a href="#" class="btn2">
-                                    See More
-                                </a>
+                                <a th:href="@{/product/list}" class="btn1">전체 상품 보기</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- why section -->
-
-    <section class="why_section layout_padding">
+    </div>
+    <div class="why_section layout_padding">
         <div class="container-why">
-            <div class="heading_container heading_center">
-                <h2>
-                    Shop
-                </h2>
+            <div class="box">
+                <div class="img-box">
+                    <img th:src="@{/images/fast-delivery.png}" alt="이미지">
+                </div>
+                <div class="detail-box">
+                    <h5>빠른 배송</h5>
+                    <p>만족의 기본은 최고의 신속함!</p>
+                </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="box ">
-                        <div class="img-box">
-                            <img src="https://cdn-icons-png.flaticon.com/512/1942/1942615.png" alt="">
-                            <div class="detail-box">
-                                <h5>
-                                    Fast Delivery
-                                </h5>
-                                <p>
-                                    variations of passages of Lorem Ipsum available
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="box">
+                <div class="img-box">
+                    <img th:src="@{/images/free.png}" alt="이미지">
                 </div>
-                <div class="col-md-4">
-                    <div class="box ">
-                        <div class="img-box">
-                            <img src="https://cdn-icons-png.flaticon.com/512/1942/1942615.png" alt="">
-                            <div class="detail-box">
-                                <h5>
-                                    Fast Delivery
-                                </h5>
-                                <p>
-                                    variations of passages of Lorem Ipsum available
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="detail-box">
+                    <h5>환불&교환 무료</h5>
+                    <p>실수로 구매해도 걱정 No!</p>
                 </div>
-                <div class="col-md-4">
-                    <div class="box ">
-                        <div class="img-box">
-                            <img src="https://cdn-icons-png.flaticon.com/512/1942/1942615.png" alt="">
-                            <div class="detail-box">
-                                <h5>
-                                    Fast Delivery
-                                </h5>
-                                <p>
-                                    variations of passages of Lorem Ipsum available
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            <div class="box">
+                <div class="img-box">
+                    <img th:src="@{/images/gold-medal.png}" alt="이미지">
                 </div>
-
+                <div class="detail-box">
+                    <h5>우수한 품질</h5>
+                    <p>품질의 차이가 곧 만족의 차이!</p>
+                </div>
             </div>
         </div>
-    </section>
-
+    </div>
 </section>
 </html>

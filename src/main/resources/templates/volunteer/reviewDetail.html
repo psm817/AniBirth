@@ -27,7 +27,7 @@
             </div>
             <div class="content-box">
                 <div class="subImg-box" th:each="subImage : ${volunteerReview.subImages}">
-                    <img th:src="@{${subImage}}" alt="첨부 이미지">
+                    <img th:src="@{|/gen/${subImage}|}" alt="첨부 이미지">
                 </div>
                 <div class="body-box">
                     <span th:utext="${volunteerReview.formattedBody}"></span>

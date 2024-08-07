@@ -29,13 +29,13 @@ public class ProductService {
     public Page<Product> getList(int page, String kw) {
         List<Sort.Order> sorts = new ArrayList<>();
         sorts.add(Sort.Order.desc("createDate"));
-        Pageable pageable = PageRequest.of(page, 8, Sort.by(sorts));
+        Pageable pageable = PageRequest.of(page, 16, Sort.by(sorts));
 
         return productRepository.findAllByKeyword(kw, pageable);
     }
 
     public void create(String title, String description, int price, MultipartFile thumbnail, Member member, int shippingFee) {
-        String thumbnailRelPath = "product/" + UUID.randomUUID().toString() + ".jpg";
+        String thumbnailRelPath = "images/product/" + UUID.randomUUID().toString() + ".jpg";
         File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
 
         File parentDir = thumbnailFile.getParentFile();
@@ -56,17 +56,20 @@ public class ProductService {
                 .thumbnailImg(thumbnailRelPath)
                 .member(member)
                 .shippingFee(shippingFee) // 배송비 추가
+                .hitCount(0)
                 .build();
         productRepository.save(product);
     }
 
-    public void create(String title, String description, int price, int shippingFee) {
+    public void create(String title, String description, int price, Member member, int shippingFee) {
         Product p = Product.builder()
                 .title(title)
                 .description(description)
                 .price(price)
+                .member(member)
                 .shippingFee(shippingFee)
-                .thumbnailImg("product/9f0ad987-997c-4344-8f33-27210dc928b0.jpg")
+                .thumbnailImg("images/product/sample_product.jpg")
+                .hitCount(0)
                 .build();
         productRepository.save(p);
     }
@@ -128,4 +131,9 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    public void plusHit(Product product) {
+        product.setHitCount(product.getHitCount() + 1);
+
+        productRepository.save(product);
+    }
 }

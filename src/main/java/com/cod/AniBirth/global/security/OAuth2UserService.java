@@ -60,7 +60,7 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
                             .email(email)
                             .isActive(1)
                             .authority(2)
-                            .thumbnailImg("/images/profile_default.jpg")
+                            .thumbnailImg("images/profile/profile_default.jpg")
                             .build();
 
                     memberRepository.save(member);
@@ -83,7 +83,7 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
                             .phone(mobile)
                             .isActive(1)
                             .authority(2)
-                            .thumbnailImg("/images/profile_default.jpg")
+                            .thumbnailImg("images/profile/profile_default.jpg")
                             .build();
 
                     memberRepository.save(member);
@@ -102,7 +102,7 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
                             .email(email)
                             .isActive(1)
                             .authority(2)
-                            .thumbnailImg("/images/profile_default.jpg")
+                            .thumbnailImg("images/profile/profile_default.jpg")
                             .build();
 
                     memberRepository.save(member);

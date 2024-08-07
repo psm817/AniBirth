@@ -10,7 +10,7 @@ function volunteerDelete() {
 
 // 봉사 수정했을 때 알림
 function volunteerModify() {
-    return confirm('봉사활동을 수정하시겠습니까?');
+    return confirm('봉사활동 내용을 수정하시겠습니까?');
 }
 
 // 봉사 등록했을 때 알림
@@ -25,12 +25,27 @@ function reviewCreate() {
 
 // 후가 수정했을 때 알림
 function reviewModify() {
-    return confirm('봉사후기를 수정하시겠습니까?');
+    return confirm('봉사후기 내용을 수정하시겠습니까?');
 }
 
 // 후가 삭제했을 때 알림
 function reviewDelete() {
     return confirm('봉사후기를 삭제하시겠습니까?');
+}
+
+// 마켓 상품 등록할 때 알림
+function productCreate() {
+    return confirm('애니마켓에 상품을 등록하시겠습니까?');
+}
+
+// 마켓 상품 수정할 때 알림
+function productModify() {
+    return confirm('상품 내용을 수정하시겠습니까?');
+}
+
+// 마켓 상품 삭제할 때 알림
+function productDelete() {
+    return confirm('애니마켓에 등록된 상품을 삭제하시겠습니까?');
 }
 
 // Check for the apply error parameter and show the alert if it's set
@@ -64,5 +79,17 @@ window.onload = function() {
 
     if (urlParams.has('reviewDeleteSuccess')) {
         alert('봉사후기가 삭제되었습니다.');
+    }
+
+    if(urlParams.has('productCreateSuccess')) {
+        alert('애니마켓에 상품이 등록되었습니다.')
+    }
+
+    if(urlParams.has('productModifySuccess')) {
+        alert('상품수정이 완료되었습니다.')
+    }
+
+    if(urlParams.has('productDeleteSuccess')) {
+        alert('상품 삭제가 완료되었습니다.')
     }
 };

@@ -27,7 +27,6 @@ public class ProductController {
 
     @GetMapping("/main")
     public String product(Model model, Authentication authentication) {
-        // Fetch the list of products to display on the main page, limited to 8
         List<Product> products = productService.getAllProducts().stream().limit(8).collect(Collectors.toList());
 
         Member member = null;
@@ -50,7 +49,6 @@ public class ProductController {
     ) {
         Page<Product> paging = productService.getList(page, kw);
 
-
         Member member = null;
         if (authentication != null && authentication.isAuthenticated()) {
             member = memberService.findByUsername(authentication.getName());
@@ -72,6 +70,8 @@ public class ProductController {
         if (authentication != null && authentication.isAuthenticated()) {
             member = memberService.findByUsername(authentication.getName());
         }
+
+        productService.plusHit(product);
 
         model.addAttribute("product", product);
         model.addAttribute("member", member);
@@ -101,7 +101,7 @@ public class ProductController {
         Member member = memberService.findByUsername(authentication.getName());
         productService.create(title, description, price, thumbnail, member, shippingFee);
 
-        return "redirect:/product/list";
+        return "redirect:/product/list?productCreateSuccess=true";
     }
 
 
@@ -124,14 +124,13 @@ public class ProductController {
             @RequestParam(value = "shippingFee", defaultValue = "3000") int shippingFee // 배송비 기본값 설정
     ) {
         productService.modify(id, title, description, price, thumbnail, shippingFee);
-        return "redirect:/product/detail/" + id;
+        return "redirect:/product/detail/%d?productModifySuccess=true".formatted(id);
     }
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
         productService.delete(id);
-        return "redirect:/product/list";
+        return "redirect:/product/list?productDeleteSuccess=true";
     }
-
 }

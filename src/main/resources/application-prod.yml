@@ -13,4 +13,4 @@ spring:
         format_sql: false
         use_sql_comments: false
 custom:
-  genFileDirPath: /temp/genFile
+  genFileDirPath: /docker_projects/market/project/src/main/resources/static
