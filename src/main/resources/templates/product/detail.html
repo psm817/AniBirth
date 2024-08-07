@@ -9,10 +9,14 @@
             <div class="prod-product-card-body">
                 <div class="prod-product-card-header">
                     <span class="font-bold" th:text="${product.title}"></span>
-                    <a th:href="@{/product/list}" class="btn btn-link">마켓가기</a>
+                    <a th:href="@{/product/list}" class="btn btn-link">목록보기</a>
+                    <div sec:authorize="isAuthenticated()">
+                        <a th:href="@{|/product/modify/${product.id}|}" th:if="${product.member != null and #authentication != null and (product.member.username == #authentication.getName() or member.authority == 0)}">수정</a>
+                        <a th:href="@{|/product/delete/${product.id}|}" onclick="return confirm('정말 삭제하시겠습니까?')" th:if="${product.member != null and #authentication != null and (product.member.username == #authentication.getName() or member.authority == 0)}">삭제</a>
+                    </div>
                 </div>
                 <div class="prod-detail-card-body">
-                    <ul class="list-group list-group-flush gap-2 mt-3">
+                    <ul class="list-group list-group-flush mt-3">
                         <li class="prod-list-group-item">
                             <span>판매처</span>
                             <span th:text="${product.member.nickname}"></span>
@@ -34,10 +38,6 @@
                             <span th:text="${#temporals.format(product.createDate, 'yyyy-MM-dd')}"></span>
                         </li>
                     </ul>
-                    <div sec:authorize="isAuthenticated()">
-                        <a th:href="@{|/product/modify/${product.id}|}" th:if="${product.member != null and #authentication != null and (product.member.username == #authentication.getName() or member.authority == 0)}">수정</a>
-                        <a th:href="@{|/product/delete/${product.id}|}" onclick="return confirm('정말 삭제하시겠습니까?')" th:if="${product.member != null and #authentication != null and (product.member.username == #authentication.getName() or member.authority == 0)}">삭제</a>
-                    </div>
                 </div>
                 <div class="prod-cart-add-card">
                     <div class="prod-card-body">
@@ -59,7 +59,7 @@
         <div class="card">
             <div class="prod-card-header">리뷰 등록</div>
             <div class="prod-card-body-middle">
-                <form sec:authorize="isAuthenticated()" th:action="@{|/review/create/${product.id}|}" method="POST">
+                <form id="reviewForm" sec:authorize="isAuthenticated()" th:action="@{|/review/create/${product.id}|}" method="POST">
                     <div class="mt-3">
                         <div class="mb-3">
                             <label for="content" class="form-label">내용</label>
@@ -81,7 +81,7 @@
                                 </div>
                             </label>
                         </div>
-                        <input type="submit" value="등록하기" class="prod-btn-dark">
+                        <input type="submit" value="등록하기" class="prod-btn-dark" onclick="return reviewForm()">
                     </div>
                 </form>
                 <div sec:authorize="isAnonymous()">
@@ -104,18 +104,5 @@
             </ul>
         </div>
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelectorAll('.star-rating').forEach(function(starRatingElem) {
-                var rating = starRatingElem.getAttribute('data-rating');
-                starRatingElem.innerText = '★'.repeat(rating);
-            });
-            var averageStarElem = document.querySelector('.average-star-rating');
-            if (averageStarElem) {
-                var averageRating = averageStarElem.getAttribute('data-rating');
-                averageStarElem.innerHTML = '★'.repeat(Math.floor(averageRating)) + (averageRating % 1 > 0 ? '☆' : '');
-            }
-        });
-    </script>
 </section>
 </html>

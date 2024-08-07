@@ -71,6 +71,8 @@ public class ProductController {
             member = memberService.findByUsername(authentication.getName());
         }
 
+        productService.plusHit(product);
+
         model.addAttribute("product", product);
         model.addAttribute("member", member);
         model.addAttribute("averageStarRating", averageStarRating);

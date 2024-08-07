@@ -20,11 +20,9 @@ import java.util.List;
 @NoArgsConstructor
 public class Product extends BaseEntity {
     private String title;
-    private String shippingCost;
     private String description;
     private int price;
     private int hitCount;
-    private String isActive;
     private String thumbnailImg;
     private int shippingFee = 3000;
 

@@ -56,6 +56,7 @@ public class ProductService {
                 .thumbnailImg(thumbnailRelPath)
                 .member(member)
                 .shippingFee(shippingFee) // 배송비 추가
+                .hitCount(0)
                 .build();
         productRepository.save(product);
     }
@@ -68,6 +69,7 @@ public class ProductService {
                 .member(member)
                 .shippingFee(shippingFee)
                 .thumbnailImg("images/product/sample_product.jpg")
+                .hitCount(0)
                 .build();
         productRepository.save(p);
     }
@@ -129,4 +131,9 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    public void plusHit(Product product) {
+        product.setHitCount(product.getHitCount() + 1);
+
+        productRepository.save(product);
+    }
 }

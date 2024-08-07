@@ -131,6 +131,14 @@
     border: transparent !important;
 }
 
+.product-list-container > ul > li > a:nth-child(2) {
+    height: 25px;
+}
+
+.product-list-container > ul > li > a:nth-child(3) {
+    height: 25px;
+}
+
 .product-list-container > ul > li > a > img {
     width: 100%;
     height: 100%;
