@@ -55,6 +55,11 @@ html > body .adopt-detail-content > .row-adopt {
 
 .adopt.content {
     padding-left: 50px;
+
+}
+.adopt.content > ul > li {
+    display: flex;
+    margin: 16px 0px;
 }
 
 /* 이미지 스타일 */

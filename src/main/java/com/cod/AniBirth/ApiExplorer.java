@@ -72,28 +72,29 @@ public class ApiExplorer implements CommandLineRunner {
         System.out.println("JSON Response: " + json);
 
         // Save to database
-        processJsonData(json);
+//        processJsonData(json);
+        animalService.saveAnimals(json);
     }
 
-    private void processJsonData(String json) {
-        // JSON 데이터 파싱
-        ObjectMapper objectMapper = new ObjectMapper();
-        ApiResponse apiResponse;
-        try {
-            apiResponse = objectMapper.readValue(json, ApiResponse.class);
-            List<Animal> animals = apiResponse.getMsgBody().getItems();
-
-            for (Animal animal : animals) {
-                // Classification 값으로 카테고리 설정
-                setCategoryForAnimal(animal);
-
-                // Animal 엔티티 저장
-                animalService.saveAnimal(animal);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    private void processJsonData(String json) {
+//        // JSON 데이터 파싱
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        ApiResponse apiResponse;
+//        try {
+//            apiResponse = objectMapper.readValue(json, ApiResponse.class);
+//            List<Animal> animals = apiResponse.getMsgBody().getItems();
+//
+//            for (Animal animal : animals) {
+//                // Classification 값으로 카테고리 설정
+//                setCategoryForAnimal(animal);
+//
+//                // Animal 엔티티 저장
+//                animalService.saveAnimal(animal);
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
     private void setCategoryForAnimal(Animal animal) {
         // Classification 값을 사용하여 Category 엔티티를 찾거나 생성
         String classification = animal.getClassification();
