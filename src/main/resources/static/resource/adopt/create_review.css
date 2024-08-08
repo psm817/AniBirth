@@ -28,6 +28,14 @@ html > body .reviewList {
     margin-bottom: 20px;
     display: block;
 }
+html > body .reviewList > .review-wrapper {
+    height: 100%;
+}
+
+html > body .reviewList > .review-wrapper > .review-banner {
+    height: 100%;
+}
+
 
 html > body .review-container-box > .container {
     display: flex;

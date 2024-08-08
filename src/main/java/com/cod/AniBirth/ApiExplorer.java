@@ -28,7 +28,7 @@ public class ApiExplorer implements CommandLineRunner {
     private static final String SERVICE_KEY = "no5Kx%2Bn4qn2kVYo3VLF%2BeQtRlsK9eQ%2FVDKn7dXtl%2BWWrs6j4Semu8NMnOUSdMGVcvp%2FdQx4IBt70JnXBHxwFSg%3D%3D";
     @Override
     public void run(String... args) throws Exception {
-        int totalCount = 10; // 총 데이터 개수
+        int totalCount = 60; // 총 데이터 개수
         int numOfRows = 12; // 한 페이지당 가져올 데이터 수
         int totalPage = (totalCount + numOfRows - 1) / numOfRows; // 전체 페이지 수
 
