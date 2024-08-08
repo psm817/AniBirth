@@ -53,7 +53,9 @@ public class ReviewController {
         }
         reviewService.modify(review, content, starRating); // starRating 추가
 
-        return "redirect:/product/detail/%s".formatted(id);
+        Long num = review.getProduct().getId();
+
+        return "redirect:/product/detail/%s".formatted(num);
     }
 
     @PreAuthorize("isAuthenticated()")
