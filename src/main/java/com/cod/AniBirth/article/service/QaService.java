@@ -49,6 +49,13 @@ public class QaService {
             qaRepository.save(qa);
         }
     }
+    public Qa getPreviousQa(Long id) {
+        return qaRepository.findFirstByIdLessThanOrderByIdDesc(id);
+    }
+
+    public Qa getNextQa(Long id) {
+        return qaRepository.findFirstByIdGreaterThanOrderByIdAsc(id);
+    }
 
 
 
@@ -82,7 +89,7 @@ public class QaService {
 
     }
 
-    public void addAdminComment(Long id, String adminComment, Member member) {
+    public Long addAdminComment(Long id, String adminComment, Member member) {
         Qa qa = getQaById(id);
         if (qa == null) {
             throw new DataNotFoundException("해당 QA를 찾을 수 없습니다.");
@@ -91,8 +98,14 @@ public class QaService {
         qa.getAdminComments().add(adminComment);
         qa.getCommentAuthors().add(member.getUsername());
 
-        qaRepository.save(qa);
+        // 댓글을 저장한 후, 업데이트된 엔티티를 저장
+        qa = qaRepository.save(qa);
+
+        // 댓글 리스트에서 방금 추가된 댓글의 인덱스를 ID로 사용
+        int index = qa.getAdminComments().size() - 1;
+        return (long) index; // 댓글 ID를 반환
     }
+
 
 
 

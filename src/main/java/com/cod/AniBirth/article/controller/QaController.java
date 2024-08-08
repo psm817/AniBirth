@@ -1,5 +1,6 @@
 package com.cod.AniBirth.article.controller;
 
+import com.cod.AniBirth.article.entity.Article;
 import com.cod.AniBirth.article.entity.Qa;
 import com.cod.AniBirth.article.service.QaService;
 import com.cod.AniBirth.member.entity.Member;
@@ -81,10 +82,15 @@ public class QaController {
             member = memberService.findByUsername(authentication.getName());
         }
 
+        Qa prevQa = qaService.getPreviousQa(id);
+        Qa nextQa = qaService.getNextQa(id);
+
         model.addAttribute("qa", qa);
         model.addAttribute("member", member);
         model.addAttribute("isEditingComment", false); // 초기 상태는 수정 모드가 아님
         model.addAttribute("editingComment", null); // 수정할 댓글 내용 초기화
+        model.addAttribute("prevQaId", prevQa != null ? prevQa.getId() : null);
+        model.addAttribute("nextQaId", nextQa != null ? nextQa.getId() : null);
 
         return "qa/detail";
     }
@@ -135,6 +141,7 @@ public class QaController {
     }
 
     @PostMapping("/comment/{id}")
+    @ResponseBody
     public String addAdminComment(@PathVariable("id") Long id,
                                   @RequestParam("adminComment") String adminComment,
                                   Authentication authentication) {
@@ -144,9 +151,11 @@ public class QaController {
             member = memberService.findByUsername(authentication.getName());
         }
 
-        qaService.addAdminComment(id, adminComment, member);
+        // 댓글 추가
+        Long commentId = qaService.addAdminComment(id, adminComment, member);
 
-        return "redirect:/qa/" + id;
+        // 댓글 ID를 응답으로 반환
+        return commentId.toString(); // 댓글 ID를 응답으로 반환
     }
 
     @PreAuthorize("isAuthenticated()")

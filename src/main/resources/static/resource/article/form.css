@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   padding: 2rem;
+
 }
 
 /* 컨테이너 설정 */
@@ -86,7 +87,7 @@
 }
 
 .form-button {
-  background-color: #007bff;
+  background-color: #FF416C;
   color: #fff;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -96,5 +97,37 @@
 }
 
 .form-button:hover {
-  background-color: #0056b3;
+  background-color: #f58ca3;
+}
+
+
+/* 작은 화면을 위한 미디어 쿼리 */
+@media (max-width: 768px) {
+    .container-form {
+        padding: 1rem; /* 작은 화면에서 패딩을 줄임 */
+    }
+
+    .container-all {
+        padding: 0.5rem; /* 작은 화면에서 패딩을 줄임 */
+    }
+
+    .title {
+        font-size: 1.25rem; /* 제목 폰트 크기 조정 */
+    }
+
+    .form-group {
+        flex-direction: column; /* 폼 그룹을 수직으로 정렬 */
+    }
+
+    .form-label {
+        font-size: 0.875rem; /* 레이블 폰트 크기 조정 */
+    }
+
+    .form-input, .form-textarea {
+        font-size: 0.875rem; /* 입력 요소의 폰트 크기 조정 */
+    }
+
+    .form-button {
+        padding: 0.5rem 1rem; /* 버튼 패딩 조정 */
+    }
 }

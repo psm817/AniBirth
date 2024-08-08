@@ -9,45 +9,41 @@
 <section layout:fragment="content" class="flex-1 flex flex-col items-center py-8">
     <div class="container-all max-w-3xl p-6 bg-white shadow-md rounded-lg">
         <!-- 제목과 메타 정보 -->
-        <header class="mb-6">
+        <header>
             <h1 class="text-2xl font-bold mb-2" th:text="${article.title}"></h1>
             <div class="text-gray-600 text-sm">
-                <span th:text="${#temporals.format(article.createDate, 'yyyy-MM-dd HH:mm')}"></span>
-                <span th:if="${article.modifyDate != null}" class="mx-2">|</span>
-                <span th:if="${article.modifyDate != null}" th:text="'수정: ' + ${#temporals.format(article.modifyDate, 'yyyy-MM-dd HH:mm')}"></span>
+                작성일:<span th:text="${#temporals.format(article.createDate, 'yyyy-MM-dd HH:mm')}"></span>
+                <span class="mx-2">|</span>
+                <span th:if="${article.modifyDate != null}" th:text="'수정일: ' + ${#temporals.format(article.modifyDate, 'yyyy-MM-dd HH:mm')}"></span>
                 <span class="mx-2">|</span>
                 조회수: <span th:text="${article.viewCount}"></span>
             </div>
-
             <hr class="my-4 border-gray-300">
         </header>
 
         <!-- 내용 -->
-        <div class="content mb-6">
+        <div class="container-content mb-6">
             <p class="text-lg text-gray-800 leading-relaxed mt-6" th:text="${article.content}">공지사항 내용</p>
         </div>
 
         <!-- 버튼 -->
-        <div class="flex justify-between mt-6">
+
+        <div class="flex justify-between">
             <!-- 이전 버튼 -->
             <a th:href="@{/article/{id}(id=${nextArticleId})}"
                th:classappend="${nextArticleId == null} ? 'btn-disabled' : 'btn-primary'"
-               class="btn-primary">
-                이전
+               class="btn-primary"><i class="fa-solid fa-arrow-left"></i>
             </a>
             <!-- 목록 버튼 -->
             <a th:href="@{/article/list}"
-               class="btn-primary">
-                목록
+               class="btn-primary"><i class="fa-solid fa-list"></i>
             </a>
             <!-- 다음 버튼 -->
             <a th:href="@{/article/{id}(id=${prevArticleId})}"
                th:classappend="${prevArticleId == null} ? 'btn-disabled' : 'btn-primary'"
-               class="btn-primary">
-                다음
+               class="btn-primary"><i class="fa-solid fa-arrow-right"></i>
             </a>
         </div>
-
 
     </div>
 </section>
