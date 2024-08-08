@@ -39,10 +39,8 @@
 
       <div class="content-box card-header pl-[40px]">
         <div class="total-box">
-          <span th:if="${member.authority eq 2}"
-                th:text="${member.nickname} + '님이 후원하신 후원내역은 총 ' + ${donationCount} + ' 건입니다.'"></span>
-          <span th:if="${member.authority eq 1}"
-                th:text="${member.nickname} + '님이 등록하신 후원내역은 총 ' + ${donationCount} + ' 건입니다.'"></span>
+          <span th:if="${member.authority eq 2}" th:text="${member.nickname} + '님이 후원하신 후원내역은 총 ' + ${donationCount} + ' 건입니다.'"></span>
+          <span th:if="${member.authority eq 1}" th:text="${member.nickname} + '님이 등록하신 후원내역은 총 ' + ${donationCount} + ' 건입니다.'"></span>
           <span th:if="${member.authority} == 0" th:text="'애니버스에 등록된 후원내역은 총 ' + ${donationCount} + ' 건입니다.'"></span>
         </div>
         <!-- 일반 회원일때 리스트 항목 -->
@@ -74,8 +72,7 @@
               <span class="number w-[10%]" th:text="${iterStat.count}"></span>
               <span class="date w-[30%]" th:text="${#temporals.format(donation.createDate, 'yyyy-MM-dd')}"></span>
               <span class="shelter w-[30%]" th:text="${donation.recipient.nickname}"></span>
-              <span class="amount w-[30%]"
-                    th:text="${#numbers.formatDecimal(donation.amount, 1, 'COMMA', 0, 'POINT')}+원"></span>
+              <span class="amount w-[30%]" th:text="${#numbers.formatDecimal(donation.amount, 1, 'COMMA', 0, 'POINT')}+원"></span>
             </li>
           </ul>
         </div>
@@ -86,8 +83,7 @@
               <span class="number w-[10%]" th:text="${iterStat.count}"></span>
               <span class="date w-[30%]" th:text="${#temporals.format(donation.createDate, 'yyyy-MM-dd')}"></span>
               <span class="content w-[30%]" th:text="${donation.donor.nickname}"></span>
-              <span class="totalAmount w-[30%]"
-                    th:text="${#numbers.formatDecimal(donation.amount, 1, 'COMMA', 0, 'POINT')}+원"></span>
+              <span class="totalAmount w-[30%]" th:text="${#numbers.formatDecimal(donation.amount, 1, 'COMMA', 0, 'POINT')}+원"></span>
             </li>
           </ul>
         </div>
@@ -98,8 +94,7 @@
               <span class="number w-[10%]" th:text="${iterStat.count}"></span>
               <span class="date w-[30%]" th:text="${#temporals.format(donation.createDate, 'yyyy-MM-dd')}"></span>
               <span class="content w-[30%]" th:text="${donation.donor.nickname}"></span>
-              <span class="totalAmount w-[30%]"
-                    th:text="${#numbers.formatDecimal(donation.amount, 1, 'COMMA', 0, 'POINT')}+원"></span>
+              <span class="totalAmount w-[30%]" th:text="${#numbers.formatDecimal(donation.amount, 1, 'COMMA', 0, 'POINT')}+원"></span>
             </li>
           </ul>
         </div>
