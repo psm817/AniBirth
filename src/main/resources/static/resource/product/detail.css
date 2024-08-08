@@ -13,6 +13,8 @@
 /* 상품 이미지 */
 .prod-img-container {
     margin-right: 30px;
+    width: 400px;
+    height: 100%;
 }
 
 .prod-product-card > .prod-img-container > img {
