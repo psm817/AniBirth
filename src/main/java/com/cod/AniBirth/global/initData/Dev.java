@@ -9,7 +9,9 @@ import com.cod.AniBirth.donation.entity.Donation;
 import com.cod.AniBirth.donation.service.DonationService;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
+import com.cod.AniBirth.product.entity.Product;
 import com.cod.AniBirth.product.service.ProductService;
+import com.cod.AniBirth.review.service.ReviewService;
 import com.cod.AniBirth.volunteer.entity.Volunteer;
 import com.cod.AniBirth.volunteer.service.VolunteerReviewService;
 import com.cod.AniBirth.volunteer.service.VolunteerService;
@@ -30,7 +32,7 @@ public class Dev {
                                   CalendarService calendarService, VolunteerReviewService volunteerReviewService,
                                   DonationService donationService, ArticleService articleService,
                                   QaService qaService,
-                                  AdoptReviewService adoptReviewService) {
+                                  AdoptReviewService adoptReviewService, ReviewService reviewService) {
 
         return args -> {
             // 회원 샘플
@@ -120,24 +122,42 @@ public class Dev {
             volunteerReviewService.create("제목6", "내용6", 0, member10, "images/volunteer/volunteer_default.jpg", null);
 
 
-            productService.create("타이틀1","1 설명입니다",10000, member2, 3000);
-            productService.create("타이틀2","2 설명입니다",20000, member2, 3000);
-            productService.create("타이틀3","3 설명입니다",30000, member2, 3000);
-            productService.create("타이틀4","4 설명입니다",40000, member2, 3000);
-            productService.create("타이틀5","5 설명입니다",10000, member2, 3000);
-            productService.create("타이틀6","6 설명입니다",20000, member2, 3000);
-            productService.create("타이틀7","7 설명입니다",30000, member2, 3000);
-            productService.create("타이틀8","8 설명입니다",40000, member2, 3000);
-            productService.create("타이틀9","9 설명입니다",10000, member2, 3000);
-            productService.create("타이틀10","10 설명입니다",20000, member2, 3000);
-            productService.create("타이틀11","11 설명입니다",30000, member2, 3000);
-            productService.create("타이틀12","12 설명입니다",40000, member2, 3000);
-            productService.create("타이틀13","13 설명입니다",10000, member2, 3000);
-            productService.create("타이틀14","14 설명입니다",20000, member2, 3000);
-            productService.create("타이틀15","15 설명입니다",30000, member2, 3000);
-            productService.create("타이틀16","16 설명입니다",40000, member2, 3000);
-            productService.create("타이틀17","17 설명입니다",30000, member2, 3000);
-            productService.create("타이틀18","18 설명입니다",40000, member2, 3000);
+            Product product1 = productService.create("타이틀1","1 설명입니다",10000, member2, 3000);
+            Product product2 = productService.create("타이틀2","2 설명입니다",20000, member2, 3000);
+            Product product3 = productService.create("타이틀3","3 설명입니다",30000, member2, 3000);
+            Product product4 = productService.create("타이틀4","4 설명입니다",40000, member2, 3000);
+            Product product5 = productService.create("타이틀5","5 설명입니다",10000, member2, 3000);
+            Product product6 = productService.create("타이틀6","6 설명입니다",20000, member2, 3000);
+            Product product7 = productService.create("타이틀7","7 설명입니다",30000, member2, 3000);
+            Product product8 = productService.create("타이틀8","8 설명입니다",40000, member2, 3000);
+            Product product9 = productService.create("타이틀9","9 설명입니다",10000, member2, 3000);
+            Product product10 = productService.create("타이틀10","10 설명입니다",20000, member2, 3000);
+            Product product11 = productService.create("타이틀11","11 설명입니다",30000, member2, 3000);
+            Product product12 = productService.create("타이틀12","12 설명입니다",40000, member2, 3000);
+            Product product13 = productService.create("타이틀13","13 설명입니다",10000, member2, 3000);
+            Product product14 = productService.create("타이틀14","14 설명입니다",20000, member2, 3000);
+            Product product15 = productService.create("타이틀15","15 설명입니다",30000, member2, 3000);
+            Product product16 = productService.create("타이틀16","16 설명입니다",40000, member2, 3000);
+            Product product17 = productService.create("타이틀17","17 설명입니다",30000, member2, 3000);
+            Product product18 = productService.create("타이틀18","18 설명입니다",40000, member2, 3000);
+
+            // 상품 리뷰
+            reviewService.create(product1, member4, "좋은 품질의 상품이네요! 최고예요!!", 5);
+            reviewService.create(product1, member5, "좋은 품질의 상품이네요! 최고예요!!", 4);
+            reviewService.create(product2, member4, "좋은 품질의 상품이네요! 최고예요!!", 5);
+            reviewService.create(product3, member5, "좋은 품질의 상품이네요! 최고예요!!", 4);
+            reviewService.create(product4, member4, "좋은 품질의 상품이네요! 최고예요!!", 3);
+            reviewService.create(product5, member5, "좋은 품질의 상품이네요! 최고예요!!", 4);
+            reviewService.create(product6, member4, "좋은 품질의 상품이네요! 최고예요!!", 5);
+            reviewService.create(product6, member5, "좋은 품질의 상품이네요! 최고예요!!", 4);
+            reviewService.create(product7, member4, "좋은 품질의 상품이네요! 최고예요!!", 5);
+            reviewService.create(product7, member5, "좋은 품질의 상품이네요! 최고예요!!", 3);
+            reviewService.create(product8, member4, "좋은 품질의 상품이네요! 최고예요!!", 5);
+            reviewService.create(product8, member5, "좋은 품질의 상품이네요! 최고예요!!", 2);
+            reviewService.create(product9, member4, "좋은 품질의 상품이네요! 최고예요!!", 3);
+            reviewService.create(product10, member5, "좋은 품질의 상품이네요! 최고예요!!", 4);
+            reviewService.create(product11, member4, "좋은 품질의 상품이네요! 최고예요!!", 5);
+            reviewService.create(product12, member5, "좋은 품질의 상품이네요! 최고예요!!", 5);
 
             // 후원 샘플
             Donation donation1 = new Donation();

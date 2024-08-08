@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository
@@ -26,5 +25,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findByMember(Member member);
 
-
+    @Query(value = "SELECT p.* FROM product p JOIN review r ON p.id = r.product_id GROUP BY p.id ORDER BY AVG(r.star_rating) DESC, RAND() LIMIT :limit", nativeQuery = true)
+    List<Product> findTopRatedProducts(@Param("limit") int limit);
 }
