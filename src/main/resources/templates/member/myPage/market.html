@@ -13,10 +13,12 @@
             </div>
             <div class="menu-box-d card-header">
                 <ul class="list-group list-group-flush gap-6 mt-2">
-                    <li th:if="${member.authority} != 0" class="list-group-item flex justify-center items-center profile">
+                    <li th:if="${member.authority} != 0"
+                        class="list-group-item flex justify-center items-center profile">
                         <a th:href="@{/member/myPage/myProfile}"><span>마이프로필</span></a>
                     </li>
-                    <li th:if="${member.authority} == 0" class="list-group-item flex justify-center items-center profile">
+                    <li th:if="${member.authority} == 0"
+                        class="list-group-item flex justify-center items-center profile">
                         <a th:href="@{/member/myPage/myProfile}"><span>회원목록</span></a>
                     </li>
                     <li class="list-group-item flex justify-center items-center volunteer">
@@ -39,9 +41,12 @@
 
             <div class="content-box card-header pl-[40px]">
                 <div class="total-box">
-                    <span th:if="${member.authority} == 2" th:text="${member.nickname} + '님이 구매하신 마켓내역은 총 0 건입니다.'"></span>
-                    <span th:if="${member.authority} == 1" th:text="${member.nickname} + '님이 등록하신 마켓물품은 총 0 건입니다.'"></span>
-                    <span th:if="${member.authority} == 0" th:text="'애니버스에 등록된 마켓물품 총 0 건입니다.'"></span>
+                    <span th:if="${member.authority} == 2"
+                          th:text="${member.nickname} + '님이 구매하신 마켓내역은 총 ' + ${productList.size()} + ' 건입니다.'"></span>
+                    <span th:if="${member.authority} == 1"
+                          th:text="${member.nickname} + '님이 등록하신 마켓물품은 총 ' + ${productList.size()} + ' 건입니다.'"></span>
+                    <span th:if="${member.authority} == 0"
+                          th:text="'애니버스에 등록된 마켓물품 총 ' + ${productList.size()} + ' 건입니다.'"></span>
                 </div>
                 <!-- 일반 회원일때 리스트 항목 -->
                 <div class="market-box-title card-body" th:if="${member.authority} == 2">
@@ -51,7 +56,9 @@
                             <span class="date w-[20%]">구매날짜</span>
                             <span class="title w-[30%]">상품명</span>
                             <span class="amount w-[20%]">금액</span>
-                            <span class="review w-[20%]">리뷰</span>
+                            <span class="review w-[20%]">
+                                <a href="#" class="btn btn-link">작성하기</a>
+                            </span>
                         </li>
                     </ul>
                 </div>
@@ -71,12 +78,11 @@
                 <!-- 일반 회원일때 리스트 내용 -->
                 <div class="market-box-detail card-body" th:if="${member.authority} == 2">
                     <ul class="list-group list-group-flush">
-                        <!-- th:each로 반복문 돌려야됨  -->
-                        <li class="list-group-item flex items-center">
-                            <span class="number w-[10%]">1</span>
-                            <span class="date w-[20%]">2024-07-22</span>
-                            <span class="title w-[30%]">강아지 목배게</span>
-                            <span class="amount w-[20%]">2,000원</span>
+                        <li th:each="product, stat : ${productList}" class="list-group-item flex items-center">
+                            <span class="number w-[10%]" th:text="${stat.index + 1}"></span>
+                            <span class="date w-[20%]" th:if="${product.orderItems.size() > 0}" th:text="${#temporals.format(product.orderItems[0].payDate, 'yyyy-MM-dd')}"></span>
+                            <span class="title w-[30%]" th:text="${product.title}"></span>
+                            <span class="amount w-[20%]" th:text="${product.price} + '원'"></span>
                             <span class="review w-[20%]">
                                 <a href="#" class="btn btn-link">작성하기</a>
                             </span>
@@ -86,28 +92,30 @@
                 <!-- 최고 관리자일때 리스트 내용 -->
                 <div class="market-box-detail card-body" th:if="${member.authority} == 0">
                     <ul class="list-group list-group-flush">
-                        <!-- th:each로 반복문 돌려야됨  -->
-                        <li class="list-group-item flex items-center">
-                            <span class="number w-[10%]">1</span>
-                            <span class="date w-[20%]">2024-07-20</span>
-                            <span class="title w-[30%]">강아지 목배게</span>
-                            <span class="amount w-[15%]">2,000원</span>
-                            <span class="review w-[15%]">4.2점</span>
-                            <span class="view w-[10%]">253회</span>
+                        <li th:each="product, stat : ${productList}" class="list-group-item flex items-center">
+                            <span class="number w-[10%]" th:text="${stat.index + 1}"></span>
+                            <span class="date w-[20%]"
+                                  th:text="${#temporals.format(product.createDate, 'yyyy-MM-dd')}"></span>
+                            <span class="title w-[30%]" th:text="${product.title}"></span>
+                            <span class="amount w-[15%]" th:text="${product.price} + '원'"></span>
+                            <span class="review w-[15%]"
+                                  th:text="${product.reviewList.size() > 0 ? product.reviewList.get(0).starRating + '점' : '평점 없음'}"></span>
+                            <span class="view w-[10%]" th:text="${product.hitCount} + '회'"></span>
                         </li>
                     </ul>
                 </div>
                 <!-- 중간 관리자일때 리스트 내용 -->
                 <div class="market-box-detail card-body" th:if="${member.authority} == 1">
                     <ul class="list-group list-group-flush">
-                        <!-- th:each로 반복문 돌려야됨  -->
-                        <li class="list-group-item flex items-center">
-                            <span class="number w-[10%]">1</span>
-                            <span class="date w-[20%]">2024-07-20</span>
-                            <span class="title w-[30%]">강아지 목배게</span>
-                            <span class="amount w-[15%]">2,000원</span>
-                            <span class="review w-[15%]">4.2점</span>
-                            <span class="view w-[10%]">253회</span>
+                        <li th:each="product, stat : ${productList}" class="list-group-item flex items-center">
+                            <span class="number w-[10%]" th:text="${stat.index + 1}"></span>
+                            <span class="date w-[20%]"
+                                  th:text="${#temporals.format(product.createDate, 'yyyy-MM-dd')}"></span>
+                            <span class="title w-[30%]" th:text="${product.title}"></span>
+                            <span class="amount w-[15%]" th:text="${product.price} + '원'"></span>
+                            <span class="review w-[15%]"
+                                  th:text="${product.reviewList.size() > 0 ? product.reviewList.get(0).starRating + '점' : '평점 없음'}"></span>
+                            <span class="view w-[10%]" th:text="${product.hitCount} + '회'"></span>
                         </li>
                     </ul>
                 </div>

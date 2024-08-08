@@ -12,9 +12,5 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface OrderRepository extends JpaRepository<Order, Long> {
-    @Query("SELECT oi.product FROM OrderItem oi JOIN oi.order o WHERE o.buyer = :member AND oi.isPaid = true")
-    List<Product> findPurchasedProductsByMember(@Param("member") Member member);
-
-
+public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
 }
