@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/layout}">
+<head>
+    <title>Checkout</title>
+</head>
+<body>
+<section layout:fragment="content" class="flex justify-center items-center mt-8">
+    <div class="checkout-container">
+        <div class="checkout-card checkout-cart">
+            <label class="checkout-title">주문</label>
+            <div class="checkout-steps">
+                <div class="checkout-step">
+                    <div>
+                        <span>주문/결제</span>
+                        <table class="checkout-table checkout-table-hover">
+                            <thead>
+                            <tr>
+                                <th>상품명</th>
+                                <th>수량</th>
+                                <th>가격</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="cartItem : ${cartList}">
+                                <td th:text="${cartItem.product.title}"></td>
+                                <td th:text="${cartItem.quantity}"></td>
+                                <td th:text="${#numbers.formatInteger(cartItem.product.price * cartItem.quantity, 3, 'COMMA') + '원'}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <hr>
+                    <div>
+                        <span>배송지 정보</span>
+                        <form id="checkout-form" action="/order/confirm" method="post">
+                            <input type="hidden" name="orderId" th:value="${orderId}">
+                            <input type="hidden" name="amount" th:value="${totalWithShipping}">
+                            <input type="hidden" name="paymentMethod" value="points" id="paymentMethod">
+
+                            <div class="mb-3">
+                                <label for="recipientName" class="form-label">받는 사람</label>
+                                <input type="text" class="form-control" id="recipientName" name="recipientName" th:value="${nickname}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="address" class="form-label">주소</label>
+                                <input type="text" class="form-control" id="address" name="address" th:value="${address}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">전화번호</label>
+                                <input type="text" class="form-control" id="phone" name="phone" th:value="${phone}" required>
+                            </div>
+                            <div class="checkout-payments">
+                                <span>결제 가격</span>
+                                <div class="checkout-details">
+                                    <span>상품 가격 :</span>
+                                    <span th:text="${#numbers.formatInteger(totalPrice, 3, 'COMMA') + '원'}"></span>
+                                    <span>배송비 : </span>
+                                    <span th:text="${#numbers.formatInteger(shippingFee, 3, 'COMMA') + '원'}"></span>
+                                </div>
+                            </div>
+                            <div class="checkout-footer">
+                                <span>합계:</span>
+                                <span th:text="${#numbers.formatInteger(totalWithShipping, 3, 'COMMA') + '원'}"></span>
+                                <button type="submit" class="btn btn-primary checkout-checkout-btn">포인트로 결제하기</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

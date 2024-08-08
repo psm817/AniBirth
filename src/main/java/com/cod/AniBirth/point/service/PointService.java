@@ -40,4 +40,15 @@ public class PointService {
     public void save(Account account) {
         accountRepository.save(account);
     }
+
+    public boolean deductPoints(Member member, int amount) {
+        Account account = getOrCreateAccount(member);
+        if (account.getAniPoint() >= amount) {
+            account.setAniPoint(account.getAniPoint() - amount);
+            accountRepository.save(account);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
