@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -66,8 +67,19 @@ public class DonationService {
         List<Object[]> topDonors = donationRepository.findTopDonors();
         log.info("Top Donors: {}", topDonors);
 
-        // 상위 3명만 반환합니다.
-        return topDonors.stream().limit(3).collect(Collectors.toList());
+        // 상위 3명까지만 추출합니다.
+        List<Object[]> reorderedTopDonors = new ArrayList<>();
+        if (topDonors.size() > 1) {
+            reorderedTopDonors.add(topDonors.get(1)); // 2등
+        }
+        if (topDonors.size() > 0) {
+            reorderedTopDonors.add(topDonors.get(0)); // 1등
+        }
+        if (topDonors.size() > 2) {
+            reorderedTopDonors.add(topDonors.get(2)); // 3등
+        }
+
+        return reorderedTopDonors;
     }
 
     public List<Donation> getDonationsByDonor(Member donor) {
