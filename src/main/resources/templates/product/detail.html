@@ -84,7 +84,7 @@
                                 </div>
                             </label>
                         </div>
-                        <input type="submit" value="등록하기" class="prod-btn-dark" onclick="return reviewForm()">
+                        <input type="submit" value="등록하기" class="prod-btn-dark" onclick="return productReviewCreate();">
                     </div>
                 </form>
                 <div sec:authorize="isAnonymous()">
@@ -96,10 +96,18 @@
             <div class="prod-card-header">리뷰</div>
             <ul th:if="${#lists.size(product.reviewList) > 0}" class="list-group list-group-flush gap-2 prod-card-body-bottom">
                 <li th:each="review : ${product.reviewList}" class="prod-list-group-item">
-                    <span th:text="${review.content}"></span>
+                    <div class="writer-box">
+                        <span th:text="${review.member.nickname}"></span>
+                    </div>
                     <span class="star-rating" th:attr="data-rating=${review.starRating}"></span>
-                    <a th:href="@{|/review/modify/${review.id}|}" class="btn btn-sm btn-link" sec:authorize="isAuthenticated()" th:if="${review.member != null and #authentication.getPrincipal().getUsername() == review.member.username}">수정</a>
-                    <a th:href="@{|/review/delete/${review.id}|}" class="btn btn-sm btn-link" onclick="if ( confirm('정말 삭제하시겠습니까?' ) == false ) return false;" sec:authorize="isAuthenticated()" th:if="${review.member != null and #authentication.getPrincipal().getUsername() == review.member.username}">삭제</a>
+                    <span th:text="${review.content}"></span>
+                    <div class="user-btn">
+                        <a th:href="@{|/review/modify/${review.id}|}" class="btn btn-sm btn-link" sec:authorize="isAuthenticated()"
+                           th:if="${review.member != null and #authentication.getPrincipal().getUsername() == review.member.username}"
+                           onclick="return productReviewModify();">수정</a>
+                        <a th:href="@{|/review/delete/${review.id}|}" class="btn btn-sm btn-link" onclick="return productReviewDelete();" sec:authorize="isAuthenticated()"
+                           th:if="${review.member != null and #authentication.getPrincipal().getUsername() == review.member.username}">삭제</a>
+                    </div>
                 </li>
             </ul>
             <ul th:unless="${#lists.size(product.reviewList) > 0}" class="prod-card-body-bottom">

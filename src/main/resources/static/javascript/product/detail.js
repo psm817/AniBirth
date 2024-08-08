@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-function reviewForm() {
+function productReviewCreate() {
     const content = document.getElementById('content').value.trim();
     const starRating = document.querySelector('input[name="starRating"]:checked');
 
@@ -50,5 +50,5 @@ function reviewForm() {
         return false;
     }
 
-    return true;
+    return confirm('해당 상품에 리뷰를 등록하시겠습니까?')
 }
