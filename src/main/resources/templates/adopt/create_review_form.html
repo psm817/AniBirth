@@ -13,18 +13,18 @@
     </div>
     <div class="container review-content">
       <div class="review-content-name">
-        <h1 class="h4 g-color-primary font-weight-bold mt-5">
+        <h1 class="h4 g-color-primary font-weight-bold mt-2">
           <span class="review-content-header">입양 후기 작성</span>
         </h1>
         <hr class="my-2">
       </div>
-      <div class="review-data">
-        <div class="adopt-create-review-section">
-          <div class="review-data-title">
-            <h5>입양 후기 작성</h5>
-          </div>
-        </div>
-      </div>
+      <!--      <div class="review-data">-->
+      <!--        <div class="adopt-create-review-section">-->
+      <!--          <div class="review-data-title">-->
+      <!--            <h5>입양 후기 작성</h5>-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--      </div>-->
       <div class="review-data-input">
         <form action="" method="POST" th:action="@{/adopt/create_review}" th:object="${createReviewForm}"
               enctype="multipart/form-data">
