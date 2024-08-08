@@ -52,11 +52,6 @@ function adoptReviewCreate() {
     return confirm('입양후기를 작성하시겠습니까?');
 }
 
-// 리뷰 수정할 때 알림
-function productReviewModify() {
-    return confirm('작성하신 리뷰를 수정하시겠습니까?');
-}
-
 // 리뷰 삭제할 때 알림
 function productReviewDelete() {
     return confirm('리뷰를 삭제하시겠습니까?');

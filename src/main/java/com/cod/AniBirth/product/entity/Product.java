@@ -6,6 +6,7 @@ import com.cod.AniBirth.member.entity.Member;
 
 import com.cod.AniBirth.order.entity.OrderItem;
 import com.cod.AniBirth.review.entity.Review;
+import com.cod.global.util.HtmlUtils;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -39,4 +40,8 @@ public class Product extends BaseEntity {
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
     private List<OrderItem> orderItems;
+
+    public String getFormattedBody() {
+        return HtmlUtils.convertLineBreaksToHtml(description);
+    }
 }

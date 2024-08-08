@@ -4,6 +4,7 @@ package com.cod.AniBirth.review.entity;
 import com.cod.AniBirth.base.entity.BaseEntity;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.product.entity.Product;
+import com.cod.global.util.HtmlUtils;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
@@ -27,4 +28,7 @@ public class Review extends BaseEntity {
     @ManyToOne
     private Product product;
 
+    public String getFormattedBody() {
+        return HtmlUtils.convertLineBreaksToHtml(content);
+    }
 }
