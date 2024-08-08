@@ -25,6 +25,7 @@ html > body li {
 html > body {
   font-family: 'Pretendard-Regular';
   text-underline-position: under;
+  background-color: #fff;
 }
 
 ul, li, a {

@@ -47,6 +47,10 @@ function productModify() {
 function productDelete() {
     return confirm('애니마켓에 등록된 상품을 삭제하시겠습니까?');
 }
+// 후가 작성했을 때 알림
+function adoptReviewCreate() {
+    return confirm('입양후기를 작성하시겠습니까?');
+}
 
 // Check for the apply error parameter and show the alert if it's set
 window.onload = function() {
