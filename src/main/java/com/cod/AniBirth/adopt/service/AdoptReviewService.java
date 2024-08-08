@@ -2,6 +2,7 @@ package com.cod.AniBirth.adopt.service;
 
 import com.cod.AniBirth.adopt.entity.AdoptReview;
 import com.cod.AniBirth.adopt.repository.AdoptReviewRepository;
+import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.global.security.DataNotFoundException;
 import com.cod.AniBirth.member.entity.Member;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -85,5 +87,15 @@ public class AdoptReviewService {
         Pageable pageable = PageRequest.of(page, 12, Sort.by(sorts));
 
         return adoptReviewRepository.findAll(pageable);
+    }
+
+    public AdoptReview getreview(Long id) {
+        Optional<AdoptReview> adoptReview = adoptReviewRepository.findById(id);
+
+        if( adoptReview.isPresent()) {
+            return adoptReview.get();
+        } else {
+            throw new DataNotFoundException("adoptReview not found");
+        }
     }
 }
