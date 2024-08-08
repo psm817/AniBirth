@@ -1,11 +1,18 @@
 <html layout:decorate="~{layout/layout}">
-<head>
-    <title>공지사항 목록</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/resource/article/list.css}">
-</head>
-
 <body>
-<section layout:fragment="content" class="flex-1 flex flex-col items-center py-8">
+<section layout:fragment="content" class="flex-1 flex flex-col items-center">
+    <div class="article-wrapper">
+        <img src="https://cdn.ananti.kr/plf/ui/img/namhae/nh-petroom-pc.jpg" alt="article"
+             class="background-image grid w-full h-[380px] ">
+    </div>
+    <div class="text-overlay-v">
+        <h1 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold">애니공지</h1>
+        <br>
+        <p class="mt-2 text-sm sm:text-base md:text-lg lg:text-xl">애니버스의 모든 것<br>
+        </p>
+    </div>
+
+
     <!-- 링크 네비게이션 -->
     <div class="link-navigation">
         <a th:href=@{/article/list} class="link active">공지사항</a>
@@ -28,8 +35,8 @@
                 <tbody>
                 <tr th:each="article, loop : ${paging.content}">
                     <td class="py-2 px-4 border-b text-center" th:text="${paging.number * paging.size + loop.index + 1}"></td>
-                    <td class="py-2 px-4 border-b">
-                        <a th:href="@{|/article/${article.id}|}" th:text="${article.title}"></a>
+                    <td class="py-2 px-4 border-b ">
+                        <a class="shortTitle" th:href="@{|/article/${article.id}|}" th:text="${article.title}"></a>
                     </td>
                     <td class="py-2 px-4 border-b text-center" th:text="${#temporals.format(article.createDate, 'yyyy-MM-dd')}"></td>
                     <td class="py-2 px-4 border-b text-center" th:text="${article.viewCount}"></td>

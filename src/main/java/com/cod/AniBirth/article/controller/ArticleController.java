@@ -99,6 +99,7 @@ public class ArticleController {
         // 기존 Article 객체의 필드를 새로운 값으로 업데이트
         existingArticle.setTitle(article.getTitle());
         existingArticle.setContent(article.getContent());
+        existingArticle.setModifyDate(LocalDateTime.now());
         // 업데이트된 Article 저장
         articleService.saveArticle(existingArticle);
 

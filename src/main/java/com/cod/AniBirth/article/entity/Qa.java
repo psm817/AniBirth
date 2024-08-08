@@ -38,6 +38,5 @@ public class Qa extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "member_id")
-
     private Member member; // 글 작성자
 }
