@@ -1,67 +1,67 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout/layout}">
 <section layout:fragment="content" class="flex-1 flex justify-center items-center">
-  <div class="review-container-box">
-    <div class="review-total">
-      <div class="reviewList">
-        <div class="review-wrapper">
-          <div class="review-banner">
-            <img th:src="@{/images/banner/입양.png}" alt="배너1">
-          </div>
+    <div class="review-container-box">
+        <div class="review-total">
+            <div class="reviewList">
+                <div class="review-wrapper">
+                    <div class="review-banner">
+                        <img th:src="@{/images/banner/입양.png}" alt="배너1">
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="container review-content">
-      <div class="review-content-name">
-        <h1 class="h4 g-color-primary font-weight-bold mt-5">
-          <span class="review-content-header">입양 후기 작성</span>
-        </h1>
-        <hr class="my-2">
-      </div>
-      <div class="review-data">
-        <div class="adopt-create-review-section">
-          <div class="review-data-title">
-            <h5>입양 후기 작성</h5>
-          </div>
+        <div class="container review-content">
+            <div class="review-content-name">
+                <h1 class="h4 g-color-primary font-weight-bold mt-2">
+                    <span class="review-content-header">입양 후기 작성</span>
+                </h1>
+                <hr class="my-2">
+            </div>
+            <!--      <div class="review-data">-->
+            <!--        <div class="adopt-create-review-section">-->
+            <!--          <div class="review-data-title">-->
+            <!--            <h5>입양 후기 작성</h5>-->
+            <!--          </div>-->
+            <!--        </div>-->
+            <!--      </div>-->
+            <div class="review-data-input">
+                <form action="" method="POST" th:action="@{/adopt/create_review}" th:object="${createReviewForm}"
+                      enctype="multipart/form-data">
+                    <div class="input-box title">
+                        <span>제목</span>
+                        <input type="text" id="title" name="title">
+                    </div>
+                    <div class="input-box content">
+                        <span>내용</span>
+                        <input type="text" id="content" name="content">
+                    </div>
+                    <div class="upload-file">
+                        <h4>사진업로드 :</h4>
+                        <input type="file" name="images">
+                    </div>
+                    <div style="width: 100%; margin: 20px 0px;">
+                        <hr class="my-2">
+                    </div>
+                    <button id="submitBtn" class="btn btn-block btn-primary detail_adopt_application_event mb-2"
+                            type="submit">신청하기
+                    </button>
+                </form>
+            </div>
         </div>
-      </div>
-      <div class="review-data-input">
-        <form action="" method="POST" th:action="@{/adopt/create_review}" th:object="${createReviewForm}"
-              enctype="multipart/form-data">
-          <div class="input-box title">
-            <span>제목</span>
-            <input type="text" id="title" name="title">
-          </div>
-          <div class="input-box content">
-            <span>내용</span>
-            <input type="text" id="content" name="content">
-          </div>
-          <div class="upload-file">
-            <h4>사진업로드 :</h4>
-            <input type="file" name="images">
-          </div>
-          <div style="width: 100%; margin: 20px 0px;">
-            <hr class="my-2">
-          </div>
-          <button id="submitBtn" class="btn btn-block btn-primary detail_adopt_application_event mb-2"
-                  type="submit">신청하기
-          </button>
-        </form>
-      </div>
     </div>
-  </div>
 </section>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var checkboxes = document.querySelectorAll('input[name="chk"]');
-    var submitBtn = document.getElementById('submitBtn');
+    document.addEventListener('DOMContentLoaded', function () {
+      var checkboxes = document.querySelectorAll('input[name="chk"]');
+      var submitBtn = document.getElementById('submitBtn');
 
-    checkboxes.forEach(function (checkbox) {
-      checkbox.addEventListener('change', function () {
-        var checkedCheckboxes = document.querySelectorAll('input[name="chk"]:checked');
-        submitBtn.disabled = checkedCheckboxes.length !== checkboxes.length;
+      checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+          var checkedCheckboxes = document.querySelectorAll('input[name="chk"]:checked');
+          submitBtn.disabled = checkedCheckboxes.length !== checkboxes.length;
+        });
       });
     });
-  });
 </script>
 </html>

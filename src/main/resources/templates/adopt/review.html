@@ -15,7 +15,7 @@
         <a th:href="@{/adopt/list}">입양정보</a>
         <a th:href="@{/adopt/review}">입양후기</a>
       </div>
-      <ul class="adopt-review-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-[20px] mt-3">
+      <ul class="adopt-review-list grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-[20px] mt-3">
         <li th:each="review, loop : ${paging}" class="flex flex-col">
           <div class="animal-content-detail">
             <a th:href="@{|/adopt/detail/${review.id}|}" th:text="${review.content}" class="text-left mt-2 text-lg font-semibold"></a>

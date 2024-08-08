@@ -1,0 +1,92 @@
+html, body {
+    position: relative;
+    height: 100%;
+}
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+html > body .review-container-box {
+    width: 100%;
+}
+
+html > body .review-container-box > .review-total {
+  width: 100%;
+  height: 380px;
+  margin-bottom: 20px;
+}
+
+html > body .reviewList {
+    width: 100%;
+    margin-bottom: 20px;
+    display: block;
+}
+
+html > body .review-container-box > .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+html > body .review-container-box > .container > .review-content-name {
+    padding: 15px 0px;
+}
+
+html > body .review-container-box .container .review-data-input {
+    width: 100%;
+}
+
+.review-data-input > form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center; /* 폼 내의 항목을 가운데 정렬 */
+    margin-bottom: 20px;
+}
+
+.review-data-input > form > .input-box {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    width: 100%; /* input-box의 너비를 100%로 설정 */
+    max-width: 800px; /* 최대 너비 설정 */
+}
+
+.review-data-input > form > .input-box > span {
+    font-size: 18px;
+    width: 150px; /* span의 고정 너비 */
+    text-align: left;
+    margin-right: 10px;
+}
+
+.review-data-input > form > .input-box > input,
+.review-data-input > form > .input-box > label > input {
+    border: 1px solid #121212;
+    height: 40px;
+    width: calc(100% - 160px); /* input 박스의 너비 계산 (전체 너비 - span 너비) */
+    padding-left: 10px;
+}
+.review-data-input > form > .upload-file {
+    display: flex;
+    align-items: center;
+}
+
+.review-data-input > form > .upload-file > input {
+    margin-left: 10px;
+}
+
+.review-data-input > form > #submitBtn {
+    background-color: #004ba0;
+    border-color: #004ba0;
+}
+
+.review-data-input > form > #submitBtn:hover {
+    background-color: #1164c2;
+    border-color: #1164c2;
+}
