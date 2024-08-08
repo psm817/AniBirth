@@ -1,6 +1,7 @@
 package com.cod.AniBirth.global.initData;
 
 import com.cod.AniBirth.account.service.AccountService;
+import com.cod.AniBirth.adopt.service.AdoptReviewService;
 import com.cod.AniBirth.article.service.ArticleService;
 import com.cod.AniBirth.article.service.QaService;
 import com.cod.AniBirth.calendar.service.CalendarService;
@@ -28,7 +29,8 @@ public class Dev {
                                   ProductService productService, VolunteerService volunteerService,
                                   CalendarService calendarService, VolunteerReviewService volunteerReviewService,
                                   DonationService donationService, ArticleService articleService,
-                                  QaService qaService) {
+                                  QaService qaService,
+                                  AdoptReviewService adoptReviewService) {
 
         return args -> {
             // 회원 샘플
@@ -184,6 +186,17 @@ public class Dev {
             qaService.create("Sample Title 9", "This is a sample content for the qa.", member3,8);
             qaService.create("Sample Title 10", "This is a sample content for the qa.", member2,9);
             qaService.create("Sample Title 11", "This is a sample content for the qa.",member2, 10);
+
+            //입양후기 샘플
+            adoptReviewService.create("입양후기1","입양후기 1에 대한 내용입니다.","images/adoptreview/입양리스트.jpg", member1);
+            adoptReviewService.create("입양후기2","입양후기 2에 대한 내용입니다.","images/adoptreview/입양리스트.jpg", member2);
+            adoptReviewService.create("입양후기3","입양후기 3에 대한 내용입니다.","images/adoptreview/입양리스트.jpg", member3);
+            adoptReviewService.create("입양후기4","입양후기 4에 대한 내용입니다.","images/adoptreview/입양리스트.jpg", member4);
+            adoptReviewService.create("입양후기5","입양후기 5에 대한 내용입니다.","images/adoptreview/입양리스트.jpg", member5);
+            adoptReviewService.create("입양후기6","입양후기 6에 대한 내용입니다.","images/adoptreview/입양리스트.jpg", member6);
+            adoptReviewService.create("입양후기7","입양후기 7에 대한 내용입니다.","images/adoptreview/입양리스트.jpg", member7);
+            adoptReviewService.create("입양후기8","입양후기 8에 대한 내용입니다.","images/adoptreview/입양리스트.jpg", member7);
+            adoptReviewService.create("입양후기9","입양후기 9에 대한 내용입니다.","images/adoptreview/입양리스트.jpg", member7);
 
         };
     }

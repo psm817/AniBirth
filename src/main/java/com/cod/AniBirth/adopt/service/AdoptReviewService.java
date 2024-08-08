@@ -29,23 +29,43 @@ public class AdoptReviewService {
     private String genFileDirPath;
 
     public void create(String title, String content, MultipartFile images, Member member) {
-        String fileDirRelPath;
 
-        if (!images.isEmpty()) {
-            fileDirRelPath = "adoptreview/" + UUID.randomUUID().toString() + ".jpg";
-            File adoptapplyFile = new File(genFileDirPath + "/" + fileDirRelPath);
-            try {
-                images.transferTo(adoptapplyFile);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+
+        String thumbnailRelPath = "images/adoptreview/" + UUID.randomUUID().toString() + ".jpg";
+        File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
+
+        File parentDir = thumbnailFile.getParentFile();
+        if (!parentDir.exists()) {
+            parentDir.mkdirs();
         }
+
+        try {
+            images.transferTo(thumbnailFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
 
         AdoptReview ar = AdoptReview.builder()
                 .title(title)
                 .content(content)
                 .writer(member)
-                .images(genFileDirPath)
+                .images(thumbnailRelPath)
+                .build();
+
+        adoptReviewRepository.save(ar);
+    }
+
+
+    public void create(String title, String content, String images, Member member) {
+
+
+        AdoptReview ar = AdoptReview.builder()
+                .title(title)
+                .content(content)
+                .writer(member)
+                .images(images)
                 .build();
 
         adoptReviewRepository.save(ar);

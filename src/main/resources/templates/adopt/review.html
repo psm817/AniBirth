@@ -17,6 +17,11 @@
       </div>
       <ul class="adopt-review-list grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-[20px] mt-3">
         <li th:each="review, loop : ${paging}" class="flex flex-col">
+          <a th:href="@{|/adopt/detail/${review.id}|}"
+             class="border border-black h-[280px] transition duration-300 rounded-lg hover:rounded-lg hover:-translate-y-1.5 hover:transition hover:duration-300 hover:shadow-md">
+            <img class="block w-full h-full rounded-lg hover:rounded-lg"
+                 th:src="@{|/gen/${review.images}|}" alt="이미지가 존재하지 않습니다.">
+          </a>
           <div class="animal-content-detail">
             <a th:href="@{|/adopt/detail/${review.id}|}" th:text="${review.content}" class="text-left mt-2 text-lg font-semibold"></a>
           </div>
