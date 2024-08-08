@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout/layout}">
 <head>
-    <title th:text="${qa.id == null} ? 'Q&A 등록' : 'Q&A 수정'"></title>
     <link rel="stylesheet" type="text/css" th:href="@{/resource/qa/form.css}">
 </head>
 <body>
 <section layout:fragment="content" class="container-form">
     <div class="container-all">
         <div class="container-head">
-            <h1 class="title" th:text="${qa.id == null} ? 'Q&A 등록' : 'Q&A 수정'"></h1>
+            <h1 class="title" th:text="${qa.id == null} ? 'Q&A 작성' : 'Q&A 수정'"></h1>
         </div>
         <hr class="divider">
 
@@ -31,8 +30,8 @@
             <hr class="divider">
             <!-- 버튼 -->
             <div class="form-footer">
-                <button class="form-button" type="submit" th:text="${qa.id == null} ? '등록' : '수정'"></button>
                 <button class="form-button" type="button" onclick="window.history.back()">취소</button>
+                <button class="form-button" type="submit" th:text="${qa.id == null} ? '등록' : '수정'"></button>
             </div>
         </form>
     </div>

@@ -165,6 +165,7 @@ tr:hover {
 .qa-box > .container-all > .container-qa {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .qa-box > .container-all > .container-qa > .text-box {
@@ -185,7 +186,7 @@ tr:hover {
 }
 
 /* 테이블 래퍼 스타일 */
-.table-wrapper {
+.container-list > .table-wrapper {
     width: 100%;
     overflow-x: auto;
     margin: 0 auto;
@@ -213,6 +214,7 @@ td a {
     color: #007bff;
     text-decoration: none;
 }
+
 td.view-count {
     padding-right: 2rem; /* 오른쪽 여백을 추가하여 오른쪽으로 이동 */
 }

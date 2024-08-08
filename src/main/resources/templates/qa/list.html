@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/resource/qa/list.css}">
 </head>
 <body>
-<section layout:fragment="content" class="flex-1 flex flex-col items-center py-8">
+<section layout:fragment="content" class="flex-1 flex flex-col items-center">
     <div class="article-wrapper">
         <img src="https://cdn.ananti.kr/plf/ui/img/namhae/nh-petroom-pc.jpg" alt="Dog Shelter"
              class="background-image grid w-full h-[380px] ">
@@ -127,38 +127,35 @@
                 <div class="table-wrapper">
                     <table>
                         <thead>
-                        <tr>
-                            <th class="py-2 px-4 border-b">번호</th>
-                            <th class="py-2 px-4 border-b">제목</th>
-                            <th class="py-2 px-4 border-b">작성자</th>
-                            <th class="py-2 px-4 border-b">작성일</th>
-                            <th class="py-2 px-4 border-b>">조회수</th>
-                        </tr>
+                            <tr>
+                                <th class="py-2 px-4 border-b">번호</th>
+                                <th class="py-2 px-4 border-b">제목</th>
+                                <th class="py-2 px-4 border-b">작성자</th>
+                                <th class="py-2 px-4 border-b">작성일</th>
+                                <th class="py-2 px-4 border-b>">조회수</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="qa, loop : ${paging.content}">
-                            <td class="py-2 px-4 border-b text-center" th:text="${paging.number * paging.size + loop.index + 1}"></td>
-                            <td class="py-2 px-4 border-b">
-                                <a th:href="@{|/qa/${qa.id}|}" th:text="${qa.title}"></a>
-                            </td>
-                            <td class="py-2 px-4 border-b text-center" th:text="${qa.member.username}"></td>
-                            <td class="py-2 px-4 border-b text-center"
-                                th:text="${#temporals.format(qa.createDate, 'yyyy-MM-dd')}"></td>
-                            <td class="py-2 px-4 border-b text-center" th:text="${qa.viewCount}"></td>
-
-                        </tr>
+                            <tr th:each="qa, loop : ${paging.content}">
+                                <td class="py-2 px-4 border-b text-center" th:text="${paging.number * paging.size + loop.index + 1}"></td>
+                                <td class="py-2 px-4 border-b">
+                                    <a th:href="@{|/qa/${qa.id}|}" th:text="${qa.title}"></a>
+                                </td>
+                                <td class="py-2 px-4 border-b text-center" th:text="${qa.member.username}"></td>
+                                <td class="py-2 px-4 border-b text-center"
+                                    th:text="${#temporals.format(qa.createDate, 'yyyy-MM-dd')}"></td>
+                                <td class="py-2 px-4 border-b text-center" th:text="${qa.viewCount}"></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
                 <div th:if="${#lists.isEmpty(paging.content)}" class="text-center py-4">
                     <p>등록된 질문이 없습니다.</p>
                 </div>
-
                 <!-- 질문 등록 버튼 -->
                 <div th:if="${#authorization.expression('isAuthenticated()')}" class="mt-7 text-right">
                     <a th:href="@{/qa/create}" class="button">질문 등록</a>
                 </div>
-
                 <!-- 페이지네이션 -->
                 <!-- 페이징 처리 시작 -->
                 <ul th:if="${!paging.isEmpty()}" class="pagination flex justify-center mt-5">
