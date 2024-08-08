@@ -135,7 +135,7 @@ html > body .container-box > .adopt-review-box {
 .adopt-review-box > .adopt-review-section > .adopt-totalList-box > .adoptReview-notice-list  > li {
     height: 250px;
     display: flex;
-    background-color: #fff;
+    background-color: #faf4f0;
     border-radius: 10px;
 }
 

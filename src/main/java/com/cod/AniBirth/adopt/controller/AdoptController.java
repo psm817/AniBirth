@@ -103,5 +103,12 @@ public class AdoptController {
         return "redirect:/adopt/review";
 
     }
+    @GetMapping("/review/detail/{id}")
+    public String review_detail(@PathVariable("id") Long id, Model model) {
+        AdoptReview adoptReview = adoptReviewService.getreview(id);
+
+        model.addAttribute("adoptReview", adoptReview);
+        return "adopt/review_detail";
+    }
 
 }
