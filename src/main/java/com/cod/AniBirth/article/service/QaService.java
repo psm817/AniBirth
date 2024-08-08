@@ -1,6 +1,5 @@
 package com.cod.AniBirth.article.service;
 
-import com.cod.AniBirth.article.entity.Article;
 import com.cod.AniBirth.article.entity.Qa;
 import com.cod.AniBirth.article.repository.QaRepository;
 import com.cod.AniBirth.global.security.DataNotFoundException;
@@ -8,11 +7,13 @@ import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,7 +23,10 @@ public class QaService {
     private final QaRepository qaRepository;
     private final MemberService memberService;
 
-    public Page<Qa> getList(Pageable pageable) {
+    public Page<Qa> getList(int page) {
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.desc("createDate"));
+        Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
         return qaRepository.findAll(pageable);
     }
 
@@ -56,8 +60,6 @@ public class QaService {
     public Qa getNextQa(Long id) {
         return qaRepository.findFirstByIdGreaterThanOrderByIdAsc(id);
     }
-
-
 
     public void deleteQa(Long id) {
         qaRepository.deleteById(id);
@@ -106,9 +108,6 @@ public class QaService {
         return (long) index; // 댓글 ID를 반환
     }
 
-
-
-
     public void removeComment(Long id, String comment, Member member) {
         Qa qa = getQaById(id);
         int index = qa.getAdminComments().indexOf(comment);
@@ -120,5 +119,4 @@ public class QaService {
             throw new SecurityException("댓글 삭제 권한이 없습니다.");
         }
     }
-
 }

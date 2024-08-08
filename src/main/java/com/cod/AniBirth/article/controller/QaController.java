@@ -34,7 +34,6 @@ public class QaController {
     @GetMapping("/list")
     public String list(Model model,
                        @RequestParam(value = "page", defaultValue = "0") int page,
-                       @RequestParam(value = "size", defaultValue = "10") int size,
                        Authentication authentication) {
 
         Member member = null;
@@ -42,8 +41,7 @@ public class QaController {
             member = memberService.findByUsername(authentication.getName());
         }
 
-        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createDate"));
-        Page<Qa> paging = qaService.getList(pageable);
+        Page<Qa> paging = qaService.getList(page); // Pageable을 이용하여 페이지네이션을 수행
         model.addAttribute("paging", paging);
         model.addAttribute("member", member);
 
