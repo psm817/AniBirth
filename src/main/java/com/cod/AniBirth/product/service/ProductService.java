@@ -2,6 +2,8 @@ package com.cod.AniBirth.product.service;
 
 
 import com.cod.AniBirth.member.entity.Member;
+import com.cod.AniBirth.order.entity.OrderItem;
+import com.cod.AniBirth.order.repository.OrderRepository;
 import com.cod.AniBirth.product.entity.Product;
 import com.cod.AniBirth.product.repository.ProductRepository;
 import com.cod.AniBirth.review.entity.Review;
@@ -18,11 +20,13 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class ProductService {
     private final ProductRepository productRepository;
+    private final OrderRepository orderRepository;
     @Value("${custom.genFileDirPath}")
     private String genFileDirPath;
 
@@ -135,5 +139,12 @@ public class ProductService {
         product.setHitCount(product.getHitCount() + 1);
 
         productRepository.save(product);
+    }
+
+    public List<Product> getProductsByMember(Member member) {
+        return productRepository.findByMember(member);
+    }
+    public List<Product> getPurchasedProductsByMember(Member member) {
+        return orderRepository.findPurchasedProductsByMember(member);
     }
 }

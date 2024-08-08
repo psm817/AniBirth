@@ -4,6 +4,7 @@ import com.cod.AniBirth.base.entity.BaseEntity;
 import com.cod.AniBirth.cart.entity.CartItem;
 import com.cod.AniBirth.member.entity.Member;
 
+import com.cod.AniBirth.order.entity.OrderItem;
 import com.cod.AniBirth.review.entity.Review;
 import jakarta.persistence.*;
 import lombok.*;
@@ -35,4 +36,7 @@ public class Product extends BaseEntity {
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
     private List<CartItem> cartList;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
+    private List<OrderItem> orderItems;
 }

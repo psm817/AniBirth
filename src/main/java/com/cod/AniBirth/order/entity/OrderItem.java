@@ -3,6 +3,8 @@ package com.cod.AniBirth.order.entity;
 import com.cod.AniBirth.base.entity.BaseEntity;
 import com.cod.AniBirth.product.entity.Product;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,9 +23,12 @@ import static jakarta.persistence.FetchType.LAZY;
 @Getter
 @Setter
 public class OrderItem extends BaseEntity {
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
     private Order order;
-    @ManyToOne(fetch = LAZY)
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id")
     private Product product;
 
     private LocalDateTime payDate;

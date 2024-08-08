@@ -167,8 +167,11 @@ public class OrderController {
                 .isPaid(true)
                 .isCanceled(false)
                 .isRefunded(false)
+                .payDate(LocalDateTime.now())
                 .orderItemList(new ArrayList<>()) // orderItemList 초기화
                 .build();
+
+        List<OrderItem> orderItems = new ArrayList<>(); // List to hold OrderItems
 
         int totalOrderPoints = totalPrice + shippingFee; // Calculate total points including shipping fee
 
@@ -181,7 +184,8 @@ public class OrderController {
                     .payPrice((int) (cartItem.getProduct().getPrice() * cartItem.getQuantity()))
                     .isPaid(true)
                     .build();
-            order.getOrderItemList().add(orderItem);
+            orderItems.add(orderItem); // Add each OrderItem to the list
+            order.getOrderItemList().add(orderItem); // Add to Order's list as well
 
             // 상품 등록자에게 포인트 적립
             Member productOwner = cartItem.getProduct().getMember();
@@ -190,7 +194,7 @@ public class OrderController {
         }
 
         order.setTotalPrice((long) (totalPrice + shippingFee)); // Set total price including shipping fee
-        orderService.save(order);
+        orderService.saveOrder(order, orderItems); // Save order and orderItems
         cartService.clearCart(member); // Clear cart after order creation
     }
 }

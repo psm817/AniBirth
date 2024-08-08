@@ -4,15 +4,20 @@ import com.cod.AniBirth.account.entity.Account;
 import com.cod.AniBirth.account.repository.AccountRepository;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.order.entity.Order;
+import com.cod.AniBirth.order.entity.OrderItem;
+import com.cod.AniBirth.order.repository.OrderItemRepository;
 import com.cod.AniBirth.order.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class OrderService {
     private final OrderRepository orderRepository;
+    private final OrderItemRepository orderItemRepository;
     private final AccountRepository accountRepository;
 
     public void save(Order order) {
@@ -30,6 +35,13 @@ public class OrderService {
             return true;
         } else {
             return false;
+        }
+    }
+    @Transactional
+    public void saveOrder(Order order, List<OrderItem> orderItems) {
+        orderRepository.save(order);
+        for (OrderItem orderItem : orderItems) {
+            orderItemRepository.save(orderItem); // Save each OrderItem
         }
     }
 

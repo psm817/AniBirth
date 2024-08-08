@@ -10,6 +10,8 @@ import com.cod.AniBirth.email.service.EmailService;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.repository.MemberRepository;
 import com.cod.AniBirth.member.service.MemberService;
+import com.cod.AniBirth.product.entity.Product;
+import com.cod.AniBirth.product.service.ProductService;
 import com.cod.AniBirth.volunteer.entity.Volunteer;
 import com.cod.AniBirth.volunteer.entity.VolunteerApplication;
 import com.cod.AniBirth.volunteer.service.VolunteerApplicationService;
@@ -41,6 +43,7 @@ public class MyPageMemberController {
     private final DonationService donationService;
     private final VolunteerService volunteerService;
     private final VolunteerApplicationService volunteerApplicationService;
+    private final ProductService productService;
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/myProfile")
@@ -164,9 +167,20 @@ public class MyPageMemberController {
         Member member = memberService.findByUsername(principal.getName());
         Account account = accountService.findByMember(member);
 
+        List<Product> productList;
+        if (member.getAuthority() == 0) { // 최고 관리자
+            productList = productService.getAllProducts();
+        } else if (member.getAuthority() == 1) { // 중간 관리자
+            productList = productService.getProductsByMember(member);
+        } else { // 일반 회원
+            productList = productService.getPurchasedProductsByMember(member);
+        }
+
         model.addAttribute("member", member);
         model.addAttribute("account", account);
+        model.addAttribute("productList", productList);
 
         return "member/myPage/market";
     }
+
 }
