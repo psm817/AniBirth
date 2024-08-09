@@ -184,3 +184,11 @@ tr:hover {
     text-decoration: underline;
 }
 
+/* 제목 말줄임표 */
+.shortTitle{
+    width:450px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block; /* 또는 inline-block */
+}
