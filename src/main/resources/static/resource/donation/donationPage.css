@@ -478,26 +478,16 @@ html > body .container .donation-section .donation-bg-img > .center-background-i
         margin-right: 0;
     }
 
-
-}
-@media (max-width: 1920px){
-    .text-overlay {
-        position: absolute;
-        top: 10%;
-        left: 180px;
-        width: 900px;
-        height: 360px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: left;
-        margin-top: 100px;
-        padding: 30px;
-        color: white;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    .top-donors-section h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: bold;
     }
-
+    .p-box {
+        margin: 52px;
+    }
 }
+
 
 
 

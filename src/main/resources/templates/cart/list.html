@@ -25,14 +25,14 @@
                 </thead>
                 <tbody>
                 <tr th:each="cartItem : ${cartList}" class="align-middle whitespace-nowrap">
-                    <td><input type="checkbox" class="form-1__checkbox-item"></td>
-                    <td>
+                    <td><input type="checkbox"  class="form-1__checkbox-item"></td>
+                    <td style="display: flex; justify-content: center;">
                         <a th:href="@{|/product/detail/${cartItem.product.id}|}"><img class="w-[50px] h-[50px] sm:w-[100px] sm:h-[100px] object-cover" th:src="@{|/gen/${cartItem.thumbnailImg}|}" alt="상품이미지"></a>
                     </td>
                     <td>
                         <a th:href="@{|/product/detail/${cartItem.product.id}|}" th:text="${cartItem.product.title}" th:attr="data-title=${cartItem.product.title}"></a>
                     </td>
-                    <td th:text="${#numbers.formatInteger(cartItem.product.price, 3, 'COMMA') + '원'}" th:attr="data-price=${cartItem.product.price}"></td>
+                    <td th:text="${#numbers.formatInteger(cartItem.product.price, 0, 'COMMA') + '원'}" th:attr="data-price=${cartItem.product.price}"></td>
                     <td>
                         <form th:action="@{/cart/update-quantity/{id}(id=${cartItem.id})}" method="post" class="d-inline">
                             <input type="number" name="quantity" min="1" th:value="${cartItem.quantity}" style="width: 50px; text-align: center;">
@@ -48,7 +48,7 @@
 
             <div class="text-right">
                 <span class="text-[1.1rem] font-bold">총 가격</span>
-                <span id="total-price" th:text="${#numbers.formatInteger(totalPrice, 3, 'COMMA') + ' 원'}">0 원</span>
+                <span id="total-price" th:text="${#numbers.formatInteger(totalPrice, 0, 'COMMA') + ' 원'}">0 원</span>
                 <button class="btn btn-outline-dark btn-purchase">결제하기</button>
             </div>
         </div>
