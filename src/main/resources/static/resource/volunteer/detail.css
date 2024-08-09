@@ -105,6 +105,7 @@
 .volunteer-detail > .top-box > .detail-box > .modify-btn {
     display: flex;
     justify-content: center;
+    padding-top: 15px;
 }
 
 .volunteer-detail > .top-box > .detail-box > .modify-btn > a:nth-child(1) {
@@ -309,6 +310,12 @@
         font-size: 16px;
     }
 
+    .volunteer-detail > .top-box > .detail-box > li:nth-child(3) > span:nth-child(2) {
+        width: 250px;
+        margin-left: 10px;
+        font-size: 16px;
+    }
+
     /* 봉사주소 커스텀 */
     .volunteer-detail > .top-box > .detail-box > li:nth-child(7) {
         display: block;
@@ -334,7 +341,7 @@
 
     /* 하단 봉사내용 박스 시작 */
     .volunteer-detail > .bottom-box {
-        margin-top: 10px;
+        margin-top: 20px;
         width: 100%;
         height: 100%;
         padding-left: 0px;
@@ -344,7 +351,8 @@
     .volunteer-detail > .bottom-box > .title-box {
         height: 50px;
         margin-top: 0px;
-        margin-left: 10px;
+        display: flex;
+        justify-content: center;
     }
 
     .volunteer-detail > .bottom-box > .title-box > h1 {

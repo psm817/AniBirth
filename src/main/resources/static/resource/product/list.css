@@ -79,12 +79,44 @@
     width: 100%;
 }
 
+/* 링크 네비게이션 스타일 */
+.product-list-container > .link-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.product-list-container > .link-navigation > .link {
+    color: #141214;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    font-weight: bold;
+}
+
+.product-list-container > .link-navigation > .link:hover {
+    text-decoration: underline;
+    color: #c23273;
+}
+
+.product-list-container > .link-navigation > .link.active {
+    color: #c23273;
+}
+
+/* 구분 기호 스타일 */
+.divider {
+    color: #6c757d;
+    margin: 0 0.5rem;
+}
+
 .product-list-container > .product-title-box {
     height: 70px;
     display: flex;
     align-items: center;
 }
-
 
 .product-list-container > .product-title-box > span {
     font-weight: 700;

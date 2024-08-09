@@ -20,6 +20,14 @@
         </div>
     </div>
     <div class="container product-list-container">
+        <!-- 소메뉴 뽑기 -->
+        <div class="link-navigation">
+            <a th:href=@{/product/list} class="link active">전체</a>
+            <span class="divider">|</span>
+            <a th:href="@{/product/list/food}" class="link">식료품</a>
+            <span class="divider">|</span>
+            <a th:href="@{/product/list/accessory}" class="link">액세서리</a>
+        </div>
         <div class="product-title-box">
             <span>전체 상품</span>
             <span>(※ 상품 이미지나 상품명을 클릭하면 상세정보를 확인하실 수 있습니다.)</span>

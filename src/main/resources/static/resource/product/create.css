@@ -78,6 +78,14 @@
     padding-left: 10px;
 }
 
+.market-create-input > form > .type-box > select {
+    border: 1px solid #121212;
+    border-radius: 5px;
+    height: 70%;
+    width: 400px;
+    padding-left: 10px;
+}
+
 .market-create-input > form > .content-box {
     height: 250px;
 }

@@ -8,6 +8,14 @@ function submitProductForm(form) {
         return;
     }
 
+    form.category.value = form.category.value.trim();
+
+    if ( form.category.value === "" ) {
+        alert("상품 종류를 선택해주세요.");
+        form.category.focus();
+        return;
+    }
+
     form.price.value = form.price.value.trim();
 
     if ( form.price.value.length == 0 ) {
