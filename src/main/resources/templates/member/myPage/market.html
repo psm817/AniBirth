@@ -56,9 +56,7 @@
                             <span class="date w-[20%]">구매날짜</span>
                             <span class="title w-[30%]">상품명</span>
                             <span class="amount w-[20%]">금액</span>
-                            <span class="review w-[20%]">
-                                <a href="#" class="btn btn-link">작성하기</a>
-                            </span>
+                            <span class="review w-[20%]">리뷰 작성</span>
                         </li>
                     </ul>
                 </div>
@@ -84,7 +82,8 @@
                             <span class="title w-[30%]" th:text="${product.title}"></span>
                             <span class="amount w-[20%]" th:text="${product.price} + '원'"></span>
                             <span class="review w-[20%]">
-                                <a href="#" class="btn btn-link">작성하기</a>
+
+                               <a th:href="@{/product/detail/{id}(id=${product.id})}" class="btn btn-link" > <i class="fa-solid fa-pen"></i>작성하기</a>
                             </span>
                         </li>
                     </ul>
