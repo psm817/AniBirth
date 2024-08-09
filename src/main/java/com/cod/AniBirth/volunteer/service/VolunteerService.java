@@ -32,7 +32,7 @@ public class VolunteerService {
     public Volunteer create(String title, String content, String location, String startDate,
                             String endDate, String deadLineDate, MultipartFile thumbnailImg, int limit, Member member, int applicant) {
         String thumbnailRelPath = "images/volunteer/" + UUID.randomUUID().toString() + ".jpg";
-        File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
+        File thumbnailFile = new File(genFileDirPath + thumbnailRelPath);
 
         File parentDir = thumbnailFile.getParentFile();
         if (!parentDir.exists()) {

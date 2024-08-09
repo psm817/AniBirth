@@ -1,18 +1,18 @@
-.signup-box {
+.modify-box {
     width: 100%;
     height: 100%;
     display: flex;
     margin-top: 20px;
 }
 
-.signup-box > .modify-card {
+.modify-box > .modify-card {
     height: 830px !important;
     display: flex;
     border: transparent;
     margin-top: 0px !important;
 }
 
-.signup-box > .cardM-img {
+.modify-box > .cardM-img {
     border: transparent;
     border-radius: .25rem;
     height: 830px;
@@ -20,18 +20,18 @@
     padding-left: 30px;
 }
 
-.signup-box > .cardM-img > .img-box {
+.modify-box > .cardM-img > .img-box {
     height: 100%;
 }
 
-.signup-box > .cardM-img > .img-box > img {
+.modify-box > .cardM-img > .img-box > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 /* 회원가입 입력 폼 */
-.signup-box > .modify-card > .signup-form {
+.modify-box > .modify-card > .signup-form {
     display: flex;
     flex-direction: column;
     height: 830px;
@@ -39,19 +39,19 @@
     border-radius: 10px;
 }
 
-.signup-box > .modify-card > .signup-form > .title-box {
+.modify-box > .modify-card > .signup-form > .title-box {
     display: flex;
     align-items: center;
     height: 90px;
     padding-left: 50px;
 }
 
-.signup-box > .modify-card > .signup-form > .title-box > h1 {
+.modify-box > .modify-card > .signup-form > .title-box > h1 {
     font-size: 24px;
     font-weight: 700;
 }
 
-.signup-box > .modify-card > .signup-form > .modify-box {
+.modify-box > .modify-card > .signup-form > .modify-box {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -158,41 +158,46 @@
 
 /* 반응형 시작 */
 @media (max-width: 394px) {
-    .signup-box {
+    .modify-box {
         display: block;
         width: 100%;
-        height: 100%;
+        height: 980px !important;
     }
 
-    .signup-box > .cardM-img {
+    .modify-box > .cardM-img {
         width: 100%;
         height: 200px;
         padding-left: 0px;
     }
 
-    .signup-box > .cardM-img > .img-box {
+    .modify-box > .cardM-img > .img-box {
         width: 100%;
         height: 100%;
     }
 
-    .signup-box > .cardM-img > .img-box > img {
+    .modify-box > .cardM-img > .img-box > img {
         width: 100%;
         height: 100%;
     }
 
     /* 회원가입 입력 폼 */
-    .signup-box > .modify-card {
-        height: 830px !important;
+    .modify-box > .modify-card {
+        height: 800px !important;
     }
 
-    .signup-box > .modify-card > .signup-form {
-        height: 830px;
+    .modify-box > .modify-card > .signup-form {
+        height: 750px;
         display: block !important;
     }
 
     .signup-form > .modify-box {
         height: 630px;
         padding-left: 5px !important;
+    }
+
+    .modify-box > .modify-card > .signup-form > .title-box > h1 {
+        font-size: 18px;
+        text-align: center;
     }
 
     /* 권한 버튼 커스텀 */

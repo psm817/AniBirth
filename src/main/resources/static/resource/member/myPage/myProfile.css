@@ -240,11 +240,14 @@
 
     .container > .right-box {
         height: 700px !important;
+        border: transparent;
     }
 
     /* 중간/일반회원일 때 프로필 정보 */
     .container > .right-box > .title-box {
         padding-left: 5px !important;
+        display: flex;
+        justify-content: center;
     }
 
     .container > .right-box > .title-box > span {

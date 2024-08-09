@@ -38,7 +38,7 @@ public class ProductService {
         return productRepository.findAllByKeyword(kw, pageable);
     }
 
-    public void create(String title, String description, int price, MultipartFile thumbnail, Member member, int shippingFee) {
+    public void create(String title, String description, int price, String category, MultipartFile thumbnail, Member member, int shippingFee) {
         String thumbnailRelPath = "images/product/" + UUID.randomUUID().toString() + ".jpg";
         File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
 
@@ -57,6 +57,7 @@ public class ProductService {
                 .title(title)
                 .description(description)
                 .price(price)
+                .category(category)
                 .thumbnailImg(thumbnailRelPath)
                 .member(member)
                 .shippingFee(shippingFee) // 배송비 추가
@@ -65,11 +66,12 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public Product create(String title, String description, int price, Member member, int shippingFee) {
+    public Product create(String title, String description, int price, String category, Member member, int shippingFee) {
         Product product = Product.builder()
                 .title(title)
                 .description(description)
                 .price(price)
+                .category(category)
                 .member(member)
                 .shippingFee(shippingFee)
                 .thumbnailImg("images/product/sample_product.jpg")
@@ -90,11 +92,12 @@ public class ProductService {
         }
     }
 
-    public void modify(Long id, String title, String description, int price, MultipartFile thumbnail, int shippingFee) {
+    public void modify(Long id, String title, String description, int price, String category, MultipartFile thumbnail, int shippingFee) {
         Product product = getProduct(id);
         product.setTitle(title);
         product.setDescription(description);
         product.setPrice(price);
+        product.setCategory(category);
         product.setShippingFee(shippingFee); // 배송비 수정
 
         if (thumbnail != null && !thumbnail.isEmpty()) {
@@ -154,5 +157,21 @@ public class ProductService {
 
     public List<Product> getTopRatedProducts(int limit) {
         return productRepository.findTopRatedProducts(limit);
+    }
+
+    public Page<Product> getFoodCategory(int page) {
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.desc("createDate"));
+        Pageable pageable = PageRequest.of(page, 16, Sort.by(sorts));
+
+        return productRepository.findByCategory("food", pageable);
+    }
+
+    public Page<Product> getAccessoryCategory(int page) {
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.desc("createDate"));
+        Pageable pageable = PageRequest.of(page, 16, Sort.by(sorts));
+
+        return productRepository.findByCategory("accessory", pageable);
     }
 }

@@ -61,6 +61,38 @@ public class ProductController {
         return "product/list";
     }
 
+    @GetMapping("/list/food")
+    public String food(Model model, @RequestParam(value = "page", defaultValue = "0") int page, Authentication authentication) {
+        Page<Product> paging = productService.getFoodCategory(page);
+
+        Member member = null;
+
+        if(authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
+
+        model.addAttribute("paging", paging);
+        model.addAttribute("member", member);
+
+        return "product/food";
+    }
+
+    @GetMapping("/list/accessory")
+    public String accessory(Model model, @RequestParam(value = "page", defaultValue = "0") int page, Authentication authentication) {
+        Page<Product> paging = productService.getAccessoryCategory(page);
+
+        Member member = null;
+
+        if(authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
+
+        model.addAttribute("paging", paging);
+        model.addAttribute("member", member);
+
+        return "product/accessory";
+    }
+
     @GetMapping("/detail/{id}")
     public String detail(@PathVariable("id") Long id, Model model, Authentication authentication) {
         Product product = productService.getProduct(id);
@@ -94,12 +126,13 @@ public class ProductController {
             @RequestParam("title") String title,
             @RequestParam("description") String description,
             @RequestParam("price") int price,
+            @RequestParam("category") String category,
             @RequestParam("thumbnail") MultipartFile thumbnail,
             @RequestParam(value = "shippingFee", defaultValue = "3000") int shippingFee, // 배송비 기본값 설정
             Authentication authentication
     ) {
         Member member = memberService.findByUsername(authentication.getName());
-        productService.create(title, description, price, thumbnail, member, shippingFee);
+        productService.create(title, description, price, category, thumbnail, member, shippingFee);
 
         return "redirect:/product/list?productCreateSuccess=true";
     }
@@ -120,10 +153,11 @@ public class ProductController {
             @RequestParam("title") String title,
             @RequestParam("description") String description,
             @RequestParam("price") int price,
+            @RequestParam("category") String category,
             @RequestParam(value = "thumbnail", required = false) MultipartFile thumbnail,
             @RequestParam(value = "shippingFee", defaultValue = "3000") int shippingFee // 배송비 기본값 설정
     ) {
-        productService.modify(id, title, description, price, thumbnail, shippingFee);
+        productService.modify(id, title, description, price, category, thumbnail, shippingFee);
         return "redirect:/product/detail/%d?productModifySuccess=true".formatted(id);
     }
 

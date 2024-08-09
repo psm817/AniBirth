@@ -13,6 +13,14 @@
                             <span class="font-weight">상품명<span class="text-red-600">*</span></span>
                             <input type="text" id="title" maxlength="200" name="title" th:placeholder="${product.title}">
                         </div>
+                        <div class="type-box category-box">
+                            <span >상품 종류<span class="text-red-600">*</span></span>
+                            <select id="category" class="form-select" name="category" aria-label="Default select example">
+                                <option value="" selected>상품 종류를 선택하세요.</option>
+                                <option value="food">식료품</option>
+                                <option value="accessory">액세서리</option>
+                            </select>
+                        </div>
                         <div class="type-box date-box">
                             <span>가격<span class="text-red-600">*</span></span>
                             <input type="number" id="price" name="price" th:placeholder="${product.price}">
