@@ -206,6 +206,14 @@ th, td {
     font-size: 16px;
 }
 
+th:nth-child(2) {
+    width: 400px;
+}
+
+td:nth-child(2) {
+    width: 400px;
+}
+
 th {
     background-color: #f1f1f1;
 }
@@ -252,6 +260,15 @@ td a:hover {
 
 .link-manage:hover {
     text-decoration: underline;
+}
+
+/* 제목 말줄임표 */
+.shortTitle{
+    width: 450px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block; /* 또는 inline-block */
 }
 
 @media all and (max-width:400px){
