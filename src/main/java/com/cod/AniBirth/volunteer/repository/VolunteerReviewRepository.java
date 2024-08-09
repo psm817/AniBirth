@@ -7,4 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface VolunteerReviewRepository extends JpaRepository<VolunteerReview, Long> {
 
+    VolunteerReview findFirstByIdLessThanOrderByIdDesc(Long id);
+
+    VolunteerReview findFirstByIdGreaterThanOrderByIdAsc(Long id);
 }

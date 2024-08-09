@@ -121,4 +121,12 @@ public class VolunteerReviewService {
     public void delete(VolunteerReview volunteerReview) {
         volunteerReviewRepository.delete(volunteerReview);
     }
+
+    public VolunteerReview getPreviousVR(Long id) {
+        return volunteerReviewRepository.findFirstByIdLessThanOrderByIdDesc(id);
+    }
+
+    public VolunteerReview getNextVR(Long id) {
+        return volunteerReviewRepository.findFirstByIdGreaterThanOrderByIdAsc(id);
+    }
 }

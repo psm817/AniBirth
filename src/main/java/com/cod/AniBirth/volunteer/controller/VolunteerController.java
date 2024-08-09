@@ -298,8 +298,14 @@ public class VolunteerController {
 
         volunteerReviewService.hit(volunteerReview);
 
+        // 이전 다음 페이지
+        VolunteerReview prevVR = volunteerReviewService.getPreviousVR(id);
+        VolunteerReview nextVR = volunteerReviewService.getNextVR(id);
+
         model.addAttribute("volunteerReview", volunteerReview);
         model.addAttribute("member", member);
+        model.addAttribute("prevVR", prevVR != null ? prevVR.getId() : null);
+        model.addAttribute("nextVR", nextVR != null ? nextVR.getId() : null);
 
         return "volunteer/reviewDetail";
     }

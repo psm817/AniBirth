@@ -8,8 +8,6 @@
   display: flex;
   flex-direction: column; /* 수직 방향으로 정렬 */
     position: relative;
-
-
 }
 
 /* 제목 스타일링 */
@@ -37,7 +35,6 @@ h2 {
   text-align: center;
   display: inline-block;
   cursor: pointer;
-
 }
 
 .btn-primary:hover {
@@ -55,16 +52,14 @@ h2 {
 .link-manage:hover {
   color: #0056b3;
 }
+
 /* 구분선 */
 .jb-division-line {
   border-top: 1px solid #444444;
   margin: 15px 0px;
 }
 
-
-
 /* 댓글 리스트 */
-
 .container-comment-list{
     margin-top: 10px;
     padding: 10px; /* 내부 여백 */
@@ -80,7 +75,6 @@ h2 {
   /*
   display: flex; /* Flexbox를 사용하여 정렬
   flex-direction: column-reverse; 최신 댓글이 위에 오도록 설정 */
-
 }
 
 .comment-list li {
@@ -185,7 +179,6 @@ textarea {
 }
 
 /* 버튼 스타일 */
-
 button {
     padding: 10px 20px;
     color: white;
@@ -199,7 +192,6 @@ button:active {
     background-color: #004494;
 }
 /* 이전 목록 다음 */
-
 .btn-disabled {
     background-color: #d3d3d3;
     color: #ffffff;
