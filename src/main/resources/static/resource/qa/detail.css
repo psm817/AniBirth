@@ -146,7 +146,6 @@ h2 {
 }
 .manage-links {
   position: absolute; /* 부모 요소 기준 절대 위치 */
-  top: 5rem; /* 컨테이너의 위쪽으로부터 1rem 거리 */
   right: 2rem; /* 컨테이너의 오른쪽으로부터 1rem 거리 */
   display: flex;
   gap: 0.5rem; /* 수정과 삭제 링크 사이의 간격 */
