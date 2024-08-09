@@ -47,38 +47,35 @@ html > body .adopt-review-banner {
 html > body .container-box > .adopt-review-box {
     display: flex;
     flex-direction: column;
-    margin-top: 35px;
+    width: 100%;
+    margin-top: 20px;
 }
 
-/*소제목*/
-.adopt-review-box > .tiny-menu-box {
-    margin: 20px 0px;
+/* 링크 네비게이션 스타일 */
+.adopt-review-box > .link-navigation {
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 
-.adopt-review-box > .tiny-menu-box > a {
-    cursor: pointer;
-    padding: 10px;
-    display: block;
-    font-size: 18px;
-    padding: 10px 15px 10px 15px;
+.adopt-review-box > .link-navigation > .link {
+    color: #141214;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    font-weight: bold;
 }
 
-.adopt-review-box > .tiny-menu-box > a:nth-child(2) {
-    color: #fff;
-    border: 1px solid red;
-    border-radius: 10px;
-    background-color: #FF416C;
-    margin-left: 15px;
+.adopt-review-box > .link-navigation > .link:hover {
+    text-decoration: underline;
+    color: #c23273;
 }
 
-.adopt-review-box > .tiny-menu-box > a:nth-child(1) {
-    margin-right: 15px;
-}
-
-.adopt-review-box > .tiny-menu-box > a:nth-child(1):hover {
-    color: #FF416C;
+.adopt-review-box > .link-navigation > .link.active {
+    color: #c23273;
 }
 
 /* 봉사 리스트 */

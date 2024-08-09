@@ -11,9 +11,10 @@
     </div>
     <div class="container adopt-review-box">
       <!-- 소메뉴 뽑기 -->
-      <div class="tiny-menu-box">
-        <a th:href="@{/adopt/list}">입양정보</a>
-        <a th:href="@{/adopt/review}" class="transition duration-300 rounded-lg hover:rounded-lg hover:-translate-y-1.5 hover:transition hover:duration-300 hover:shadow-md">입양후기</a>
+      <div class="link-navigation">
+        <a th:href="@{/adopt/list}" class="link">입양정보</a>
+        <span class="divider">|</span>
+        <a th:href="@{/adopt/review}" class="link active">입양후기</a>
       </div>
       <div class="adopt-review-section">
         <div class="title-box">
