@@ -27,4 +27,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query(value = "SELECT p.* FROM product p JOIN review r ON p.id = r.product_id GROUP BY p.id ORDER BY AVG(r.star_rating) DESC, RAND() LIMIT :limit", nativeQuery = true)
     List<Product> findTopRatedProducts(@Param("limit") int limit);
+
+    Page<Product> findByCategory(String food, Pageable pageable);
 }

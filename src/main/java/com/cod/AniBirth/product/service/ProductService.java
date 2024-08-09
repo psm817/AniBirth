@@ -158,4 +158,20 @@ public class ProductService {
     public List<Product> getTopRatedProducts(int limit) {
         return productRepository.findTopRatedProducts(limit);
     }
+
+    public Page<Product> getFoodCategory(int page) {
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.desc("createDate"));
+        Pageable pageable = PageRequest.of(page, 16, Sort.by(sorts));
+
+        return productRepository.findByCategory("food", pageable);
+    }
+
+    public Page<Product> getAccessoryCategory(int page) {
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.desc("createDate"));
+        Pageable pageable = PageRequest.of(page, 16, Sort.by(sorts));
+
+        return productRepository.findByCategory("accessory", pageable);
+    }
 }

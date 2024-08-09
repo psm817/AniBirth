@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/layout}">
+<section layout:fragment="content" class="flex-1 justify-center items-center">
+    <div class="gift_list_section layout_padding-bottom">
+        <div class="container-fluid">
+            <div class="col-md-5 img_container">
+                <div class="img-box">
+                    <img src="https://png.pngtree.com/png-vector/20230922/ourmid/pngtree-pomeranian-dog-ai-generated-png-image_10144968.png" alt="">
+                </div>
+            </div>
+            <div class="col-md-7 detail-box">
+                <div class="heading_container">
+                    <h2>애니 마켓에 오신 것을 환영합니다</h2>
+                </div>
+                <p>애니마켓은 당신의 소중한 반려동물을 위한 최고의 사료와 용품을 제공합니다.<br>건강한 먹거리부터 안전하고 재미있는 장난감, 편안한 잠자리를 위한 침대까지 다양한 제품을 갖추고 있습니다.<br>애니 마켓과 함께라면 반려동물의 행복과 건강을 한층 더 높여줄 수 있습니다.</p>
+                <div class="btn-box">
+                    <a th:href="@{/product/main}" class="total-btn">인기 상품 보기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container product-accessory-container">
+        <!-- 소메뉴 뽑기 -->
+        <div class="link-navigation">
+            <a th:href=@{/product/list} class="link">전체</a>
+            <span class="divider">|</span>
+            <a th:href="@{/product/list/food}" class="link">식료품</a>
+            <span class="divider">|</span>
+            <a th:href="@{/product/list/accessory}" class="link active">액세서리</a>
+        </div>
+        <div class="product-title-box">
+            <span>액세서리</span>
+            <span>(※ 상품 이미지나 상품명을 클릭하면 상세정보를 확인하실 수 있습니다.)</span>
+            <a th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or ${member.authority} == 1)"
+               th:href="@{/product/create}" class="button" onclick="return productCreate();">등록하기</a>
+        </div>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-3">
+            <li th:each="product, loop : ${paging}" class="group xl:w-[300px] w-full">
+                <a th:href="@{|/product/detail/${product.id}|}"
+                   class="border border-black h-[250px] transition duration-300 rounded-lg hover:rounded-lg hover:-translate-y-1.5 hover:transition hover:duration-300 hover:shadow-md">
+                    <img class="object-cover object-center block w-full h-full rounded-lg" th:src="@{|/gen/${product.thumbnailImg}|}" alt="이미지가 존재하지 않습니다.">
+                </a>
+                <a th:href="@{|/product/detail/${product.id}|}" th:text="${product.title}" class="text-center md:!text-left mt-2"></a>
+                <a th:href="@{|/product/detail/${product.id}|}" th:text="${#numbers.formatInteger(product.price, 3, 'COMMA') + '원'}" class="text-center md:!text-left"></a>
+            </li>
+        </ul>
+        <!-- Pagination -->
+        <div class="w-full mt-5">
+            <ul th:if="${!paging.isEmpty()}" class="pagination flex justify-center mt-5">
+                <li class="page-item" th:classappend="${paging.number == 0} ? 'disabled'">
+                    <a class="page-link" th:href="@{|?page=0|}">
+                        <span>&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item" th:classappend="${!paging.hasPrevious} ? 'disabled'">
+                    <a class="page-link" href="javascript:void(0)" th:data-page="${paging.number-1}">
+                        <span>&lt;</span>
+                    </a>
+                </li>
+                <li th:each="page: ${#numbers.sequence(0, paging.totalPages-1)}"
+                    th:if="${page >= paging.number-5 and page <= paging.number+5}"
+                    th:classappend="${page == paging.number} ? 'active'"
+                    class="page-item">
+                    <a th:text="${page+1}" class="page-link" href="javascript:void(0)" th:data-page="${page}"></a>
+                </li>
+                <li class="page-item" th:classappend="${!paging.hasNext} ? 'disabled'">
+                    <a class="page-link" href="javascript:void(0)" th:data-page="${paging.number+1}">
+                        <span>&gt;</span>
+                    </a>
+                </li>
+                <li class="page-item" th:classappend="${paging.number == paging.totalPages - 1} ? 'disabled'">
+                    <a class="page-link" th:href="@{|?page=${paging.totalPages - 1}|}">
+                        <span>&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <form th:action="@{/product/list}" method="get" id="searchForm">
+            <input type="hidden" id="kw" name="kw" th:value="${kw}">
+            <input type="hidden" id="page" name="page" th:value="${paging.number}">
+        </form>
+    </div>
+    <script layout:fragment="script" type="text/javascript">
+        $(document).ready(function () {
+            $(".page-link").on("click", function () {
+                $("#page").val($(this).data("page"));
+                $("#searchForm").submit();
+            });
+
+            $("#btn_search").on("click", function () {
+                $("#kw").val($("#search_kw").val());
+                $("#page").val(0);
+                $("#searchForm").submit();
+            });
+        });
+    </script>
+</section>
+</html>

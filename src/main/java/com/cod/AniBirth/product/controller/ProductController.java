@@ -61,6 +61,38 @@ public class ProductController {
         return "product/list";
     }
 
+    @GetMapping("/list/food")
+    public String food(Model model, @RequestParam(value = "page", defaultValue = "0") int page, Authentication authentication) {
+        Page<Product> paging = productService.getFoodCategory(page);
+
+        Member member = null;
+
+        if(authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
+
+        model.addAttribute("paging", paging);
+        model.addAttribute("member", member);
+
+        return "product/food";
+    }
+
+    @GetMapping("/list/accessory")
+    public String accessory(Model model, @RequestParam(value = "page", defaultValue = "0") int page, Authentication authentication) {
+        Page<Product> paging = productService.getAccessoryCategory(page);
+
+        Member member = null;
+
+        if(authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
+
+        model.addAttribute("paging", paging);
+        model.addAttribute("member", member);
+
+        return "product/accessory";
+    }
+
     @GetMapping("/detail/{id}")
     public String detail(@PathVariable("id") Long id, Model model, Authentication authentication) {
         Product product = productService.getProduct(id);
