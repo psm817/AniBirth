@@ -16,9 +16,10 @@
             </div>
             <div class="container review-box">
                 <!-- 소메뉴 뽑기 -->
-                <div class="tiny-menu-box">
-                    <a th:href="@{/volunteer/list}">봉사활동</a>
-                    <a th:href="@{/volunteer/review}">봉사후기</a>
+                <div class="link-navigation">
+                    <a th:href=@{/volunteer/list} class="link">봉사활동</a>
+                    <span class="divider">|</span>
+                    <a th:href="@{/volunteer/review}" class="link active">봉사후기</a>
                 </div>
                 <div class="review-section">
                     <div class="title-box">

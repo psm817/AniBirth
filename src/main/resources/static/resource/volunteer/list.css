@@ -54,35 +54,37 @@
     margin-top: 20px;
 }
 
-/* 소메뉴 */
-.summary-box > .tiny-menu-box {
-    margin-top: 20px;
+/* 링크 네비게이션 스타일 */
+.summary-box > .link-navigation {
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 
-.summary-box > .tiny-menu-box > a {
-    cursor: pointer;
-    padding: 10px;
-    display: block;
-    font-size: 18px;
-    padding: 10px 15px 10px 15px;
+.summary-box > .link-navigation > .link {
+    color: #141214;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    font-weight: bold;
 }
 
-.summary-box > .tiny-menu-box > a:nth-child(1) {
-    color: #fff;
-    border: 1px solid red;
-    border-radius: 10px;
-    background-color: #FF416C;
-    margin-right: 15px;
+.summary-box > .link-navigation > .link:hover {
+    text-decoration: underline;
+    color: #c23273;
 }
 
-.summary-box > .tiny-menu-box > a:nth-child(2) {
-    margin-left: 15px;
+.summary-box > .link-navigation > .link.active {
+    color: #c23273;
 }
 
-.summary-box > .tiny-menu-box > a:nth-child(2):hover {
-    color: #FF416C;
+/* 구분 기호 스타일 */
+.divider {
+    color: #6c757d;
+    margin: 0 0.5rem;
 }
 
 /* 봉사 리스트 */

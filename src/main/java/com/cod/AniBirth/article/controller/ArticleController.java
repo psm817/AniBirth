@@ -5,6 +5,7 @@ import com.cod.AniBirth.article.service.ArticleService;
 import com.cod.AniBirth.global.security.DataNotFoundException;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
+import com.cod.AniBirth.volunteer.entity.Volunteer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -31,7 +32,6 @@ public class ArticleController {
     @GetMapping("/list")
     public String list(Model model,
                        @RequestParam(value = "page", defaultValue = "0") int page,
-                       @RequestParam(value = "size", defaultValue = "10") int size,
                        Authentication authentication) {
 
         Member member = null;
@@ -40,8 +40,7 @@ public class ArticleController {
             member = memberService.findByUsername(authentication.getName());
         }
 
-        Pageable pageable = PageRequest.of(page, size); // 페이지당 항목 수를 size로 설정
-        Page<Article> paging = articleService.getList(pageable); // Pageable을 이용하여 페이지네이션을 수행
+        Page<Article> paging = articleService.getList(page); // Pageable을 이용하여 페이지네이션을 수행
         model.addAttribute("paging", paging);
         model.addAttribute("member", member); // 모델에 isAdmin 속성 추가
         return "article/list";

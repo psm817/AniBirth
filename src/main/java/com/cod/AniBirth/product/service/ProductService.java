@@ -65,8 +65,8 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public void create(String title, String description, int price, Member member, int shippingFee) {
-        Product p = Product.builder()
+    public Product create(String title, String description, int price, Member member, int shippingFee) {
+        Product product = Product.builder()
                 .title(title)
                 .description(description)
                 .price(price)
@@ -75,7 +75,9 @@ public class ProductService {
                 .thumbnailImg("images/product/sample_product.jpg")
                 .hitCount(0)
                 .build();
-        productRepository.save(p);
+        productRepository.save(product);
+
+        return product;
     }
 
     public Product getProduct(Long id) {
@@ -114,11 +116,11 @@ public class ProductService {
 
         productRepository.save(product);
     }
+
     public void delete(Long id) {
         Product product = getProduct(id);
         productRepository.delete(product);
     }
-
 
     public double calculateAverageStarRating(Product product) {
         List<Review> reviews = product.getReviewList();
@@ -131,6 +133,7 @@ public class ProductService {
         }
         return sum / reviews.size();
     }
+
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
@@ -144,7 +147,12 @@ public class ProductService {
     public List<Product> getProductsByMember(Member member) {
         return productRepository.findByMember(member);
     }
+
     public List<Product> getPurchasedProductsByMember(Member member) {
         return orderRepository.findPurchasedProductsByMember(member);
+    }
+
+    public List<Product> getTopRatedProducts(int limit) {
+        return productRepository.findTopRatedProducts(limit);
     }
 }

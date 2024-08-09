@@ -52,6 +52,11 @@ function adoptReviewCreate() {
     return confirm('입양후기를 작성하시겠습니까?');
 }
 
+// 리뷰 삭제할 때 알림
+function productReviewDelete() {
+    return confirm('리뷰를 삭제하시겠습니까?');
+}
+
 // Check for the apply error parameter and show the alert if it's set
 window.onload = function() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -95,5 +100,9 @@ window.onload = function() {
 
     if(urlParams.has('productDeleteSuccess')) {
         alert('상품 삭제가 완료되었습니다.')
+    }
+
+    if(urlParams.has('productReviewDeleteSuccess')) {
+        alert('리뷰가 삭제되었습니다.')
     }
 };

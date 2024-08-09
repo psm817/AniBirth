@@ -7,6 +7,7 @@ import com.cod.AniBirth.review.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -36,12 +37,11 @@ public class ReviewService {
     }
 
     public void modify(Review review, String content, int starRating) {
-        Review modifyReview = review.toBuilder()
-                .content(content)
-                .starRating(starRating)
-                .build();
+        review.setContent(content);
+        review.setModifyDate(LocalDateTime.now());
+        review.setStarRating(starRating);
 
-        reviewRepository.save(modifyReview);
+        reviewRepository.save(review);
     }
 
     public void delete(Review review) {

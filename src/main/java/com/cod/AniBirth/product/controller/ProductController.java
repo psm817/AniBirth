@@ -27,7 +27,7 @@ public class ProductController {
 
     @GetMapping("/main")
     public String product(Model model, Authentication authentication) {
-        List<Product> products = productService.getAllProducts().stream().limit(8).collect(Collectors.toList());
+        List<Product> products = productService.getTopRatedProducts(8);
 
         Member member = null;
         if (authentication != null && authentication.isAuthenticated()) {

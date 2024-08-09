@@ -13,6 +13,8 @@
 /* 상품 이미지 */
 .prod-img-container {
     margin-right: 30px;
+    width: 400px;
+    height: 100%;
 }
 
 .prod-product-card > .prod-img-container > img {
@@ -246,12 +248,79 @@
 
 .prod-card-body-bottom > li {
     display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.prod-card-body-bottom > li > .top-box {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.prod-card-body-bottom > li > .top-box > span {
+    font-size: 16px;
+    text-align: left;
+}
+
+.prod-card-body-bottom > li > .top-box > span:nth-child(3) {
+    width: 1250px;
+    margin-right: 20px;
+    margin-left: 20px;
+    overflow-x: auto;
+}
+
+.prod-card-body-bottom > li > .top-box > span:nth-child(2) {
+    margin-left: 20px;
+    width: 100px;
+}
+
+.prod-card-body-bottom > li > .top-box > .writer-box {
+    width: 100px;
+}
+
+.prod-card-body-bottom > li > .top-box > .user-btn {
+    width: 120px;
+}
+
+.prod-card-body-bottom > li > .review-modify-container > form > div {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.prod-card-body-bottom > li > .review-modify-container > form > div > .modify-rating {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
     align-items: center;
 }
 
-.prod-card-body-bottom > li > span:nth-child(2) {
-    margin-left: 15px;
-    margin-right: 15px;
+.prod-card-body-bottom > li > .review-modify-container > form > div > .modify-rating > span {
+    margin-right: 10px;
+}
+
+.prod-card-body-bottom > li > .review-modify-container > form > div > textarea {
+    border: 1px solid black;
+    padding-left: 10px;
+    padding-top: 5px;
+    width: 100%;
+}
+
+.prod-card-body-bottom > li > .review-modify-container > form > button {
+    border-radius: 6px;
+    padding: 5px 10px 5px 10px;
+    margin-top: 10px;
+    background-color: #FF416C;
+    color: #fff;
+}
+
+.prod-card-body-bottom > li > .review-modify-container > form > button:hover {
+    color: #FF416C;
+    background-color: #fff;
+    border: 1px solid #FF416C;
 }
 
 .prod-form-control {
@@ -301,5 +370,9 @@
 }
 
 .star-rating {
+    color: #ffa723;
+}
+
+.average-star-rating {
     color: #ffa723;
 }

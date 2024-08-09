@@ -10,10 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
@@ -55,9 +52,19 @@ public class ReviewController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정 권한 없음");
         }
         reviewService.modify(review, content, starRating); // starRating 추가
-        long productId = review.getProduct().getId();
 
-        return String.format("redirect:/product/detail/%s", productId);
+        Long num = review.getProduct().getId();
+
+        return "redirect:/product/detail/%s".formatted(num);
     }
 
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Long id, Principal principal) {
+        Review review = reviewService.getReview(id);
+
+        reviewService.delete(review);
+
+        return "redirect:/product/detail/%s?productReviewDeleteSuccess=true".formatted(id);
+    }
 }
