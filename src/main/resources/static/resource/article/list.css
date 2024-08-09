@@ -26,11 +26,11 @@
   object-fit: cover;
 }
 
-.text-overlay-v {
+.text-overlay-a {
     position: absolute;
-    top: 30%;
-    left: 50px;
-    width: 900px;
+    top: 32%;
+    left: 180px;
+    width: 720px;
     height: 200px;
     display: flex;
     flex-direction: column;
@@ -40,12 +40,12 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-.text-overlay-v > h1 {
+.text-overlay-a > h1 {
     margin-right: auto;
     font-size: 3em;
 }
 
-.text-overlay-v > p {
+.text-overlay-a > p {
     margin: 0;
     font-size: 1.2em;
     text-align: left;
@@ -185,10 +185,32 @@ tr:hover {
 }
 
 /* 제목 말줄임표 */
-.shortTitle{
+.shortTitle {
     width:450px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     display: block; /* 또는 inline-block */
+}
+
+@media (max-width: 394px) {
+    .text-overlay-a {
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        padding: 26px;
+        margin-top: 130px;
+    }
+
+    .text-overlay-a h1 {
+        font-size: 2.0em;
+    }
+
+    .text-overlay-a p {
+        font-size: 0.9em;
+    }
+
+    .article-box > .container-list {
+        width: 100%;
+    }
 }

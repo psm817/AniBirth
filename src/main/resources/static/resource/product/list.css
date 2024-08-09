@@ -145,5 +145,79 @@
 .product-list-container > ul > li > a > img {
     width: 100%;
     height: 100%;
+}
 
+/* 반응형 시작 */
+@media(max-width: 394px) {
+    .gift_list_section {
+        height: 500px;
+    }
+
+    .gift_list_section > .container-fluid {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+    }
+
+    .gift_list_section > .container-fluid > .img_container {
+        width: 150px;
+        height: 150px !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .gift_list_section > .container-fluid > .img_container > .img-box {
+        width: 100%;
+        height: 100%;
+    }
+
+    .gift_list_section > .container-fluid > .img_container > .img-box > img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .gift_list_section > .container-fluid > .detail-box {
+        margin-top: 20px;
+        padding: 0px;
+        width: 100%;
+        height: 350px;
+    }
+
+    .gift_list_section > .container-fluid > .detail-box > .heading_container > h2 {
+        width: 100%;
+        font-size: 24px;
+    }
+
+    .gift_list_section > .container-fluid > .detail-box > p {
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .product-list-container > .product-title-box {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        height: 110px;
+    }
+
+    .product-list-container > .product-title-box > span {
+        margin-left: 10px;
+        font-size: 18px;
+    }
+
+    .product-list-container > .product-title-box > a {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .product-list-container > .product-title-box > span:nth-child(2) {
+        margin-left: 10px;
+        font-size: 13px;
+        text-align: left;
+    }
+
+    .product-list-container > ul {
+        margin-top: 0px !important;
+    }
 }

@@ -16,11 +16,11 @@
   object-fit: cover;
 }
 
-.text-overlay-v {
+.text-overlay-q {
     position: absolute;
-    top: 30%;
-    left: 50px;
-    width: 900px;
+    top: 32%;
+    left: 180px;
+    width: 720px;
     height: 200px;
     display: flex;
     flex-direction: column;
@@ -30,12 +30,12 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-.text-overlay-v > h1 {
+.text-overlay-q > h1 {
     margin-right: auto;
     font-size: 3em;
 }
 
-.text-overlay-v > p {
+.text-overlay-q > p {
     margin: 0;
     font-size: 1.2em;
     text-align: left;
@@ -271,6 +271,28 @@ td a:hover {
     display: block; /* 또는 inline-block */
 }
 
-@media all and (max-width:400px){
-    .container-all:100%;
+@media (max-width:394px) {
+    .text-overlay-q {
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        padding: 26px;
+        margin-top: 130px;
+    }
+
+    .text-overlay-q h1 {
+        font-size: 2.0em;
+    }
+
+    .text-overlay-q p {
+        font-size: 0.9em;
+    }
+
+    .qa-box > .container-all {
+        width: 100%;
+    }
+
+    .qa-box > .container-all > .container-qa > .qna > li > label {
+        font-size: 14px;
+    }
 }
