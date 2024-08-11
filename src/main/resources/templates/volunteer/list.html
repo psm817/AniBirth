@@ -46,8 +46,8 @@
                                     <a th:href="@{|/volunteer/detail/${volunteer.id}|}" class="border border-black h-[250px] transition duration-300 rounded-lg hover:rounded-lg hover:-translate-y-1.5 hover:transition hover:duration-300 hover:shadow-md">
                                         <img class="object-cover object-center block w-full h-full rounded-lg" th:src="@{|/gen/${volunteer.thumbnailImg}|}" alt="이미지가 존재하지 않습니다.">
                                     </a>
-                                    <a th:href="@{|/volunteer/detail/${volunteer.id}|}" th:text="'봉사명 : ' + ${volunteer.title}" class="text-center md:!text-left mt-3 mb-[8px]"></a>
-                                    <a th:href="@{|/volunteer/detail/${volunteer.id}|}" th:text="'신청 마감 예정일 : ' + ${volunteer.deadLineDate}" class="text-center md:!text-left"></a>
+                                    <a th:href="@{|/volunteer/detail/${volunteer.id}|}" th:utext="'<strong>봉사명</strong> : ' + ${volunteer.title}" class="text-center md:!text-left mt-3 mb-[8px]"></a>
+                                    <a th:href="@{|/volunteer/detail/${volunteer.id}|}" th:utext="'<strong>신청 마감 예정일</strong> : ' + ${volunteer.deadLineDate}" class="text-center md:!text-left"></a>
                                 </li>
                             </ul>
                             <!-- 페이징 처리 시작 -->

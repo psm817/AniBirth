@@ -38,6 +38,14 @@ public class ProductService {
         return productRepository.findAllByKeyword(kw, pageable);
     }
 
+    public Page<Product> getListByHighPrice(int page, String kw) {
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.desc("price"));
+        Pageable pageable = PageRequest.of(page, 16, Sort.by(sorts));
+
+        return productRepository.findAllByKeyword(kw, pageable);
+    }
+
     public void create(String title, String description, int price, String category, MultipartFile thumbnail, Member member, int shippingFee) {
         String thumbnailRelPath = "images/product/" + UUID.randomUUID().toString() + ".jpg";
         File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
@@ -173,5 +181,26 @@ public class ProductService {
         Pageable pageable = PageRequest.of(page, 16, Sort.by(sorts));
 
         return productRepository.findByCategory("accessory", pageable);
+    }
+
+    public Page<Product> getListByLowPrice(int page, String kw) {
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.asc("price"));
+        Pageable pageable = PageRequest.of(page, 16, Sort.by(sorts));
+
+        return productRepository.findAllByKeyword(kw, pageable);
+    }
+
+    public Page<Product> getListByHighRating(int page, String kw) {
+        Pageable pageable = PageRequest.of(page, 16);
+        return productRepository.findAllByHighRating(pageable, kw);
+    }
+
+    public Page<Product> getListByHighHit(int page, String kw) {
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.desc("hitCount"));
+        Pageable pageable = PageRequest.of(page, 16, Sort.by(sorts));
+
+        return productRepository.findAllByKeyword(kw, pageable);
     }
 }

@@ -56,9 +56,93 @@ public class ProductController {
 
         model.addAttribute("paging", paging);
         model.addAttribute("kw", kw);
-        model.addAttribute("member", member); // 모델에 isAdmin 속성 추가
+        model.addAttribute("member", member);
 
         return "product/list";
+    }
+
+    @GetMapping("/list/high_price")
+    public String listByHighPrice(
+            Model model,
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value="kw", defaultValue="") String kw,
+            Authentication authentication
+    ) {
+        Page<Product> paging = productService.getListByHighPrice(page, kw);
+
+        Member member = null;
+        if (authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
+
+        model.addAttribute("paging", paging);
+        model.addAttribute("kw", kw);
+        model.addAttribute("member", member);
+
+        return "product/list/high_price";
+    }
+
+    @GetMapping("/list/low_price")
+    public String listByLowPrice(
+            Model model,
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value="kw", defaultValue="") String kw,
+            Authentication authentication
+    ) {
+        Page<Product> paging = productService.getListByLowPrice(page, kw);
+
+        Member member = null;
+        if (authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
+
+        model.addAttribute("paging", paging);
+        model.addAttribute("kw", kw);
+        model.addAttribute("member", member);
+
+        return "product/list/low_price";
+    }
+
+    @GetMapping("/list/high_rating")
+    public String listByHighStar(
+            Model model,
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value="kw", defaultValue="") String kw,
+            Authentication authentication
+    ) {
+        Page<Product> paging = productService.getListByHighRating(page, kw);
+
+        Member member = null;
+        if (authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
+
+        model.addAttribute("paging", paging);
+        model.addAttribute("kw", kw);
+        model.addAttribute("member", member);
+
+        return "product/list/high_rating";
+    }
+
+    @GetMapping("/list/high_hit")
+    public String listByHighHit(
+            Model model,
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value="kw", defaultValue="") String kw,
+            Authentication authentication
+    ) {
+        Page<Product> paging = productService.getListByHighHit(page, kw);
+
+        Member member = null;
+        if (authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
+
+        model.addAttribute("paging", paging);
+        model.addAttribute("kw", kw);
+        model.addAttribute("member", member);
+
+        return "product/list/high_hit";
     }
 
     @GetMapping("/list/food")

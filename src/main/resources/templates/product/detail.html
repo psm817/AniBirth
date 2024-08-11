@@ -34,6 +34,7 @@
                         <li class="prod-list-group-item">
                             <span>평균 별점</span>
                             <span class="average-star-rating" th:attr="data-rating=${averageStarRating}"></span> <!-- 평균 별점 표시 -->
+                            <span th:text="'(' + ${averageStarRating} + ')'" class="ml-[10px]"></span>
                         </li>
                         <li class="prod-list-group-item">
                             <span>물품 등록 날짜</span>
