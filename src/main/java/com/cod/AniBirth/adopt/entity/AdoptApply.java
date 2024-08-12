@@ -2,6 +2,7 @@ package com.cod.AniBirth.adopt.entity;
 
 import com.cod.AniBirth.base.entity.BaseEntity;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -31,5 +32,7 @@ public class AdoptApply extends BaseEntity {
     private String gender; //성별
     private String marriedStatus; //결혼여부
     private String file;
+
+
 
 }

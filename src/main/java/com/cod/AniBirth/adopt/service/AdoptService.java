@@ -24,17 +24,22 @@ public class AdoptService {
         // boolean 값을 String 값으로 변환
         String gender = isGender ? "남자" : "여자";
         String marriedStatus = isMarried ? "기혼" : "미혼";
-        String fileDirRelPath;
 
-        if (!file.isEmpty()) {
-            fileDirRelPath = "adoptapply/" + UUID.randomUUID().toString() + ".docx";
-            File adoptapplyFile = new File(genFileDirPath + "/" + fileDirRelPath);
-            try {
-                file.transferTo(adoptapplyFile);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+
+        String thumbnailRelPath = "images/adoptapply/" + UUID.randomUUID().toString() + ".jpg";
+        File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
+
+        File parentDir = thumbnailFile.getParentFile();
+        if (!parentDir.exists()) {
+            parentDir.mkdirs();
         }
+
+        try {
+            file.transferTo(thumbnailFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
         AdoptApply adoptApply = AdoptApply.builder()
                 .name(name)
@@ -48,7 +53,7 @@ public class AdoptService {
                 .extraAddress(sample6ExtraAddress)
                 .gender(gender)
                 .marriedStatus(marriedStatus)
-                .file(genFileDirPath)
+                .file(thumbnailRelPath)
                 .build();
 
         adoptApplyRepository.save(adoptApply);

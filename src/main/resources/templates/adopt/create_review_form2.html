@@ -18,13 +18,20 @@
         </h1>
         <hr class="my-2">
       </div>
+      <!--      <div class="review-data">-->
+      <!--        <div class="adopt-create-review-section">-->
+      <!--          <div class="review-data-title">-->
+      <!--            <h5>입양 후기 작성</h5>-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--      </div>-->
       <div class="review-data-input">
         <form action="" method="POST" th:action="@{/adopt/create_review}" th:object="${createReviewForm}"
               enctype="multipart/form-data">
           <div class="input-box title">
             <span>제목</span>
             <textarea id="title" name="title" class="form-control" rows="1"></textarea>
-            <!--            <input type="text" id="title" name="title">-->
+<!--            <input type="text" id="title" name="title">-->
           </div>
           <div class="input-box content">
             <span>내용</span>
