@@ -40,12 +40,14 @@ html > body .apply-container-box > .container {
     background-color: white;
     margin-top: 50px;
     border-radius: 10px;
-    box-shadow: 3px 6px 14px grey;
+    /*box-shadow: 3px 6px 14px grey;*/
 }
 
 html > body .apply-container-box > .container > .apply-content-name {
     width: 100%;
+    font-weight: bold;
 }
+html > body .apply-container-box > .container > .apply-content-name > .h4
 
 html > body .apply-container-box > .container > .personal-data {
     padding: 10px;

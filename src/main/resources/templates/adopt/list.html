@@ -17,7 +17,7 @@
         <span class="divider">|</span>
         <a th:href="@{/adopt/review}" class="link">입양후기</a>
       </div>
-      <div class="category-box">
+      <div class="category-box bg-white shadow-md rounded-lg">
         <button class="toggle-btn" id="toggleBtn">동물상세검색</button> <!-- 드롭다운 버튼 추가 -->
         <div class="category-search-container" id="searchContainer"> <!-- 검색 폼 감싸는 div -->
           <form th:action="@{/adopt/list}" class="category-search-form" method="get">
@@ -27,7 +27,6 @@
                 <div class="classification-category">
                   <label class="d-block">
                     <span class="h3 d-block text-dark font-weight-semi-bold mb-0">동물구분</span>
-                    <span class="d-block text-secondary">개/고양이/기타</span>
                   </label>
                   <div class="select-box">
                     <div class="msg-aria mb-3">
@@ -44,7 +43,6 @@
                 <div class="gender-category">
                   <label class="d-block">
                     <span class="h3 d-block text-dark font-weight-semi-bold mb-0">성별</span>
-                    <span class="d-block text-secondary">암컷/수컷</span>
                   </label>
                   <div class="select-box">
                     <div class="msg-aria mb-3">
@@ -61,7 +59,6 @@
                 <div class="weight-category">
                   <label class="d-block">
                     <span class="h3 d-block text-dark font-weight-semi-bold mb-0">크기</span>
-                    <span class="d-block text-secondary">소/중/대</span>
                   </label>
                   <div class="select-box">
                     <div class="msg-aria mb-3">
@@ -78,7 +75,6 @@
                 <div class="age-category">
                   <label class="d-block">
                     <span class="h3 d-block text-dark font-weight-semi-bold mb-0">나이</span>
-                    <span class="d-block text-secondary">puppy/junior/adult/senior</span>
                   </label>
                   <div class="select-box">
                     <div class="msg-aria mb-3">
