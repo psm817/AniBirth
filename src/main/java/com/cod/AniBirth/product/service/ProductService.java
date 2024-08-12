@@ -175,6 +175,35 @@ public class ProductService {
         return productRepository.findByCategory("food", pageable);
     }
 
+    public Page<Product> getFoodCategoryByHighPrice(int page) {
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.desc("price"));
+        Pageable pageable = PageRequest.of(page, 16, Sort.by(sorts));
+
+        return productRepository.findByCategory("food", pageable);
+    }
+
+    public Page<Product> getFoodCategoryByLowPrice(int page) {
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.asc("price"));
+        Pageable pageable = PageRequest.of(page, 16, Sort.by(sorts));
+
+        return productRepository.findByCategory("food", pageable);
+    }
+
+    public Page<Product> getFoodCategoryByHighHit(int page) {
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.desc("hitCount"));
+        Pageable pageable = PageRequest.of(page, 16, Sort.by(sorts));
+
+        return productRepository.findByCategory("food", pageable);
+    }
+
+    public Page<Product> getFoodCategoryByHighRating(int page) {
+        Pageable pageable = PageRequest.of(page, 16);
+        return productRepository.findAllByCategoryToHighRating("food", pageable);
+    }
+
     public Page<Product> getAccessoryCategory(int page) {
         List<Sort.Order> sorts = new ArrayList<>();
         sorts.add(Sort.Order.desc("createDate"));

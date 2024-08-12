@@ -161,6 +161,70 @@ public class ProductController {
         return "product/food";
     }
 
+    @GetMapping("/list/food/high_price")
+    public String foodByHighPrice(Model model, @RequestParam(value = "page", defaultValue = "0") int page, Authentication authentication) {
+        Page<Product> paging = productService.getFoodCategoryByHighPrice(page);
+
+        Member member = null;
+
+        if(authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
+
+        model.addAttribute("paging", paging);
+        model.addAttribute("member", member);
+
+        return "product/food/high_price";
+    }
+
+    @GetMapping("/list/food/low_price")
+    public String foodByLowPrice(Model model, @RequestParam(value = "page", defaultValue = "0") int page, Authentication authentication) {
+        Page<Product> paging = productService.getFoodCategoryByLowPrice(page);
+
+        Member member = null;
+
+        if(authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
+
+        model.addAttribute("paging", paging);
+        model.addAttribute("member", member);
+
+        return "product/food/low_price";
+    }
+
+    @GetMapping("/list/food/high_hit")
+    public String foodByHighHit(Model model, @RequestParam(value = "page", defaultValue = "0") int page, Authentication authentication) {
+        Page<Product> paging = productService.getFoodCategoryByHighHit(page);
+
+        Member member = null;
+
+        if(authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
+
+        model.addAttribute("paging", paging);
+        model.addAttribute("member", member);
+
+        return "product/food/high_hit";
+    }
+
+    @GetMapping("/list/food/high_rating")
+    public String foodByHighRating(Model model, @RequestParam(value = "page", defaultValue = "0") int page, Authentication authentication) {
+        Page<Product> paging = productService.getFoodCategoryByHighRating(page);
+
+        Member member = null;
+
+        if(authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
+
+        model.addAttribute("paging", paging);
+        model.addAttribute("member", member);
+
+        return "product/food/high_rating";
+    }
+
     @GetMapping("/list/accessory")
     public String accessory(Model model, @RequestParam(value = "page", defaultValue = "0") int page, Authentication authentication) {
         Page<Product> paging = productService.getAccessoryCategory(page);
