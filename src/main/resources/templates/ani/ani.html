@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hc24 - hji</title>
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/resource/ani/ani.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/resource/common/common.css}">
+
+    <!-- 제이쿼리 -->
+
+
+    <!-- 부트스트랩 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+
+    <!-- 테일윈드-->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+
+<body class="flex flex-col min-h-screen pt-[56px]">
+<!-- common.css -->
+
+
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-[#FF416C]">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mb-2 mb-md-0 ml-[auto] mr-[190px]">
+                    <li class="nav-item flex items-center text-white mr-[40px]">
+                        <span sec:authorize="isAuthenticated()" th:text="${#strings.startsWith(#authentication.name, 'NAVER') ? #authentication.name.substring(0, 20) : #authentication.name} + '님'"></span>
+                    </li>
+                    <li class="nav-item text-left">
+                        <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/member/myPage/myProfile}">마이페이지</a>
+                    </li>
+                    <li class="nav-item text-left">
+                        <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/cart/list}">장바구니</a>
+                    </li>
+                    <li class="nav-item text-left">
+                        <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/member/login}">로그인</a>
+                        <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/member/logout}">로그아웃</a>
+                    </li>
+                    <li class="nav-item text-left">
+                        <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/member/agreement}">회원가입</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="menu-bar container">
+        <div class="logo-box">
+            <a href="/">
+                <img th:src="@{/images/logo/logo.png}" alt="로고이미지">
+            </a>
+        </div>
+        <div class="menu-box mb-[5px]">
+            <ul class="menu-title">
+                <li class="menu-text">
+                    <a th:href="@{/introduce/anibirth}">
+                        <span>애니버스</span>
+                    </a>
+                </li>
+                <li class="menu-text">
+                    <a th:href="@{/volunteer/list}">
+                        <span>봉사활동</span>
+                    </a>
+                </li>
+                <li class="menu-text">
+                    <a th:href="@{/adopt/list}">
+                        <span>입양정보</span>
+                    </a>
+                </li>
+                <li class="menu-text">
+                    <a th:href="@{/donation/donate}">
+                        <span>후원하기</span>
+                    </a>
+                </li>
+                <li class="menu-text">
+                    <a th:href="@{/product/main}">
+                        <span>애니마켓</span>
+                    </a>
+                </li>
+                <li class="menu-text">
+                    <a th:href="@{/article/list}">
+                        <span>애니공지</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+<main>
+    <section class="visual-sec">
+        <div class="swiper main-swiper">
+            <div class="swiper-wrapper">
+                <!-- Swiper Slides -->
+                <div class="swiper-slide">
+                    <div class="txt-box">
+                        <p class="txt"><b>사람과의 삶, 함께하는 삶</b>에 대한 <br>깊이있는 고민을 통해</p>
+                    </div>
+                    <div class="img-box">
+                        <img src="https://www.infobae.com/new-resizer/ai_E0njmizdh2gVzx5Jpjcu2YjU=/arc-anglerfish-arc2-prod-infobae/public/C6OAL3XMHVBZHLQ5JOKJB6674A.jpg" alt="Slide 1">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="txt-box">
+                        <p class="txt"><b>유기동물에게 소중한 삶을</b> <br>새로운 삶을 선물합니다.</p>
+                    </div>
+                    <div class="img-box">
+                        <img src="https://images.mypetlife.co.kr/content/uploads/2020/07/09150413/%EC%A0%9C%EB%AA%A9-%EC%97%86%EC%9D%8C-1-1024x486.png" alt="Slide 2">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="txt-box">
+                        <p class="txt">애니버스는 <b>이로움</b>을 만듭니다. <br>우리는 <b>가족</b>입니다.</p>
+                    </div>
+                    <div class="img-box">
+                        <img src="https://static.fundacion-affinity.org/cdn/farfuture/8KXe_oitU5KbfAlrAvUMKzVNprCVHxM9PcXcLI-xD-8/mtime:1652085612/sites/default/files/razas-de-perro-fundacion-affinity.jpg" alt="Slide 3">
+                    </div>
+                </div>
+            </div>
+            <div class="all-box">
+                <div class="progress-box">
+                    <div class="swiper-pagination"></div>
+                    <div class="autoplay-progress">
+                        <svg viewBox="0 0 100 10">
+                            <line x1="0" y1="0" x2="100" y2="0"></line>
+                        </svg>
+                    </div>
+                </div>
+                <div class="arrow-box">
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <article class="dist-text page-start">
+        <div class="text-ani">
+            <h2>AniBirth</h2>
+            <p>유기동물들에게 새로운 삶을 선물하는 것을 목표로 설립된 혁신적인 플랫폼입니다.<br> 회사 이름 Anibirth는 Animal의 'Ani'와 태어남의 'Birth'를 결합하여, 유기동물들에게 새로운 삶의 기회를 제공한다는 깊은 의미를 담고 있습니다.<br> 또한, Anibirth는 애니버스의 언어유희를 통해 우리의 비전을 시각화한 로고로 여러 마리의 강아지들이 즐겁게 버스를 타고 있는 모습이 담겨 있으며, 이는 유기동물들이 새로운 여정을 시작하는 모습을 상징합니다.</p>
+        </div>
+    </article>
+
+    <article class="dist-plan">
+        <!-- Distribution Plans -->
+        <section>
+            <div>
+                <span>박상민</span>
+                <h3>팀장</h3>
+                <span>홈페이지</span>
+                <span>관심단지등록</span>
+            </div>
+        </section>
+        <section>
+            <div>
+                <span>김태우</span>
+                <h3>과장</h3>
+                <p>2021.12</p>
+                <span>홈페이지</span>
+                <span>관심단지등록</span>
+            </div>
+        </section>
+        <section>
+            <div>
+                <span>박현철</span>
+                <h3>과장</h3>
+                <span>홈페이지</span>
+                <span>관심단지등록</span>
+            </div>
+        </section>
+        <section>
+            <div>
+                <span>김지영</span>
+                <h3>과장</h3>
+                <p>2021.09</p>
+                <span>홈페이지</span>
+                <span>관심단지등록</span>
+            </div>
+        </section>
+    </article>
+
+    <article class="iaan-SNS">
+        <div class="scroll">
+            <h2>AniBirth</h2>
+            <p>AniBirth는 단순한 플랫폼을 넘어, 동물과 인간, 그리고 공동체가 함께 만들어가는 따뜻한 세상을 지향합니다. <br>우리의 목표는 유기동물들이 새로운 가정에서 행복한 삶을 시작하도록 돕고, 이를 통해 더 많은 사람들이 유기동물 문제에 관심을 가지게 하는 것입니다.</p>
+        </div>
+        <div class="scroll">
+            <!-- SNS Images -->
+            <section class="scroll">
+                <div>
+                    <img src="https://www.swiss.com/content/dam/lx/images/pixels_variations/c-692780242-7480863.jpg.transform/lh-dcep-transform-width-1440/img.jpg" alt="SNS 1">
+                    <img src="https://www.sisa-news.com/data/photos/20210205/art_161215161178_f6cd40.jpg" alt="SNS 1 Image">
+                </div>
+            </section>
+            <section class="scroll">
+                <div>
+                    <img src="https://www.swiss.com/content/dam/lx/images/pixels_variations/c-692780242-7480863.jpg.transform/lh-dcep-transform-width-1440/img.jpg" alt="SNS 2">
+                    <img src="https://www.gyeongju.go.kr/upload//board/board_3646/bod_257386//254CC3AEA6A74A64B1E096C325559874.jpg" alt="SNS 2 Image">
+                </div>
+            </section>
+            <section class="scroll">
+                <div>
+                    <img src="https://www.swiss.com/content/dam/lx/images/pixels_variations/c-692780242-7480863.jpg.transform/lh-dcep-transform-width-1440/img.jpg" alt="SNS 3">
+                    <img src="https://mblogthumb-phinf.pstatic.net/MjAyMzA4MDFfNDEg/MDAxNjkwODc1MTQ2MTUy.9_ln9JVBgxX35a7Lk0WjijNEHgWDwmU6i9KJV9rc_rgg.tB3brVR1lgaTOstQLQL9RW4Uj7KWJASYjD-ycN1wKi0g.JPEG.luvinball5/KakaoTalk_20230731_140326691.jpg?type=w800" alt="SNS 3 Image">
+                </div>
+            </section>
+        </div>
+    </article>
+
+    <article class="iaan-news">
+        <!-- News Sections -->
+        <section class="after-effect">
+            <div>
+                <h2>도움의 손길 봉사</h2>
+                <p>애니봉사</p>
+            </div>
+            <div>
+                <ul>
+                    <li>-봉사</li>
+                    <li>-후기</li>
+                </ul>
+            </div>
+        </section>
+        <section class="after-effect">
+            <div>
+                <h2>새로운 삶의 선물 입양</h2>
+            </div>
+            <div>
+                <ul>
+                    <li>-입양 신청</li>
+                    <li>-입양 후기</li>
+                </ul>
+            </div>
+        </section>
+        <section class="after-effect">
+            <div>
+                <h2>소중한 한 발자국</h2>
+                <p>애니 후원</p>
+            </div>
+            <div>
+                <ul>
+                    <li>-유기동물 후원하기</li>
+                    <li>-애니 마켓</li>
+                </ul>
+            </div>
+        </section>
+    </article>
+</main>
+<footer class="footer bg-light">
+    <div class="top-box">
+        <div class="container">
+            <div class="left-box">
+                <a th:href="@{/introduce/agreement}">
+                    <span>이용약관 및 개인정보처리방침</span>
+                </a>
+                <a th:href="@{/volunteer/list}">
+                    <span>봉사활동</span>
+                </a>
+                <a th:href="@{/adopt/list}">
+                    <span>입양하기</span>
+                </a>
+                <a th:href="@{/donation/donate}">
+                    <span>후원하기</span>
+                </a>
+                <a th:href="@{/product/main}">
+                    <span>애니마켓</span>
+                </a>
+                <a th:href="@{/article/list}">
+                    <span>애니공지</span>
+                </a>
+            </div>
+            <div class="right-box">
+                <a href="#">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="#">
+                    <i class="fa-solid fa-comment"></i>
+                </a>
+                <a href="#">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-box">
+        <div class="container">
+            <div class="img-box">
+                <img th:src="@{/images/logo/logo.png}" alt="logo">
+            </div>
+            <div class="detail-box">
+                <div class="title-box common-box">
+                    <span class="text-muted">상호명 : 애니버스(AniBirth)</span>
+                    <span class="bar">|</span>
+                    <span class="text-muted">공동 대표자 : 김지영, 김태우, 박상민, 박현철</span>
+                </div>
+                <div class="contact-box common-box">
+                    <span class="text-muted">TEL : 042-123-4567</span>
+                    <span class="bar">|</span>
+                    <span class="text-muted">FAX : 042-123-9876</span>
+                    <span class="bar">|</span>
+                    <span class="text-muted">E-mail : 5004jse@gmail.com</span>
+                </div>
+                <div class="copy-box common-box">
+                    <span class="text-muted">Copyright © AniBirth, All Rights Reserved.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const progressLine = document.querySelector('.autoplay-progress svg');
+    const mainSwiper = new Swiper(".main-swiper", {
+        loop: true,
+        autoplay: {
+            delay: 5500,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: ".main-swiper .swiper-pagination",
+            clickable: false,
+            type: "custom",
+            renderCustom: function(swiper, current, total) {
+                return (
+                    '<span class="current">' + 0 + (current) + '</span>' + '<span class="total">' + 0 + (total) + '</span>'
+                );
+            }
+        },
+        navigation: {
+            nextEl: ".main-swiper .swiper-button-next",
+            prevEl: ".main-swiper .swiper-button-prev",
+        },
+        on: {
+            autoplayTimeLeft(s, time, progress) {
+                progressLine.style.setProperty("--progress", 1 - progress);
+            }
+        }
+    });
+
+    function scrollFadeIn() {
+        const scrollElements = document.querySelectorAll(".scroll");
+
+        if (!scrollElements) {
+            return;
+        }
+
+        scrollElements.forEach((scrollElement) => {
+            const elementTop = scrollElement.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            const triggerAt = elementTop + windowHeight - 100;
+
+            let isScrollingPast;
+            if (window.innerWidth <= 390) {
+                const triggerAtMobile = elementTop + windowHeight - 150;
+                isScrollingPast = window.scrollY > triggerAtMobile;
+            } else {
+                isScrollingPast = window.scrollY > triggerAt;
+            }
+
+            if (isScrollingPast) {
+                scrollElement.classList.add("fadeIn");
+            } else {
+                scrollElement.classList.remove("fadeIn");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", scrollFadeIn);
+
+    $(function() {
+        $("#gnb").mouseover(function() {
+            $(".subMenu").stop().slideDown(500);
+        });
+
+        $("#mainMenu li").mouseout(function() {
+            $(".subMenu").stop().slideUp(200);
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var header = document.querySelector('header');
+
+        document.querySelector('#gnb').addEventListener('mouseover', function() {
+            header.classList.add('hovered');
+        });
+
+        document.querySelector('#gnb').addEventListener('mouseout', function() {
+            header.classList.remove('hovered');
+        });
+    });
+
+    $(function(){
+        var $header = $('header');
+        var $page = $('.page-start');
+        var $window = $(window);
+        var pageOffsetTop = $page.offset().top;
+
+        $window.resize(function(){
+            pageOffsetTop = $page.offset().top;
+        });
+
+        $window.on('scroll', function(){
+            var scrolled = $window.scrollTop() >= pageOffsetTop;
+            $header.toggleClass('down', scrolled);
+        });
+    });
+</script>
+
+</body>
+
+</html>
