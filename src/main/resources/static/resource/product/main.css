@@ -239,7 +239,7 @@
 /* 반응형 시작 */
 @media (max-width: 394px) {
     .gift_section {
-        height: 500px;
+        height: 400px;
     }
 
     .gift_section> .container-fluid {
@@ -250,24 +250,11 @@
     }
 
     .gift_section > .container-fluid > .img_container {
-        width: 150px;
-        height: 150px !important;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .gift_section > .container-fluid > .img_container > .img-box {
-        width: 100%;
-        height: 100%;
-    }
-
-    .gift_section > .container-fluid > .img_container > .img-box > img {
-        width: 100%;
-        height: 100%;
+        display: none;
     }
 
     .gift_section > .container-fluid > .detail-box {
-        margin-top: 20px;
+        margin-top: 50px;
         padding: 0px;
         width: 100%;
         height: 350px;

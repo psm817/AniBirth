@@ -47,18 +47,37 @@ html > body .swiper-slide {
     border: 1px solid orange;
     height: 400px;
     width: 100%;
+    margin-bottom: 50px;
 }
 
-.main-box > .summary > h1 {
-    border: 1px solid green;
-    text-align: left;
-    height: 30px;
-    line-height: 30px;
+.main-box > .summary > .top-box {
+    border: 1px solid blue;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.main-box > .summary > .card {
+.main-box > .summary > .top-box > .title-box {
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.main-box > .summary > .top-box > .title-box > h1 {
     border: 1px solid green;
-    height: 370px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #305df0;
+}
+
+.main-box > .summary > .top-box > .title-box > span {
+    font-size: 16px;
+    margin-left: 20px;
+    margin-right: 20px;
+    color: #a3a3a3;
+    font-weight: 700;
 }
 
 /* 반응형 시작 */

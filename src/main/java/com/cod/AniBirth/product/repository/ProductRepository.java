@@ -29,4 +29,17 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findTopRatedProducts(@Param("limit") int limit);
 
     Page<Product> findByCategory(String food, Pageable pageable);
+
+    @Query("SELECT p FROM Product p " +
+            "LEFT JOIN p.reviewList r " +
+            "GROUP BY p " +
+            "ORDER BY COALESCE(AVG(r.starRating), 0) DESC")
+    Page<Product> findAllByHighRating(Pageable pageable, String kw);
+
+    @Query("SELECT p FROM Product p " +
+            "LEFT JOIN p.reviewList r " +
+            "WHERE p.category = :category " +
+            "GROUP BY p " +
+            "ORDER BY COALESCE(AVG(r.starRating), 0) DESC")
+    Page<Product> findAllByCategoryToHighRating(@Param("category") String category, Pageable pageable);
 }

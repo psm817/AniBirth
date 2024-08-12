@@ -120,14 +120,14 @@
     border: 1px solid #ff416c;
     color: #fff;
     font-weight: 700;
-    padding: 10px 20px 10px 20px;
+    padding: 10px 40px 10px 40px;
     background-color: #ff416c;
 }
 
 .prod-btn-outline-dark:hover {
     background-color: #FFF;
     color: #ff416c;
-    border: transparent;
+    border: 1px solid #FF416C;
 }
 
 .prod-container-box {
@@ -143,12 +143,10 @@
     flex-direction: column;
     border: 1px solid #e3e3e3;
     background-color: #fff;
-    box-shadow: 3px 6px 14px gray;
 }
 
 .prod-container-box > .card:nth-child(1) {
     background-color: transparent;
-    box-shadow: 3px 6px 14px gray;
     border: transparent;
 }
 

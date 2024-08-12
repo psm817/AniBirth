@@ -19,32 +19,32 @@
             </div>
         </div>
     </div>
-    <div class="container product-accessory-container">
+    <div class="container product-food-container">
         <!-- 소메뉴 뽑기 -->
         <div class="link-navigation">
             <a th:href=@{/product/list} class="link">전체</a>
             <span class="divider">|</span>
-            <a th:href="@{/product/list/food}" class="link">식료품</a>
+            <a th:href="@{/product/list/food}" class="link active">식료품</a>
             <span class="divider">|</span>
-            <a th:href="@{/product/list/accessory}" class="link active">액세서리</a>
+            <a th:href="@{/product/list/accessory}" class="link">액세서리</a>
         </div>
         <div class="product-title-box">
             <div class="left-box">
-                <span>액세서리</span>
+                <span>식료품</span>
                 <span>(※ 상품 이미지나 상품명을 클릭하면 상세정보를 확인하실 수 있습니다.)</span>
                 <a th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or ${member.authority} == 1)"
                    th:href="@{/product/create}" class="button" onclick="return productCreate();">등록하기</a>
             </div>
             <div class="right-box">
-                <a th:href="@{/product/list/accessory}" class="active">신상품순</a>
+                <a th:href="@{/product/list/food}">신상품순</a>
                 <span class="divider">|</span>
-                <a th:href="@{/product/list/accessory/high_price}">높은 가격순</a>
+                <a th:href="@{/product/list/food/high_price}">높은 가격순</a>
                 <span class="divider">|</span>
-                <a th:href="@{/product/list/accessory/low_price}">낮은 가격순</a>
+                <a th:href="@{/product/list/food/low_price}" class="active">낮은 가격순</a>
                 <span class="divider">|</span>
-                <a th:href="@{/product/list/accessory/high_rating}">별점순</a>
+                <a th:href="@{/product/list/food/high_rating}">별점순</a>
                 <span class="divider">|</span>
-                <a th:href="@{/product/list/accessory/high_hit}">조회순</a>
+                <a th:href="@{/product/list/food/high_hit}">조회순</a>
             </div>
         </div>
         <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-3">
@@ -88,7 +88,7 @@
                 </li>
             </ul>
         </div>
-        <form th:action="@{/product/list/accessory}" method="get" id="searchForm">
+        <form th:action="@{/product/list/food/low_price}" method="get" id="searchForm">
             <input type="hidden" id="kw" name="kw" th:value="${kw}">
             <input type="hidden" id="page" name="page" th:value="${paging.number}">
         </form>

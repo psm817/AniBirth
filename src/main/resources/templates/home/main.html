@@ -25,24 +25,26 @@
         </div>
         <div class="container main-box">
             <div class="summary volunteer-summary-box">
-                <h1 class="text-[20px] font-bold">봉사요약</h1>
-                <div class="card"></div>
+                <div class="top-box">
+                    <div class="title-box">
+                        <h1>봉사활동 현황</h1>
+                        <span>보람찬 추억을 만들어보아요!</span>
+                    </div>
+                    <div class="total-btn">
+                        <a th:href="@{/volunteer/list}"><i class="fa-solid fa-plus mr-[5px]"></i>전체보기</a>
+                    </div>
+                </div>
             </div>
             <div class="summary adopt-summary-box">
-                <h1 class="text-[20px] font-bold">입양요악</h1>
-                <div class="card"></div>
-            </div>
-            <div class="summary donation-summary-box">
-                <h1 class="text-[20px] font-bold">후원요약</h1>
-                <div class="card"></div>
-            </div>
-            <div class="summary market-summary-box">
-                <h1 class="text-[20px] font-bold">마켓요약</h1>
-                <div class="card"></div>
-            </div>
-            <div class="summary article-summary-box">
-                <h1 class="text-[20px] font-bold">공지요약</h1>
-                <div class="card"></div>
+                <div class="top-box">
+                    <div class="title-box">
+                        <h1>유기동물 공고</h1>
+                        <span>가족이 되어주세요!</span>
+                    </div>
+                    <div class="total-btn">
+                        <a th:href="@{/adopt/list}"><i class="fa-solid fa-plus mr-[5px]"></i>전체보기</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

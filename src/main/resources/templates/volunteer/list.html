@@ -15,7 +15,7 @@
         <div class="main-container-box">
             <div class="volunteer">
                 <div class="volunteer-wrapper">
-                    <img src="https://cdn.healingnlife.com/news/photo/202103/1042_1700_155.jpg" alt="Dog Shelter"
+                    <img src="https://velog.velcdn.com/images/wldudskfn123/post/c5aac4fa-46b7-4e37-9169-d42017ed2304/image.png" alt="Dog Shelter"
                          class="background-image grid w-full h-[500px] ">
                 </div>
                 <div class="text-overlay-v">
@@ -46,8 +46,8 @@
                                     <a th:href="@{|/volunteer/detail/${volunteer.id}|}" class="border border-black h-[250px] transition duration-300 rounded-lg hover:rounded-lg hover:-translate-y-1.5 hover:transition hover:duration-300 hover:shadow-md">
                                         <img class="object-cover object-center block w-full h-full rounded-lg" th:src="@{|/gen/${volunteer.thumbnailImg}|}" alt="이미지가 존재하지 않습니다.">
                                     </a>
-                                    <a th:href="@{|/volunteer/detail/${volunteer.id}|}" th:text="'봉사명 : ' + ${volunteer.title}" class="text-center md:!text-left mt-3 mb-[8px]"></a>
-                                    <a th:href="@{|/volunteer/detail/${volunteer.id}|}" th:text="'신청 마감 예정일 : ' + ${volunteer.deadLineDate}" class="text-center md:!text-left"></a>
+                                    <a th:href="@{|/volunteer/detail/${volunteer.id}|}" th:utext="'<strong>봉사명</strong> : ' + ${volunteer.title}" class="text-center md:!text-left mt-3 mb-[8px]"></a>
+                                    <a th:href="@{|/volunteer/detail/${volunteer.id}|}" th:utext="'<strong>신청 마감 예정일</strong> : ' + ${volunteer.deadLineDate}" class="text-center md:!text-left"></a>
                                 </li>
                             </ul>
                             <!-- 페이징 처리 시작 -->

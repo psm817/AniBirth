@@ -6,12 +6,11 @@
 }
 
 .market-box > .market-card {
-    height: 630px !important;
+    height: 690px !important;
     width: 100%;
     border: transparent;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 3px 6px 14px gray;
 }
 
 /* 애니마켓 입력 폼 */
