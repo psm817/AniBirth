@@ -100,8 +100,8 @@
 }
 
 .review-box > .review-section > .title-box > a {
-    border: 2px solid #FF416C;
-    background-color: #FF416C;
+    border: 2px solid #f88379;
+    background-color: #f88379;
     color: #fff;
     border-radius: 10px;
     margin-left: 15px;
@@ -135,7 +135,7 @@
 .review-box > .review-section > .totalList-box > .review-notice-list  > li {
     height: 250px;
     display: flex;
-    background-color: #fff;
+    background-color: #faf4f0;
     border-radius: 10px;
 }
 

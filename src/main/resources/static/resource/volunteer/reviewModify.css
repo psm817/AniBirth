@@ -6,11 +6,10 @@
 }
 
 .reviewModify-box > .review-modify-card {
-     height: 700px !important;
+     height: 720px !important;
     width: 100%;
     border: transparent;
     background-color: #fff;
-    box-shadow: 3px 6px 14px gray;
     border-radius: 10px;
 }
 
