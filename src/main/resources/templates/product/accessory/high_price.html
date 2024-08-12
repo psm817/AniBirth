@@ -36,9 +36,9 @@
                    th:href="@{/product/create}" class="button" onclick="return productCreate();">등록하기</a>
             </div>
             <div class="right-box">
-                <a th:href="@{/product/list/accessory}" class="active">신상품순</a>
+                <a th:href="@{/product/list/accessory}">신상품순</a>
                 <span class="divider">|</span>
-                <a th:href="@{/product/list/accessory/high_price}">높은 가격순</a>
+                <a th:href="@{/product/list/accessory/high_price}" class="active">높은 가격순</a>
                 <span class="divider">|</span>
                 <a th:href="@{/product/list/accessory/low_price}">낮은 가격순</a>
                 <span class="divider">|</span>
@@ -88,7 +88,7 @@
                 </li>
             </ul>
         </div>
-        <form th:action="@{/product/list/accessory}" method="get" id="searchForm">
+        <form th:action="@{/product/list/accessory/high_price}" method="get" id="searchForm">
             <input type="hidden" id="kw" name="kw" th:value="${kw}">
             <input type="hidden" id="page" name="page" th:value="${paging.number}">
         </form>

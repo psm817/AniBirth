@@ -212,6 +212,35 @@ public class ProductService {
         return productRepository.findByCategory("accessory", pageable);
     }
 
+    public Page<Product> getAccessoryCategoryByHighPrice(int page) {
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.desc("price"));
+        Pageable pageable = PageRequest.of(page, 16, Sort.by(sorts));
+
+        return productRepository.findByCategory("accessory", pageable);
+    }
+
+    public Page<Product> getAccessoryCategoryByLowPrice(int page) {
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.asc("price"));
+        Pageable pageable = PageRequest.of(page, 16, Sort.by(sorts));
+
+        return productRepository.findByCategory("accessory", pageable);
+    }
+
+    public Page<Product> getAccessoryCategoryByHighHit(int page) {
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.desc("hitCount"));
+        Pageable pageable = PageRequest.of(page, 16, Sort.by(sorts));
+
+        return productRepository.findByCategory("accessory", pageable);
+    }
+
+    public Page<Product> getAccessoryCategoryByHighRating(int page) {
+        Pageable pageable = PageRequest.of(page, 16);
+        return productRepository.findAllByCategoryToHighRating("accessory", pageable);
+    }
+
     public Page<Product> getListByLowPrice(int page, String kw) {
         List<Sort.Order> sorts = new ArrayList<>();
         sorts.add(Sort.Order.asc("price"));
@@ -232,4 +261,6 @@ public class ProductService {
 
         return productRepository.findAllByKeyword(kw, pageable);
     }
+
+
 }
