@@ -14,7 +14,7 @@ public class CreateReviewForm {
     private String title;
 
     @NotBlank(message="내용은 필수항목입니다.")
-    @Size(max=20000, message = "내용을 20000자 이하로 입력해주세요.")
+    @Size(max=200000, message = "내용을 200000자 이하로 입력해주세요.")
     private String content;
 
     private MultipartFile images;
