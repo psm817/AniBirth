@@ -19,7 +19,7 @@ html > body .adopt-total {
 
 html > body .adopt-detail-head {
     width: 100%;
-    margin-bottom: 20px;
+    margin: 20px 30px;
 }
 
 html > body .adopt-total .adopt-detail-head .adopt-info > .h2 {
@@ -102,7 +102,6 @@ html > body .adopt-detail-content .row-adopt .content .space-1 > .card-frame {
     color: #ffd66d;
 }
 
-html > body .adopt-detail-content .row-adopt .content .space-1
 
 
 

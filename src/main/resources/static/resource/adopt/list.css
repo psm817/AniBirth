@@ -176,7 +176,7 @@ html > body .container-box .adoptlist > .adopt-notice-list > .flex {
 }
 
 .adopt-list-bottom {
-    height: 660px;
+    height: 740px;
 }
 
 .container.adoption-procedure {
@@ -189,16 +189,16 @@ html > body .container-box .adoptlist > .adopt-notice-list > .flex {
 
 .adoption-procedure > .adt-pro-title {
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     height: 31.5px;
-    font-size: 28px;
+    font-size: 30px;
 }
 
 .adt-pro-icon {
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 128px; /* 원형을 화면 중앙에 배치 */
+    height: 160px; /* 원형을 화면 중앙에 배치 */
     width: 100%;
     margin-bottom: 25px;
 }
@@ -207,8 +207,8 @@ html > body .container-box .adoptlist > .adopt-notice-list > .flex {
 .adt-circle-2,
 .adt-circle-3,
 .adt-circle-4 {
-    width: 8rem;
-    height: 8rem;
+    width: 10rem;
+    height: 10rem;
     background-color: #ebf1fa;
     border-radius: 50%;
     display: flex;
@@ -216,9 +216,9 @@ html > body .container-box .adoptlist > .adopt-notice-list > .flex {
     align-items: center;
     color: white;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.3rem;
     text-align: center;
-    line-height: 1.5;
+    /*line-height: 1.5;*/
 }
 
 .adt-circle-1 > span,
@@ -251,6 +251,7 @@ html > body .container-box .adoptlist > .adopt-notice-list > .flex {
     word-wrap: break-word; /* 단어가 길 경우 자동 줄바꿈 */
     word-break: break-all; /* 단어 중간에서도 줄바꿈이 일어날 수 있도록 */
     margin-bottom: 10px; /* 각 li 요소 사이의 여백 */
+    font-size: 16px;
 }
 
 /* 드롭다운 버튼 스타일 */
