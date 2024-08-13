@@ -64,7 +64,7 @@ html > body .review-container-box .container .review-data-input {
     align-items: center;
     margin: 10px 0;
     width: 100%; /* input-box의 너비를 100%로 설정 */
-    max-width: 800px; /* 최대 너비 설정 */
+    max-width: 1100px; /* 최대 너비 설정 */
 }
 
 .review-data-input > form > .input-box > span {
@@ -84,6 +84,7 @@ html > body .review-container-box .container .review-data-input {
 .review-data-input > form > .upload-file {
     display: flex;
     align-items: center;
+    margin-top: 20px;
 }
 
 .review-data-input > form > .upload-file > input {
@@ -91,11 +92,11 @@ html > body .review-container-box .container .review-data-input {
 }
 
 .review-data-input > form > #submitBtn {
-    background-color: #004ba0;
-    border-color: #004ba0;
+    background-color: #f88379;
+    border-color: #f88379;
 }
 
 .review-data-input > form > #submitBtn:hover {
-    background-color: #1164c2;
-    border-color: #1164c2;
+    background-color: #f76f63;
+    border-color: #f76f63;
 }

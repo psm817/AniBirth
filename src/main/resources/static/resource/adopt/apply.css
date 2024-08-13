@@ -49,42 +49,18 @@ html > body .apply-container-box > .container > .apply-content-name {
 }
 html > body .apply-container-box > .container > .apply-content-name > .h4
 
-html > body .apply-container-box > .container > .personal-data {
+.apply-container-box > .container > .personal-data {
     padding: 10px;
     width: 100%;
 }
 
 html > body .apply-container-box > .container .personal-data > .adopt-application-section {
-    width: 800px;
+    width: 1100px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: auto;
-}
-
-html > body .apply-container-box > .container .personal-data .adopt-application-section {
-    font-weight: bold;
-    font-size: large;
-}
-
-html > body .apply-container-box > .container .personal-data .adopt-application-section > .adoption-application {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-html > body .apply-container-box > .container .personal-data .adopt-application-section > .adoption-application a:hover {
-    color: inherit;
-}
-
-html > body .apply-container-box > .container .personal-data > .adopt-application-section {
-    width: 800px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: auto;
+    margin: 10px 0px;
 }
 
 html > body .apply-container-box > .container .personal-data .adopt-application-section > .personal-data-title {
@@ -98,7 +74,9 @@ html > body .apply-container-box > .container .personal-data .adopt-application-
     align-items: center;
 }
 
-
+html > body .apply-container-box > .container .personal-data .adopt-application-section > .adoption-application a:hover {
+    color: inherit;
+}
 
 html > body .apply-container-box > .container > .personal-data> h5 {
     display: flex;
@@ -122,7 +100,7 @@ html > body .apply-container-box .container .personal-data-input {
     align-items: center;
     margin: 10px 0;
     width: 100%; /* input-box의 너비를 100%로 설정 */
-    max-width: 800px; /* 최대 너비 설정 */
+    max-width: 1100px; /* 최대 너비 설정 */
 }
 
 .personal-data-input > form > .input-box > span {
@@ -176,7 +154,7 @@ html > body .apply-container-box .container .personal-data-input {
 
 .personal-data-input > form > .privacy,
 .personal-data-input > form > .adopt-agreement {
-    width: 800px;
+    width: 1100px;
     text-align: left;
 }
 .personal-data-input > form > .privacy > span,
@@ -189,15 +167,17 @@ html > body .apply-container-box .container .personal-data-input {
     height: 92px;
     display: flex;
     align-items: center;
+    margin-top: 10px;
 }
 
 
 .personal-data-input > form > .adopt-agreement > .adopt-agreement-raw {
     background-color: #f2f6fc;
-    height: 800px;
+    height: 670px;
     display: flex;
     align-items: center;
     padding: 20px;
+    margin-top: 10px;
 }
 
 .personal-data-input > form > .adopt-agreement > .adopt-agreement-raw > ul > li> label,
@@ -217,11 +197,11 @@ html > body .apply-container-box .container .personal-data-input {
 }
 
 .personal-data-input > form > #submitBtn {
-    background-color: #004ba0;
-    border-color: #004ba0;
+    background-color: #f88379;
+    border-color: #f88379;
 }
 
 .personal-data-input > form > #submitBtn:hover {
-    background-color: #1164c2;
-    border-color: #1164c2;
+    background-color: #f76f63;
+    border-color: #f76f63;
 }
