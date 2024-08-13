@@ -105,7 +105,10 @@
 }
 
 .reviewModify-input > form > .content-box > textarea {
-    width: 1070px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 1100px;
+    text-align: left;
 }
 
 

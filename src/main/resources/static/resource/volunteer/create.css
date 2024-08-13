@@ -97,9 +97,11 @@
     padding-left: 0px;
 }
 
-.create-input > form > .type-box > textarea {
-    margin-left: 15px;
-    margin-right: 20px;
+.create-input > form > .content-box > textarea {
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 1100px;
+    text-align: left;
 }
 
 .create-input > form > .signup-btn > button {
@@ -310,10 +312,12 @@
         font-size: 14px;
     }
 
-    .create-input > form > .type-box > textarea {
-        height: 60px;
-        margin-left: 30px;
+    .create-input > form > .content-box > textarea {
+        height: 50px;
+        margin-left: 10px;
         font-size: 13px;
+        width: 240px;
+        margin-bottom: 0px;
     }
 
     .create-input > form > .signup-btn {

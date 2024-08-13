@@ -19,12 +19,14 @@
     align-items: start;
     padding-left: 200px;
     padding-right: 200px;
+    width: 100%;
 }
 
 .review-detail > .top-box > .detail-box > span {
     height: 70px;
     font-size: 23px;
-    line-height: 70px;
+    width: 100%;
+    text-align: left;
 }
 
 .review-detail > .top-box > .detail-box > .flex-box {
@@ -147,7 +149,6 @@
     .review-detail > .top-box > .detail-box > span {
         height: 70px;
         font-size: 20px;
-        line-height: 70px;
     }
 
     .review-detail > .top-box > .detail-box > .flex-box {

@@ -141,4 +141,8 @@ public class VolunteerService {
     public List<Volunteer> getVolunteerByMember(Member member) {
         return volunteerRepository.findByMember(member);
     }
+
+    public List<Volunteer> getRecentVolunteers() {
+        return volunteerRepository.findTop4ByOrderByCreateDateDesc();
+    }
 }
