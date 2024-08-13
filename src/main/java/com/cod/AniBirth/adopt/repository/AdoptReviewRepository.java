@@ -8,8 +8,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface AdoptReviewRepository extends JpaRepository<AdoptReview, Long> {
+    List<AdoptReview> findTop4ByOrderByCreateDateDesc();
 
 //    @Query("""
 //            select distinct p

@@ -98,4 +98,8 @@ public class AdoptReviewService {
             throw new DataNotFoundException("adoptReview not found");
         }
     }
+
+    public List<AdoptReview> getRecentAdoptReviews() {
+        return adoptReviewRepository.findTop4ByOrderByCreateDateDesc();
+    }
 }
