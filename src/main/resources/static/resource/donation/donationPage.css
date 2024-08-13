@@ -35,7 +35,7 @@ html > body .donation-banner {
   display: block;
   width: 100%;
   height: 100%;
-  /*object-fit: cover;*/
+  object-fit: cover;
 }
 .text-overlay {
     position: absolute;
@@ -64,21 +64,20 @@ html > body .donation-banner {
     color: #fff;
 }
 
-html > body .container > .donation-section {
+html > body .do-container > .donation-section {
     display: flex;
     justify-content: space-around;
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 30px;
+    width: 70%;
+    margin: auto;
 }
 
-html > body .container .donation-section > .donation-bg-img {
+html > body .do-container .donation-section > .donation-bg-img {
     display: flex;
     justify-content: center;
     width: 760px;
 }
 
-html > body .container .donation-section .donation-bg-img > .center-background-image{
+html > body .do-container .donation-section .donation-bg-img > .center-background-image{
     position: relative;
     display: inline-block;
     width: 330px;
@@ -86,7 +85,6 @@ html > body .container .donation-section .donation-bg-img > .center-background-i
     border-radius: 50%;
     box-shadow: 3px 3px 3px 3px #555555;
     object-fit: cover;
-    margin-left: 20px;
 }
 
 .donation-box {
@@ -111,18 +109,21 @@ html > body .container .donation-section .donation-bg-img > .center-background-i
 .donation-box p {
     font-size: 18px;
     font-weight: bold;
-    margin: 0 0 10px 0;
+    margin: auto;
+    width: 300px;
 }
 .donation-box h2 {
     font-size: 2rem;
 }
 .p-box {
-    margin-top: 50px;
-    margin-bottom: 40px;
+    margin-top: 100px;
+    margin-bottom: 100px;
 }
 
 /* 후원 top3 카드 */
 .donor-div {
+    display: flex;
+    gap: 220px;
     margin-top: 30px;
 }
 
@@ -321,6 +322,11 @@ html > body .container .donation-section .donation-bg-img > .center-background-i
     width: 100%;
     max-width: 500px;
 }
+
+.modal-content h1{
+    font-size: 24px;
+}
+
 .close {
     color: #aaa;
     float: right;
@@ -356,12 +362,51 @@ html > body .container .donation-section .donation-bg-img > .center-background-i
 .modal-body button:hover {
     background-color: #FF416C;
 }
+.alert {
+    padding: 15px;
+    margin: 20px 0;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.alert-success {
+    color: #4CAF50;
+    background-color: #DFF0D8;
+    border-color: #D6E9C6;
+}
+
+.alert-error {
+    color: #D8000C;
+    background-color: #FFD2D2;
+    border-color: #E0B4B4;
+}
+
 
 @media (max-width: 394px) {
+    .donation-box p {
+        font-size: 18px;
+        font-weight: bold;
+        margin: auto;
+        width: auto;
+    }
+
+    .donor-card {
+        order: 1;
+    }
+
+    .donor-card:first-child {
+        order: 2;
+    }
+
+    .donor-card:nth-child(3) {
+        order: 3;
+    }
 
     .donor-div {
+      display: flex;
+      gap: 120px;
       flex-direction: column;
-      gap: 10px;
       width: 70%;
       justify-content: center;
       align-items: center;

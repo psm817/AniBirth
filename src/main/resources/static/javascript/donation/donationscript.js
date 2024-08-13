@@ -57,3 +57,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    var alertBox = document.querySelector('.alert');
+    if (alertBox) {
+        setTimeout(function() {
+            alertBox.style.display = 'none';
+        }, 5000); // 5초 후에 알림 메시지를 숨깁니다.
+    }
+});

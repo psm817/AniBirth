@@ -14,8 +14,6 @@ import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 
-import static jakarta.persistence.FetchType.LAZY;
-
 @Entity
 @SuperBuilder
 @NoArgsConstructor
@@ -35,4 +33,5 @@ public class OrderItem extends BaseEntity {
     private int price; // 판매가
     private int payPrice; // 결제금액
     private boolean isPaid; // 결제여부
+    private int quantity;
 }

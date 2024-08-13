@@ -2,6 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/layout}">
 <section layout:fragment="content" class="flex-1 flex justify-center items-center">
     <div class="container-box">
+        <div th:if="${message}" class="alert" th:classappend="${messageType == 'success'} ? 'alert-success' : 'alert-error'">
+            <span th:text="${message}"></span>
+        </div>
         <div class="donation">
             <div class="donation-wrapper">
                 <div class="donation-banner">
@@ -23,7 +26,7 @@
             <h2>애니버스에 도움을 준 사람들</h2>
             <div class="donor-card-container">
 
-                <div class="donor-div" th:if="${topDonors != null and !#lists.isEmpty(topDonors)}" style="display: flex; gap: 120px;">
+                <div class="donor-div" th:if="${topDonors != null and !#lists.isEmpty(topDonors)}" >
 
                     <div class="donor-card" th:each="donorStat, iterStat : ${topDonors}">
 
@@ -55,7 +58,7 @@
         <div class="p-box">
         <p>애니버스는 오직 시민의 후원으로 운영되며, 후원자의 지지가 있어 구조·정책·교육·돌봄 등 다양한 분야에서의 활동이 가능합니다.</p>
         </div>
-        <div class="container">
+        <div class="do-container">
             <div class="donation-section">
                 <div class="donation-bg-img">
                     <img src="https://i.ibb.co/D79qTFk/001.png" alt="센터 후원" class="center-background-image">
@@ -63,7 +66,7 @@
                 <div class="donation-box w-full md:w-2/5 mt-5 text-center md:text-center p-5">
                     <h2>센터 후원</h2>
                     <br>
-                    <p>구조된 동물이 평생의 가족을 만날 때까지 <br> 유기동물 보호센터로 후원합니다.</p>
+                    <p>구조된 동물이 평생의 가족을 만날 때까지 유기동물 보호센터로 후원합니다.</p>
                     <a type="button" class="btn-donate" id="btnDonate">후원하기</a>
                 </div>
             </div>
@@ -73,8 +76,8 @@
     <!-- Modal -->
     <div id="donateModal" class="modal">
         <div class="modal-content w-full md:w-2/5 mt-5 text-center md:text-center p-5">
-            <span class="close">&times;</span>
-            <h2>후원하기</h2>
+            <h1>후원하기 <span class="close">&times;</span></h1>
+
             <div class="modal-body">
                 <form id="donationForm" action="/donation/submit" method="post">
                     <!-- CSRF Token Removed -->

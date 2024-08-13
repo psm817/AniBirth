@@ -10,10 +10,16 @@ hr {
   background-color: #E5C7C5;
   border: none;
 }
+.check-out {
+    width: 100%;
+}
 
+.checkout_detail {
+    width: 100%
+}
 .checkout-card {
-  width: 400px;
-  background: #F4E2DE;
+  width: 780px;
+  background: #FFF;
   box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01), 0px 105px 63px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09), 0px 12px 26px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
 }
 
@@ -32,13 +38,14 @@ hr {
 
 /* Cart */
 .checkout-cart {
-  border-radius: 19px 19px 0px 0px;
+  border-radius: 19px 19px 19px 19px;
 }
 
 .checkout-steps {
   display: flex;
   flex-direction: column;
   padding: 20px;
+
 }
 
 .checkout-step {
@@ -48,10 +55,11 @@ hr {
   justify-content: space-around;
   flex-direction: column;
   align-items: center;
+  text-align: left;
 }
 
 .checkout-step span {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   color: #000000;
   margin-bottom: 8px;
@@ -63,6 +71,7 @@ hr {
   font-weight: 600;
   color: #000000;
 }
+
 
 /* Promo */
 .checkout-promo form {
@@ -139,10 +148,14 @@ hr {
   background-color: #ECC2C0;
 }
 .checkout-footer {
-    display: grid;
+    display: flex;
+    justify-content: space-between;
+    border-bottom-left-radius: 10%;
+}
+.ch-footer {
+    display: flex;
     justify-content: center;
 }
-
 .checkout-price {
   position: relative;
   font-size: 22px;
@@ -186,4 +199,23 @@ hr {
 }
 .checkout-table tr:hover {
     background-color: #f1f1f1;
+}
+.alert {
+    padding: 15px;
+    margin: 20px 0;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.alert-success {
+    color: #4CAF50;
+    background-color: #DFF0D8;
+    border-color: #D6E9C6;
+}
+
+.alert-error {
+    color: #D8000C;
+    background-color: #FFD2D2;
+    border-color: #E0B4B4;
 }
