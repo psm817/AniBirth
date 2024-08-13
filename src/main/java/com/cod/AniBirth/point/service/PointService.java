@@ -25,7 +25,7 @@ public class PointService {
     public void rechargePoints(Member member, int amount, String transactionId) {
         Account account = getOrCreateAccount(member);
         if (account.isTransactionProcessed(transactionId)) {
-            return; // Transaction has already been processed
+            return;
         }
         account.setAniPoint(account.getAniPoint() + amount);
         account.addProcessedTransaction(transactionId);

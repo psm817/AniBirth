@@ -2,16 +2,15 @@
 
 package com.cod.AniBirth.order.controller;
 
-import com.cod.AniBirth.account.entity.Account;
 import com.cod.AniBirth.account.service.AccountService;
+import com.cod.AniBirth.cart.entity.CartItem;
+import com.cod.AniBirth.cart.service.CartService;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
-import com.cod.AniBirth.order.service.OrderService;
-import com.cod.AniBirth.point.service.PointService;
-import com.cod.AniBirth.cart.service.CartService;
-import com.cod.AniBirth.cart.entity.CartItem;
 import com.cod.AniBirth.order.entity.Order;
 import com.cod.AniBirth.order.entity.OrderItem;
+import com.cod.AniBirth.order.service.OrderService;
+import com.cod.AniBirth.point.service.PointService;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -23,6 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -72,6 +72,7 @@ public class OrderController {
 
     @PostMapping("/confirm")
     public String confirmPayment(
+            RedirectAttributes redirectAttributes,
             Model model,
             @RequestParam(value = "orderId") String orderId,
             @RequestParam(value = "amount") Integer amount,
@@ -85,13 +86,13 @@ public class OrderController {
             boolean success = orderService.payWithPoints(member, amount);
             if (success) {
                 createOrder(member, orderId, amount, shippingFee); // Create order after successful payment
-                model.addAttribute("isSuccess", true);
-                model.addAttribute("responseStr", "Payment completed using points");
-                return "order/success";
+                redirectAttributes.addFlashAttribute("message", "포인트로 결제가 완료되었습니다.");
+                redirectAttributes.addFlashAttribute("messageType", "success");
+                return "redirect:/order/checkout";
             } else {
-                model.addAttribute("isSuccess", false);
-                model.addAttribute("responseStr", "Insufficient points");
-                return "order/fail";
+                redirectAttributes.addFlashAttribute("message", "포인트가 부족합니다.");
+                redirectAttributes.addFlashAttribute("messageType", "error");
+                return "redirect:/order/checkout";
             }
         }
 
@@ -115,7 +116,7 @@ public class OrderController {
 
         int code = connection.getResponseCode();
         boolean isSuccess = code == 200;
-        model.addAttribute("isSuccess", isSuccess);
+        redirectAttributes.addFlashAttribute("isSuccess", isSuccess);
 
         InputStream responseStream = isSuccess ? connection.getInputStream() : connection.getErrorStream();
 
@@ -123,40 +124,20 @@ public class OrderController {
         JSONParser parser = new JSONParser();
         JSONObject jsonObject = (JSONObject) parser.parse(reader);
         responseStream.close();
-        model.addAttribute("responseStr", jsonObject.toJSONString());
+        redirectAttributes.addFlashAttribute("responseStr", jsonObject.toJSONString());
 
         if (isSuccess) {
             createOrder(member, orderId, amount, shippingFee); // Create order after successful payment
-            model.addAttribute("method", (String) jsonObject.get("method"));
-            model.addAttribute("orderName", (String) jsonObject.get("orderName"));
-
-            if (jsonObject.get("method") != null) {
-                switch ((String) jsonObject.get("method")) {
-                    case "카드":
-                        model.addAttribute("cardNumber", (String) ((JSONObject) jsonObject.get("card")).get("number"));
-                        break;
-                    case "가상계좌":
-                        model.addAttribute("accountNumber", (String) ((JSONObject) jsonObject.get("virtualAccount")).get("accountNumber"));
-                        break;
-                    case "계좌이체":
-                        model.addAttribute("bank", (String) ((JSONObject) jsonObject.get("transfer")).get("bank"));
-                        break;
-                    case "휴대폰":
-                        model.addAttribute("customerMobilePhone", (String) ((JSONObject) jsonObject.get("mobilePhone")).get("customerMobilePhone"));
-                        break;
-                    default:
-                        model.addAttribute("code", (String) jsonObject.get("code"));
-                        model.addAttribute("message", (String) jsonObject.get("message"));
-                        break;
-                }
-            } else {
-                model.addAttribute("code", (String) jsonObject.get("code"));
-                model.addAttribute("message", (String) jsonObject.get("message"));
-            }
+            redirectAttributes.addFlashAttribute("message", "결제가 성공적으로 완료되었습니다.");
+            redirectAttributes.addFlashAttribute("messageType", "success");
+        } else {
+            redirectAttributes.addFlashAttribute("message", "결제에 실패했습니다.");
+            redirectAttributes.addFlashAttribute("messageType", "error");
         }
 
-        return isSuccess ? "order/success" : "order/fail";
+        return "redirect:/order/checkout";
     }
+
 
     private void createOrder(Member member, String orderId, int totalPrice, int shippingFee) {
         List<CartItem> cartItems = cartService.getList(member);

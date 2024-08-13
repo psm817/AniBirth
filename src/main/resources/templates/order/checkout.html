@@ -6,11 +6,14 @@
 <body>
 <section layout:fragment="content" class="flex justify-center items-center mt-8">
     <div class="checkout-container">
+        <div th:if="${message}" class="alert" th:classappend="${messageType == 'success'} ? 'alert-success' : 'alert-error'">
+            <span th:text="${message}"></span>
+        </div>
         <div class="checkout-card checkout-cart">
             <label class="checkout-title">주문</label>
             <div class="checkout-steps">
                 <div class="checkout-step">
-                    <div>
+                    <div class="check-out">
                         <span>주문/결제</span>
                         <table class="checkout-table checkout-table-hover">
                             <thead>
@@ -30,7 +33,7 @@
                         </table>
                     </div>
                     <hr>
-                    <div>
+                    <div class="checkout_detail">
                         <span>배송지 정보</span>
                         <form id="checkout-form" action="/order/confirm" method="post">
                             <input type="hidden" name="orderId" th:value="${orderId}">
@@ -61,6 +64,9 @@
                             <div class="checkout-footer">
                                 <span>합계:</span>
                                 <span th:text="${#numbers.formatInteger(totalWithShipping, 3, 'COMMA') + '원'}"></span>
+
+                            </div>
+                            <div class="ch-footer">
                                 <button type="submit" class="btn btn-primary checkout-checkout-btn">포인트로 결제하기</button>
                             </div>
                         </form>
@@ -69,6 +75,16 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    var alertBox = document.querySelector('.alert');
+    if (alertBox) {
+        setTimeout(function() {
+            alertBox.style.display = 'none';
+        }, 5000); // 5초 후에 알림 메시지를 숨깁니다.
+    }
+});
+    </script>
 </section>
 </body>
 </html>
