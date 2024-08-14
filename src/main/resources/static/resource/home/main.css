@@ -37,7 +37,7 @@ html > body .swiper-slide {
 .main-box {
     border: 1px solid red;
     width: 100%;
-    height: 2300px;
+    height: 2200px;
     margin-top: 50px;
     display: flex;
     flex-direction: column;
@@ -102,7 +102,6 @@ html > body .swiper-slide {
     position: relative;
     width: 100%;
     height: 100%;
-    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100% );
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -111,8 +110,9 @@ html > body .swiper-slide {
     transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
-.main-box > .volunteer-summary-box > ul > li > .card svg {
-    width: 48px;
+.main-box > .volunteer-summary-box > ul > li > .card img {
+    width: 100%;
+    height: 100%;
     fill: #333;
     transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
 }
@@ -131,7 +131,7 @@ html > body .swiper-slide {
     height: 100%;
     padding: 20px;
     box-sizing: border-box;
-    background-color: #fff;
+    background-color: #faf4f0;
     opacity: 0;
     transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
 }
@@ -146,18 +146,127 @@ html > body .swiper-slide {
     font-size: 24px;
     color: #333;
     font-weight: 700;
+    overflow: hidden;
+    white-space: nowrap; /* 텍스트를 한 줄로 유지 */
+    text-overflow: ellipsis; /* 글이 길어지면 ... 처리 */
 }
 
 .main-box > .volunteer-summary-box > ul > li > .card > .card__content > .card__description {
-    margin: 10px 0 0;
+    margin: 15px 0px 0px 20px;
     font-size: 14px;
     color: #777;
     line-height: 1.4;
+    text-align: left;
 }
 
-.main-box > .volunteer-summary-box > ul > li > .card:hover svg {
+.main-box > .volunteer-summary-box > ul > li > .card > .card__content > .card__description:nth-child(4) {
+    margin-bottom: 35px;
+}
+
+.main-box > .volunteer-summary-box > ul > li > .card > .card__content > a {
+    font-weight: 700;
+}
+
+.main-box > .volunteer-summary-box > ul > li > .card:hover img {
     scale: 0;
     transform: rotate(-45deg);
+}
+
+/* 동물 공고 카드 */
+.main-box > .adopt-summary-box {
+    height: 300px;
+    width: 100%;
+}
+
+.main-box > .adopt-summary-box > ul {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-box > .adopt-summary-box > ul > li {
+    width: 23%;
+    height: 100%;
+}
+
+.main-box > .adopt-summary-box > ul > li > .card {
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+}
+
+.main-box > .adopt-summary-box > ul > li > .card > .card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.999s;
+}
+
+.main-box > .adopt-summary-box > ul > li > .card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.main-box > .adopt-summary-box > ul > li > .card > .card-inner > .card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.main-box > .adopt-summary-box > ul > li > .card > .card-inner > .card-front {
+    background-color: #6A2C70;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    justify-content: center;
+    font-size: 24px;
+    transform: rotateY(0deg);
+}
+
+.main-box > .adopt-summary-box > ul > li > .card > .card-inner > .card-front > img {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+}
+
+.main-box > .adopt-summary-box > ul > li > .card > .card-inner > .card-back {
+    background-color: #F08A5D;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    border: 5px solid #F08A5D;
+    border-radius: 10px;
+    justify-content: center;
+    font-size: 16px;
+    transform: rotateY(180deg);
+}
+
+.main-box > .adopt-summary-box > ul > li > .card > .card-inner > .card-back > p {
+    color: #fff;
+}
+
+.main-box > .adopt-summary-box > ul > li > .card > .card-inner > .card-back > .text {
+    padding-left: 20px;
+}
+
+.main-box > .adopt-summary-box > ul > li > .card > .card-inner > .card-back > p:nth-child(1) {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+}
+
+.main-box > .adopt-summary-box > ul > li > .card > .card-inner > .card-back > a {
+    font-weight: 700;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
 }
 
 /* 공지사항 및 후기 요약 */
@@ -250,10 +359,16 @@ html > body .swiper-slide {
     overflow: hidden;
     white-space: nowrap; /* 텍스트를 한 줄로 유지 */
     text-overflow: ellipsis; /* 글이 길어지면 ... 처리 */
+    width: 78%;
 }
 
 .main-box > .review-summary-box > .content > .content-box > ul > li > a > span {
     font-size: 16px;
+    width: 18%;
+}
+
+.main-box > .review-summary-box > .content > .content-box > ul > li > span:nth-child(2) {
+    width: 80px;
 }
 
 .main-box > .review-summary-box > .content > .total-btn {

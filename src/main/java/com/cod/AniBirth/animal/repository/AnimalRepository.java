@@ -1,5 +1,6 @@
 package com.cod.AniBirth.animal.repository;
 
+import com.cod.AniBirth.adopt.entity.Adopt;
 import com.cod.AniBirth.animal.AnimalSearchDTO;
 import com.cod.AniBirth.animal.entity.Animal;
 import org.springframework.data.domain.Page;
@@ -28,6 +29,8 @@ public interface AnimalRepository extends JpaRepository<Animal, Long>, JpaSpecif
 
     Page<Animal> findAllByCategory_Id(Long classificationId, Pageable pageable);
     Page<Animal> findAll(Specification<Animal> spec, Pageable pageable);
+
+    List<Animal> findTop4ByOrderByCreateDateDesc();
 
 //    @Query("SELECT a FROM Animal a WHERE "
 //            + "(:keyword IS NULL OR a.name LIKE %:keyword%) AND "

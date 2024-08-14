@@ -1,6 +1,7 @@
 package com.cod.AniBirth.animal.service;
 
 import com.cod.AniBirth.ApiResponse;
+import com.cod.AniBirth.adopt.entity.Adopt;
 import com.cod.AniBirth.animal.AnimalSearchDTO;
 import com.cod.AniBirth.animal.AnimalSpecification;
 import com.cod.AniBirth.animal.entity.Animal;
@@ -179,6 +180,10 @@ public class AnimalService {
         } else {
             throw new DataNotFoundException("animal not found");
         }
+    }
+
+    public List<Animal> getRecentAdoptes() {
+        return animalRepository.findTop4ByOrderByCreateDateDesc();
     }
 
 //    public Page<Animal> getListByCategory(int page, String kw, Long categoryId) {

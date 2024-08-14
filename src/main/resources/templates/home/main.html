@@ -37,10 +37,13 @@
                 <ul class="card-section">
                     <li th:each="volunteer, loop : ${volunteerList}">
                         <div class="card">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"></path></svg>
+                            <img th:src="@{|/gen/${volunteer.thumbnailImg}|}" alt="봉사이미지">
                             <div class="card__content">
-                                <p class="card__title" th:text="${volunteer.title}">
-                                </p><p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                                <p class="card__title" th:text="${volunteer.title}"></p>
+                                <p class="card__description" th:utext="'<strong>주최 보호소</strong> : ' + ${volunteer.member.nickname}"></p>
+                                <p class="card__description" th:utext="'<strong>장소</strong> : ' + ${volunteer.location}"></p>
+                                <p class="card__description" th:utext="'<strong>신청 마감 예정일</strong> : ' + ${volunteer.deadLineDate}"></p>
+                                <a th:href="@{|/volunteer/detail/${volunteer.id}|}">신청하기</a>
                             </div>
                         </div>
                     </li>
@@ -56,6 +59,26 @@
                         <a th:href="@{/adopt/list}">전체보기<i class="fa-solid fa-plus ml-[5px]"></i></a>
                     </div>
                 </div>
+                <ul class="card-section">
+                    <li th:each="animal, loop : ${animalList}">
+                        <div class="card">
+                            <div class="card-inner">
+                                <div class="card-front">
+                                    <img th:src="@{|http://www.daejeon.go.kr/${animal.filePath}|}" alt="이미지가 존재하지 않습니다.">
+                                </div>
+                                <div class="card-back">
+                                    <p>🐶소개합니다🐶</p>
+                                    <p class="text" th:utext="'<strong>분류</strong> : ' + ${animal.classification}"></p>
+                                    <p class="text" th:utext="'<strong>품종</strong> : ' + ${animal.species}"></p>
+                                    <p class="text" th:utext="'<strong>성별</strong> : ' + ${animal.gender}"></p>
+                                    <p class="text" th:utext="'<strong>나이</strong> : ' + ${animal.age}"></p>
+                                    <p class="text" th:utext="'<strong>몸무게</strong> : ' + ${animal.weight}"></p>
+                                    <a th:href="@{|/adopt/detail/${animal.id}|}">입양하기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
             <div class="summary product-summary-box">
                 <div class="top-box">
