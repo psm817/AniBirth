@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface VolunteerRepository extends JpaRepository<Volunteer, Long> {
     List<Volunteer> findByMember(Member member);
+
+    List<Volunteer> findTop4ByOrderByCreateDateDesc();
 }

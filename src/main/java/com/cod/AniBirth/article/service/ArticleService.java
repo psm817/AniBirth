@@ -71,4 +71,8 @@ public class ArticleService {
         // Article 삭제
         articleRepository.deleteById(id);
     }
+
+    public List<Article> getRecentArticles() {
+        return articleRepository.findTop4ByOrderByCreateDateDesc();
+    }
 }

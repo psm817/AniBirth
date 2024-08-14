@@ -39,16 +39,14 @@ html > body .donation-banner {
 }
 .text-overlay {
     position: absolute;
-    top: 15%;
+    top: 30%;
     left: 180px;
     width: 900px;
-    height: 360px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: left;
-    margin-top: 100px;
-    padding: 30px;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }

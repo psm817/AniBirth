@@ -138,6 +138,10 @@
 
 .summary-box > .volunteer-section > .totalList-box > .volunteer-notice-list > li > a:nth-child(2) {
     font-size: 16px;
+    overflow: hidden;
+    white-space: nowrap; /* 텍스트를 한 줄로 유지 */
+    text-overflow: ellipsis; /* 글이 길어지면 ... 처리 */
+    width: 100%;
 }
 
 .summary-box > .volunteer-section > .totalList-box > .volunteer-notice-list > li > a:nth-child(3) {
@@ -229,6 +233,10 @@
 
     .summary-box > .volunteer-section > .totalList-box {
         margin-top: 5px;
+    }
+
+    .summary-box > .volunteer-section > .totalList-box > .volunteer-notice-list > li {
+        align-items: center;
     }
 
     .summary-box > .calendar-section > #calendar {

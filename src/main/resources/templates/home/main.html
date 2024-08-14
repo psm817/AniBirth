@@ -31,9 +31,23 @@
                         <span>보람찬 추억을 만들어보아요!</span>
                     </div>
                     <div class="total-btn">
-                        <a th:href="@{/volunteer/list}"><i class="fa-solid fa-plus mr-[5px]"></i>전체보기</a>
+                        <a th:href="@{/volunteer/list}">전체보기<i class="fa-solid fa-plus ml-[5px]"></i></a>
                     </div>
                 </div>
+                <ul class="card-section">
+                    <li th:each="volunteer, loop : ${volunteerList}">
+                        <div class="card">
+                            <img th:src="@{|/gen/${volunteer.thumbnailImg}|}" alt="봉사이미지">
+                            <div class="card__content">
+                                <p class="card__title" th:text="${volunteer.title}"></p>
+                                <p class="card__description" th:utext="'<strong>주최 보호소</strong> : ' + ${volunteer.member.nickname}"></p>
+                                <p class="card__description" th:utext="'<strong>장소</strong> : ' + ${volunteer.location}"></p>
+                                <p class="card__description" th:utext="'<strong>신청 마감 예정일</strong> : ' + ${volunteer.deadLineDate}"></p>
+                                <a th:href="@{|/volunteer/detail/${volunteer.id}|}">신청하기</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
             <div class="summary adopt-summary-box">
                 <div class="top-box">
@@ -42,9 +56,135 @@
                         <span>가족이 되어주세요!</span>
                     </div>
                     <div class="total-btn">
-                        <a th:href="@{/adopt/list}"><i class="fa-solid fa-plus mr-[5px]"></i>전체보기</a>
+                        <a th:href="@{/adopt/list}">전체보기<i class="fa-solid fa-plus ml-[5px]"></i></a>
                     </div>
                 </div>
+                <ul class="card-section">
+                    <li th:each="animal, loop : ${animalList}">
+                        <div class="card">
+                            <div class="card-inner">
+                                <div class="card-front">
+                                    <img th:src="@{|http://www.daejeon.go.kr/${animal.filePath}|}" alt="이미지가 존재하지 않습니다.">
+                                </div>
+                                <div class="card-back">
+                                    <p>🐶소개합니다🐶</p>
+                                    <p class="text" th:utext="'<strong>분류</strong> : ' + ${animal.classification}"></p>
+                                    <p class="text" th:utext="'<strong>품종</strong> : ' + ${animal.species}"></p>
+                                    <p class="text" th:utext="'<strong>성별</strong> : ' + ${animal.gender}"></p>
+                                    <p class="text" th:utext="'<strong>나이</strong> : ' + ${animal.age}"></p>
+                                    <p class="text" th:utext="'<strong>몸무게</strong> : ' + ${animal.weight}"></p>
+                                    <a th:href="@{|/adopt/detail/${animal.id}|}">입양하기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="summary product-summary-box">
+                <div class="top-box">
+                    <div class="title-box">
+                        <h1>애니마켓 베스트셀러</h1>
+                    </div>
+                    <div class="total-btn">
+                        <a th:href="@{/product/list}">전체보기<i class="fa-solid fa-plus ml-[5px]"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="summary review-summary-box">
+                <div class="content article-box">
+                    <div class="title-box">
+                        <span><i class="fa-solid fa-newspaper mr-[10px]"></i>공지사항</span>
+                    </div>
+                    <div class="content-box">
+                        <ul>
+                            <li th:each="article, loop : ${articleList}">
+                                <a th:href="@{|/article/${article.id}|}">
+                                    <span th:text="${article.title}"></span>
+                                </a>
+                                <span th:text="${#temporals.format(article.createDate, 'yyyy-MM-dd')}"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="total-btn">
+                        <a th:href="@{/product/list}">더보기<i class="fa-solid fa-plus ml-[5px]"></i></a>
+                    </div>
+                </div>
+                <div class="content volunteer-review-box">
+                    <div class="title-box">
+                        <span><i class="fa-solid fa-handshake-angle mr-[10px]"></i>봉사후기</span>
+                    </div>
+                    <div class="content-box">
+                        <ul>
+                            <li th:each="volunteerReview, loop : ${volunteerReviewList}">
+                                <a th:href="@{|/volunteer/review/detail/${volunteerReview.id}|}">
+                                    <span th:text="${volunteerReview.title}"></span>
+                                </a>
+                                <span th:text="${#temporals.format(volunteerReview.createDate, 'yyyy-MM-dd')}"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="total-btn">
+                        <a th:href="@{/volunteer/review}">더보기<i class="fa-solid fa-plus ml-[5px]"></i></a>
+                    </div>
+                </div>
+                <div class="content adopt-review-box">
+                    <div class="title-box">
+                        <span><i class="fa-solid fa-hands-asl-interpreting mr-[10px]"></i>입양후기</span>
+                    </div>
+                    <div class="content-box">
+                        <ul>
+                            <li th:each="adoptReview, loop : ${adoptReviewList}">
+                                <a th:href="@{|/adopt/review/detail/${adoptReview.id}|}">
+                                    <span th:text="${adoptReview.title}"></span>
+                                </a>
+                                <span th:text="${#temporals.format(adoptReview.createDate, 'yyyy-MM-dd')}"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="total-btn">
+                        <a th:href="@{/adopt/review}">더보기<i class="fa-solid fa-plus ml-[5px]"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="summary btn-summary-box">
+                <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-[25px]">
+                    <li class="transition duration-300 rounded-lg hover:rounded-lg hover:-translate-y-1.5 hover:transition hover:duration-300 hover:shadow-md">
+                        <div class="img-box">
+                            <div class="text">
+                                <h3>봉사신청하기</h3>
+                                <p>유기동물을 위한 봉사활동 지금 실천하세요.</p>
+                                <a th:href="@{/volunteer/list}"></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="transition duration-300 rounded-lg hover:rounded-lg hover:-translate-y-1.5 hover:transition hover:duration-300 hover:shadow-md">
+                        <div class="img-box">
+                            <div class="text">
+                                <h3>입양하기</h3>
+                                <p>유기동물의 소중한 가족이 되어주세요.</p>
+                                <a th:href="@{/adopt/list}"></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="transition duration-300 rounded-lg hover:rounded-lg hover:-translate-y-1.5 hover:transition hover:duration-300 hover:shadow-md">
+                        <div class="img-box">
+                            <div class="text">
+                                <h3>후원하기</h3>
+                                <p>더 나은 유기동물의 환경을 위해 여러분의 후원이 절실합니다.</p>
+                                <a th:href="@{/donation/donate}"></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="transition duration-300 rounded-lg hover:rounded-lg hover:-translate-y-1.5 hover:transition hover:duration-300 hover:shadow-md">
+                        <div class="img-box">
+                            <div class="text">
+                                <h3>마켓가기</h3>
+                                <p>반려동물에게 어울리는 상품을 골라보세요.</p>
+                                <a th:href="@{/product/main}"></a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>

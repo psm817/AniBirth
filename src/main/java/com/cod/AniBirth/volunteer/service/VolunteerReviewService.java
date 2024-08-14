@@ -129,4 +129,8 @@ public class VolunteerReviewService {
     public VolunteerReview getNextVR(Long id) {
         return volunteerReviewRepository.findFirstByIdGreaterThanOrderByIdAsc(id);
     }
+
+    public List<VolunteerReview> getRecentVolunteerReviews() {
+        return volunteerReviewRepository.findTop4ByOrderByCreateDateDesc();
+    }
 }
