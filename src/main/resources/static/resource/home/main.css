@@ -159,8 +159,12 @@ html > body .swiper-slide {
     text-align: left;
 }
 
+.main-box > .volunteer-summary-box > ul > li > .card > .card__content > .card__description:nth-child(2) {
+    margin-top: 25px;
+}
+
 .main-box > .volunteer-summary-box > ul > li > .card > .card__content > .card__description:nth-child(4) {
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
 
 .main-box > .volunteer-summary-box > ul > li > .card > .card__content > a {
