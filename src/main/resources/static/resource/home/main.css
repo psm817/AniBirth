@@ -629,4 +629,207 @@ html > body .swiper-slide {
       width: 100%;
       height: 100%;
     }
+
+    .main-box {
+        height: 6400px;
+        margin-top: 30px;
+    }
+
+    /* 봉사활동 현황 */
+    .main-box > .volunteer-summary-box {
+        width: 100%;
+        height: 1300px;
+        margin-bottom: 50px;
+    }
+
+    .main-box > .volunteer-summary-box > .top-box {
+        display: flex;
+        flex-direction: column;
+        height: 60px;
+    }
+
+    .main-box > .volunteer-summary-box > .top-box > .title-box {
+        height: 50px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .main-box > .volunteer-summary-box > .top-box > .title-box > h1 {
+        font-size: 20px;
+    }
+
+    .main-box > .volunteer-summary-box > .top-box > .title-box > span {
+        font-size: 14px;
+    }
+
+    .main-box > .volunteer-summary-box > .top-box > .total-btn {
+        display: flex;
+        justify-content: end;
+        width: 100%;
+    }
+
+    .main-box > .volunteer-summary-box > .card-section {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 1160px;
+    }
+
+    .main-box > .volunteer-summary-box > .card-section > li {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .main-box > .volunteer-summary-box > .card-section > li > .card {
+        width: 100%;
+    }
+
+    .main-box > .volunteer-summary-box > .card-section > li > .card > img {
+        width: 100%;
+    }
+
+    /* 유기동물 공고 */
+    .main-box > .adopt-summary-box {
+        width: 100%;
+        height: 1300px;
+        margin-bottom: 50px;
+    }
+
+    .main-box > .adopt-summary-box > .top-box {
+        display: flex;
+        flex-direction: column;
+        height: 60px;
+    }
+
+    .main-box > .adopt-summary-box > .top-box > .title-box {
+        height: 50px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .main-box > .adopt-summary-box > .top-box > .title-box > h1 {
+        font-size: 20px;
+    }
+
+    .main-box > .adopt-summary-box > .top-box > .title-box > span {
+        font-size: 14px;
+    }
+
+    .main-box > .adopt-summary-box > .top-box > .total-btn {
+        display: flex;
+        justify-content: end;
+        width: 100%;
+    }
+
+    .main-box > .adopt-summary-box > .card-section {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 1160px;
+    }
+
+    .main-box > .adopt-summary-box > .card-section > li {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .main-box > .adopt-summary-box > .card-section > li > .card {
+        width: 100%;
+    }
+
+    .main-box > .adopt-summary-box > .card-section > li > .card > img {
+        width: 100%;
+    }
+
+    /*  인기상품 */
+    .main-box > .product-summary-box {
+        width: 100%;
+        height: 1750px;
+        margin-bottom: 50px;
+    }
+
+    .main-box > .product-summary-box > .top-box {
+        display: flex;
+        flex-direction: column;
+        height: 60px;
+    }
+
+    .main-box > .product-summary-box > .top-box > .title-box {
+        height: 50px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .main-box > .product-summary-box > .top-box > .title-box > h1 {
+        font-size: 20px;
+    }
+
+    .main-box > .product-summary-box > .top-box > .title-box > span {
+        font-size: 14px;
+    }
+
+    .main-box > .product-summary-box > .top-box > .total-btn {
+        display: flex;
+        justify-content: end;
+        width: 100%;
+    }
+
+    .main-box > .product-summary-box > .card-section {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 1610px;
+    }
+
+    .main-box > .product-summary-box > .card-section > li {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .main-box > .product-summary-box > .card-section > li > .card {
+        width: 100%;
+    }
+
+    .main-box > .product-summary-box > .card-section > li > .card > img {
+        width: 100%;
+    }
+
+    .main-box > .product-summary-box > .card-section > li > .card > .card__content > span {
+        font-size: 16px;
+    }
+
+    .main-box > .product-summary-box > .card-section > li > .card > .card__content > p {
+        font-size: 14px;
+    }
+
+    /* 공지사항 및 후기 */
+    .main-box > .review-summary-box {
+        width: 100%;
+        height: 920px;
+        margin-bottom: 50px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-box > .review-summary-box > .content {
+        width: 100%;
+        height: 300px;
+    }
+
+    /* 바로가기 버튼 */
+    .main-box > .btn-summary-box {
+        width: 100%;
+        height: 920px;
+        margin-bottom: 50px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-box > .btn-summary-box > ul > li > .img-box > .text {
+        padding: 85px 0 0 50px;
+    }
+
+    .main-box > .btn-summary-box > ul > li > .img-box > .text > p {
+        display: none;
+    }
 }
