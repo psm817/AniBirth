@@ -2,9 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/layout}">
 <section layout:fragment="content" class="flex-1 flex justify-center items-center">
     <div class="container-box">
-        <div th:if="${message}" class="alert" th:classappend="${messageType == 'success'} ? 'alert-success' : 'alert-error'">
-            <span th:text="${message}"></span>
-        </div>
         <div class="donation">
             <div class="donation-wrapper">
                 <div class="donation-banner">

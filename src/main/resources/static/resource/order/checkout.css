@@ -80,7 +80,15 @@ hr {
   gap: 10px;
   padding: 0px;
 }
-
+.checkout-form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    justify-content: center;
+    text-align: center;
+}
 .checkout-input_field {
   width: auto;
   height: 36px;

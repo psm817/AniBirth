@@ -1,26 +1,28 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var modal = document.getElementById("donateModal");
-    var btn = document.getElementById("btnDonate");
-    var span = document.getElementsByClassName("close")[0];
+    // Donation Modal Logic
+    var donateModal = document.getElementById("donateModal");
+    var btnDonate = document.getElementById("btnDonate");
+    var closeDonateModal = document.getElementsByClassName("close")[0];
 
-    if (btn) {
-        btn.addEventListener('click', function() {
-            modal.style.display = "block";
+    if (btnDonate) {
+        btnDonate.addEventListener('click', function() {
+            donateModal.style.display = "block";
         });
     }
 
-    if (span) {
-        span.addEventListener('click', function() {
-            modal.style.display = "none";
+    if (closeDonateModal) {
+        closeDonateModal.addEventListener('click', function() {
+            donateModal.style.display = "none";
         });
     }
 
     window.addEventListener('click', function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+        if (event.target == donateModal) {
+            donateModal.style.display = "none";
         }
     });
 
+    // Donation Form Submission Logic
     const submitDonationBtn = document.getElementById('submitDonation');
     submitDonationBtn.addEventListener('click', function() {
         const recipient = document.getElementById('recipient').value;
@@ -56,12 +58,31 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('amountError').style.display = 'block';
         }
     });
-});
-document.addEventListener('DOMContentLoaded', function() {
-    var alertBox = document.querySelector('.alert');
-    if (alertBox) {
+
+    // Alert Modal Logic
+    var alertModal = document.getElementById("messageModal");
+    var closeAlertModal = document.querySelector("#messageModal .close");
+    var closeAlertBtn = document.querySelector("#messageModal .btn-close");
+
+    if (alertModal) {
+        alertModal.style.display = "block";
+
+        closeAlertModal.onclick = function() {
+            alertModal.style.display = "none";
+        };
+
+        closeAlertBtn.onclick = function() {
+            alertModal.style.display = "none";
+        };
+
+        window.onclick = function(event) {
+            if (event.target == alertModal) {
+                alertModal.style.display = "none";
+            }
+        };
+
         setTimeout(function() {
-            alertBox.style.display = 'none';
-        }, 5000); // 5초 후에 알림 메시지를 숨깁니다.
+            alertModal.style.display = "none";
+        }, 5000); // Automatically hide after 5 seconds
     }
 });

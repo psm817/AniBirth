@@ -360,25 +360,6 @@ html > body .do-container .donation-section .donation-bg-img > .center-backgroun
 .modal-body button:hover {
     background-color: #FF416C;
 }
-.alert {
-    padding: 15px;
-    margin: 20px 0;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    text-align: center;
-}
-
-.alert-success {
-    color: #4CAF50;
-    background-color: #DFF0D8;
-    border-color: #D6E9C6;
-}
-
-.alert-error {
-    color: #D8000C;
-    background-color: #FFD2D2;
-    border-color: #E0B4B4;
-}
 
 
 @media (max-width: 394px) {
