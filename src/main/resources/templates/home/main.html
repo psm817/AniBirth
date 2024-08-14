@@ -83,12 +83,30 @@
             <div class="summary product-summary-box">
                 <div class="top-box">
                     <div class="title-box">
-                        <h1>애니마켓 베스트셀러</h1>
+                        <h1>BEST 인기상품</h1>
+                        <span>반려동물에게 선물하세요!</span>
                     </div>
                     <div class="total-btn">
                         <a th:href="@{/product/list}">전체보기<i class="fa-solid fa-plus ml-[5px]"></i></a>
                     </div>
                 </div>
+                <ul class="card-section">
+                    <li th:each="product, loop : ${productList}">
+                        <div class="card">
+                            <div class="card__image">
+                                <img th:src="@{|/gen/${product.thumbnailImg}|}" alt="상품 이미지">
+                            </div>
+                            <div class="card__content">
+                                <span class="title" th:text="${product.title}"></span>
+                                <p th:if="${product.category} == 'food'" th:utext="'<strong>상품 종류</strong> : 식료품'"></p>
+                                <p th:if="${product.category} == 'accessory'" th:utext="'<strong>상품 종류</strong> : 액세서리'"></p>
+                                <p th:utext="'<strong>판매가</strong> : ' + ${#numbers.formatInteger(product.price, 3, 'COMMA') + '원'}"></p>
+                                <p th:utext="'<strong>판매처</strong> : ' + ${product.member.nickname}"></p>
+                                <a th:href="@{|/product/detail/${product.id}|}">구매하기</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
             <div class="summary review-summary-box">
                 <div class="content article-box">
