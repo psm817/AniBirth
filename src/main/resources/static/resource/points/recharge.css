@@ -118,12 +118,14 @@ h1, h2 {
     background-color: #FF416C;
     color: #fff;
 }
+
 .mb-3 {
     display: flex;
     justify-items: center;
     justify-content: center;
 }
-.form-control {
+
+.mb-3 > .form-control {
     width: 35%;
     padding: 10px;
     border: 1px solid #ddd;

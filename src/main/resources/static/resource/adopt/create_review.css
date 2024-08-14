@@ -69,9 +69,10 @@ html > body .review-container-box .container .review-data-input {
 
 .review-data-input > form > .input-box > span {
     font-size: 18px;
-    width: 150px; /* span의 고정 너비 */
+    width: 60px; /* span의 고정 너비 */
     text-align: left;
     margin-right: 10px;
+    /*line-height: 40px;  span 요소의 높이를 textarea 높이와 맞춤*/
 }
 
 .review-data-input > form > .input-box > input,
@@ -81,6 +82,10 @@ html > body .review-container-box .container .review-data-input {
     width: calc(100% - 160px); /* input 박스의 너비 계산 (전체 너비 - span 너비) */
     padding-left: 10px;
 }
+.review-data-input > form > .input-box > .toastui-editor-defaultUI {
+    width: 100%;
+}
+
 .review-data-input > form > .upload-file {
     display: flex;
     align-items: center;

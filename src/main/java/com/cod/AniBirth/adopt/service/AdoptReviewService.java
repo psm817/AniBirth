@@ -5,6 +5,7 @@ import com.cod.AniBirth.adopt.repository.AdoptReviewRepository;
 import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.global.security.DataNotFoundException;
 import com.cod.AniBirth.member.entity.Member;
+import com.cod.AniBirth.volunteer.entity.VolunteerReview;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -32,7 +33,6 @@ public class AdoptReviewService {
 
     public void create(String title, String content, MultipartFile images, Member member) {
 
-
         String thumbnailRelPath = "images/adoptreview/" + UUID.randomUUID().toString() + ".jpg";
         File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
 
@@ -46,7 +46,6 @@ public class AdoptReviewService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
 
 
         AdoptReview ar = AdoptReview.builder()
@@ -92,14 +91,24 @@ public class AdoptReviewService {
     public AdoptReview getreview(Long id) {
         Optional<AdoptReview> adoptReview = adoptReviewRepository.findById(id);
 
-        if( adoptReview.isPresent()) {
+        if (adoptReview.isPresent()) {
             return adoptReview.get();
         } else {
             throw new DataNotFoundException("adoptReview not found");
         }
     }
 
+
     public List<AdoptReview> getRecentAdoptReviews() {
         return adoptReviewRepository.findTop4ByOrderByCreateDateDesc();
     }
+
+    public AdoptReview getPreviousVR(Long id) {
+        return adoptReviewRepository.findFirstByIdLessThanOrderByIdDesc(id);
+    }
+
+    public AdoptReview getNextVR(Long id) {
+        return adoptReviewRepository.findFirstByIdGreaterThanOrderByIdAsc(id);
+    }
 }
+
