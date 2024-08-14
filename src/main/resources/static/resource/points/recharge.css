@@ -28,6 +28,8 @@
 }
 
 .recharge-content .heading {
+    display: flex;
+    justify-content: space-between;
     font-weight: 700;
     font-size: 24px;
 }
@@ -79,11 +81,11 @@
 .section-recharge-points {
     font-family: Arial, sans-serif;
     background: #f4f4f4;
-    padding: 50px 20px;
+    margin: 10px;
 }
 
 .recharge-container {
-    max-width: 50%;
+    max-width: 100%;
     margin: 0 auto;
     background: #fff;
     padding: 20px;
@@ -110,11 +112,12 @@ h1, h2 {
     transition: background 0.3s, color 0.3s;
 }
 
-.btn-group .btn:hover {
+.btn-group .btn:hover,
+.btn-group .btn:active,
+.btn-group .btn:focus {
     background-color: #FF416C;
     color: #fff;
 }
-
 .form-control {
     width: 40%;
     padding: 10px;

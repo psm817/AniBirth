@@ -5,6 +5,7 @@ package com.cod.AniBirth.order.controller;
 import com.cod.AniBirth.account.service.AccountService;
 import com.cod.AniBirth.cart.entity.CartItem;
 import com.cod.AniBirth.cart.service.CartService;
+import com.cod.AniBirth.global.message.Message;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
 import com.cod.AniBirth.order.entity.Order;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -71,14 +72,13 @@ public class OrderController {
     }
 
     @PostMapping("/confirm")
-    public String confirmPayment(
-            RedirectAttributes redirectAttributes,
-            Model model,
+    public ModelAndView confirmPayment(
             @RequestParam(value = "orderId") String orderId,
             @RequestParam(value = "amount") Integer amount,
             @RequestParam(value = "paymentMethod") String paymentMethod,
             @RequestParam(value = "paymentKey", required = false) String paymentKey) throws Exception {
 
+        ModelAndView mav = new ModelAndView();
         Member member = memberService.getCurrentMember();
         int shippingFee = 3000; // Set shipping fee
 
@@ -86,27 +86,26 @@ public class OrderController {
             boolean success = orderService.payWithPoints(member, amount);
             if (success) {
                 createOrder(member, orderId, amount, shippingFee); // Create order after successful payment
-                redirectAttributes.addFlashAttribute("message", "포인트로 결제가 완료되었습니다.");
-                redirectAttributes.addFlashAttribute("messageType", "success");
-                return "redirect:/order/checkout";
+                mav.addObject("data", new Message("포인트로 결제가 완료되었습니다.", "/order/checkout"));
             } else {
-                redirectAttributes.addFlashAttribute("message", "포인트가 부족합니다.");
-                redirectAttributes.addFlashAttribute("messageType", "error");
-                return "redirect:/order/checkout";
+                mav.addObject("data", new Message("포인트가 부족합니다.", "/order/checkout"));
             }
+            mav.setViewName("Message");
+            return mav;
         }
 
+        // TOSS payments API integration
         Base64.Encoder encoder = Base64.getEncoder();
         byte[] encodedBytes = encoder.encode(paymentSecretKey.getBytes(StandardCharsets.UTF_8));
         String authorization = "Basic " + new String(encodedBytes, StandardCharsets.UTF_8);
 
         URL url = new URL("https://api.tosspayments.com/v1/payments/" + paymentKey);
-
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestProperty("Authorization", authorization);
         connection.setRequestProperty("Content-Type", "application/json");
         connection.setRequestMethod("POST");
         connection.setDoOutput(true);
+
         JSONObject obj = new JSONObject();
         obj.put("orderId", orderId);
         obj.put("amount", amount);
@@ -116,27 +115,24 @@ public class OrderController {
 
         int code = connection.getResponseCode();
         boolean isSuccess = code == 200;
-        redirectAttributes.addFlashAttribute("isSuccess", isSuccess);
-
         InputStream responseStream = isSuccess ? connection.getInputStream() : connection.getErrorStream();
 
         Reader reader = new InputStreamReader(responseStream, StandardCharsets.UTF_8);
         JSONParser parser = new JSONParser();
         JSONObject jsonObject = (JSONObject) parser.parse(reader);
         responseStream.close();
-        redirectAttributes.addFlashAttribute("responseStr", jsonObject.toJSONString());
 
         if (isSuccess) {
             createOrder(member, orderId, amount, shippingFee); // Create order after successful payment
-            redirectAttributes.addFlashAttribute("message", "결제가 성공적으로 완료되었습니다.");
-            redirectAttributes.addFlashAttribute("messageType", "success");
+            mav.addObject("data", new Message("결제가 성공적으로 완료되었습니다.", "/order/checkout"));
         } else {
-            redirectAttributes.addFlashAttribute("message", "결제에 실패했습니다.");
-            redirectAttributes.addFlashAttribute("messageType", "error");
+            mav.addObject("data", new Message("결제에 실패했습니다.", "/order/checkout"));
         }
 
-        return "redirect:/order/checkout";
+        mav.setViewName("Message");
+        return mav;
     }
+
 
 
     private void createOrder(Member member, String orderId, int totalPrice, int shippingFee) {
