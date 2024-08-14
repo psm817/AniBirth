@@ -128,25 +128,24 @@
                 <div class="table-wrapper">
                     <table>
                         <thead>
-                            <tr>
-                                <th class="py-2 px-4 border-b">번호</th>
-                                <th class="py-2 px-4 border-b">제목</th>
-                                <th class="py-2 px-4 border-b">작성자</th>
-                                <th class="py-2 px-4 border-b">작성일</th>
-                                <th class="py-2 px-4 border-b>">조회수</th>
-                            </tr>
+                        <tr>
+                            <th class="py-2 px-4 border-b">번호</th>
+                            <th class="py-2 px-4 border-b">제목</th>
+                            <th class="py-2 px-4 border-b">작성자</th>
+                            <th class="py-2 px-4 border-b">작성일</th>
+                            <th class="py-2 px-4 border-b">조회수</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="qa, loop : ${paging.content}">
-                                <td class="py-2 px-4 border-b text-center" th:text="${paging.number * paging.size + loop.index + 1}"></td>
-                                <td class="py-2 px-4 border-b">
-                                    <a class="shortTitle" th:href="@{|/qa/${qa.id}|}" th:text="${qa.title}"></a>
-                                </td>
-                                <td class="py-2 px-4 border-b text-center" th:text="${qa.member.username}"></td>
-                                <td class="py-2 px-4 border-b text-center"
-                                    th:text="${#temporals.format(qa.createDate, 'yyyy-MM-dd')}"></td>
-                                <td class="py-2 px-4 border-b text-center" th:text="${qa.viewCount}"></td>
-                            </tr>
+                        <tr th:each="qa, loop : ${paging.content}">
+                            <td class="py-2 px-4 border-b" data-label="번호" th:text="${paging.number * paging.size + loop.index + 1}"></td>
+                            <td class="py-2 px-4 border-b" data-label="제목">
+                                <a class="shortTitle" th:href="@{|/qa/${qa.id}|}" th:text="${qa.title}"></a>
+                            </td>
+                            <td class="py-2 px-4 border-b" data-label="작성자" th:text="${qa.member.username}"></td>
+                            <td class="py-2 px-4 border-b" data-label="작성일" th:text="${#temporals.format(qa.createDate, 'yyyy-MM-dd')}"></td>
+                            <td class="py-2 px-4 border-b" data-label="조회수" th:text="${qa.viewCount}"></td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

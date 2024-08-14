@@ -3,17 +3,12 @@
 <body>
 <section layout:fragment="content" class="section-recharge-points">
     <div class="recharge-container mx-auto bg-white p-6 rounded-lg shadow-md">
-        <div th:if="${message}" class="alert" th:classappend="${messageType == 'success'} ? 'alert-success' : 'alert-error'">
-            <span th:text="${message}"></span>
-        </div>
-        <div class="recharge_a mt-5">
-            <h2 class="text-[1.25rem] font-bold">현재 잔액:  <span th:text="${#numbers.formatDecimal(account.aniPoint, 1, 'COMMA', 0, 'POINT')}+원"></span></h2>
-        </div>
         <h1 class="text-[2rem] font-bold flex justify-center pt-5 pb-5">포인트 충전</h1>
 
         <div class="mb-3 recharge-card">
             <div class="recharge-content ">
-                <span class="heading grid w-full">충전 금액</span>
+                <span class="heading grid w-full">충전 금액 <h2 class="text-[1.25rem] font-bold">현재 잔액:  <span th:text="${#numbers.formatDecimal(account.aniPoint, 1, 'COMMA', 0, 'POINT')}+원"></span></h2></span>
+
                 <div class="btn-group mt-4 text-sm sm:text-base md:text-lg lg:text-xl" role="group"
                      aria-label="충전 금액 선택">
                     <button type="button" class="btn btn-outline-primary btn-amount" data-amount="1000">1,000원</button>
@@ -30,8 +25,8 @@
 
         <form id="recharge-form" class="form">
             <div class=" mb-3">
-                <label for="amount" class="form-label"></label>
-                <input type="number" class="form-control" id="amount" name="amount" placeholder="직접 입력">
+                <label for="amount" class="form-label">직접 입력 </label>
+                <input type="number" class="form-control" id="amount" name="amount">
             </div>
             <button type="button" class="btn btn-primary btn-recharge"
                     style="background: #f88379">충전

@@ -1,6 +1,7 @@
 package com.cod.AniBirth.donation.controller;
 
 import com.cod.AniBirth.donation.service.DonationService;
+import com.cod.AniBirth.global.message.Message;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,15 +47,16 @@ public class DonationController {
     }
 
     @PostMapping("/submit")
-    public String donate(
+    public ModelAndView donate(
             @RequestParam("recipientId") Long recipientId,
-            @RequestParam(value = "amount", required = false) Long amount,
-            RedirectAttributes redirectAttributes) {
+            @RequestParam(value = "amount", required = false) Long amount) {
+
+        ModelAndView mav = new ModelAndView();
 
         if (amount == null || amount <= 0) {
-            redirectAttributes.addFlashAttribute("message", "금액을 입력하세요.");
-            redirectAttributes.addFlashAttribute("messageType", "error");
-            return "redirect:/donation/donate";
+            mav.addObject("data", new Message("금액을 입력하세요.", "/donation/donate"));
+            mav.setViewName("Message");
+            return mav;
         }
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -62,24 +64,21 @@ public class DonationController {
         Member recipient = memberService.getMemberById(recipientId);
 
         if (donor == null || recipient == null) {
-            redirectAttributes.addFlashAttribute("message", "후원자가 유효하지 않습니다.");
-            redirectAttributes.addFlashAttribute("messageType", "error");
-            return "redirect:/donation/donate";
+            mav.addObject("data", new Message("후원자가 유효하지 않습니다.", "/donation/donate"));
+            mav.setViewName("Message");
+            return mav;
         }
 
         boolean success = donationService.donatePoints(donor, recipient, amount);
 
         if (success) {
-            redirectAttributes.addFlashAttribute("message", "후원이 성공적으로 완료되었습니다.");
-            redirectAttributes.addFlashAttribute("messageType", "success");
+            mav.addObject("data", new Message("후원이 성공적으로 완료되었습니다.", "/donation/donate"));
         } else {
-            redirectAttributes.addFlashAttribute("message", "포인트가 부족합니다.");
-            redirectAttributes.addFlashAttribute("messageType", "error");
+            mav.addObject("data", new Message("포인트가 부족합니다.", "/donation/donate"));
         }
 
-        return "redirect:/donation/donate";
+        mav.setViewName("Message");
+        return mav;
     }
-
-
 
 }

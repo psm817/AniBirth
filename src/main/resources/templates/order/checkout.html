@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/layout}">
-<head>
-    <title>Checkout</title>
-</head>
-<body>
 <section layout:fragment="content" class="flex justify-center items-center mt-8">
     <div class="checkout-container">
-        <div th:if="${message}" class="alert" th:classappend="${messageType == 'success'} ? 'alert-success' : 'alert-error'">
-            <span th:text="${message}"></span>
-        </div>
         <div class="checkout-card checkout-cart">
             <label class="checkout-title">주문</label>
             <div class="checkout-steps">
@@ -41,16 +34,16 @@
                             <input type="hidden" name="paymentMethod" value="points" id="paymentMethod">
 
                             <div class="mb-3">
-                                <label for="recipientName" class="form-label">받는 사람</label>
-                                <input type="text" class="form-control" id="recipientName" name="recipientName" th:value="${nickname}" required>
+                                <label for="recipientName" class="checkout-form-label">받는 사람</label>
+                                <input type="text" class="checkout-form-control" id="recipientName" name="recipientName" th:value="${nickname}" required>
                             </div>
                             <div class="mb-3">
-                                <label for="address" class="form-label">주소</label>
-                                <input type="text" class="form-control" id="address" name="address" th:value="${address}" required>
+                                <label for="address" class="checkout-form-label">주소</label>
+                                <input type="text" class="checkout-form-control" id="address" name="address" th:value="${address}" required>
                             </div>
                             <div class="mb-3">
-                                <label for="phone" class="form-label">전화번호</label>
-                                <input type="text" class="form-control" id="phone" name="phone" th:value="${phone}" required>
+                                <label for="phone" class="checkout-form-label">전화번호</label>
+                                <input type="text" class="checkout-form-control" id="phone" name="phone" th:value="${phone}" required>
                             </div>
                             <div class="checkout-payments">
                                 <span>결제 가격</span>
@@ -86,5 +79,4 @@
 });
     </script>
 </section>
-</body>
 </html>
