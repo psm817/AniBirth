@@ -2,6 +2,7 @@ package com.cod.AniBirth.animal.service;
 
 import com.cod.AniBirth.ApiResponse;
 import com.cod.AniBirth.adopt.entity.Adopt;
+import com.cod.AniBirth.adopt.entity.AdoptApply;
 import com.cod.AniBirth.animal.AnimalSearchDTO;
 import com.cod.AniBirth.animal.AnimalSpecification;
 import com.cod.AniBirth.animal.entity.Animal;
@@ -19,8 +20,10 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -28,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.net.URL;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -36,7 +40,7 @@ public class AnimalService {
     private final CategoryRepository categoryRepository;
 
     @Value("${custom.genFileDirPath}")
-    private String imageDirectory;
+    private String genFileDirPath;
 
     public Page<Animal> getList(int page, String kw, AnimalSearchDTO searchDTO) {
         List<Sort.Order> sorts = new ArrayList<>();
@@ -184,6 +188,38 @@ public class AnimalService {
 
     public List<Animal> getRecentAdoptes() {
         return animalRepository.findTop4ByOrderByCreateDateDesc();
+    }
+
+    public void create(String age, String name, String classification, String hairColor, String memo, String gender, String regId, String rescueDate, String weight, MultipartFile thumbnail) {
+        String thumbnailRelPath = "images/adoptionnotice/" + UUID.randomUUID().toString() + ".jpg";
+        File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
+
+        File parentDir = thumbnailFile.getParentFile();
+        if (!parentDir.exists()) {
+            parentDir.mkdirs();
+        }
+
+        try {
+            thumbnail.transferTo(thumbnailFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        Animal animal = Animal.builder()
+                .name(name)
+                .age(age)
+                .classification(classification)
+                .hairColor(hairColor)
+                .memo(memo)
+                .gender(gender)
+                .regId(regId)
+                .rescueDate(rescueDate)
+                .weight(weight)
+                .filePath(thumbnailRelPath)
+                .build();
+
+        animalRepository.save(animal);
     }
 
 //    public Page<Animal> getListByCategory(int page, String kw, Long categoryId) {

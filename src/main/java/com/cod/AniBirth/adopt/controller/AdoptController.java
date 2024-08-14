@@ -2,6 +2,7 @@ package com.cod.AniBirth.adopt.controller;
 
 import com.cod.AniBirth.adopt.entity.AdoptReview;
 import com.cod.AniBirth.adopt.form.AdoptForm;
+import com.cod.AniBirth.adopt.form.AdoptionnoticeForm;
 import com.cod.AniBirth.adopt.form.CreateReviewForm;
 import com.cod.AniBirth.adopt.service.AdoptReviewService;
 import com.cod.AniBirth.adopt.service.AdoptService;
@@ -53,6 +54,20 @@ public class AdoptController {
         model.addAttribute("ages", categoryService.getAges());
 
         return "adopt/list";
+    }
+    @GetMapping("/create")
+    public String show_create(AdoptionnoticeForm adoptionnoticeForm) {
+        return "adopt/adoption_noticeForm";
+    }
+    @PostMapping("/create")
+    public String create(@Valid AdoptionnoticeForm adoptionnoticeForm,@RequestParam("thumbnail")MultipartFile thumbnail) {
+        animalService.create(adoptionnoticeForm.getAge(),adoptionnoticeForm.getName(),adoptionnoticeForm.getClassification(),
+                adoptionnoticeForm.getHairColor(),adoptionnoticeForm.getMemo(),adoptionnoticeForm.getGender(),adoptionnoticeForm.getRegId(),
+                adoptionnoticeForm.getRescueDate(),adoptionnoticeForm.getWeight(),adoptionnoticeForm.getThumbnail());
+
+
+        return "redirect:/adopt/list";
+
     }
 
     @GetMapping("/detail/{id}")
