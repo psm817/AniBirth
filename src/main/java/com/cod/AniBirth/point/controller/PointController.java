@@ -2,6 +2,7 @@ package com.cod.AniBirth.point.controller;
 
 import com.cod.AniBirth.account.entity.Account;
 import com.cod.AniBirth.account.service.AccountService;
+import com.cod.AniBirth.global.message.Message;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
 import com.cod.AniBirth.point.service.PointService;
@@ -12,7 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
 
@@ -23,7 +24,6 @@ public class PointController {
     private final PointService pointService;
     private final MemberService memberService;
     private final AccountService accountService;
-
 
     @GetMapping("/recharge")
     @PreAuthorize("isAuthenticated()")
@@ -36,32 +36,28 @@ public class PointController {
         return "points/recharge";
     }
 
-
     @GetMapping("/success")
     @PreAuthorize("isAuthenticated()")
-    public String rechargeSuccess(
+    public ModelAndView rechargeSuccess(
             @RequestParam("paymentKey") String paymentKey,
             @RequestParam("amount") int amount,
-            @RequestParam("orderId") String orderId,
-            RedirectAttributes redirectAttributes) {
+            @RequestParam("orderId") String orderId) {
         Member member = memberService.getCurrentMember();
         String transactionId = paymentKey + "-" + orderId; // Generate a unique transaction ID
         pointService.rechargePoints(member, amount, transactionId);
-        redirectAttributes.addFlashAttribute("message", "포인트 충전이 완료되었습니다.");
-        redirectAttributes.addFlashAttribute("messageType", "success");
-        return "redirect:/points/recharge";
+
+        ModelAndView mav = new ModelAndView("Message");
+        mav.addObject("data", new Message("포인트 충전이 완료되었습니다.", "/points/recharge"));
+        return mav;
     }
 
     @GetMapping("/fail")
     @PreAuthorize("isAuthenticated()")
-    public String rechargeFail(
+    public ModelAndView rechargeFail(
             @RequestParam("code") String code,
-            @RequestParam("message") String message,
-            RedirectAttributes redirectAttributes) {
-        redirectAttributes.addFlashAttribute("message", message);
-        redirectAttributes.addFlashAttribute("messageType", "error");
-        return "redirect:/points/recharge";
+            @RequestParam("message") String message) {
+        ModelAndView mav = new ModelAndView("Message");
+        mav.addObject("data", new Message("포인트 충전을 실패했습니다.", "/points/recharge"));
+        return mav;
     }
-
-
 }
