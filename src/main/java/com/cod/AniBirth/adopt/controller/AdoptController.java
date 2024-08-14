@@ -11,6 +11,7 @@ import com.cod.AniBirth.animal.service.AnimalService;
 import com.cod.AniBirth.category.service.CategoryService;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
+import com.cod.AniBirth.volunteer.entity.VolunteerReview;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -107,7 +108,13 @@ public class AdoptController {
     public String review_detail(@PathVariable("id") Long id, Model model) {
         AdoptReview adoptReview = adoptReviewService.getreview(id);
 
+        // 이전 다음 페이지
+        AdoptReview prevVR = adoptReviewService.getPreviousVR(id);
+        AdoptReview nextVR = adoptReviewService.getNextVR(id);
+
         model.addAttribute("adoptReview", adoptReview);
+        model.addAttribute("prevVR", prevVR != null ? prevVR.getId() : null);
+        model.addAttribute("nextVR", nextVR != null ? nextVR.getId() : null);
         return "adopt/review_detail";
     }
 

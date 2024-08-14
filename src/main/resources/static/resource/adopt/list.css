@@ -139,7 +139,7 @@ html > body .container > .category-box {
 .category-search-section {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 15px 108px;
     margin-top: 10px;
 
@@ -147,11 +147,25 @@ html > body .container > .category-box {
 
 .category-search-section > .input-group {
     margin-right: 40px;
+    /*display: flex;*/ /* flex 레이아웃 사용 */
+    /*flex-grow: 1;*/
 }
 
 .category-search-section > .search-group {
-    margin-right: 5px
+    /*margin-right: 5px*/
 }
+
+/*.category-search-section > .input-group > .form-control {
+   width: 100%; *//* input 필드가 input-group의 전체 너비를 사용 *//*
+   height: 38px;
+   box-sizing: border-box; *//* padding과 border를 너비에 포함 *//*
+   margin: 0; *//* 불필요한 마진 제거 *//*
+   text-align: left; *//* 텍스트 왼쪽 정렬 *//*
+   transform: translateX(-50%); *//* 왼쪽으로 50% 이동 *//*
+   position: relative; *//* transform 사용 시 position 설정 필요 *//*
+   left: 50%; *//* 왼쪽으로 이동한 만큼 오른쪽으로 50% 설정 *//*
+}*/
+
 .category-search-section > .search-group > .btn.btn-sm.btn-block.btn-primary {
     background-color: #004ba0;
     border-color: #004ba0;
