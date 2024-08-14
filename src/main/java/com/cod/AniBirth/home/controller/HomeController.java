@@ -8,6 +8,8 @@ import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.animal.service.AnimalService;
 import com.cod.AniBirth.article.entity.Article;
 import com.cod.AniBirth.article.service.ArticleService;
+import com.cod.AniBirth.product.entity.Product;
+import com.cod.AniBirth.product.service.ProductService;
 import com.cod.AniBirth.volunteer.entity.Volunteer;
 import com.cod.AniBirth.volunteer.entity.VolunteerReview;
 import com.cod.AniBirth.volunteer.service.VolunteerReviewService;
@@ -27,6 +29,7 @@ public class HomeController {
     private final AdoptReviewService adoptReviewService;
     private final VolunteerService volunteerService;
     private final AnimalService animalService;
+    private final ProductService productService;
 
     @GetMapping("/")
     public String root(Model model) {
@@ -35,12 +38,14 @@ public class HomeController {
         List<AdoptReview> adoptReviewList = adoptReviewService.getRecentAdoptReviews();
         List<Volunteer> volunteerList = volunteerService.getRecentVolunteers();
         List<Animal> animalList = animalService.getRecentAdoptes();
+        List<Product> productList = productService.getTopRatedProducts(4);
 
         model.addAttribute("articleList", articleList);
         model.addAttribute("volunteerReviewList", volunteerReviewList);
         model.addAttribute("adoptReviewList", adoptReviewList);
         model.addAttribute("volunteerList", volunteerList);
         model.addAttribute("animalList", animalList);
+        model.addAttribute("productList", productList);
 
         return "home/main";
     }
