@@ -375,6 +375,7 @@ html > body .swiper-slide {
 .main-box > .product-summary-box > ul > li > .card > .card__content > .title {
     font-weight: 800;
     font-size: 1.4em;
+    width: 100%;
     overflow: hidden;
     white-space: nowrap; /* 텍스트를 한 줄로 유지 */
     text-overflow: ellipsis; /* 글이 길어지면 ... 처리 */

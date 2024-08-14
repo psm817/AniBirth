@@ -110,12 +110,12 @@
             </ul>
         </div>
         <div class="card shadow-md">
-            <div class="prod-card-header">리뷰 등록</div>
+            <div class="prod-card-header">리뷰 작성</div>
             <div class="prod-card-body-middle">
                 <form id="reviewForm" sec:authorize="isAuthenticated()" th:action="@{|/review/create/${product.id}|}" method="POST">
                     <div class="mt-3">
                         <div class="mb-3">
-                            <label for="starRating" class="form-label">별점
+                            <label for="starRating" class="form-label">
                                 <div class="prod-rating">
                                     <input value="5" name="starRating" id="star5" type="radio">
                                     <label title="5 stars" for="star5"></label>
@@ -131,10 +131,10 @@
                             </label>
                         </div>
                         <div class="mb-3">
-                            <label for="content" class="form-label">내용</label>
+                            <label for="content" class="form-label"></label>
                             <textarea name="content" id="content" class="prod-form-control" rows="7" placeholder="리뷰 내용을 입력해주세요."></textarea>
                         </div>
-                        <input type="submit" value="등록하기" class="prod-btn-dark" onclick="return productReviewCreate();">
+                        <input type="submit" value="저장하기" class="prod-btn-dark" onclick="return productReviewCreate();">
                     </div>
                 </form>
                 <div sec:authorize="isAnonymous()">

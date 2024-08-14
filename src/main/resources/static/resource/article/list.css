@@ -1,6 +1,6 @@
 /* 전체 페이지 스타일 */
 .body {
-    font-family: Arial, sans-serif;
+    font-family: 'Pretendard-Regular';
     margin: 0;
     padding: 0;
     background-color: #f8f9fa;
@@ -19,11 +19,12 @@
   height: 380px;
 }
 
- article-wrapper > img {
+.article-wrapper > img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 25%;
 }
 
 .text-overlay-a {
@@ -133,6 +134,13 @@ td:nth-child(2) {
     width: 400px;
 }
 
+td:nth-child(2) > .shortTitle {
+    width: 450px;
+    overflow: hidden;
+    white-space: nowrap; /* 텍스트를 한 줄로 유지 */
+    text-overflow: ellipsis; /* 글이 길어지면 ... 처리 */
+}
+
 th {
     background-color: #f1f1f1;
 }
@@ -160,7 +168,7 @@ tr:hover {
     font-weight: bold;
     text-align: center;
     border-radius: 0.25rem;
-    background-color: #FF416C;
+    background-color: #f88379;
     color: #ffffff;
     text-decoration: none;
     cursor: pointer;
@@ -169,8 +177,7 @@ tr:hover {
 
 .button:hover {
     background-color: #f58ca3;
-      color: #ffffff;
-
+    color: #ffffff;
 }
 
 /* 관리 링크 스타일 */
@@ -186,7 +193,7 @@ tr:hover {
 
 /* 제목 말줄임표 */
 .shortTitle {
-    width:450px;
+    width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -219,7 +226,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
-    font-family: Arial, sans-serif;
+    font-family: 'Pretendard-Regular';
     font-size: 16px;
     margin-bottom: 1.5rem;
     background-color: #fff;
@@ -240,7 +247,7 @@ th {
 
 /* Link styles */
 td a {
-    color: #007bff;
+    color: #000;
     text-decoration: none;
 }
 
@@ -325,7 +332,7 @@ tr:hover {
 
     table td a {
         font-weight: bold;
-        color: #007bff;
+        color: #000;
     }
 }
 
