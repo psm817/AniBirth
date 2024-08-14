@@ -34,15 +34,15 @@
                             <input type="hidden" name="paymentMethod" value="points" id="paymentMethod">
 
                             <div class="mb-3">
-                                <label for="recipientName" class="form-label">받는 사람</label>
+                                <label for="recipientName" class="checkout-form-label">받는 사람</label>
                                 <input type="text" class="checkout-form-control" id="recipientName" name="recipientName" th:value="${nickname}" required>
                             </div>
                             <div class="mb-3">
-                                <label for="address" class="form-label">주소</label>
+                                <label for="address" class="checkout-form-label">주소</label>
                                 <input type="text" class="checkout-form-control" id="address" name="address" th:value="${address}" required>
                             </div>
                             <div class="mb-3">
-                                <label for="phone" class="form-label">전화번호</label>
+                                <label for="phone" class="checkout-form-label">전화번호</label>
                                 <input type="text" class="checkout-form-control" id="phone" name="phone" th:value="${phone}" required>
                             </div>
                             <div class="checkout-payments">

@@ -98,8 +98,8 @@ h1, h2 {
 }
 
 .form-label {
-    display: block;
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
     font-weight: bold;
 }
 
@@ -118,15 +118,20 @@ h1, h2 {
     background-color: #FF416C;
     color: #fff;
 }
+.mb-3 {
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+}
 .form-control {
-    width: 40%;
+    width: 35%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
+    margin-left: 5px;
     justify-content: center;
     text-align: center;
-    margin-left: 30%;
 }
 
 .btn-recharge {
