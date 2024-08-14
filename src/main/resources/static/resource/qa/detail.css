@@ -7,7 +7,8 @@
   padding: 1rem;
   display: flex;
   flex-direction: column; /* 수직 방향으로 정렬 */
-    position: relative;
+  position: relative;
+  overflow-wrap: anywhere;
 }
 
 /* 제목 스타일링 */
