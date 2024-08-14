@@ -67,6 +67,7 @@ html > body .do-container > .donation-section {
     justify-content: space-around;
     width: 70%;
     margin: auto;
+    margin-bottom: 50px;
 }
 
 html > body .do-container .donation-section > .donation-bg-img {
