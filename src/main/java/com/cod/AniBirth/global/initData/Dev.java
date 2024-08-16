@@ -22,6 +22,9 @@ import org.springframework.context.annotation.Profile;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 @Profile("dev")
@@ -59,17 +62,17 @@ public class Dev {
             accountService.createOrUpdate(member9, "123-1234-1234", 0L);
 
             // 봉사활동 샘플
-            Volunteer volunteer1 = volunteerService.create("유기견 목욕시키기", "봉사활동 내용1", "대전 유성구 금남구즉로 1234", "2024-07-14T09:50", "2024-07-14T17:50", "2024-07-10", "images/volunteer/volunteer_default.jpg", 20, member6, 0);
-            Volunteer volunteer2 = volunteerService.create("유기동물센터 환경미화 봉사활동", "봉사활동 내용2", "세종특별자치시 전동면 미륵당1길 117-16", "2024-07-16T10:00", "2024-07-17T10:00", "2024-07-13", "images/volunteer/volunteer_default.jpg", 20, member7, 0);
-            Volunteer volunteer3 = volunteerService.create("번식장 구조견 돌봄 봉사활동", "봉사활동 내용3", "충남 청양군 대치면 청산로 420", "2024-07-20T13:50", "2024-07-20T19:50", "2024-07-15", "images/volunteer/volunteer_default.jpg", 20, member7, 0);
-            Volunteer volunteer4 = volunteerService.create("유기동물 구조관련 세미나 및 환경 봉사활동", "봉사활동 내용4", "강원특별자치도 원주시 호저면 칠봉로 110-6", "2024-07-20T09:00", "2024-07-20T13:50", "2024-07-15", "images/volunteer/volunteer_default.jpg", 20, member9, 0);
-            Volunteer volunteer5 = volunteerService.create("동물물품 지원 봉사활동", "봉사활동 내용5", "충남 청양군 대치면 청산로 420", "2024-07-22T11:00", "2024-07-22T14:00", "2024-07-20", "images/volunteer/volunteer_default.jpg", 20, member9, 0);
-            Volunteer volunteer6 = volunteerService.create("사설보호소 지영이네 봉사활동", "봉사활동 내용6", "대전 유성구 금남구즉로 1234", "2024-08-01T13:00", "2024-08-01T19:00", "2024-07-30", "images/volunteer/volunteer_default.jpg", 20, member8, 0);
-            Volunteer volunteer7 = volunteerService.create("유기견 목욕시키기", "봉사활동 내용6", "강원특별자치도 원주시 호저면 칠봉로 110-6", "2024-08-05T08:50", "2024-08-06T09:50", "2024-08-02", "images/volunteer/volunteer_default.jpg", 20, member7, 0);
-            Volunteer volunteer8 = volunteerService.create("사설보호소 현철이네 봉사활동", "봉사활동 내용6", "충남 청양군 대치면 청산로 420", "2024-08-06T11:00", "2024-08-06T17:00", "2024-08-03", "images/volunteer/volunteer_default.jpg", 20, member6, 0);
-            Volunteer volunteer9 = volunteerService.create("번식장 구조견 돌봄 봉사활동", "봉사활동 내용6", "대전 유성구 금남구즉로 1234", "2024-08-10T09:00", "2024-08-10T17:50", "2024-08-05", "images/volunteer/volunteer_default.jpg", 20, member9, 0);
-            Volunteer volunteer10 = volunteerService.create("사설보호소 태우네 봉사활동", "봉사활동 내용6", "세종특별자치시 전동면 미륵당1길 117-16", "2024-08-15T07:50", "2024-08-15T14:50", "2024-08-10", "images/volunteer/volunteer_default.jpg", 20, member2, 0);
-            Volunteer volunteer11 = volunteerService.create("사설보호소 상민이네 봉사활동", "봉사활동 내용6", "강원특별자치도 원주시 호저면 칠봉로 110-6", "2024-08-16T16:00", "2024-08-17T15:50", "2024-08-12", "images/volunteer/volunteer_default.jpg", 20, member2, 0);
+            Volunteer volunteer1 = volunteerService.create("유기견 목욕시키기", "봉사활동 내용1", "대전 유성구 금남구즉로 1234", "2024-07-14T09:50", "2024-07-14T17:50", "2024-07-10", "images/volunteer/volunteer-1.png", 20, member6, 0);
+            Volunteer volunteer2 = volunteerService.create("유기동물센터 환경미화 봉사활동", "봉사활동 내용2", "세종특별자치시 전동면 미륵당1길 117-16", "2024-07-16T10:00", "2024-07-17T10:00", "2024-07-13", "images/volunteer/volunteer-2.png", 20, member7, 0);
+            Volunteer volunteer3 = volunteerService.create("번식장 구조견 돌봄 봉사활동", "봉사활동 내용3", "충남 청양군 대치면 청산로 420", "2024-07-20T13:50", "2024-07-20T19:50", "2024-07-15", "images/volunteer/volunteer-3.png", 20, member7, 0);
+            Volunteer volunteer4 = volunteerService.create("유기동물 구조관련 세미나 및 환경 봉사활동", "봉사활동 내용4", "강원특별자치도 원주시 호저면 칠봉로 110-6", "2024-07-20T09:00", "2024-07-20T13:50", "2024-07-15", "images/volunteer/volunteer-4.png", 20, member9, 0);
+            Volunteer volunteer5 = volunteerService.create("동물물품 지원 봉사활동", "봉사활동 내용5", "충남 청양군 대치면 청산로 420", "2024-07-22T11:00", "2024-07-22T14:00", "2024-07-20", "images/volunteer/volunteer-5.png", 20, member9, 0);
+            Volunteer volunteer6 = volunteerService.create("사설보호소 지영이네 봉사활동", "봉사활동 내용6", "대전 유성구 금남구즉로 1234", "2024-08-01T13:00", "2024-08-01T19:00", "2024-07-30", "images/volunteer/volunteer-6.png", 20, member8, 0);
+            Volunteer volunteer7 = volunteerService.create("유기견 목욕시키기", "봉사활동 내용6", "강원특별자치도 원주시 호저면 칠봉로 110-6", "2024-08-05T08:50", "2024-08-06T09:50", "2024-08-02", "images/volunteer/volunteer-7.png", 20, member7, 0);
+            Volunteer volunteer8 = volunteerService.create("사설보호소 현철이네 봉사활동", "봉사활동 내용6", "충남 청양군 대치면 청산로 420", "2024-08-06T11:00", "2024-08-06T17:00", "2024-08-03", "images/volunteer/volunteer-8.png", 20, member6, 0);
+            Volunteer volunteer9 = volunteerService.create("번식장 구조견 돌봄 봉사활동", "봉사활동 내용6", "대전 유성구 금남구즉로 1234", "2024-08-10T09:00", "2024-08-10T17:50", "2024-08-05", "images/volunteer/volunteer-9.png", 20, member9, 0);
+            Volunteer volunteer10 = volunteerService.create("사설보호소 태우네 봉사활동", "봉사활동 내용6", "세종특별자치시 전동면 미륵당1길 117-16", "2024-08-15T07:50", "2024-08-15T14:50", "2024-08-10", "images/volunteer/volunteer-10.png", 20, member2, 0);
+            Volunteer volunteer11 = volunteerService.create("사설보호소 상민이네 봉사활동", "봉사활동 내용6", "강원특별자치도 원주시 호저면 칠봉로 110-6", "2024-08-16T16:00", "2024-08-17T15:50", "2024-08-12", "images/volunteer/volunteer-11.png", 20, member2, 0);
 
             // 캘린더 샘플 만들기
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
@@ -111,35 +114,35 @@ public class Dev {
             calendarService.create(volunteer11.getTitle(), start11, end11, volunteer11);
 
             // 봉사후기 샘플
-            volunteerReviewService.create("제목1", "내용1", 0, member4, "images/volunteer/volunteer_default.jpg", null);
-            volunteerReviewService.create("제목2", "내용2", 0, member5, "images/volunteer/volunteer_default.jpg", null);
-            volunteerReviewService.create("제목3", "내용3", 0, member10, "images/volunteer/volunteer_default.jpg", null);
-            volunteerReviewService.create("제목4", "내용4", 0, member4, "images/volunteer/volunteer_default.jpg", null);
-            volunteerReviewService.create("제목5", "내용5", 0, member5, "images/volunteer/volunteer_default.jpg", null);
-            volunteerReviewService.create("제목6", "내용6", 0, member10, "images/volunteer/volunteer_default.jpg", null);
-            volunteerReviewService.create("제목6", "내용6", 0, member10, "images/volunteer/volunteer_default.jpg", null);
-            volunteerReviewService.create("제목6", "내용6", 0, member10, "images/volunteer/volunteer_default.jpg", null);
-            volunteerReviewService.create("제목6", "내용6", 0, member10, "images/volunteer/volunteer_default.jpg", null);
+            volunteerReviewService.create("따뜻한 마음의 온기, 유기동물과 함께한 하루", "내용1", 0, member4, "images/volunteer/volunteer-review-1.png", Arrays.asList("images/volunteer/volunteer-review-1.png"));
+            volunteerReviewService.create("작은 손길, 큰 사랑", "내용2", 0, member5, "images/volunteer/volunteer-review-2.png", Arrays.asList("images/volunteer/volunteer-review-2.png", "images/volunteer/volunteer-review-18.png"));
+            volunteerReviewService.create("새로운 친구들과 함께한 유기동물 봉사 이야기", "내용3", 0, member10, "images/volunteer/volunteer-review-3.png", Arrays.asList("images/volunteer/volunteer-review-3.png"));
+            volunteerReviewService.create("유기동물과의 만남, 그 따뜻한 순간들", "내용4", 0, member4, "images/volunteer/volunteer-review-4.png", Arrays.asList("images/volunteer/volunteer-review-4.png", "images/volunteer/volunteer-review-17.png"));
+            volunteerReviewService.create("유기동물에게 전한 작은 사랑, 큰 감동", "내용5", 0, member5, "images/volunteer/volunteer-review-5.png", Arrays.asList("images/volunteer/volunteer-review-5.png", "images/volunteer/volunteer-review-16.png"));
+            volunteerReviewService.create("사랑이 필요한 그들에게, 유기동물 봉사활동 체험기", "내용6", 0, member10, "images/volunteer/volunteer-review-6.png", Arrays.asList("images/volunteer/volunteer-review-6.png", "images/volunteer/volunteer-review-14.png", "images/volunteer/volunteer-review-15.png"));
+            volunteerReviewService.create("유기동물과 함께한 행복한 시간", "내용7", 0, member10, "images/volunteer/volunteer-review-7.png", Arrays.asList("images/volunteer/volunteer-review-7.png", "images/volunteer/volunteer-review-13.png"));
+            volunteerReviewService.create("작은 손길로 전하는 사랑, 유기동물 보호소에서의 경험", "내용8", 0, member10, "images/volunteer/volunteer-review-8.png", Arrays.asList("images/volunteer/volunteer-review-8.png", "images/volunteer/volunteer-review-12.png"));
+            volunteerReviewService.create("유기동물과의 따뜻한 동행", "내용9", 0, member10, "images/volunteer/volunteer-review-9.png", Arrays.asList("images/volunteer/volunteer-review-9.png", "images/volunteer/volunteer-review-10.png", "images/volunteer/volunteer-review-11.png"));
 
 
-            Product product1 = productService.create("타이틀1","1 설명입니다",10000, "food", member2, 3000);
-            Product product2 = productService.create("타이틀2","2 설명입니다",20000, "accessory", member2, 3000);
-            Product product3 = productService.create("타이틀3","3 설명입니다", 30000, "food", member2, 3000);
-            Product product4 = productService.create("타이틀4","4 설명입니다", 40000, "accessory", member2, 3000);
-            Product product5 = productService.create("타이틀5","5 설명입니다", 10000, "food", member2, 3000);
-            Product product6 = productService.create("타이틀6","6 설명입니다", 20000, "accessory", member2, 3000);
-            Product product7 = productService.create("타이틀7","7 설명입니다", 30000, "food", member2, 3000);
-            Product product8 = productService.create("타이틀8","8 설명입니다", 40000, "accessory", member2, 3000);
-            Product product9 = productService.create("타이틀9","9 설명입니다", 10000, "food", member2, 3000);
-            Product product10 = productService.create("타이틀10","10 설명입니다", 20000, "accessory", member2, 3000);
-            Product product11 = productService.create("타이틀11","11 설명입니다", 30000, "food", member2, 3000);
-            Product product12 = productService.create("타이틀12","12 설명입니다", 40000, "accessory", member2, 3000);
-            Product product13 = productService.create("타이틀13","13 설명입니다", 10000, "food",  member2, 3000);
-            Product product14 = productService.create("타이틀14","14 설명입니다", 20000, "accessory", member2, 3000);
-            Product product15 = productService.create("타이틀15","15 설명입니다", 30000, "food", member2, 3000);
-            Product product16 = productService.create("타이틀16","16 설명입니다", 40000, "accessory", member2, 3000);
-            Product product17 = productService.create("타이틀17","17 설명입니다", 30000, "food", member2, 3000);
-            Product product18 = productService.create("타이틀18","18 설명입니다", 40000, "accessory", member2, 3000);
+            Product product1 = productService.create("더리얼 필렛 참치 30g (고양이 전용 간식)","1 설명입니다",10000, "food", member2, 3000, "images/product/product-food-1.jpg");
+            Product product2 = productService.create("티파니앤코 캣 보울","2 설명입니다",255000, "accessory", member2, 3000, "images/product/product-accessory-1.jpg");
+            Product product3 = productService.create("더리얼 필렛 고등어 30g (고양이 전용 간식)","3 설명입니다", 10000, "food", member2, 3000, "images/product/product-food-2.jpg");
+            Product product4 = productService.create("티파니앤코 도그 리시","4 설명입니다", 610000, "accessory", member2, 3000, "images/product/product-accessory-2.jpg");
+            Product product5 = productService.create("더리얼 닭고기 손만둣국 180g","5 설명입니다", 15000, "food", member2, 3000, "images/product/product-food-3.jpg");
+            Product product6 = productService.create("티파니앤코 펫 칼라","6 설명입니다", 490000, "accessory", member2, 3000, "images/product/product-accessory-3.jpg");
+            Product product7 = productService.create("더리얼 레시피 골라담기","7 설명입니다", 30000, "food", member2, 3000, "images/product/product-food-4.jpg");
+            Product product8 = productService.create("반려동물 진주목걸이","8 설명입니다", 25000, "accessory", member2, 3000, "images/product/product-accessory-4.jpg");
+            Product product9 = productService.create("더리얼 퀴진 볼로네제 100g","9 설명입니다", 20000, "food", member2, 3000, "images/product/product-food-5.jpg");
+            Product product10 = productService.create("반려동물 유치원 케이프 리본","10 설명입니다", 22000, "accessory", member2, 3000, "images/product/product-accessory-5.jpg");
+            Product product11 = productService.create("더리얼 퀴진 소고기미역국 100g","11 설명입니다", 15000, "food", member2, 3000, "images/product/product-food-6.jpg");
+            Product product12 = productService.create("뼈다귀 파충류 소동물 은신처 액세서리","12 설명입니다", 6000, "accessory", member2, 3000, "images/product/product-accessory-6.jpg");
+            Product product13 = productService.create("밥이보약 CAT 하루양갱 토탈웰빙 56g","13 설명입니다", 20000, "food",  member2, 3000, "images/product/product-food-7.jpg");
+            Product product14 = productService.create("플라워시리즈 숏챙 캡모자","14 설명입니다", 13000, "accessory", member2, 3000, "images/product/product-accessory-7.jpg");
+            Product product15 = productService.create("더리얼 크리미 Cat 버라이어티 팩 250g (10g*25ea)","15 설명입니다", 30000, "food", member2, 3000, "images/product/product-food-8.jpg");
+            Product product16 = productService.create("고양이 반다나 목도리","16 설명입니다", 21000, "accessory", member2, 3000, "images/product/product-accessory-8.jpg");
+            Product product17 = productService.create("더리얼 필렛 4종(닭안심, 오리안심, 닭가슴살,연어)","17 설명입니다", 40000, "food", member2, 3000, "images/product/product-food-9.jpg");
+            Product product18 = productService.create("곰돌이 프릴 네임 자수 빕 케이프","18 설명입니다", 20500, "accessory", member2, 3000, "images/product/product-accessory-9.jpg");
 
             // 상품 리뷰
             reviewService.create(product1, member4, "좋은 품질의 상품이네요! 최고예요!!", 5);

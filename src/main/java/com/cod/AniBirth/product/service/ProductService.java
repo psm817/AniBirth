@@ -74,7 +74,7 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public Product create(String title, String description, int price, String category, Member member, int shippingFee) {
+    public Product create(String title, String description, int price, String category, Member member, int shippingFee, String thumbnailImg) {
         Product product = Product.builder()
                 .title(title)
                 .description(description)
@@ -82,7 +82,7 @@ public class ProductService {
                 .category(category)
                 .member(member)
                 .shippingFee(shippingFee)
-                .thumbnailImg("images/product/sample_product.jpg")
+                .thumbnailImg(thumbnailImg)
                 .hitCount(0)
                 .build();
         productRepository.save(product);
