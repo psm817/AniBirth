@@ -37,7 +37,7 @@
                     <tr th:each="article, loop : ${paging.content}">
                         <td class="py-2 px-4 border-b text-center" data-label="번호" th:text="${paging.number * paging.size + loop.index + 1}"></td>
                         <td class="py-2 px-4 border-b " data-label="제목">
-                            <a class="shortTitle" th:href="@{|/article/${article.id}|}" th:text="${article.title}"></a>
+                            <h1 class="shortTitle" th:href="@{|/article/${article.id}|}" th:text="${article.title}"></h1>
                         </td>
                         <td class="py-2 px-4 border-b text-center" data-label="작성일" th:text="${#temporals.format(article.createDate, 'yyyy-MM-dd')}"></td>
                         <td class="py-2 px-4 border-b text-center" data-label="조회수" th:text="${article.viewCount}"></td>

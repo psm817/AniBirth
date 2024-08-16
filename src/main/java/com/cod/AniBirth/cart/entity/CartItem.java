@@ -27,6 +27,6 @@ public class CartItem extends BaseEntity {
 
     private String thumbnailImg;
 
-    private Long quantity;
+    private int quantity;
 
 }
