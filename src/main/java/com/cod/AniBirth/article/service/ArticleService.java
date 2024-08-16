@@ -1,10 +1,7 @@
 package com.cod.AniBirth.article.service;
 
 import com.cod.AniBirth.article.entity.Article;
-import com.cod.AniBirth.article.entity.Qa;
 import com.cod.AniBirth.article.repository.ArticleRepository;
-import com.cod.AniBirth.member.entity.Member;
-import com.cod.AniBirth.volunteer.entity.Volunteer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -75,4 +72,7 @@ public class ArticleService {
     public List<Article> getRecentArticles() {
         return articleRepository.findTop4ByOrderByCreateDateDesc();
     }
+
+
+
 }

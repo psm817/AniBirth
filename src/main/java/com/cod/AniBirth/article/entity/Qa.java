@@ -22,6 +22,7 @@ import java.util.List;
 public class Qa extends BaseEntity {
 
     private String title;
+    @Column(length = 5000)
     private String content;
 
     private int viewCount; // 조회수 추가
