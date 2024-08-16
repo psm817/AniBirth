@@ -131,11 +131,11 @@ th:nth-child(2) {
 }
 
 td:nth-child(2) {
-    width: 400px;
+    width: 330px;
 }
 
 td:nth-child(2) > .shortTitle {
-    width: 450px;
+    width: 300px;
     overflow: hidden;
     white-space: nowrap; /* 텍스트를 한 줄로 유지 */
     text-overflow: ellipsis; /* 글이 길어지면 ... 처리 */
@@ -262,13 +262,13 @@ tr:hover {
 
 /* Responsive styling */
 @media (max-width: 600px) {
-    .shortTitle {
-        width: 100%;
+
+    td:nth-child(2) > .shortTitle {
+        width: 100px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        display: flex;
-        justify-content: center;
+        display: block;
     }
     /* Hide table headers */
     table thead {

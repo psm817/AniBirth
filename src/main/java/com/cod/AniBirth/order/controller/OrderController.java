@@ -85,8 +85,9 @@ public class OrderController {
         if ("points".equals(paymentMethod)) {
             boolean success = orderService.payWithPoints(member, amount);
             if (success) {
-                createOrder(member, orderId, amount, shippingFee); // Create order after successful payment
-                mav.addObject("data", new Message("포인트로 결제가 완료되었습니다.", "/order/checkout"));
+                createOrder(member, orderId, amount, shippingFee); // 결제 성공 후 주문 생성
+                mav.addObject("data", new Message("포인트로 결제가 완료되었습니다.", "/"));
+                mav.setViewName("Message"); // 성공 메시지를 보여주는 페이지로 설정
             } else {
                 mav.addObject("data", new Message("포인트가 부족합니다.", "/order/checkout"));
             }
@@ -145,7 +146,7 @@ public class OrderController {
                 .isCanceled(false)
                 .isRefunded(false)
                 .payDate(LocalDateTime.now())
-                .orderItemList(new ArrayList<>()) // orderItemList 초기화
+                .orderItemList(new ArrayList<>()) // Initialize the orderItemList
                 .build();
 
         List<OrderItem> orderItems = new ArrayList<>(); // List to hold OrderItems
@@ -158,13 +159,15 @@ public class OrderController {
                     .product(cartItem.getProduct())
                     .payDate(LocalDateTime.now())
                     .price(cartItem.getProduct().getPrice())
-                    .payPrice((int) (cartItem.getProduct().getPrice() * cartItem.getQuantity()))
+                    .quantity(cartItem.getQuantity()) // Set the quantity from CartItem
+                    .payPrice(cartItem.getProduct().getPrice() * cartItem.getQuantity()) // Calculate payPrice as price * quantity
                     .isPaid(true)
                     .build();
+
             orderItems.add(orderItem); // Add each OrderItem to the list
             order.getOrderItemList().add(orderItem); // Add to Order's list as well
 
-            // 상품 등록자에게 포인트 적립
+            // Credit points to the product owner
             Member productOwner = cartItem.getProduct().getMember();
             int pointsToCredit = (int) (cartItem.getProduct().getPrice() * cartItem.getQuantity() + ((double) shippingFee / cartItems.size()));
             accountService.addPoints(productOwner, pointsToCredit);
@@ -174,4 +177,5 @@ public class OrderController {
         orderService.saveOrder(order, orderItems); // Save order and orderItems
         cartService.clearCart(member); // Clear cart after order creation
     }
+
 }

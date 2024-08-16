@@ -14,9 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/cart")
@@ -60,7 +58,7 @@ public class CartController {
     @PostMapping("/update-quantity/{id}")
     public String updateQuantity(
             @PathVariable("id") Long id,
-            @RequestParam("quantity") Long quantity,
+            @RequestParam("quantity") int quantity,
             Authentication authentication
     ) {
         Member member = memberService.findByUsername(authentication.getName());

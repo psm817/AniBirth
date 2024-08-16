@@ -25,7 +25,7 @@ public class CartService {
                     .product(product)
                     .member(member)
                     .thumbnailImg(product.getThumbnailImg())
-                    .quantity(1L) // 초기 수량 설정
+                    .quantity(1) // 초기 수량 설정
                     .build();
 
             cartRepository.save(c);
@@ -45,7 +45,7 @@ public class CartService {
         return cartItems.stream().mapToInt(item -> (int) (item.getProduct().getPrice() * item.getQuantity())).sum();
     }
 
-    public void updateQuantity(Long id, Long quantity) {
+    public void updateQuantity(Long id, int quantity) {
         CartItem cartItem = cartRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid cart item id"));
         cartItem.setQuantity(quantity);
         cartRepository.save(cartItem);

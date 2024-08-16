@@ -47,7 +47,8 @@ public class PointController {
         pointService.rechargePoints(member, amount, transactionId);
 
         ModelAndView mav = new ModelAndView("Message");
-        mav.addObject("data", new Message("포인트 충전이 완료되었습니다.", "/points/recharge"));
+        mav.addObject("data", new Message("포인트 충전이 완료되었습니다.", "/"));
+        mav.setViewName("Message"); // 성공 메시지를 보여주는 페이지로 설정
         return mav;
     }
 
