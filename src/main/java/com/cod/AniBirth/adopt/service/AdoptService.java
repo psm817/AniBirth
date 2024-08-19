@@ -3,6 +3,8 @@ package com.cod.AniBirth.adopt.service;
 import com.cod.AniBirth.adopt.entity.AdoptApply;
 import com.cod.AniBirth.adopt.repository.AdoptApplyRepository;
 import com.cod.AniBirth.adopt.repository.AdoptRepository;
+import com.cod.AniBirth.animal.entity.Animal;
+import com.cod.AniBirth.member.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,7 +22,8 @@ public class AdoptService {
     @Value("${custom.genFileDirPath}")
     private String genFileDirPath;
 
-    public void apply(String name, String phone, String email, String age, String company, String sample6Postcode, String sample6Address, String sample6DetailAddress, String sample6ExtraAddress, boolean isGender, boolean isMarried, MultipartFile file) {
+    public void apply(String name, String phone, String email, String age, String company, String sample6Postcode, String sample6Address,
+                      String sample6DetailAddress, String sample6ExtraAddress, boolean isGender, boolean isMarried, MultipartFile file, Member member) {
         // boolean 값을 String 값으로 변환
         String gender = isGender ? "남자" : "여자";
         String marriedStatus = isMarried ? "기혼" : "미혼";
@@ -54,6 +57,7 @@ public class AdoptService {
                 .gender(gender)
                 .marriedStatus(marriedStatus)
                 .file(thumbnailRelPath)
+                .adoptee(member)
                 .build();
 
         adoptApplyRepository.save(adoptApply);

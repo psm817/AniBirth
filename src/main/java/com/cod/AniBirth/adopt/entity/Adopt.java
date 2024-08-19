@@ -1,6 +1,8 @@
 package com.cod.AniBirth.adopt.entity;
 
+import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.base.entity.BaseEntity;
+import com.cod.AniBirth.member.entity.Member;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,8 +29,5 @@ public class Adopt extends BaseEntity {
     /*@ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;*/
-
-    /*@ManyToOne
-    private User author;*/
 
 }
