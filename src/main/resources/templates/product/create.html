@@ -27,7 +27,7 @@
                         </div>
                         <div class="type-box img-box">
                             <span>상품 이미지<span class="text-red-600">*</span></span>
-                            <input class="file-box" type="file" name="thumbnail" id="thumbnail" onchange="previewImage(event)">
+                            <input class="file-box" type="file" name="thumbnailImg" id="thumbnailImg" onchange="previewImage(event)">
                         </div>
                         <div class="type-box content-box">
                             <span>상품 설명<span class="text-red-600">*</span></span>
@@ -37,7 +37,7 @@
                             <button class="btn btn-primary cancel" type="button" onclick="if(confirm('상품 등록을 취소하시겠습니까?')) { window.location.href='/product/list'; }">취소</button>
                             <button class="btn btn-primary check" type="submit" id="submitButton">등록</button>
                         </div>
-                        <div class="absolute-box" onclick="document.getElementById('thumbnail').click();">
+                        <div class="absolute-box" onclick="document.getElementById('thumbnailImg').click();">
                             <img id="preview" th:src="@{/images/default-img-2.png}" alt="대표이미지 미리보기">
                         </div>
                     </form>
