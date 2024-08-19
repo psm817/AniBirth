@@ -37,7 +37,7 @@
                             <button class="btn btn-primary cancel" type="button" onclick="if(confirm('상품 등록을 취소하시겠습니까?')) { window.location.href='/product/list'; }">취소</button>
                             <button class="btn btn-primary check" type="submit" id="submitButton">등록</button>
                         </div>
-                        <div class="absolute-box">
+                        <div class="absolute-box" onclick="document.getElementById('thumbnail').click();">
                             <img id="preview" th:src="@{/images/default-img-2.png}" alt="대표이미지 미리보기">
                         </div>
                     </form>
