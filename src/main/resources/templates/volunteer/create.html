@@ -36,7 +36,7 @@
                         </div>
                         <div class="type-box img-box">
                             <span>대표 이미지<span class="text-red-600">*</span></span>
-                            <input class="file-box" type="file" name="thumbnailImg" onchange="previewImage(event)">
+                            <input class="file-box" type="file" name="thumbnailImg" id="thumbnailImg" onchange="previewImage(event)">
                         </div>
                         <div class="type-box content-box">
                             <span>봉사 내용<span class="text-red-600">*</span></span>
@@ -46,7 +46,7 @@
                             <button class="btn btn-primary cancel" type="button" onclick="if(confirm('봉사활동 등록을 취소하시겠습니까?')) { window.location.href='/volunteer/list'; }">취소</button>
                             <button class="btn btn-primary check" type="submit" id="submitButton">등록</button>
                         </div>
-                        <div class="absolute-box">
+                        <div class="absolute-box" onclick="document.getElementById('thumbnailImg').click();">
                             <img id="preview" th:src="@{/images/default_img.png}" alt="대표이미지 미리보기">
                         </div>
                     </form>

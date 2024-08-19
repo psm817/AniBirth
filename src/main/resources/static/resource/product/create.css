@@ -126,6 +126,7 @@
 .market-create-input > form > .absolute-box > img {
     width: 100%;
     height: 100%;
+    cursor: pointer;
 }
 
 /* 반응형 시작 */

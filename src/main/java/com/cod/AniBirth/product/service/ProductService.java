@@ -46,7 +46,7 @@ public class ProductService {
         return productRepository.findAllByKeyword(kw, pageable);
     }
 
-    public void create(String title, String description, int price, String category, MultipartFile thumbnail, Member member, int shippingFee) {
+    public void create(String title, String description, int price, String category, MultipartFile thumbnailImg, Member member, int shippingFee) {
         String thumbnailRelPath = "images/product/" + UUID.randomUUID().toString() + ".jpg";
         File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
 
@@ -56,7 +56,7 @@ public class ProductService {
         }
 
         try {
-            thumbnail.transferTo(thumbnailFile);
+            thumbnailImg.transferTo(thumbnailFile);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -100,7 +100,7 @@ public class ProductService {
         }
     }
 
-    public void modify(Long id, String title, String description, int price, String category, MultipartFile thumbnail, int shippingFee) {
+    public void modify(Long id, String title, String description, int price, String category, MultipartFile thumbnailImg, int shippingFee) {
         Product product = getProduct(id);
         product.setTitle(title);
         product.setDescription(description);
@@ -108,7 +108,7 @@ public class ProductService {
         product.setCategory(category);
         product.setShippingFee(shippingFee); // 배송비 수정
 
-        if (thumbnail != null && !thumbnail.isEmpty()) {
+        if (thumbnailImg != null && !thumbnailImg.isEmpty()) {
             String thumbnailRelPath = "product/" + UUID.randomUUID().toString() + ".jpg";
             File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
 
@@ -118,7 +118,7 @@ public class ProductService {
             }
 
             try {
-                thumbnail.transferTo(thumbnailFile);
+                thumbnailImg.transferTo(thumbnailFile);
                 product.setThumbnailImg(thumbnailRelPath);
             } catch (IOException e) {
                 throw new RuntimeException(e);

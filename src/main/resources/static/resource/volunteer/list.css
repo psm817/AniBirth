@@ -134,6 +134,7 @@
     display: flex;
     flex-direction: column;
     align-items: start;
+    width: 100%;
 }
 
 .summary-box > .volunteer-section > .totalList-box > .volunteer-notice-list > li > a:nth-child(2) {
@@ -146,6 +147,14 @@
 
 .summary-box > .volunteer-section > .totalList-box > .volunteer-notice-list > li > a:nth-child(3) {
     font-size: 16px;
+}
+
+.summary-box > .volunteer-section > .totalList-box > .volunteer-notice-list > li > a:nth-child(1) {
+    width: 100%;
+}
+
+.summary-box > .volunteer-section > .totalList-box > .volunteer-notice-list > li > a:nth-child(1) > img {
+    width: 100%;
 }
 
 /* 캘린더 시작 */
