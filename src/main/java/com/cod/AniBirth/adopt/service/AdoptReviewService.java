@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -56,6 +57,29 @@ public class AdoptReviewService {
                 .build();
 
         adoptReviewRepository.save(ar);
+    }
+
+    public String uploadImage(MultipartFile image) {
+        if (image.isEmpty()) {
+            return "";
+        }
+
+        String saveFilename = "images/adoptreview/" + UUID.randomUUID().toString() + ".jpg";
+        String fileFullPath = Paths.get(genFileDirPath + "/" + saveFilename).toString();
+
+        File dir = new File(genFileDirPath);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+
+        try {
+            File uploadFile = new File(fileFullPath);
+            image.transferTo(uploadFile);
+            return saveFilename;
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
@@ -110,5 +134,6 @@ public class AdoptReviewService {
     public AdoptReview getNextVR(Long id) {
         return adoptReviewRepository.findFirstByIdGreaterThanOrderByIdAsc(id);
     }
+
 }
 

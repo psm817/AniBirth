@@ -110,6 +110,8 @@ public class AdoptController {
     public String showcreateReviewForm(CreateReviewForm createReviewForm) {
         return "adopt/create_review_form";
     }
+
+
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/create_review")
     public String submitCreateReview(@Valid CreateReviewForm createReviewForm, @RequestParam("images")MultipartFile images, Principal principal) {
@@ -131,6 +133,13 @@ public class AdoptController {
         model.addAttribute("prevVR", prevVR != null ? prevVR.getId() : null);
         model.addAttribute("nextVR", nextVR != null ? nextVR.getId() : null);
         return "adopt/review_detail";
+    }
+
+    @PostMapping("/image-upload")
+    @PreAuthorize("isAuthenticated()")
+    @ResponseBody
+    public String uploadEditorImage(@RequestParam("image") final MultipartFile image) {
+        return adoptReviewService.uploadImage(image);
     }
 
 }

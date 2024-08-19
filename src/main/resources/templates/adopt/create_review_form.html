@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout/layout}">
 <section layout:fragment="content" class="flex-1 flex justify-center items-center">
+  <meta name="csrf-token" content="${_csrf.token}">
   <!-- 토스트 UI 에디터 - 코어 -->
   <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
   <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
@@ -49,13 +50,14 @@
       <div class="review-data-input">
         <form method="POST" th:action="@{/adopt/create_review}" th:object="${createReviewForm}"
               enctype="multipart/form-data">
+          <input type="hidden" name="_csrf" th:value="${_csrf.token}" id="csrfToken"/>
           <div class="input-box title">
             <span>제목</span>
             <textarea id="title" name="title" class="form-control" rows="1"></textarea>
             <!--            <input type="text" id="title" name="title">-->
           </div>
           <!--toast ui 쓰기위해 추가한 코드 부분-->
-          <div class="input-box content" id="editor"></div>
+          <div class="text-left input-box content" id="editor"></div>
           <input class="form-control" type="hidden" id="content" name="content"><br>
           <input type="file" name="images" accept="image/png, image/gif, image/jpeg"><br>
           <!--여기까지-->
@@ -93,28 +95,62 @@
       maxHeight: 300
     };
 
-    $(document).ready(function() {
-        const editor = new Editor({
-          el: $('#editor')[0],
-          initialValue: "",
-          previewStyle: "vertical",
-          placeholder: "내용을 입력해주세요.",
-          language: "ko-KR",
-<!--              theme: "dark",-->
-          useCommandShortcut: false,
-          height: '500px',
-          plugins: [
-            [toastui.Editor.plugin.chart, ToastEditor__chartOptions],
-            [toastui.Editor.plugin.codeSyntaxHighlight, { highlighter: Prism }],
-            [
-              toastui.Editor.plugin.uml,
-              { rendererURL: "http://www.plantuml.com/plantuml/svg/" }
-            ]
-          ]
+    $(document).ready(function () {
+        const csrfToken = $('#csrfToken').val();
+
+        const editor = new toastui.Editor({
+            el: $("#editor")[0],
+            initialValue: "",
+            previewStyle: "vertical",
+            placeholder: "내용을 입력해주세요.",
+            language: "ko-KR",
+            useCommandShortcut: false,
+            height: "500px",
+            plugins: [
+                [toastui.Editor.plugin.chart, ToastEditor__chartOptions],
+                [toastui.Editor.plugin.codeSyntaxHighlight, { highlighter: Prism }],
+                [
+                    toastui.Editor.plugin.uml,
+                    { rendererURL: "http://www.plantuml.com/plantuml/svg/" }
+                ]
+            ],
+            hooks: {
+                async addImageBlobHook(blob, callback) {
+                    try {
+                        const formData = new FormData();
+                        formData.append("image", blob);
+
+                        const response = await fetch('/adopt/image-upload', {
+                            method: "POST",
+                            headers: {
+                                "X-CSRF-TOKEN": csrfToken
+                            },
+                            body: formData,
+                        });
+
+                        console.log(response.status);
+
+                        if (!response.ok) {
+                            throw new Error("이미지 업로드 실패: " + response.statusText);
+                        }
+
+                        const filename = await response.text();
+                        console.log('서버에 저장된 파일명 : ', filename);
+
+
+                        const imageUrl = `/gen/${filename}`;
+                        callback(imageUrl, "image alt attribute");
+
+                        console.log("서버에 저장된 파일 경로: ", imageUrl);
+                    } catch (error) {
+                        console.error("업로드 실패 : ", error);
+                    }
+                }
+            }
         });
 
-        $('form').on('submit', function() {
-            $('#content').val(editor.getMarkdown());
+        $("form").on("submit", function () {
+            $("#content").val(editor.getMarkdown());
         });
     });
   </script>
