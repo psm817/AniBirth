@@ -1,8 +1,11 @@
 package com.cod.AniBirth.adopt.entity;
 
 import com.cod.AniBirth.base.entity.BaseEntity;
+import com.cod.AniBirth.member.entity.Member;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -33,6 +36,8 @@ public class AdoptApply extends BaseEntity {
     private String marriedStatus; //결혼여부
     private String file;
 
+    @OneToMany(mappedBy = "adoptapply", cascade = CascadeType.REMOVE)
+    private Member adoptee;
 
 
 }

@@ -1,8 +1,6 @@
 package com.cod.AniBirth.animal.service;
 
 import com.cod.AniBirth.ApiResponse;
-import com.cod.AniBirth.adopt.entity.Adopt;
-import com.cod.AniBirth.adopt.entity.AdoptApply;
 import com.cod.AniBirth.animal.AnimalSearchDTO;
 import com.cod.AniBirth.animal.AnimalSpecification;
 import com.cod.AniBirth.animal.entity.Animal;
@@ -10,6 +8,7 @@ import com.cod.AniBirth.animal.repository.AnimalRepository;
 import com.cod.AniBirth.category.entity.Category;
 import com.cod.AniBirth.category.repository.CategoryRepository;
 import com.cod.AniBirth.global.security.DataNotFoundException;
+import com.cod.AniBirth.member.entity.Member;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,17 +18,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.net.URL;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -190,7 +184,8 @@ public class AnimalService {
         return animalRepository.findTop4ByOrderByCreateDateDesc();
     }
 
-    public void create(String age, String name, String classification, String hairColor, String memo, String gender, String regId, String rescueDate, String weight, MultipartFile thumbnail) {
+    public void create(String age, String name, String classification, String hairColor, String memo, String gender,
+                       String regId, String rescueDate, String weight, MultipartFile thumbnail, Member member) {
         String thumbnailRelPath = "images/adoptionnotice/" + UUID.randomUUID().toString() + ".jpg";
         File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
 
@@ -217,6 +212,7 @@ public class AnimalService {
                 .rescueDate(rescueDate)
                 .weight(weight)
                 .filePath(thumbnailRelPath)
+                .adopter(member)
                 .build();
 
         animalRepository.save(animal);

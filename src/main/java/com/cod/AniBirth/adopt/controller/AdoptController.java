@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.swing.plaf.multi.MultiListUI;
+import java.awt.print.PrinterGraphics;
 import java.security.Principal;
 
 @Controller
@@ -59,11 +60,14 @@ public class AdoptController {
     public String show_create(AdoptionnoticeForm adoptionnoticeForm) {
         return "adopt/adoption_noticeForm";
     }
+
     @PostMapping("/create")
-    public String create(@Valid AdoptionnoticeForm adoptionnoticeForm,@RequestParam("thumbnail")MultipartFile thumbnail) {
+    public String create(@Valid AdoptionnoticeForm adoptionnoticeForm, @RequestParam("thumbnail")MultipartFile thumbnail, Principal principal) {
+        Member member = memberService.getMemberByUsername(principal.getName());
+
         animalService.create(adoptionnoticeForm.getAge(),adoptionnoticeForm.getName(),adoptionnoticeForm.getClassification(),
                 adoptionnoticeForm.getHairColor(),adoptionnoticeForm.getMemo(),adoptionnoticeForm.getGender(),adoptionnoticeForm.getRegId(),
-                adoptionnoticeForm.getRescueDate(),adoptionnoticeForm.getWeight(),adoptionnoticeForm.getThumbnail());
+                adoptionnoticeForm.getRescueDate(),adoptionnoticeForm.getWeight(),adoptionnoticeForm.getThumbnail(),member);
 
 
         return "redirect:/adopt/list";
@@ -84,10 +88,14 @@ public class AdoptController {
     }
 
     @PostMapping("/apply")
-    public String submitApplyForm(@Valid AdoptForm adoptForm, @RequestParam("isGender") boolean isGender, @RequestParam("isMarried") boolean isMarried, @RequestParam("file")MultipartFile file) {
+    public String submitApplyForm(@Valid AdoptForm adoptForm, @RequestParam("isGender") boolean isGender,
+                                  @RequestParam("isMarried") boolean isMarried, @RequestParam("file")MultipartFile file,Principal principal, @PathVariable("id") Long id) {
+        Member member = memberService.getMemberByUsername(principal.getName());
+        Animal animal = animalService.getAnimal(id);
+
         adoptService.apply(adoptForm.getName(),adoptForm.getPhone(),adoptForm.getEmail(),adoptForm.getAge(),adoptForm.getCompany(),
                 adoptForm.getPostCode(),adoptForm.getAddress(),adoptForm.getDetailAddress(),adoptForm.getExtraAddress(),
-                isGender,isMarried,adoptForm.getFile());
+                isGender,isMarried,adoptForm.getFile(),member);
 
         return "redirect:/adopt/list";
     }
