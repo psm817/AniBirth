@@ -127,18 +127,25 @@ th, td {
 }
 
 th:nth-child(2) {
-    width: 400px;
+    width: 280px;
 }
 
 td:nth-child(2) {
-    width: 330px;
+    width: 280px;
 }
 
 td:nth-child(2) > .shortTitle {
-    width: 300px;
+    width: 280px;
     overflow: hidden;
     white-space: nowrap; /* 텍스트를 한 줄로 유지 */
     text-overflow: ellipsis; /* 글이 길어지면 ... 처리 */
+}
+
+td:nth-child(5) {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 th {
@@ -148,6 +155,9 @@ th {
 td a {
     color: #007bff;
     text-decoration: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 td.view-count {
     padding-right: 2rem; /* 오른쪽 여백을 추가하여 오른쪽으로 이동 */
