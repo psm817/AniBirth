@@ -26,6 +26,7 @@ public class Adopt extends BaseEntity {
     private String name;
     private String phone;
 
+    //
     /*@ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;*/
