@@ -1,0 +1,1078 @@
+@font-face {
+  font-family: 'GmarketSansMedium';
+
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+html > body ul,
+html > body li {
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+html > body {
+  font-family: 'Pretendard-Regular';
+  text-underline-position: under;
+  background-color: #fff;
+}
+
+ul, li, a {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    color: inherit;
+}
+
+.collapse {
+    visibility: visible !important;
+}
+
+/* 페이지 네이션 */
+.pagination .page-link {
+    color: #FF416C; /* 링크 텍스트 색상 */
+}
+
+.pagination .page-link:hover {
+    color: #FF416C; /* 링크 텍스트 호버 색상 */
+    background-color: #FFE6EC; /* 링크 배경 호버 색상 (더 밝은 색상으로 설정) */
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #FF416C; /* 활성화된 링크 배경 색상 */
+    border-color: #FF416C; /* 활성화된 링크 테두리 색상 */
+    color: #ffffff; /* 활성화된 링크 텍스트 색상 */
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #FFB3C1; /* 비활성화된 링크 텍스트 색상 (더 밝은 색상으로 설정) */
+}
+
+/* 헤더 시작 */
+header > .menu-bar {
+    height: 100px;
+    display: flex;
+    width: 100%;
+}
+
+header > .menu-bar > .logo-box {
+    width: 11%;
+    margin-left: 20px;
+}
+
+header > .menu-bar > .logo-box > a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+header > .menu-bar > .logo-box > a > img {
+    width: 100%;
+    height: 100%;
+}
+
+header > .menu-bar > .menu-box {
+    width: 89%;
+    margin-left: 100px;
+}
+
+header > .menu-bar > .menu-box > ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+header > .menu-bar > .menu-box > ul > li {
+    flex-grow: 1;
+    flex-basis: 0;
+    text-align: center;
+}
+
+header > .menu-bar > .menu-box > ul > li > a > span {
+    color: #323232;
+    font-weight: 800 !important;
+    font-size: 20px;
+}
+
+header > .menu-bar > .menu-box > ul > li > a > span:hover {
+    color: #FF416C;
+}
+
+/* 푸터 시작 */
+footer {
+    margin-top: 50px;
+}
+
+footer > .top-box {
+    width: 100%;
+    height: 60px;
+    background-color: #fad9e1;
+}
+
+footer > .top-box > .container {
+    height: 100%;
+    width: 100%;
+}
+
+footer > .top-box > .container > .left-box {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer > .top-box > .container > .left-box > a {
+    font-size: 16px;
+}
+
+footer > .top-box > .container > .left-box > a:nth-child(1) {
+    font-weight: 700;
+}
+
+footer > .top-box > .container > .right-box {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+footer > .top-box > .container > .right-box > a {
+    width: 90px;
+    height: 100%;
+    display: block;
+}
+
+footer > .top-box > .container > .right-box > a:nth-child(1) {
+    background-color: #3B5998;
+}
+
+footer > .top-box > .container > .right-box > a:nth-child(2) {
+    background-color: #3F729B;
+}
+
+footer > .top-box > .container > .right-box > a:nth-child(3) {
+    background-color: #F7E600;
+}
+
+footer > .top-box > .container > .right-box > a:nth-child(4) {
+    background-color: #C4302B;
+}
+
+footer > .top-box > .container > .right-box > a > i {
+    color: #fff;
+    font-size: 30px;
+    line-height: 60px;
+}
+
+footer > .top-box > .container > .right-box > a:nth-child(3) > i {
+    color: #000;
+}
+
+footer > .bottom-box {
+    width: 100%;
+    height: 120px;
+}
+
+footer > .bottom-box > .container {
+    width: 100%;
+    height: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+footer > .bottom-box > .container > .img-box {
+    width: 10%;
+    height: 100%;
+    margin-left: 10px;
+}
+
+footer > .bottom-box > .container > .img-box > img {
+    width: 100%;
+    height: 100%;
+}
+
+footer > .bottom-box > .container > .detail-box {
+    width: 90%;
+    height: 100%;
+    padding-left: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+footer > .bottom-box > .container > .detail-box > .common-box {
+    text-align: left;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+footer > .bottom-box > .container > .detail-box > .contact-box {
+    margin-top: -10px;
+}
+
+footer > .bottom-box > .container > .detail-box > .common-box > .bar {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* 반응형 시작 */
+@media (max-width: 394px) {
+    header > .menu-bar {
+        height: 100%;
+        display: block;
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    header > .menu-bar > .logo-box {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    header > .menu-bar > .logo-box > a {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    header > .menu-bar > .logo-box > a > img {
+        width: 150px;
+        height: 100%;
+    }
+
+    header > .menu-bar > .menu-box {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    header > .menu-bar > .menu-box > ul {
+        margin-top: 8px;
+        margin-bottom: 13px;
+        width: 100%;
+        height: 100%;
+    }
+
+    header > .menu-bar > .menu-box > ul > li {
+        text-align: center;
+    }
+
+    header > .menu-bar > .menu-box > ul > li > a > span {
+        color: #323232;
+        font-weight: 800 !important;
+        font-size: 14px;
+    }
+
+    header > .menu-bar > .menu-box > ul > li > a > span:hover {
+        color: #FF416C;
+    }
+
+    footer > .top-box {
+        height: 100px;
+    }
+
+    footer > .top-box > .container {
+        height: 100%;
+        width: 100%;
+        padding: 0px;
+    }
+
+    footer > .top-box > .container > .left-box {
+        width: 100%;
+        height: 50% !important;
+        display: flex;
+    }
+
+    footer > .top-box > .container > .left-box > a {
+        font-size: 12px;
+    }
+
+    footer > .top-box > .container > .left-box > a:nth-child(1) {
+        padding-left: 5px;
+    }
+
+    footer > .top-box > .container > .left-box > a:nth-child(6) {
+        padding-right: 5px;
+    }
+
+    footer > .top-box > .container > .right-box {
+        height: 50% !important;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    footer > .top-box > .container > .right-box > a {
+        width: 25%;
+        height: 100%;
+        display: block;
+    }
+
+    footer > .top-box > .container > .right-box > a > i {
+        line-height: 50px;
+    }
+
+    footer > .bottom-box {
+        width: 100%;
+        height: 120px;
+    }
+
+    footer > .bottom-box > .container {
+        width: 100%;
+        height: 100%;
+        padding: 0px;
+    }
+
+    footer > .bottom-box > .container > .img-box {
+        display: none;
+    }
+
+    footer > .bottom-box > .container > .detail-box {
+        width: 100%;
+        padding: 0px;
+    }
+
+    footer > .bottom-box > .container > .detail-box > .common-box {
+        text-align: left;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    footer > .bottom-box > .container > .detail-box > .common-box > span {
+        font-size: 12px;
+    }
+
+    footer > .bottom-box > .container > .detail-box > .contact-box {
+        margin-top: 0px;
+        text-align: center;
+    }
+
+
+}
+
+  h1 {
+    font-size: 4rem;
+    line-height: 4rem;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-size: 2.4rem;
+    line-height: 2.4rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+
+  h4 {
+    font-size: 1.1rem;
+    line-height: 1.1rem;
+  }
+
+  h5 {
+    font-size: 0.7rem;
+    line-height: 0.7rem;
+  }
+
+  a:link {
+    color: #666;
+    text-decoration: none;
+  }
+
+  button {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    padding: 10px 30px;
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  /* ------------------------------------------------------------------------------------------ */
+
+.visual-sec {
+    position: relative;
+    overflow: hidden;
+    width: 100vw;  /* 화면의 전체 너비 */
+    height: 510px; /* 화면의 전체 높이 */
+}
+
+.visual-sec .swiper-slide {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.visual-sec .txt-box {
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    box-sizing: border-box;
+    width: 90%;
+    padding: 0 2rem;
+    transform: translate(-50%, -60%);
+    z-index: 10;
+    color: #fff;
+}
+
+.visual-sec .txt-box > p {
+    font-size: 4rem;
+    line-height: 4.5rem;
+    word-break: keep-all;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: 1s 0.2s;
+}
+
+.visual-sec .swiper-slide-active .txt-box > p {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.visual-sec .img-boxs {
+    display: block;
+    width: 100%;
+    height: 100%; /* 화면의 전체 높이 */
+    overflow: hidden;
+}
+
+.visual-sec .img-boxs img {
+    width: 100%;
+    /*height: 100%;*/
+    object-fit: cover; /* 이미지 비율 유지, 화면을 꽉 채우기 */
+}
+
+.visual-sec .swiper-slide-active img {
+    transform: scale(1.0);
+}
+
+.visual-sec .all-box {
+    position: absolute;
+    display: inline-flex;
+    width: 90%;
+    height: 2rem;
+    left: 50%;
+    bottom: 3rem;
+    box-sizing: border-box;
+    padding: 0 2rem;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+}
+
+.visual-sec .progress-box {
+    position: relative;
+    width: 10rem;
+    height: 3rem;
+    z-index: 11;
+}
+
+.autoplay-progress {
+    position: absolute;
+    left: 2rem;
+    top: 0.6rem;
+    z-index: 10;
+    width: 6.5rem;
+    height: 0.2rem;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.autoplay-progress svg {
+    --progress: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    stroke-width: 4px;
+    stroke: #fff;
+    fill: none;
+    stroke-dashoffset: calc(100 * (1 - var(--progress)));
+    stroke-dasharray: 100;
+}
+
+.visual-sec .swiper-pagination {
+    display: flex;
+    color: #fff;
+    justify-content: space-between;
+    position: static;
+    text-align: left;
+}
+
+.visual-sec .arrow-box {
+    position: relative;
+    width: 5rem;
+    height: 3rem;
+}
+
+.visual-sec .swiper-button-next,
+.visual-sec .swiper-button-prev {
+    width: 1.5rem;
+    height: 1.5rem;
+    top: 0;
+    margin-top: 0;
+    background: url(https://www.century21cc.co.kr/views/res/imgs/common/icon-arrow-left-fff.svg) no-repeat center / 100%;
+}
+
+.visual-sec .swiper-button-next {
+    background-image: url(https://www.century21cc.co.kr/views/res/imgs/common/icon-arrow-right-fff.svg);
+}
+
+.visual-sec .swiper-button-next::after,
+.visual-sec .swiper-button-prev::after {
+    font-size: 0;
+}
+
+.dist-text {
+    padding: 7rem;
+  }
+.dist-text > :first-child h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+.dist-text > :first-child p {
+    font-size: 1.3rem;
+    line-height: 2rem;
+    text-align:center;
+  }
+
+
+
+
+.dist-plan {
+    display: flex;
+}
+
+.dist-plan section {
+    width: 25%;
+    height: 50rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.dist-plan section div {
+    width: 80%; /* 상자의 넓이 설정 */
+    height:400px;
+    padding: 2rem; /* 상자 내부 여백 */
+    background: rgba(0, 0, 0, 0.3); /* 반투명 흰색 배경 */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.dist-plan section div * {
+    color: #ffffff; /* 흰색 텍스트 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 텍스트 그림자 */
+    display: block; /* 각 요소를 블록으로 처리 */
+    margin: 1rem 0; /* 텍스트 요소 간격 */
+}
+
+.dist-plan span {
+    font-size: 2rem; /* 지사 이름의 폰트 크기 */
+    font-weight: bold; /* 지사 이름의 폰트 굵기 */
+}
+
+.dist-plan h3 {
+    font-size: 1rem; /* 설명 텍스트의 크기 */
+    line-height: 1.5; /* 줄 간격 */
+}
+
+.dist-plan > :first-child {
+    background: url(https://pimg.mk.co.kr/meet/neds/2013/09/image_readtop_2013_799218_13802452981028710.gif) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.dist-plan > :nth-child(2) {
+    background: url(https://www.siranews.co.kr/news/photo/202008/277_455_362.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.dist-plan > :nth-child(3) {
+    background: url(https://img.hankyung.com/photo/202106/AD.26655405.1.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.dist-plan > :last-child {
+    background: url(https://i.namu.wiki/i/KV7EAByhG4gKhlChq5frN0P5JvUO8ir6hE0dITYbFMvbpT6uhE0zvmA4SQFPVtIDT6oXpjk5TtY36i-udXWl2g.webp) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+
+
+
+
+.iaan-SNS {
+    padding: 5rem;
+  }
+
+.iaan-SNS > :first-child  {
+    margin: 5rem 0;
+    text-align: center;
+    height: 10rem
+  }
+
+.iaan-SNS > :first-child h2 {
+    margin-bottom: 2.5rem;
+    font-size: 1.4rem;
+    line-height: 2rem;
+  }
+
+.iaan-SNS > :first-child p {
+    font-size: 1.3rem;
+    line-height: 2.5rem;
+  }
+
+.iaan-SNS > :nth-child(2) {
+    background: url(https://tgzzmmgvheix1905536.cdn.ntruss.com/2020/05/9358d2d297fb40538ae3846719f32d32)no-repeat;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    height: 100rem;
+  }
+
+.iaan-SNS > :nth-child(2) > section {
+    width: 30%;
+    cursor: pointer;
+  }
+
+.iaan-SNS > :nth-child(2) > section img {
+    width: 100%;
+  }
+
+.iaan-SNS > :nth-child(2) > :first-child {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    box-shadow: 1px 10px 35px black;
+  }
+
+  .iaan-SNS > :nth-child(2) > :nth-child(2) {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    box-shadow: 1px 10px 35px black;
+  }
+
+.iaan-SNS > :nth-child(2) > :last-child {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    box-shadow: 1px 10px 35px black;
+  }
+
+.scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease-in-out, transform 0.9s ease-in-out;
+  }
+
+.scroll.fadeIn {
+      opacity: 1;
+      transform: translateY(0)
+  }
+
+
+/* iaan-news */
+.link-container {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0; /* Add space around the text */
+    position: relative; /* Ensure it's placed correctly */
+    margin-bottom: 2rem; /* Space between the link container and article */
+}
+
+.link-text {
+    font-size: 1rem;
+    color: #cccccc; /* Light gray color */
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.arrow {
+    margin-left: 0.5rem; /* Space between text and arrow */
+    font-size: 1.2rem; /* Adjust size of the arrow */
+    color: #cccccc; /* Light gray color */
+}
+.iaan-news {
+    padding: 5rem;
+    display: flex;
+    text-align: center;
+    background: url(https://www.iaanapt.co.kr/_imgs/community_bg.jpg) no-repeat;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    height: 50rem;
+
+}
+
+.iaan-news > section {
+    width: 34%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    position: relative;
+    color: transparent; /* 처음에 글자 투명 */
+    cursor: pointer;
+    overflow: hidden; /* 자식 요소가 밖으로 나가지 않도록 설정 */
+}
+
+.iaan-news > section:hover {
+    color: white; /* 글자 색 변경 */
+}
+
+.iaan-news > section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    transition: transform 0.5s; /* 배경 이미지 확대 애니메이션 */
+    z-index: 0; /* 배경 이미지 레이어 위치 설정 */
+}
+
+.iaan-news > section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); /* 기본 배경색 설정 */
+    transition: background-color 0.5s; /* 배경색 변화 애니메이션 */
+    z-index: 1; /* 어두워지는 배경 레이어 위치 설정 */
+}
+
+.iaan-news > :first-child::before {
+    background-image: url(https://gutentagkorea.com/wp-content/uploads/2022/03/shutterstock_1503284522.jpg);
+    background-position: right;
+}
+
+.iaan-news > :nth-child(2)::before {
+    background-image: url(https://www.aeroflot.ru/media/aflfiles/media/pets/adobestock_66268754-banner.jpg);
+    background-position: center;
+}
+
+.iaan-news > :last-child::before {
+    background-image: url(https://cbmpress.sfo2.digitaloceanspaces.com/vlife/1613868313_WyljRhtk_b38ce73b96e950f570856d3a8fa4ea90be3b7119.png);
+    background-position: center;
+}
+
+.iaan-news > section:hover::before {
+    transform: scale(1.1); /* 배경 이미지만 확대 */
+}
+
+.iaan-news > section:hover::after {
+    background-color: rgba(0, 0, 0, 0.6); /* 배경 어둡게 변경 */
+}
+
+.iaan-news > section > div {
+    z-index: 2;
+    transition: color 0.3s; /* 글자 색에 transition 추가 */
+}
+
+.iaan-news > div {
+    width: 50%;
+}
+
+
+
+
+
+@media screen and (max-width: 394px) {
+
+    /* .visual-sec 섹션 */
+    .visual-sec {
+        position: relative;
+        overflow: hidden;
+        margin-top: -19rem; /* 필요에 따라 조정 */
+        padding: 0;
+    }
+
+    .visual-sec .swiper {
+        height: 100vh; /* 슬라이더의 높이를 화면 전체로 설정 */
+        position: relative;
+        overflow: hidden;
+    }
+
+    .visual-sec .swiper-wrapper {
+        display: flex;
+        flex-direction: row; /* 슬라이드가 가로로 정렬되도록 설정 */
+        width: 100%;
+    }
+
+    .visual-sec .swiper-slide {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%; /* 슬라이드 너비를 100%로 설정 */
+        height: 100vh; /* 슬라이드 높이를 화면 전체로 설정 */
+        overflow: hidden; /* 이미지가 슬라이드 박스를 넘지 않도록 설정 */
+    }
+
+    .visual-sec .img-boxs {
+        width: 100%;
+        height: 100%; /* 이미지 박스 높이를 슬라이드 높이에 맞춤 */
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .visual-sec .img-boxs img {
+        width: 100%;
+        height: 30%; /* 이미지 높이를 슬라이드 높이에 맞춤 */
+        object-fit: cover; /* 이미지가 박스 내에서 비율을 유지하면서 잘리지 않도록 설정 */
+    }
+
+    .visual-sec .txt-box {
+        padding: 0.5rem; /* 텍스트 박스의 위아래 간격을 줄이기 위해 패딩 값 조정 */
+        text-align: center;
+        box-sizing: border-box;
+        position: absolute;
+        bottom: 40px; /* 슬라이드 하단에 텍스트 박스 위치 설정 */
+        left:140px;
+        width: 100%;
+        z-index: 10;
+        color: white;
+    }
+
+    .visual-sec .txt-box p {
+        font-size: 1.25rem;
+        margin: 0;
+        line-height: 2; /* 텍스트 줄 간격을 줄이기 위해 line-height 조정 */
+    }
+
+    /* 슬라이더 페이지네이션과 버튼 */
+    .swiper-pagination {
+        bottom: 10px;
+        text-align: center;
+    }
+
+    .swiper-button-prev, .swiper-button-next {
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        z-index: 20;
+        transform: translate(-10px, 5px); /* 위치를 더 조정하기 위한 transform 추가 */
+    }
+
+    .swiper-button-prev {
+        left: 5px;
+    }
+
+    .swiper-button-next {
+        right: 5px;
+    }
+
+    /* all-box 위치 설정 */
+    .all-box {
+        position: absolute;
+        bottom: 1rem; /* 이미지 하단에 더 가까이 위치 */
+        left: 40%; /* 이미지 하단 왼쪽에 더 가까이 위치 */
+        z-index: 15; /* 텍스트 상자 위에 표시되도록 z-index 조정 */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* 왼쪽 정렬 */
+    }
+
+    .progress-box {
+        margin-bottom: 5px; /* 페이지네이션과 화살표 사이 간격 조정 */
+    }
+
+    .arrow-box {
+        display: flex;
+        align-items: center;
+    }
+
+
+
+
+    /* .dist-text 섹션 */
+    .dist-text {
+        padding: 1rem;
+        text-align: center; /* 텍스트 가운데 정렬 */
+    }
+
+    .dist-text p {
+        font-size: 1rem; /* 폰트 크기 조정 */
+        line-height: 1.4; /* 줄 간격 조정 */
+        margin: 0; /* 기본 마진 제거 */
+    }
+
+    /* .dist-plan 섹션 */
+    .dist-plan {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .dist-plan section {
+        width: 100%;
+        height: auto; /* 높이 자동 조정 */
+        margin-bottom: 1rem; /* 섹션 사이 간격 */
+        padding: 1rem;
+        box-sizing: border-box; /* 패딩 포함 높이/너비 계산 */
+        background-color: rgba(0,0,0,0.5); /* 배경색 추가 */
+    }
+
+    .dist-plan section img {
+        width: 100%;
+        height: auto; /* 이미지 비율 유지 */
+        object-fit: cover;
+        margin-bottom: 0.5rem; /* 이미지와 텍스트 사이 간격 */
+    }
+
+    .dist-plan section h3 {
+        font-size: 1rem; /* 제목 폰트 크기 조정 */
+        margin: 0.5rem 0; /* 제목 위아래 마진 */
+    }
+
+    .dist-plan section p {
+        font-size: 0.6rem; /* 내용 폰트 크기 조정 */
+        margin: 0; /* 기본 마진 제거 */
+    }
+
+
+
+    /* .iaan-SNS 섹션 */
+     .iaan-SNS {
+        padding: 2rem;
+      }
+
+      .iaan-SNS > :first-child {
+        margin: 2rem 0;
+        height: auto;
+      }
+
+      .iaan-SNS > :first-child h2 {
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+      }
+
+      .iaan-SNS > :first-child p {
+        font-size: 1rem;
+        line-height: 1.8rem;
+      }
+
+      .iaan-SNS > :nth-child(2) {
+        height: auto;
+        background-size: contain; /* 화면에 맞게 조정 */
+        background-position: center;
+      }
+
+      .iaan-SNS > :nth-child(2) > section {
+        width: 100%; /* 섹션을 전체 너비로 설정 */
+        margin-bottom: 1rem; /* 섹션 간 여백 추가 */
+        cursor: auto; /* 포인터 커서 제거 */
+      }
+
+      .iaan-SNS > :nth-child(2) > section img {
+        width: 100%;
+        height: auto; /* 비율 유지 */
+      }
+
+      .iaan-SNS > :nth-child(2) > :first-child,
+      .iaan-SNS > :nth-child(2) > :nth-child(2),
+      .iaan-SNS > :nth-child(2) > :last-child {
+        position: static; /* 이미지 스택으로 변경 */
+        box-shadow: none; /* 그림자 제거 */
+      }
+
+
+    /* .iaan-news 섹션 */
+    .iaan-news {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column; /* 열 방향으로 배치 */
+        height: auto; /* 높이 자동 조정 */
+    }
+
+    .iaan-news > section {
+        width: 100%; /* 전체 너비 사용 */
+        max-width: none; /* 최대 너비 제한 제거 */
+        margin-bottom: 1rem; /* 섹션 간 간격 조정 */
+        height: 30rem; /* 높이 설정 */
+        text-align: center; /* 텍스트 중앙 정렬 */
+        position: relative;
+    }
+
+    .iaan-news > section::before {
+        background-position: center center; /* 배경 이미지 가운데 정렬 */
+        background-size: cover; /* 배경 이미지 커버 사이즈 설정 */
+        transition: transform 0.5s, background-color 0.5s;
+    }
+
+    .iaan-news > section > div {
+        z-index: 2;
+        padding: 1rem; /* 내용 패딩 설정 */
+        color: white; /* 기본 글자 색 */
+        font-size: 1rem; /* 기본 폰트 사이즈 */
+    }
+
+    .iaan-news > section img {
+        width: 100%; /* 이미지 전체 너비 사용 */
+        height: auto; /* 높이 자동 조정 */
+    }
+
+    .scroll {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 0.5s ease-in-out, transform 0.9s ease-in-out;
+    }
+
+    .scroll.fadeIn {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+
+
+
