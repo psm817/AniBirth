@@ -57,7 +57,6 @@ public class AdoptService {
                 .gender(gender)
                 .marriedStatus(marriedStatus)
                 .file(thumbnailRelPath)
-                .adoptee(member)
                 .build();
 
         adoptApplyRepository.save(adoptApply);
