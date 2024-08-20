@@ -25,7 +25,7 @@ public class AdoptReview extends BaseEntity {
     private int hit;
 
     @ManyToOne
-    @JoinColumn(name = "wrtier_id")
+    @JoinColumn(name = "writer_id")
     private Member writer;
 
 }
