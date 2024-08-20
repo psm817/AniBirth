@@ -37,7 +37,7 @@
             </div>
             <div class="content-box card-header pl-[40px]">
                 <div class="total-box">
-                    <span th:if="${member.authority} == 2" th:utext="${member.nickname} + '님이 참여하신 봉사활동은 총 <strong>' + ${#lists.size(volunteerApplicationList)} + '</strong>건입니다.'"></span>
+                    <span th:if="${member.authority} == 2" th:utext="${member.nickname} + '님이 참여 및 신청하신 봉사활동은 총 <strong>' + ${#lists.size(volunteerApplicationList)} + '</strong>건입니다.'"></span>
                     <span th:if="${member.authority} == 1" th:utext="${member.nickname} + '님이 등록하신 봉사활동은 총 <strong>' + ${#lists.size(volunteerList)} + '</strong> 건입니다.'"></span>
                     <span th:if="${member.authority} == 0" th:utext="'애니버스에 등록된 봉사활동은 총 <strong>' + ${#lists.size(volunteerAllList)} + '</strong> 건입니다.'"></span>
                 </div>
@@ -45,9 +45,11 @@
                 <div class="volunteer-box-title volunteer-member-title card-body" th:if="${member.authority} == 2">
                     <ul class="list-group list-group-flush gap-6">
                         <li class="list-group-item flex items-center">
-                            <span class="number w-[10%]">번호</span>
-                            <span class="date w-[40%]">봉사기간</span>
-                            <span class="volunteer-name w-[50%]">봉사명</span>
+                            <span class="number w-[7%]">번호</span>
+                            <span class="date w-[35%]">봉사기간</span>
+                            <span class="dateDead w-[20%]">신청마감날짜</span>
+                            <span class="volunteer-name w-[30%]">봉사명</span>
+                            <span class="apply w-[8%]">신청취소</span>
                         </li>
                     </ul>
                 </div>
@@ -69,11 +71,13 @@
                     <ul class="list-group list-group-flush">
                         <!-- th:each로 반복문 돌려야됨  -->
                         <li class="list-group-item flex items-center" th:each="volunteer, loop : ${volunteerApplicationList}">
-                            <a th:href="@{|/volunteer/detail/${volunteer.volunteer.id}|}">
-                                <span class="number w-[10%]" th:text="${loop.index} + 1"></span>
-                                <span class="date w-[40%]" th:text="${volunteer.volunteer.startDate} + ' ~ ' + ${volunteer.volunteer.endDate}"></span>
-                                <span class="volunteer-name w-[50%]" th:text="${volunteer.volunteer.title}"></span>
-                            </a>
+                            <span class="number w-[7%]" th:text="${loop.index} + 1"></span>
+                            <span class="date w-[35%]" th:text="${#strings.replace(volunteer.volunteer.startDate, 'T', ' ')} + ' ~ ' + ${#strings.replace(volunteer.volunteer.endDate, 'T', ' ')}"></span>
+                            <span class="dateDead w-[20%]" th:text="${volunteer.volunteer.deadLineDate}"></span>
+                            <span class="volunteer-name w-[30%]">
+                                <a th:href="@{|/volunteer/detail/${volunteer.volunteer.id}|}" th:text="${volunteer.volunteer.title}"></a>
+                            </span>
+                            <span class="apply w-[8%]"><a th:href="@{|/volunteer/apply/delete/${volunteer.volunteer.id}|}" onclick="return confirmApplyDelete();" class="w-[100%]">취소</a></span>
                         </li>
                     </ul>
                 </div>
