@@ -61,6 +61,14 @@ ul, li, a {
 }
 
 /* 헤더 시작 */
+header > .navbar > .container-fluid > #navbarCollapse > ul > li > span {
+    font-size: 14px;
+}
+
+header > .navbar > .container-fluid > #navbarCollapse > ul > li > a {
+    font-size: 14px;
+}
+
 header > .menu-bar {
     height: 100px;
     display: flex;
@@ -126,6 +134,7 @@ footer > .top-box {
 footer > .top-box > .container {
     height: 100%;
     width: 100%;
+    display: flex;
 }
 
 footer > .top-box > .container > .left-box {
@@ -152,35 +161,15 @@ footer > .top-box > .container > .right-box {
 }
 
 footer > .top-box > .container > .right-box > a {
-    width: 90px;
+    width: 70px;
     height: 100%;
     display: block;
 }
 
-footer > .top-box > .container > .right-box > a:nth-child(1) {
-    background-color: #3B5998;
-}
-
-footer > .top-box > .container > .right-box > a:nth-child(2) {
-    background-color: #3F729B;
-}
-
-footer > .top-box > .container > .right-box > a:nth-child(3) {
-    background-color: #F7E600;
-}
-
-footer > .top-box > .container > .right-box > a:nth-child(4) {
-    background-color: #C4302B;
-}
-
 footer > .top-box > .container > .right-box > a > i {
-    color: #fff;
+    color: #000;
     font-size: 30px;
     line-height: 60px;
-}
-
-footer > .top-box > .container > .right-box > a:nth-child(3) > i {
-    color: #000;
 }
 
 footer > .bottom-box {
@@ -193,6 +182,7 @@ footer > .bottom-box > .container {
     height: 100%;
     padding-top: 10px;
     padding-bottom: 10px;
+    display: flex;
 }
 
 footer > .bottom-box > .container > .img-box {
@@ -221,6 +211,7 @@ footer > .bottom-box > .container > .detail-box > .common-box {
     height: 100%;
     display: flex;
     align-items: center;
+    font-size: 14px;
 }
 
 footer > .bottom-box > .container > .detail-box > .contact-box {
@@ -292,6 +283,7 @@ footer > .bottom-box > .container > .detail-box > .common-box > .bar {
         height: 100%;
         width: 100%;
         padding: 0px;
+        display: block;
     }
 
     footer > .top-box > .container > .left-box {
@@ -315,14 +307,13 @@ footer > .bottom-box > .container > .detail-box > .common-box > .bar {
     footer > .top-box > .container > .right-box {
         height: 50% !important;
         width: 100%;
-        display: flex;
-        justify-content: flex-end;
     }
 
     footer > .top-box > .container > .right-box > a {
         width: 25%;
         height: 100%;
-        display: block;
+        display: flex;
+        justify-content: center;
     }
 
     footer > .top-box > .container > .right-box > a > i {
@@ -365,8 +356,6 @@ footer > .bottom-box > .container > .detail-box > .common-box > .bar {
         margin-top: 0px;
         text-align: center;
     }
-
-
 }
 
   h1 {
@@ -552,6 +541,7 @@ footer > .bottom-box > .container > .detail-box > .common-box > .bar {
     font-size: 2rem;
     text-align: center;
     margin-bottom: 1.5rem;
+    font-weight: 700;
 }
 .dist-text > :first-child p {
     font-size: 1.3rem;
@@ -645,6 +635,7 @@ footer > .bottom-box > .container > .detail-box > .common-box > .bar {
     margin-bottom: 2.5rem;
     font-size: 1.4rem;
     line-height: 2rem;
+    font-weight: 700;
   }
 
 .iaan-SNS > :first-child p {
@@ -668,6 +659,10 @@ footer > .bottom-box > .container > .detail-box > .common-box > .bar {
 .iaan-SNS > :nth-child(2) > section img {
     width: 100%;
   }
+
+.iaan-SNS > :nth-child(2) > section img:nth-child(1) {
+    height: 150px;
+}
 
 .iaan-SNS > :nth-child(2) > :first-child {
     position: absolute;
@@ -809,22 +804,19 @@ footer > .bottom-box > .container > .detail-box > .common-box > .bar {
     width: 50%;
 }
 
-
-
-
-
 @media screen and (max-width: 394px) {
 
     /* .visual-sec 섹션 */
     .visual-sec {
         position: relative;
         overflow: hidden;
-        margin-top: -19rem; /* 필요에 따라 조정 */
+        margin-top: 0px; /* 필요에 따라 조정 */
         padding: 0;
+        height: 300px;
     }
 
     .visual-sec .swiper {
-        height: 100vh; /* 슬라이더의 높이를 화면 전체로 설정 */
+        height: 100%; /* 슬라이더의 높이를 화면 전체로 설정 */
         position: relative;
         overflow: hidden;
     }
@@ -833,6 +825,7 @@ footer > .bottom-box > .container > .detail-box > .common-box > .bar {
         display: flex;
         flex-direction: row; /* 슬라이드가 가로로 정렬되도록 설정 */
         width: 100%;
+        height: 100%;
     }
 
     .visual-sec .swiper-slide {
@@ -841,7 +834,7 @@ footer > .bottom-box > .container > .detail-box > .common-box > .bar {
         align-items: center;
         justify-content: center;
         width: 100%; /* 슬라이드 너비를 100%로 설정 */
-        height: 100vh; /* 슬라이드 높이를 화면 전체로 설정 */
+        height: 100%; /* 슬라이드 높이를 화면 전체로 설정 */
         overflow: hidden; /* 이미지가 슬라이드 박스를 넘지 않도록 설정 */
     }
 
@@ -856,7 +849,7 @@ footer > .bottom-box > .container > .detail-box > .common-box > .bar {
 
     .visual-sec .img-boxs img {
         width: 100%;
-        height: 30%; /* 이미지 높이를 슬라이드 높이에 맞춤 */
+        height: 100%; /* 이미지 높이를 슬라이드 높이에 맞춤 */
         object-fit: cover; /* 이미지가 박스 내에서 비율을 유지하면서 잘리지 않도록 설정 */
     }
 
@@ -865,7 +858,7 @@ footer > .bottom-box > .container > .detail-box > .common-box > .bar {
         text-align: center;
         box-sizing: border-box;
         position: absolute;
-        bottom: 40px; /* 슬라이드 하단에 텍스트 박스 위치 설정 */
+        bottom: -10px; /* 슬라이드 하단에 텍스트 박스 위치 설정 */
         left:140px;
         width: 100%;
         z-index: 10;
@@ -926,13 +919,17 @@ footer > .bottom-box > .container > .detail-box > .common-box > .bar {
         align-items: center;
     }
 
-
+    .dist-text > :first-child p {
+        font-size: 16px;
+    }
 
 
     /* .dist-text 섹션 */
     .dist-text {
         padding: 1rem;
         text-align: center; /* 텍스트 가운데 정렬 */
+        margin-top: 30px;
+        margin-bottom: 20px;
     }
 
     .dist-text p {
