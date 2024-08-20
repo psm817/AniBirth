@@ -63,12 +63,12 @@ public class AdoptController {
 
     @PostMapping("/create")
     public String create(@Valid AdoptionnoticeForm adoptionnoticeForm, @RequestParam("thumbnail")MultipartFile thumbnail, Principal principal) {
+//        Member member = memberService.getMemberById(id);
         Member member = memberService.getMemberByUsername(principal.getName());
 
         animalService.create(adoptionnoticeForm.getAge(),adoptionnoticeForm.getName(),adoptionnoticeForm.getClassification(),
                 adoptionnoticeForm.getHairColor(),adoptionnoticeForm.getMemo(),adoptionnoticeForm.getGender(),adoptionnoticeForm.getRegId(),
-                adoptionnoticeForm.getRescueDate(),adoptionnoticeForm.getWeight(),adoptionnoticeForm.getThumbnail(),member);
-
+                adoptionnoticeForm.getRescueDate(),adoptionnoticeForm.getWeight(),adoptionnoticeForm.getThumbnail(),adoptionnoticeForm.getAdoptionStatusCd(),adoptionnoticeForm.getSpecies(),member);
 
         return "redirect:/adopt/list";
 

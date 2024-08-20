@@ -114,10 +114,18 @@
 <!--                 th:src="@{|http://www.daejeon.go.kr/${animal.filePath}|}" alt="이미지가 존재하지 않습니다.">-->
 <!--                        <img class="block w-full h-full rounded-lg hover:rounded-lg"-->
 <!--                             th:src="@{|/${animal.filePath}|}" alt="이미지가 존재하지 않습니다.">-->
+            <!-- FileUpload로 시작하는 경우 -->
             <img class="block w-full h-full rounded-lg hover:rounded-lg"
+                 th:if="${animal.filePath.startsWith('FileUpload')}"
                  th:src="@{|http://www.daejeon.go.kr/${animal.filePath}|}"
-                 alt="이미지가 존재하지 않습니다."
-                 oneerror="this.onerror=null;this.src='/${animal.filePath}';">
+                 alt="이미지가 존재하지 않습니다.">
+
+            <!-- FileUpload로 시작하지 않는 경우 -->
+            <img class="block w-full h-full rounded-lg hover:rounded-lg"
+                 th:unless="${animal.filePath.startsWith('FileUpload')}"
+                 th:src="@{|/gen/${animal.filePath}|}"
+                 alt="이미지가 존재하지 않습니다.">
+
           </a>
           <div class="animal-content-detail">
             <a th:href="@{|/adopt/detail/${animal.id}|}" th:text="${animal.species}"
