@@ -1,97 +1,101 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout/layout}">
 <section layout:fragment="content" class="flex-1 flex justify-center items-center">
-  <div class="apply-container-box">
-    <div class="apply-total">
-      <div class="apply">
-        <div class="apply-wrapper">
-          <div class="apply-banner">
-            <img th:src="@{/images/banner/입양.png}" alt="배너1">
-          </div>
+    <div class="notice-container-box">
+        <div class="notice-total">
+            <div class="notice">
+                <div class="notice-wrapper">
+                    <div class="notice-banner">
+                        <img th:src="@{/images/banner/입양.png}" alt="배너1">
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="container apply-content bg-white shadow-md rounded-lg">
-      <div class="apply-content-name">
-        <h1 class="h2 g-color-primary g-font-size-28 g-line-height-1 font-weight-bold mt-5">
-                    <span class="apply-content-header">
-                        입양 신청서
+        <div class="container notice-content bg-white shadow-md rounded-lg">
+            <div class="notice-content-name">
+                <h1 class="h2 g-color-primary g-font-size-28 g-line-height-1 font-weight-bold mt-5">
+                    <span class="notice-content-header">
+                        입양동물 공고
                     </span>
-        </h1>
-        <hr class="my-2">
-      </div>
-      <div class="personal-data">
-        <div class="adopt-application-section">
-          <div class="personal-data-title">
-            <h5>개인정보</h5>
-          </div>
+                </h1>
+                <hr class="my-2">
+            </div>
+            <div class="personal-data">
+                <div class="notice-application-section">
+                    <div class="personal-data-title">
+                        <h5>개인정보</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="personal-data-input">
+                <form method="POST" th:action="@{/adopt/create}" th:object="${adoptionnoticeForm}"
+                      enctype="multipart/form-data">
+                    <div class="input-box name">
+                        <span>1. 동물이름</span>
+                        <input type="text" id="name" name="name">
+                    </div>
+                    <div class="input-box phone">
+                        <span>2. 관리번호</span>
+                        <input type="text" id="regId" name="regId">
+                    </div>
+                    <div class="input-box email">
+                        <span>3. 입양상태</span>
+                        <input type="text" id="adoptionStatusCd" name="adoptionStatusCd"  placeholder="공고중, 입양완료, 입양가능, 입양예정">
+                    </div>
+                    <div class="input-box gender">
+                        <span>4. 동물종류</span>
+                        <input type="text" id="classification" name="classification"  placeholder="개, 고양이, 기타동물">
+                    </div>
+                    <div class="input-box age">
+                        <span>5. 성별</span>
+                        <input type="text" id="gender" name="gender"  placeholder="수컷/암컷">
+                    </div>
+                    <div class="input-box company">
+                        <span>6. 구조날짜</span>
+                        <input type="text" id="rescueDate" name="rescueDate">
+                    </div>
+                    <div class="input-box married">
+                        <span>7. 추정나이</span>
+                        <input type="text" id="age" name="age">
+                    </div>
+                    <div class="input-box adress">
+                        <span>8. 몸무게</span>
+                        <input type="text" id="weight" name="weight" placeholder="">
+                    </div>
+                    <div class="input-box adress">
+                        <span>8. 털색</span>
+                        <input type="text" id="hairColor" name="hairColor" placeholder="">
+                    </div>
+                    <div class="input-box adress">
+                        <span>8. 기타정보</span>
+                        <input type="text" id="memo" name="memo" placeholder="해당 동물에 관한 특이사항">
+                    </div>
+                    <div class="upload-file">
+                        <h4>입양동물 사진 :</h4>
+                        <input type="file" name="thumbnail">
+                    </div>
+                    <div style="width: 100%; margin: 20px 0px;">
+                        <hr class="my-2">
+                    </div>
+                    <button id="submitBtn" class="btn btn-block btn-primary detail_adopt_application_event mb-2"
+                            type="submit">신청하기
+                    </button>
+                </form>
+            </div>
         </div>
-      </div>
-      <div class="personal-data-input">
-        <form action="" method="POST" th:action="@{/adopt/create}" th:object="${adoptionnoticeForm}"
-              enctype="multipart/form-data">
-          <div class="input-box name">
-            <span>1. 성명</span>
-            <input type="text" id="name" name="name">
-          </div>
-          <div class="input-box phone">
-            <span>2. 연락처</span>
-            <input type="text" id="age" name="age">
-          </div>
-          <div class="input-box email">
-            <span>3. 이메일 주소</span>
-            <input type="email" id="adoptionStatusCd" name="adoptionStatusCd">
-          </div>
-          <div class="input-box gender">
-            <span>4. 성별</span>
-            <input type="text" id="gender" name="gender">
-          </div>
-          <div class="input-box age">
-            <span>5. 나이</span>
-            <input type="text" id="classification" name="classification">
-          </div>
-          <div class="input-box company">
-            <span>6. 직업/직장명</span>
-            <input type="text" id="hairColor" name="hairColor">
-          </div>
-          <div class="input-box married">
-            <span>7. 결혼여부</span>
-            <input type="text" id="regId" name="regId">
-          </div>
-          <div class="input-box adress">
-            <span>8. 집주소</span>
-            <input type="text" id="memo" name="memo" style="width:194px" placeholder="우편번호">
-          </div>
-          <div class="input-box adress">
-            <span>8. 집주소</span>
-            <input type="text" id="weight" name="weight" style="width:194px" placeholder="우편번호">
-          </div>
-          <div class="upload-file">
-            <h4>입양 신청서 제출 :</h4>
-            <input type="file" name="thumbnail">
-          </div>
-          <div style="width: 100%; margin: 20px 0px;">
-            <hr class="my-2">
-          </div>
-          <button id="submitBtn" class="btn btn-block btn-primary detail_adopt_application_event mb-2"
-                  type="submit">신청하기
-          </button>
-        </form>
-      </div>
     </div>
-  </div>
 </section>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var checkboxes = document.querySelectorAll('input[name="chk"]');
-    var submitBtn = document.getElementById('submitBtn');
+    document.addEventListener('DOMContentLoaded', function () {
+      var checkboxes = document.querySelectorAll('input[name="chk"]');
+      var submitBtn = document.getElementById('submitBtn');
 
-    checkboxes.forEach(function (checkbox) {
-      checkbox.addEventListener('change', function () {
-        var checkedCheckboxes = document.querySelectorAll('input[name="chk"]:checked');
-        submitBtn.disabled = checkedCheckboxes.length !== checkboxes.length;
+      checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+          var checkedCheckboxes = document.querySelectorAll('input[name="chk"]:checked');
+          submitBtn.disabled = checkedCheckboxes.length !== checkboxes.length;
+        });
       });
     });
-  });
 </script>
 </html>
