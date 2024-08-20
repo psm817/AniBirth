@@ -10,6 +10,7 @@ import com.cod.AniBirth.category.repository.CategoryRepository;
 import com.cod.AniBirth.global.security.DataNotFoundException;
 import com.cod.AniBirth.member.entity.Member;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -185,7 +186,7 @@ public class AnimalService {
     }
 
     public void create(String age, String name, String classification, String hairColor, String memo, String gender,
-                       String regId, String rescueDate, String weight, MultipartFile thumbnail, Member member) {
+                       String regId, String rescueDate, String weight, MultipartFile thumbnail, String adoptionStatusCd, String species, Member member) {
         String thumbnailRelPath = "images/adoptionnotice/" + UUID.randomUUID().toString() + ".jpg";
         File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
 
@@ -204,6 +205,7 @@ public class AnimalService {
         Animal animal = Animal.builder()
                 .name(name)
                 .age(age)
+                .adoptionStatusCd(adoptionStatusCd)
                 .classification(classification)
                 .hairColor(hairColor)
                 .memo(memo)
@@ -211,7 +213,32 @@ public class AnimalService {
                 .regId(regId)
                 .rescueDate(rescueDate)
                 .weight(weight)
+                .species(species)
                 .filePath(thumbnailRelPath)
+                .adopter(member)
+                .build();
+
+        System.out.println("animal.filePath: " + animal.getFilePath());
+
+        animalRepository.save(animal);
+    }
+
+    public void create(String age, String name, String classification, String hairColor, String memo, String gender,
+                       String regId, String rescueDate, String weight, String thumbnail, String adoptionStatusCd, String species,Member member) {
+
+        Animal animal = Animal.builder()
+                .name(name)
+                .age(age)
+                .adoptionStatusCd(adoptionStatusCd)
+                .classification(classification)
+                .hairColor(hairColor)
+                .memo(memo)
+                .gender(gender)
+                .regId(regId)
+                .rescueDate(rescueDate)
+                .weight(weight)
+                .filePath(thumbnail)
+                .species(species)
                 .adopter(member)
                 .build();
 

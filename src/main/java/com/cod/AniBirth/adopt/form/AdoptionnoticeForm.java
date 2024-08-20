@@ -43,6 +43,9 @@ public class AdoptionnoticeForm {
     @NotBlank(message = "몸무게를 입력해주세요")
     private String weight;
 
+    @NotBlank(message = "강아지 견종, 고양이 종류, 동물 종류를 입력해주세요")
+    private String species;
+
     @NotNull(message="사진을 선택해주세요")
     private MultipartFile thumbnail;
 

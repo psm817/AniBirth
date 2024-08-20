@@ -16,3 +16,5 @@ spring:
 
 custom:
   genFileDirPath: C:\work\AniBirth\src\main\resources\static
+
+

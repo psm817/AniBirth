@@ -2,6 +2,8 @@ package com.cod.AniBirth.global.initData;
 
 import com.cod.AniBirth.account.service.AccountService;
 import com.cod.AniBirth.adopt.service.AdoptReviewService;
+import com.cod.AniBirth.animal.entity.Animal;
+import com.cod.AniBirth.animal.service.AnimalService;
 import com.cod.AniBirth.article.service.ArticleService;
 import com.cod.AniBirth.article.service.QaService;
 import com.cod.AniBirth.calendar.service.CalendarService;
@@ -35,7 +37,7 @@ public class Dev {
                                   CalendarService calendarService, VolunteerReviewService volunteerReviewService,
                                   DonationService donationService, ArticleService articleService,
                                   QaService qaService,
-                                  AdoptReviewService adoptReviewService, ReviewService reviewService) {
+                                  AdoptReviewService adoptReviewService, ReviewService reviewService, AnimalService animalService) {
 
         return args -> {
             // 회원 샘플
@@ -220,6 +222,9 @@ public class Dev {
             adoptReviewService.create("입양후기7","입양후기 7에 대한 내용입니다.","images/adoptreview/입양리스트.jpg", member7);
             adoptReviewService.create("입양후기8","입양후기 8에 대한 내용입니다.","images/adoptreview/입양리스트.jpg", member7);
             adoptReviewService.create("입양후기9","입양후기 9에 대한 내용입니다.","images/adoptreview/입양리스트.jpg", member7);
+
+            animalService.create("11","동구","개","흰색","없음","수","2024-07-15","2024-07-15","11kg","images/adoptionnotice/cf2bf21f-dd81-4a9b-a76d-507f826fd6c8.jpg","123123","포메라니안",member6);
+
 
         };
     }
