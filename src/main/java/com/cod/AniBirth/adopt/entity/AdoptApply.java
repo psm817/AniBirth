@@ -30,14 +30,11 @@ public class AdoptApply extends BaseEntity {
     private String detailAddress; //상세주소
     private String extraAddress; //참고사항
 
-//    private boolean isGender; //성별
-//    private boolean isMarried; //결혼여부
     private String gender; //성별
     private String marriedStatus; //결혼여부
     private String file;
 
-    @OneToMany(mappedBy = "adoptapply", cascade = CascadeType.REMOVE)
-    private Member adoptee;
+
 
 
 }

@@ -1,175 +1,175 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout/layout}">
 <section layout:fragment="content" class="flex-1 flex justify-center items-center">
-  <meta name="csrf-token" content="${_csrf.token}">
-  <!-- 토스트 UI 에디터 - 코어 -->
-  <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
-  <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+    <meta name="csrf-token" content="${_csrf.token}">
+    <!-- 토스트 UI 에디터 - 코어 -->
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 
-  <!-- 토스트 UI 에디터 - 한국어 -->
-  <script src="https://uicdn.toast.com/editor/latest/i18n/ko-kr.js"></script>
+    <!-- 토스트 UI 에디터 - 한국어 -->
+    <script src="https://uicdn.toast.com/editor/latest/i18n/ko-kr.js"></script>
 
-  <!-- 토스트 UI 에디터 - 다크테마 -->
-  <link rel="stylesheet" href="https://nhn.github.io/tui.editor/latest/dist/cdn/theme/toastui-editor-dark.css">
+    <!-- 토스트 UI 에디터 - 다크테마 -->
+    <link rel="stylesheet" href="https://nhn.github.io/tui.editor/latest/dist/cdn/theme/toastui-editor-dark.css">
 
-  <!-- 토스트 UI 차트 - 코어 -->
-  <link rel="stylesheet" href="https://uicdn.toast.com/chart/latest/toastui-chart.css">
-  <script src="https://uicdn.toast.com/chart/latest/toastui-chart.js"></script>
+    <!-- 토스트 UI 차트 - 코어 -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/chart/latest/toastui-chart.css">
+    <script src="https://uicdn.toast.com/chart/latest/toastui-chart.js"></script>
 
-  <!-- 토스트 UI 에디터 - 토스트 UI 차트를 에디터에 연결 -->
-  <script src="https://uicdn.toast.com/editor-plugin-chart/latest/toastui-editor-plugin-chart.min.js"></script>
+    <!-- 토스트 UI 에디터 - 토스트 UI 차트를 에디터에 연결 -->
+    <script src="https://uicdn.toast.com/editor-plugin-chart/latest/toastui-editor-plugin-chart.min.js"></script>
 
-  <!-- 코드 신택스 하이라이터, 프리즈마의 기본 CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
+    <!-- 코드 신택스 하이라이터, 프리즈마의 기본 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
 
-  <!-- 토스트 UI 에디터 - 코드 신택스 하이라이터 -->
-  <link rel="stylesheet" href="https://uicdn.toast.com/editor-plugin-code-syntax-highlight/latest/toastui-editor-plugin-code-syntax-highlight.min.css">
-  <!-- 프리즈마 JS가 아래 스크립트에 내장되어 있음 -->
-  <script src="https://uicdn.toast.com/editor-plugin-code-syntax-highlight/latest/toastui-editor-plugin-code-syntax-highlight-all.min.js"></script>
+    <!-- 토스트 UI 에디터 - 코드 신택스 하이라이터 -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor-plugin-code-syntax-highlight/latest/toastui-editor-plugin-code-syntax-highlight.min.css">
+    <!-- 프리즈마 JS가 아래 스크립트에 내장되어 있음 -->
+    <script src="https://uicdn.toast.com/editor-plugin-code-syntax-highlight/latest/toastui-editor-plugin-code-syntax-highlight-all.min.js"></script>
 
-  <!-- 토스트 UI 에디터 - UML 플러그인 -->
-  <script src="https://uicdn.toast.com/editor-plugin-uml/latest/toastui-editor-plugin-uml.min.js"></script>
+    <!-- 토스트 UI 에디터 - UML 플러그인 -->
+    <script src="https://uicdn.toast.com/editor-plugin-uml/latest/toastui-editor-plugin-uml.min.js"></script>
 
-  <div class="review-container-box">
-    <div class="review-total">
-      <div class="reviewList">
-        <div class="review-wrapper">
-          <div class="review-banner">
-            <img th:src="@{/images/banner/입양.png}" style="width:100%; height:100%;" alt="배너1">
-          </div>
+    <div class="review-container-box">
+        <div class="review-total">
+            <div class="reviewList">
+                <div class="review-wrapper">
+                    <div class="review-banner">
+                        <img th:src="@{/images/banner/입양.png}" style="width:100%; height:100%;" alt="배너1">
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+        <div class="container review-content">
+            <div class="review-content-name">
+                <h1 class="h4 g-color-primary font-weight-bold mt-2">
+                    <span class="review-content-header">입양 후기 작성</span>
+                </h1>
+                <hr class="my-2">
+            </div>
+            <div class="review-data-input">
+                <form method="POST" th:action="@{/adopt/create_review}" th:object="${createReviewForm}"
+                      enctype="multipart/form-data">
+                    <input type="hidden" name="_csrf" th:value="${_csrf.token}" id="csrfToken"/>
+                    <div class="input-box title">
+                        <span>제목</span>
+                        <textarea id="title" name="title" class="form-control" rows="1"></textarea>
+                        <!--            <input type="text" id="title" name="title">-->
+                    </div>
+                    <!--toast ui 쓰기위해 추가한 코드 부분-->
+                    <div class="text-left input-box content" id="editor"></div>
+                    <input class="form-control" type="hidden" id="content" name="content"><br>
+                    <div class="upload-file">
+                        <h4>대표사진 :</h4>
+                        <input type="file" name="images" accept="image/png, image/gif, image/jpeg"><br>
+                    </div>
+                    <!--여기까지-->
+                    <!--          <div class="input-box content">-->
+                    <!--            <span>내용</span>-->
+                    <!--            <textarea id="content" name="content" class="form-control" rows="7"></textarea>-->
+                    <!--          </div>-->
+                    <!--          <div class="upload-file">-->
+                    <!--            <h4>사진업로드 :</h4>-->
+                    <!--            <input type="file" name="images">-->
+                    <!--          </div>-->
+                    <div style="width: 100%; margin: 20px 0px;">
+                        <hr class="my-2">
+                    </div>
+                    <button id="submitBtn" class="btn btn-block btn-primary detail_adopt_application_event mb-2"
+                            type="submit">신청하기
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="container review-content">
-      <div class="review-content-name">
-        <h1 class="h4 g-color-primary font-weight-bold mt-2">
-          <span class="review-content-header">입양 후기 작성</span>
-        </h1>
-        <hr class="my-2">
-      </div>
-      <div class="review-data-input">
-        <form method="POST" th:action="@{/adopt/create_review}" th:object="${createReviewForm}"
-              enctype="multipart/form-data">
-          <input type="hidden" name="_csrf" th:value="${_csrf.token}" id="csrfToken"/>
-          <div class="input-box title">
-            <span>제목</span>
-            <textarea id="title" name="title" class="form-control" rows="1"></textarea>
-            <!--            <input type="text" id="title" name="title">-->
-          </div>
-          <!--toast ui 쓰기위해 추가한 코드 부분-->
-          <div class="text-left input-box content" id="editor"></div>
-          <input class="form-control" type="hidden" id="content" name="content"><br>
-          <div class="upload-file">
-            <h4>대표사진 :</h4>
-            <input type="file" name="images" accept="image/png, image/gif, image/jpeg"><br>
-          </div>
-          <!--여기까지-->
-<!--          <div class="input-box content">-->
-<!--            <span>내용</span>-->
-<!--            <textarea id="content" name="content" class="form-control" rows="7"></textarea>-->
-<!--          </div>-->
-<!--          <div class="upload-file">-->
-<!--            <h4>사진업로드 :</h4>-->
-<!--            <input type="file" name="images">-->
-<!--          </div>-->
-          <div style="width: 100%; margin: 20px 0px;">
-            <hr class="my-2">
-          </div>
-          <button id="submitBtn" class="btn btn-block btn-primary detail_adopt_application_event mb-2"
-                  type="submit">신청하기
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
-  <style>
-    .placeholder {
-        background-color: transparent !important;
-        cursor: auto !important;
-    }
-  </style>
-  <script>
-    const Editor = toastui.Editor;
+    <style>
+        .placeholder {
+            background-color: transparent !important;
+            cursor: auto !important;
+        }
+    </style>
+    <script>
+        const Editor = toastui.Editor;
 
-    const ToastEditor__chartOptions = {
-      minWidth: 100,
-      maxWidth: 600,
-      minHeight: 100,
-      maxHeight: 300
-    };
+        const ToastEditor__chartOptions = {
+          minWidth: 100,
+          maxWidth: 600,
+          minHeight: 100,
+          maxHeight: 300
+        };
 
-    $(document).ready(function () {
-        const csrfToken = $('#csrfToken').val();
+        $(document).ready(function () {
+            const csrfToken = $('#csrfToken').val();
 
-        const editor = new toastui.Editor({
-            el: $("#editor")[0],
-            initialValue: "",
-            previewStyle: "vertical",
-            placeholder: "내용을 입력해주세요.",
-            language: "ko-KR",
-            useCommandShortcut: false,
-            height: "500px",
-            plugins: [
-                [toastui.Editor.plugin.chart, ToastEditor__chartOptions],
-                [toastui.Editor.plugin.codeSyntaxHighlight, { highlighter: Prism }],
-                [
-                    toastui.Editor.plugin.uml,
-                    { rendererURL: "http://www.plantuml.com/plantuml/svg/" }
-                ]
-            ],
-            hooks: {
-                async addImageBlobHook(blob, callback) {
-                    try {
-                        const formData = new FormData();
-                        formData.append("image", blob);
+            const editor = new toastui.Editor({
+                el: $("#editor")[0],
+                initialValue: "",
+                previewStyle: "vertical",
+                placeholder: "내용을 입력해주세요.",
+                language: "ko-KR",
+                useCommandShortcut: false,
+                height: "500px",
+                plugins: [
+                    [toastui.Editor.plugin.chart, ToastEditor__chartOptions],
+                    [toastui.Editor.plugin.codeSyntaxHighlight, { highlighter: Prism }],
+                    [
+                        toastui.Editor.plugin.uml,
+                        { rendererURL: "http://www.plantuml.com/plantuml/svg/" }
+                    ]
+                ],
+                hooks: {
+                    async addImageBlobHook(blob, callback) {
+                        try {
+                            const formData = new FormData();
+                            formData.append("image", blob);
 
-                        const response = await fetch('/adopt/image-upload', {
-                            method: "POST",
-                            headers: {
-                                "X-CSRF-TOKEN": csrfToken
-                            },
-                            body: formData,
-                        });
+                            const response = await fetch('/adopt/image-upload', {
+                                method: "POST",
+                                headers: {
+                                    "X-CSRF-TOKEN": csrfToken
+                                },
+                                body: formData,
+                            });
 
-                        console.log(response.status);
+                            console.log(response.status);
 
-                        if (!response.ok) {
-                            throw new Error("이미지 업로드 실패: " + response.statusText);
+                            if (!response.ok) {
+                                throw new Error("이미지 업로드 실패: " + response.statusText);
+                            }
+
+                            const filename = await response.text();
+                            console.log('서버에 저장된 파일명 : ', filename);
+
+
+                            const imageUrl = `/gen/${filename}`;
+                            callback(imageUrl, "image alt attribute");
+
+                            console.log("서버에 저장된 파일 경로: ", imageUrl);
+                        } catch (error) {
+                            console.error("업로드 실패 : ", error);
                         }
-
-                        const filename = await response.text();
-                        console.log('서버에 저장된 파일명 : ', filename);
-
-
-                        const imageUrl = `/gen/${filename}`;
-                        callback(imageUrl, "image alt attribute");
-
-                        console.log("서버에 저장된 파일 경로: ", imageUrl);
-                    } catch (error) {
-                        console.error("업로드 실패 : ", error);
                     }
                 }
-            }
-        });
+            });
 
-        $("form").on("submit", function () {
-            $("#content").val(editor.getMarkdown());
+            $("form").on("submit", function () {
+                $("#content").val(editor.getMarkdown());
+            });
         });
-    });
-  </script>
+    </script>
 </section>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var checkboxes = document.querySelectorAll('input[name="chk"]');
-    var submitBtn = document.getElementById('submitBtn');
+    document.addEventListener('DOMContentLoaded', function () {
+      var checkboxes = document.querySelectorAll('input[name="chk"]');
+      var submitBtn = document.getElementById('submitBtn');
 
-    checkboxes.forEach(function (checkbox) {
-      checkbox.addEventListener('change', function () {
-        var checkedCheckboxes = document.querySelectorAll('input[name="chk"]:checked');
-        submitBtn.disabled = checkedCheckboxes.length !== checkboxes.length;
+      checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+          var checkedCheckboxes = document.querySelectorAll('input[name="chk"]:checked');
+          submitBtn.disabled = checkedCheckboxes.length !== checkboxes.length;
+        });
       });
     });
-  });
 </script>
 
 </html>

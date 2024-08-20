@@ -1,0 +1,200 @@
+html, body {
+    position: relative;
+    height: 100%;
+}
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+html > body .notice-container-box {
+    width: 100%;
+}
+
+html > body .notice-container-box > .notice-total {
+  width: 100%;
+  height: 380px;
+  margin-bottom: 20px;
+}
+
+html > body .notice-container-box > .notice-total > .notice {
+    width: 100%;
+    height: 100%;
+}
+html > body .notice-container-box > .notice-total > .notice > .notice-wrapper {
+    width: 100%;
+    height: 100%;
+}
+html > body .notice-container-box > .notice-total > .notice > .notice-wrapper > .notice-banner {
+    width: 100%;
+    height: 100%;
+}
+
+html > body .notice-container-box > .container {
+    width: 1340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 컨테이너 내의 항목을 가운데 정렬 */
+    background-color: white;
+    margin-top: 50px;
+    border-radius: 10px;
+    /*box-shadow: 3px 6px 14px grey;*/
+}
+
+html > body .notice-container-box > .container > .notice-content-name {
+    width: 100%;
+    font-weight: bold;
+}
+html > body .notice-container-box > .container > .notice-content-name > .h4
+
+.notice-container-box > .container > .personal-data {
+    padding: 10px;
+    width: 100%;
+}
+
+html > body .notice-container-box > .container .personal-data > .notice-application-section {
+    width: 1100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+html > body .notice-container-box > .container .personal-data .notice-application-section > .personal-data-title {
+    font-weight: bold;
+    font-size: large;
+}
+
+html > body .notice-container-box > .container > .personal-data> h5 {
+    display: flex;
+    align-items: start;
+    justify-content: center; /* h5를 가운데 정렬 */
+}
+html > body .notice-container-box > .container > .personal-data-input {
+    width: 100%;
+}
+
+.notice-content > .personal-data-input > form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center; /* 폼 내의 항목을 가운데 정렬 */
+    margin-bottom: 20px;
+}
+
+.notice-content > .personal-data-input > form > .input-box {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    width: 100%; /* input-box의 너비를 100%로 설정 */
+    max-width: 1100px; /* 최대 너비 설정 */
+}
+
+.notice-content > .personal-data-input > form > .input-box > span {
+    font-size: 18px;
+    width: 150px; /* span의 고정 너비 */
+    text-align: left;
+    margin-right: 10px;
+}
+
+.notice-content > .personal-data-input > form > .input-box > input,
+.notice-content > .personal-data-input > form > .input-box > label > input {
+    border: 1px solid #121212;
+    height: 40px;
+    width: calc(100% - 160px); /* input 박스의 너비 계산 (전체 너비 - span 너비) */
+    padding-left: 10px;
+}
+
+.notice-content > .personal-data-input > form > .input-box.gender,
+.notice-content > .personal-data-input > form > .input-box.married {
+    flex-direction: row; /* 성별 선택을 가로로 배치 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+}
+
+.notice-content > .personal-data-input > form > .input-box.gender > label,
+.notice-content > .personal-data-input > form > .input-box.married > label {
+    margin-right: 10px; /* 라디오 버튼과 텍스트 사이의 간격 */
+    display: flex;
+    align-items: center;
+}
+
+.notice-content > .personal-data-input > form > .input-box.gender > label > input,
+.notice-content > .personal-data-input > form > .input-box.married > label > input {
+    width: auto; /* 라디오 버튼의 너비를 자동으로 설정 */
+    margin-right: 5px; /* 라디오 버튼과 텍스트 사이의 간격 */
+}
+.notice-content > .personal-data-input > form > .input-box.adress > #sample6_postcode {
+    margin-right: 10px;
+}
+.notice-content > .personal-data-input > form > .input-box.adress > #sample6_Daumpostcode {
+    padding: 0;
+}
+
+.notice-content > .personal-data-input > form > .input-box.adress2 > input {
+    width: 640px;
+    margin-left: 160px;
+}
+
+.notice-content > .personal-data-input > form > .input-box.adress3 > #sample6_detailAddress {
+    margin-left: 160px;
+}
+
+.notice-content > .personal-data-input > form > .privacy,
+.notice-content > .personal-data-input > form > .adopt-agreement {
+    width: 1100px;
+    text-align: left;
+}
+.notice-content > .personal-data-input > form > .privacy > span,
+.notice-content > .personal-data-input > form > .adopt-agreement > span {
+    font-size: 18px;
+}
+
+.notice-content > .personal-data-input > form > .privacy > .privacy-raw {
+    background-color: #f2f6fc;
+    height: 92px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+
+.notice-content > .personal-data-input > form > .adopt-agreement > .adopt-agreement-raw {
+    background-color: #f2f6fc;
+    height: 670px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.notice-content > .personal-data-input > form > .adopt-agreement > .adopt-agreement-raw > ul > li> label,
+.notice-content > .personal-data-input > form > .upload-file {
+    flex-direction: row;
+    justify-content: flex-start;
+    display: flex;
+    align-items: center;
+}
+
+.notice-content > .personal-data-input > form > .adopt-agreement > .adopt-agreement-raw > ul> li> label > input {
+    margin-right: 5px;
+}
+
+.notice-content > .personal-data-input > form > .upload-file > input {
+    margin-left: 10px;
+}
+
+.notice-content > .personal-data-input > form > #submitBtn {
+    background-color: #f88379;
+    border-color: #f88379;
+}
+
+.notice-content > .personal-data-input > form > #submitBtn:hover {
+    background-color: #f76f63;
+    border-color: #f76f63;
+}
