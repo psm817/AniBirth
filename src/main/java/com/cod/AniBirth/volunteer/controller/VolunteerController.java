@@ -218,6 +218,18 @@ public class VolunteerController {
         return "redirect:/volunteer/detail/%s?applySuccess=true".formatted(id);
     }
 
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/apply/delete/{id}")
+    public String applyDelete(@PathVariable("id") Long id, Principal principal) {
+        Member member = memberService.getMemberByUsername(principal.getName());
+
+        Volunteer volunteer = volunteerService.getVolunteerById(id);
+
+        volunteerApplicationService.delete(member, volunteer);
+
+        return "redirect:/member/myPage/volunteer?applyDeleteSuccess=true";
+    }
+
     // 봉사활동 후기
     @GetMapping("/review")
     public String reviewList(Authentication authentication, Model model,

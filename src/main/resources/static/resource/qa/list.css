@@ -215,6 +215,13 @@ td:nth-child(2) {
     width: 300px;
 }
 
+td:nth-child(2) > .shortTitle {
+    width: 280px;
+    overflow: hidden;
+    white-space: nowrap; /* 텍스트를 한 줄로 유지 */
+    text-overflow: ellipsis; /* 글이 길어지면 ... 처리 */
+}
+
 th {
     background-color: #f1f1f1;
 }
@@ -222,6 +229,9 @@ th {
 td a {
     color: #007bff;
     text-decoration: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 td.view-count {

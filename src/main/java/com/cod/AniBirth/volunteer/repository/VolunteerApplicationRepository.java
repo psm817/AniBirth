@@ -16,4 +16,6 @@ public interface VolunteerApplicationRepository extends JpaRepository<VolunteerA
     boolean existsByMemberAndVolunteer(Member member, Volunteer volunteer);
 
     List<VolunteerApplication> findByMember(Member member);
+
+    VolunteerApplication findByMemberAndVolunteer(Member member, Volunteer volunteer);
 }

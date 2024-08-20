@@ -42,11 +42,16 @@
                         </li>
                     </ul>
                 </div>
-                <div class="prod-cart-add-card">
+                <div class="prod-cart-add-card" sec:authorize="isAuthenticated()">
                     <div class="prod-card-body">
                         <form th:action="@{|/cart/add/${product.id}|}" method="POST">
                             <input type="submit" value="장바구니 담기" class="prod-btn-outline-dark">
                         </form>
+                    </div>
+                </div>
+                <div class="prod-cart-add-card" sec:authorize="isAnonymous()">
+                    <div class="prod-card-body">
+                        <span>로그인 후 장바구니에 담을 수 있습니다.</span>
                     </div>
                 </div>
             </div>
@@ -80,7 +85,7 @@
                         </div>
                     </div>
                     <div class="review-modify-container" style="display: none; margin-top: 20px;">
-                        <form class="reviewModifyForm" th:action="@{|/review/modify/${review.id}|}" method="POST">
+                        <form class="reviewModifyForm" sec:authorize="isAuthenticated()" th:action="@{|/review/modify/${review.id}|}" method="POST">
                             <div class="star-input">
                                     <div class="prod-rating modify-rating">
                                     <input value="5" name="starRating" id="modify-star5" type="radio">
