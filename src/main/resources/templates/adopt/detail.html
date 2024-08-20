@@ -149,8 +149,8 @@
                     <div class="adopt-button">
                         <!-- 입양하기 -->
                         <!-- GA 클래스 추가 detail_adopt_application_event -->
-                        <a href="/adopt/apply" target="_blink">
-                            <button class="btn btn-block btn-primary detail_adopt_application_event" type="button"
+                        <a th:href="@{|/adopt/apply/${animal.id}|}" target="_blink">
+                            <button class="btn btn-block btn-primary detail_adopt_application_event" type="submit"
                                     style="background-color:#f88379; margin-top: 5px; border:1px solid #f7a199;">
                                 입양하기
                             </button>

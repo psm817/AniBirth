@@ -10,7 +10,6 @@ import com.cod.AniBirth.category.repository.CategoryRepository;
 import com.cod.AniBirth.global.security.DataNotFoundException;
 import com.cod.AniBirth.member.entity.Member;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -243,6 +242,13 @@ public class AnimalService {
                 .build();
 
         animalRepository.save(animal);
+    }
+
+    public void modify(Member member, Animal animal) {
+        animal.setAdoptee(member);
+
+        animalRepository.save(animal);
+
     }
 
 //    public Page<Animal> getListByCategory(int page, String kw, Long categoryId) {

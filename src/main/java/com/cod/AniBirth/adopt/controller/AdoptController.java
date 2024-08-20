@@ -15,6 +15,7 @@ import com.cod.AniBirth.member.service.MemberService;
 import com.cod.AniBirth.volunteer.entity.VolunteerReview;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.Banner;
 import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -56,6 +57,7 @@ public class AdoptController {
 
         return "adopt/list";
     }
+
     @GetMapping("/create")
     public String show_create(AdoptionnoticeForm adoptionnoticeForm) {
         return "adopt/adoption_noticeForm";
@@ -82,12 +84,16 @@ public class AdoptController {
         return "adopt/detail";
     }
 
-    @GetMapping("/apply")
-    public String showApplyForm(AdoptForm adoptForm) {
+    @GetMapping("/apply/{id}")
+    public String showApplyForm(AdoptForm adoptForm, @PathVariable("id") Long id, Model model) {
+        Animal animal = animalService.getAnimal(id);
+
+        model.addAttribute("animal", animal);
+
         return "adopt/form";
     }
 
-    @PostMapping("/apply")
+    @PostMapping("/apply/{id}")
     public String submitApplyForm(@Valid AdoptForm adoptForm, @RequestParam("isGender") boolean isGender,
                                   @RequestParam("isMarried") boolean isMarried, @RequestParam("file")MultipartFile file,Principal principal, @PathVariable("id") Long id) {
         Member member = memberService.getMemberByUsername(principal.getName());
@@ -95,7 +101,11 @@ public class AdoptController {
 
         adoptService.apply(adoptForm.getName(),adoptForm.getPhone(),adoptForm.getEmail(),adoptForm.getAge(),adoptForm.getCompany(),
                 adoptForm.getPostCode(),adoptForm.getAddress(),adoptForm.getDetailAddress(),adoptForm.getExtraAddress(),
-                isGender,isMarried,adoptForm.getFile(),member);
+                isGender,isMarried,adoptForm.getFile(),member,animal);
+
+        animalService.modify(member,animal);
+
+
 
         return "redirect:/adopt/list";
     }
