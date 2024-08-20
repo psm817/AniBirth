@@ -34,8 +34,10 @@
                 </div>
             </div>
             <div class="personal-data-input">
-                <form method="POST" th:action="@{/adopt/apply}" th:object="${adoptForm}"
+                <form method="post" th:action="@{|/adopt/apply/${animal.id}}" th:object="${adoptForm}"
                       enctype="multipart/form-data">
+<!--                <form method="post" th:action="@{|/adopt/apply/${animal.id}|}" th:object="${adoptForm}"-->
+<!--                      enctype="multipart/form-data">-->
                     <div class="input-box name">
                         <span>1. 성명</span>
                         <input type="text" id="name" name="name">
