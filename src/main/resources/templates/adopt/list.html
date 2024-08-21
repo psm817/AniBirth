@@ -110,10 +110,10 @@
         <li th:each="animal, loop : ${paging}" class="flex flex-col">
           <a th:href="@{|/adopt/detail/${animal.id}|}"
              class="border border-black h-[280px] transition duration-300 rounded-lg hover:rounded-lg hover:-translate-y-1.5 hover:transition hover:duration-300 hover:shadow-md">
-<!--            <img class="block w-full h-full rounded-lg hover:rounded-lg"-->
-<!--                 th:src="@{|http://www.daejeon.go.kr/${animal.filePath}|}" alt="이미지가 존재하지 않습니다.">-->
-<!--                        <img class="block w-full h-full rounded-lg hover:rounded-lg"-->
-<!--                             th:src="@{|/${animal.filePath}|}" alt="이미지가 존재하지 않습니다.">-->
+            <!--            <img class="block w-full h-full rounded-lg hover:rounded-lg"-->
+            <!--                 th:src="@{|http://www.daejeon.go.kr/${animal.filePath}|}" alt="이미지가 존재하지 않습니다.">-->
+            <!--                        <img class="block w-full h-full rounded-lg hover:rounded-lg"-->
+            <!--                             th:src="@{|/${animal.filePath}|}" alt="이미지가 존재하지 않습니다.">-->
             <!-- FileUpload로 시작하는 경우 -->
             <img class="block w-full h-full rounded-lg hover:rounded-lg"
                  th:if="${animal.filePath.startsWith('FileUpload')}"

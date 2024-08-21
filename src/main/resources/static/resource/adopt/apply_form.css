@@ -137,6 +137,7 @@ html > body .apply-container-box .container .personal-data-input {
     margin-right: 5px; /* 라디오 버튼과 텍스트 사이의 간격 */
 }
 .apply-content > .personal-data-input > form > .input-box.adress > #sample6_postcode {
+    width: 194px;
     margin-right: 10px;
 }
 .apply-content > .personal-data-input > form > .input-box.adress > #sample6_Daumpostcode {
@@ -150,6 +151,10 @@ html > body .apply-container-box .container .personal-data-input {
 
 .apply-content > .personal-data-input > form > .input-box.adress3 > #sample6_detailAddress {
     margin-left: 160px;
+    width: 342px;
+}
+.apply-content > .personal-data-input > form > .input-box.adress3 > .ml-2 {
+    width: 290px;
 }
 
 .apply-content > .personal-data-input > form > .privacy,
@@ -169,7 +174,9 @@ html > body .apply-container-box .container .personal-data-input {
     align-items: center;
     margin-top: 10px;
 }
-
+.apply-content > .personal-data-input > form > .privacy > .privacy-raw > ul {
+    padding-left: 20px;
+}
 
 .apply-content > .personal-data-input > form > .adopt-agreement > .adopt-agreement-raw {
     background-color: #f2f6fc;
@@ -204,4 +211,81 @@ html > body .apply-container-box .container .personal-data-input {
 .apply-content > .personal-data-input > form > #submitBtn:hover {
     background-color: #f76f63;
     border-color: #f76f63;
+}
+
+@media (max-width: 394px) {
+
+    .apply-total {
+        width: 100%;
+        height: 380px;
+    }
+    .apply-total > .apply {
+        width: 100%;
+        height: 100%;
+    }
+    .apply-total > .apply > .apply-wrapper {
+        width: 100%;
+        height: 100%;
+    }
+    .apply-total > .apply > .apply-wrapper > .apply-banner {
+        width: 100%;
+        height: 100%;
+    }
+    .apply-total > .apply > .apply-wrapper > .apply-banner > img {
+        width: 100%;
+        height: 100%;
+    }
+    html > body .apply-container-box > .container {
+        width: 100%;
+    }
+    html > body .apply-container-box > .container > .personal-data {
+        width: 100%;
+    }
+    html > body .apply-container-box > .container .personal-data > .adopt-application-section{
+        width: 100%;
+        padding: 0px 5px;
+
+    }
+
+    .apply-content > .personal-data-input > form > .input-box.adress > #sample6_postcode {
+        width: 125px;
+    }
+    .apply-content > .personal-data-input > form > .input-box.adress2 > input {
+        width: 100%;
+        margin-left: 156px;
+    }
+    .apply-content > .personal-data-input > form > .input-box.adress3 > #sample6_detailAddress {
+        margin-left: 156px;
+        width: 120px;
+    }
+    .apply-content > .personal-data-input > form > .input-box.adress3 > .ml-2 {
+        width: 82px;
+
+    }
+    .apply-content > .personal-data-input > form > .privacy,
+    .apply-content > .personal-data-input > form > .adopt-agreement {
+        width: 100%;
+    }
+    .apply-content > .personal-data-input > form > .privacy > .privacy-raw {
+        height: 145px;
+        padding: 0px 10px;
+    }
+    .apply-content > .personal-data-input > form > .privacy > .privacy-raw > ul {
+        padding-left: 5px;
+    }
+    .apply-content > .personal-data-input > form > .adopt-agreement > .adopt-agreement-raw {
+        height: 1250px;
+    }
+    .apply-content > .personal-data-input > form > .adopt-agreement > p {
+        padding: 0px 3px;
+    }
+    .apply-content > .personal-data-input > form > .upload-file {
+        justify-content: center;
+        align-items: center;
+    }
+    .apply-content > .personal-data-input > form > .upload-file > h4 {
+        white-space: nowrap;
+        margin-left: 107px;
+    }
+
 }

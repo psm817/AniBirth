@@ -108,13 +108,31 @@ html > body .adopt-detail-content .row-adopt .content .space-1 > .card-frame {
 /* 반응형 디자인: 작은 화면에서는 세로로 배치 */
 @media (max-width: 394px) {
 
+    html > body .adopt-detail-head {
+        width: 100%;
+        margin: 20px 0px;
+    }
+    html > body .adopt-detail-head > .adopt-info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     .row-adopt {
         flex-direction: column;
+    }
+
+    .adopt.content {
+        padding: 7px;
+        width: 100%;
     }
 
     .adopt.img,
     .adopt.content {
         max-width: 100%;
+    }
+
+    .adopt.content > ul {
+        margin: 10px;
     }
 
 

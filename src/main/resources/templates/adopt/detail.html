@@ -21,9 +21,9 @@
 
                         <!-- FileUpload로 시작하지 않는 경우 -->
                         <img class="block w-full h-full rounded-lg hover:rounded-lg"
-                                 th:unless="${animal.filePath.startsWith('FileUpload')}"
-                                 th:src="@{|/gen/${animal.filePath}|}"
-                                 alt="이미지가 존재하지 않습니다.">
+                             th:unless="${animal.filePath.startsWith('FileUpload')}"
+                             th:src="@{|/gen/${animal.filePath}|}"
+                             alt="이미지가 존재하지 않습니다.">
                     </div>
                     <div class="adopt-img-small">
                     </div>
