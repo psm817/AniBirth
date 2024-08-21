@@ -8,9 +8,7 @@
 
 /* 컨테이너 설정 */
 .container-all {
-  width: 66.66%; /* 화면의 2/3 너비 */
-  max-width: 900px;
-
+  width: 1000px;
   padding: 1rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   background: #fff;
@@ -59,6 +57,11 @@
   gap: 1rem; /* 레이블과 입력 요소 간의 간격 */
 }
 
+.form-group > .form-label {
+  padding-left: 20px;
+  margin-bottom: 0px;
+}
+
 /* 레이블 스타일 */
 .form-label {
   font-size: 1rem;
@@ -95,6 +98,10 @@
   cursor: pointer;
 }
 
+.form-button:nth-child(1) {
+    margin-right: 20px;
+}
+
 .form-button:hover {
   background-color: #f58ca3;
   color: #ffffff;
@@ -109,8 +116,18 @@
 
     /* 컨테이너 설정 */
     .container-all {
-        width: 90%; /* 너비를 화면의 90%로 조정 */
         padding: 1rem;
+    }
+
+    .container-title > .form-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container-title > .form-group > .form-label {
+        padding-left: 0px;
+        font-size: 14px;
     }
 
     /* 제목 스타일 */
@@ -121,7 +138,12 @@
     /* 폼 그룹 설정 */
     .form-group {
         flex-direction: column; /* 수직으로 정렬 */
-        align-items: stretch; /* 입력 요소가 전체 너비를 차지하도록 설정 */
+        align-items: center; /* 입력 요소가 전체 너비를 차지하도록 설정 */
+    }
+
+    .form-group > .form-label {
+        font-size: 14px;
+        padding-left: 0px;
     }
 
     /* 레이블 스타일 */
@@ -133,6 +155,7 @@
     /* 입력 요소 스타일 */
     .form-input, .form-textarea {
         font-size: 0.875rem; /* 폰트 크기 줄이기 */
+        width: 300px;
     }
 
     /* 버튼 스타일 */

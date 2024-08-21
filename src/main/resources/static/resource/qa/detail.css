@@ -2,7 +2,7 @@
 .container-all, .container-comments {
   margin-top:40px;
   border-radius: 8px;
-  width: 100%;
+  width: 1000px;
   min-height: 500px; /* 최소 높이 설정 */
   padding: 1rem;
   display: flex;
@@ -151,6 +151,11 @@ h2 {
     width: 1000px;
     margin: -20px auto;
 }
+
+.container-comment-list {
+    width: 1000px;
+}
+
 .container-comment-content {
     width: 550px;
     margin: 20px auto;
@@ -287,6 +292,23 @@ button:active {
 
 /* 미디어 쿼리: 화면 너비가 480px 이하일 때 */
 @media (max-width: 480px) {
+    .container-all {
+        width: 100%;
+    }
+
+    .container-comment {
+        width: 100%;
+    }
+
+    .container-comment > div > #comment-form-new > button {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .container-comment-list {
+        width: 100%;
+    }
+
     /* 제목 스타일링 */
     h1 {
         font-size: 1.25rem; /* 제목 폰트 크기 줄이기 */

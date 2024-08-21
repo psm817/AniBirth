@@ -9,8 +9,7 @@
 
 /* 컨테이너 설정 */
 .container-all {
-  width: 66.66%; /* 화면의 2/3 너비 */
-  max-width: 900px;
+  width: 1000px;
 
   padding: 1rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -60,6 +59,11 @@
   gap: 1rem; /* 레이블과 입력 요소 간의 간격 */
 }
 
+.form-group > .form-label {
+  padding-left: 20px;
+  margin-bottom: 0px;
+}
+
 /* 레이블 스타일 */
 .form-label {
   font-size: 1rem;
@@ -96,6 +100,10 @@
   cursor: pointer;
 }
 
+.form-button:nth-child(1) {
+    margin-right: 20px;
+}
+
 .form-button:hover {
   background-color: #f58ca3;
 }
@@ -125,6 +133,7 @@
 
     .form-input, .form-textarea {
         font-size: 0.875rem; /* 입력 요소의 폰트 크기 조정 */
+        width: 300px;
     }
 
     .form-button {
