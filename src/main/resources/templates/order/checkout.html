@@ -49,15 +49,22 @@
                                 <span>결제 가격</span>
                                 <div class="checkout-details">
                                     <span>상품 가격 :</span>
-                                    <span th:text="${#numbers.formatInteger(totalPrice, 3, 'COMMA') + '원'}"></span>
+                                    <span th:text="${#numbers.formatInteger(totalPrice, 0, 'COMMA') + '원'}"></span>
                                     <span>배송비 : </span>
-                                    <span th:text="${#numbers.formatInteger(shippingFee, 3, 'COMMA') + '원'}"></span>
+                                    <span th:text="${#numbers.formatInteger(shippingFee, 0, 'COMMA') + '원'}"></span>
                                 </div>
                             </div>
                             <div class="checkout-footer">
                                 <span>합계:</span>
-                                <span th:text="${#numbers.formatInteger(totalWithShipping, 3, 'COMMA') + '원'}"></span>
-
+                                <span th:text="${#numbers.formatInteger(totalWithShipping, 0, 'COMMA') + '원'}"></span>
+                            </div>
+                            <div class="checkout-footer">
+                                <span>애니포인트 잔액:</span>
+                                <span th:text="${#numbers.formatInteger(aniPointBalance, 0, 'COMMA') + '원'}"></span>
+                            </div>
+                            <div class="checkout-footer" th:if="${shortfall > 0}">
+                                <span style="color: red;">포인트가 부족합니다.</span>
+                                <span th:text="${'-' + #numbers.formatInteger(shortfall, 0, 'COMMA') + '원'}"></span>
                             </div>
                             <div class="ch-footer">
                                 <button type="submit" class="btn btn-primary checkout-checkout-btn">포인트로 결제하기</button>

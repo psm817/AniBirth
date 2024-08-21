@@ -57,7 +57,13 @@ public class OrderController {
         List<CartItem> cartList = cartService.getList(member);
         int totalPrice = cartService.getTotalPrice(member);
         int shippingFee = 3000; // Set shipping fee
+        int totalWithShipping = totalPrice + shippingFee;
         String orderId = UUID.randomUUID().toString(); // Generate a unique order ID
+
+        long aniPointBalance = accountService.getAniPointBalance(member);
+
+        long shortfall = totalWithShipping > aniPointBalance ? totalWithShipping - aniPointBalance : 0;
+        boolean isSufficientBalance = shortfall == 0;
 
         model.addAttribute("cartList", cartList);
         model.addAttribute("totalPrice", totalPrice);
@@ -67,6 +73,9 @@ public class OrderController {
         model.addAttribute("address", member.getAddress()); // 기본 주소지 추가
         model.addAttribute("nickname", member.getNickname()); // Add nickname
         model.addAttribute("phone", member.getPhone());
+        model.addAttribute("aniPointBalance", aniPointBalance);
+        model.addAttribute("shortfall", shortfall);
+        model.addAttribute("isSufficientBalance", isSufficientBalance);
 
         return "order/checkout";
     }
