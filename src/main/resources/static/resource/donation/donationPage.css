@@ -39,7 +39,7 @@ html > body .donation-banner {
 }
 .text-overlay {
     position: absolute;
-    top: 30%;
+    top: 40%;
     left: 180px;
     width: 900px;
     height: 200px;
@@ -392,6 +392,7 @@ html > body .do-container .donation-section .donation-bg-img > .center-backgroun
 
     .text-overlay p {
         font-size: 0.9em;
+        margin-bottom: 120px;
     }
 
     .donation-box p {
