@@ -172,62 +172,16 @@ adopt-detail-content-box
 
 /* 반응형 시작 */
 @media(max-width: 394px) {
-    .review-detail {
-        padding-top: 10px;
-    }
-
-    .review-detail > .top-box > .detail-box {
-        height: 210px;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    .review-detail > .top-box > .detail-box > span {
-        height: 70px;
-        font-size: 20px;
-        line-height: 70px;
-    }
-
-    .review-detail > .top-box > .detail-box > .flex-box {
-        flex-direction: column;
-        height: 100%;
-    }
-
-    .review-detail > .top-box > .detail-box > .flex-box > .description-box {
-        flex-direction: column;
-        align-items: start;
+    .adopt-review-detail > .adopt-top-box > .adopt-detail-box {
         width: 100%;
-        height: 110px;
+        padding: 10px;
     }
-
-    .review-detail > .top-box > .detail-box > .flex-box > .description-box > .bar {
-        display: none;
-    }
-
-    .review-detail > .top-box > .detail-box > .flex-box > .btn-box {
-        display: flex;
-        align-items: center;
-        justify-content: start;
+    .adopt-review-detail > .adopt-top-box > .adopt-detail-box> span {
         width: 100%;
     }
 
-    .review-detail > .top-box > .content-box {
-        padding-left: 10px;
-        padding-right: 10px;
-        height: 100%;
-        width: 100%;
-    }
-
-    .review-detail > .top-box > .content-box > .subImg-box {
-        width: 100%;
-        height: 300px;
-        margin-top: 20px;
-    }
-
-    .review-detail > .top-box > .button-box {
-        padding-left: 10px;
-        padding-right: 10px;
-        margin-bottom: 40px;
+    .adopt-review-detail > .adopt-top-box > .adopt-review-button-box {
+        padding: 0px;
     }
 
 }

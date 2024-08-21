@@ -180,6 +180,9 @@ html > body .notice-container-box > .container > .personal-data-input {
     display: flex;
     align-items: center;
 }
+.notice-content > .personal-data-input > form > .upload-file {
+    margin-top: 15px;
+}
 
 .notice-content > .personal-data-input > form > .adopt-agreement > .adopt-agreement-raw > ul> li> label > input {
     margin-right: 5px;
@@ -197,4 +200,40 @@ html > body .notice-container-box > .container > .personal-data-input {
 .notice-content > .personal-data-input > form > #submitBtn:hover {
     background-color: #f76f63;
     border-color: #f76f63;
+}
+@media (max-width: 394px) {
+
+    .notice-total {
+        width: 100%;
+        height: 380px;
+    }
+    .notice-total > .notice {
+        width: 100%;
+        height: 100%;
+    }
+    .notice-total > .notice > .notice-wrapper {
+        width: 100%;
+        height: 100%;
+    }
+    .notice-total > .notice > .notice-wrapper > .notice-banner {
+        width: 100%;
+        height: 100%;
+    }
+    .notice-total > .notice > .notice-wrapper > .notice-banner > img {
+        width: 100%;
+        height: 100%;
+    }
+
+    html > body .notice-container-box > .container {
+        width: 100%;
+    }
+    .notice-content > .personal-data-input > form > .upload-file {
+        justify-content: center;
+        align-items: center;
+        margin-top: 15px;
+    }
+    .notice-content > .personal-data-input > form > .upload-file > h4 {
+        white-space: nowrap;
+        margin-left: 107px;
+    }
 }
