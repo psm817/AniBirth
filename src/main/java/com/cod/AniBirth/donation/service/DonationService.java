@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -24,9 +23,8 @@ public class DonationService {
     private final MemberRepository memberRepository;
     private final DonationRepository donationRepository;
 
-    // 권한이 1(기업/보호소) 또는 0(최고 관리자)인 멤버들을 가져옴
     public List<Member> getAllRecipients() {
-        return memberRepository.findByAuthorityIn(List.of(0, 1));
+        return memberRepository.findByAuthorityInAndIsActive(List.of(0, 1), 1);
     }
 
     @Transactional

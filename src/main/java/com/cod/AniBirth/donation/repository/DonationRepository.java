@@ -26,4 +26,6 @@ public interface DonationRepository extends JpaRepository<Donation, Long> {
     Long countByRecipient(Member recipient);
 
 
+
+
 }
