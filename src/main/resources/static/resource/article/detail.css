@@ -1,8 +1,6 @@
 /* detail.css */
-
 .container-all {
-    width: 100%;
-    max-width: 1200px;
+    width: 1000px;
     margin: 0 auto;
     padding: 1rem;
     display: flex;
@@ -91,6 +89,12 @@ hr {
 .container-content {
     flex: 1; /* 콘텐츠가 가능한 공간을 차지하도록 함 */
     margin-top: -1rem; /* 위로 올리기 위한 설정, 필요한 만큼 조절 가능 */
+}
+
+@media (max-width: 394px) {
+    .container-all {
+        width: 100%;
+    }
 }
 
 

@@ -29,9 +29,8 @@
             <hr class="divider">
             <!-- 버튼 -->
             <div class="form-footer">
-                <button class="form-button" type="submit" th:text="${article.id == null} ? '등록' : '수정'"></button>
                 <button class="form-button" type="button" onclick="window.history.back()">취소</button>
-
+                <button class="form-button" type="submit" th:text="${article.id == null} ? '등록' : '수정'"></button>
             </div>
         </form>
     </div>
