@@ -139,7 +139,7 @@ hr {
 }
 
 .checkout-payments .checkout-details span:nth-child(odd) {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   color: #000000;
   margin: auto auto auto 0;
@@ -163,10 +163,12 @@ hr {
     display: flex;
     justify-content: space-between;
     border-bottom-left-radius: 10%;
+    margin-top: 5px;
 }
 .ch-footer {
     display: flex;
     justify-content: center;
+    margin-top: 30px;
 }
 .checkout-price {
   position: relative;

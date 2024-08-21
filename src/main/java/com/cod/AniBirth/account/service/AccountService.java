@@ -53,5 +53,10 @@ public class AccountService {
         account.setAniPoint(account.getAniPoint() + points);
         accountRepository.save(account);
     }
+    public Long getAniPointBalance(Member member) {
+        Account account = accountRepository.findByMemberId(member.getId())
+                .orElseThrow(() -> new IllegalArgumentException("Account not found"));
+        return account.getAniPoint();
+    }
 
 }
