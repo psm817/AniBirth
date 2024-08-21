@@ -59,4 +59,8 @@ public class Animal extends BaseEntity {
     @JoinColumn(name = "category_id")
     private Category category; // 카테고리 엔티티와의 관계
 
+    private int categorynum; // 카테고리 엔티티와의 관계
+
+
+
 }

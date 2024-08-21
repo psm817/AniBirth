@@ -27,7 +27,7 @@ public interface AnimalRepository extends JpaRepository<Animal, Long>, JpaSpecif
             """)
     Page<Animal> findAllByKeyword(@Param("kw") String kw, Pageable pageable);
 
-    Page<Animal> findAllByCategory_Id(Long classificationId, Pageable pageable);
+    Page<Animal> findAllByCategory_Id(Long categoryId, Pageable pageable);
     Page<Animal> findAll(Specification<Animal> spec, Pageable pageable);
 
     List<Animal> findTop4ByOrderByCreateDateDesc();
