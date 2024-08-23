@@ -15,7 +15,9 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     @Query("SELECT oi.product FROM OrderItem oi JOIN oi.order o WHERE o.buyer = :member AND oi.isPaid = true")
     List<Product> findPurchasedProductsByMember(@Param("member") Member member);
 
-    boolean existsByBuyerAndProduct(Member buyer, Product product);
+    @Query("SELECT COUNT(oi) > 0 FROM OrderItem oi JOIN oi.order o WHERE o.buyer = :buyer AND oi.product = :product AND o.isPaid = true AND o.isCanceled = false AND o.isRefunded = false")
+    boolean existsByBuyerAndProduct(@Param("buyer") Member buyer, @Param("product") Product product);
+
 
 
 }

@@ -67,7 +67,7 @@
                                 <span th:text="${'-' + #numbers.formatInteger(shortfall, 0, 'COMMA') + '원'}"></span>
                             </div>
                             <div class="ch-footer">
-                                <button type="submit" class="btn btn-primary checkout-checkout-btn">포인트로 결제하기</button>
+                                <button type="submit" class="btn btn-primary checkout-checkout-btn" onclick="return confirmPayment();">포인트로 결제하기</button>
                             </div>
                         </form>
                     </div>
@@ -76,14 +76,17 @@
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-    var alertBox = document.querySelector('.alert');
-    if (alertBox) {
-        setTimeout(function() {
-            alertBox.style.display = 'none';
-        }, 5000); // 5초 후에 알림 메시지를 숨깁니다.
+    function confirmPayment() {
+        return confirm("정말로 결제하시겠습니까?");
     }
-});
+    document.addEventListener('DOMContentLoaded', function() {
+        var alertBox = document.querySelector('.alert');
+        if (alertBox) {
+            setTimeout(function() {
+                alertBox.style.display = 'none';
+            }, 5000); // 5초 후에 알림 메시지를 숨깁니다.
+        }
+    });
     </script>
 </section>
 </html>
