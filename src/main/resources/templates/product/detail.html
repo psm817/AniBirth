@@ -117,7 +117,8 @@
         <div class="card shadow-md">
             <div class="prod-card-header">리뷰 작성</div>
             <div class="prod-card-body-middle">
-                <form id="reviewForm" sec:authorize="isAuthenticated()" th:action="@{|/review/create/${product.id}|}" method="POST">
+                <!-- 구매한 경우에만 리뷰 작성 폼 노출 -->
+                <form id="reviewForm" sec:authorize="isAuthenticated()" th:if="${hasPurchased}" th:action="@{|/review/create/${product.id}|}" method="POST">
                     <div class="mt-3">
                         <div class="mb-3">
                             <label for="starRating" class="form-label">
@@ -142,11 +143,17 @@
                         <input type="submit" value="저장하기" class="prod-btn-dark" onclick="return productReviewCreate();">
                     </div>
                 </form>
+                <!-- 구매하지 않은 경우 안내 메시지 표시 -->
+                <div th:if="${!hasPurchased}" sec:authorize="isAuthenticated()">
+                    <p>이 상품을 구매한 사용자만 리뷰를 작성할 수 있습니다.</p>
+                </div>
+                <!-- 로그인하지 않은 경우 안내 메시지 표시 -->
                 <div sec:authorize="isAnonymous()">
                     <a th:href="@{/member/login}">로그인 후 이용해주세요.</a>
                 </div>
             </div>
         </div>
+
     </div>
 </section>
 </html>

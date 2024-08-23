@@ -176,6 +176,13 @@ public class MyPageMemberController {
             productList = productService.getPurchasedProductsByMember(member);
         }
 
+        // 각 상품에 대해 현재 회원의 리뷰 작성 여부를 확인
+        for (Product product : productList) {
+            boolean hasReviewed = product.getReviewList().stream()
+                    .anyMatch(review -> review.getMember().getId().equals(member.getId()));
+            product.setHasReviewed(hasReviewed); // Product 엔티티에 hasReviewed 필드 추가
+        }
+
         model.addAttribute("member", member);
         model.addAttribute("account", account);
         model.addAttribute("productList", productList);

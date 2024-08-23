@@ -29,6 +29,8 @@ public class Product extends BaseEntity {
     private int shippingFee = 3000;
     private String category;
 
+    private boolean hasReviewed;
+
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;

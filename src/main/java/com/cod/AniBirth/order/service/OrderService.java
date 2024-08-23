@@ -7,6 +7,7 @@ import com.cod.AniBirth.order.entity.Order;
 import com.cod.AniBirth.order.entity.OrderItem;
 import com.cod.AniBirth.order.repository.OrderItemRepository;
 import com.cod.AniBirth.order.repository.OrderRepository;
+import com.cod.AniBirth.product.entity.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,6 +44,10 @@ public class OrderService {
         for (OrderItem orderItem : orderItems) {
             orderItemRepository.save(orderItem); // Save each OrderItem
         }
+    }
+
+    public boolean existsByMemberAndProduct(Member member, Product product) {
+        return orderRepository.existsByBuyerAndProduct(member, product);
     }
 
 }

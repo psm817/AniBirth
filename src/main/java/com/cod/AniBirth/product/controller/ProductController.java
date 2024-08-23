@@ -3,6 +3,7 @@ package com.cod.AniBirth.product.controller;
 
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
+import com.cod.AniBirth.order.service.OrderService;
 import com.cod.AniBirth.product.entity.Product;
 import com.cod.AniBirth.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -14,9 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -24,6 +23,7 @@ import java.util.stream.Collectors;
 public class ProductController {
     private final ProductService productService;
     private final MemberService memberService;
+    private final OrderService orderService;
 
     @GetMapping("/main")
     public String product(Model model, Authentication authentication) {
@@ -311,8 +311,11 @@ public class ProductController {
         double averageStarRating = productService.calculateAverageStarRating(product);
 
         Member member = null;
+        boolean hasPurchased = false;
+
         if (authentication != null && authentication.isAuthenticated()) {
             member = memberService.findByUsername(authentication.getName());
+            hasPurchased = orderService.existsByMemberAndProduct(member, product);
         }
 
         productService.plusHit(product);
@@ -320,6 +323,7 @@ public class ProductController {
         model.addAttribute("product", product);
         model.addAttribute("member", member);
         model.addAttribute("averageStarRating", averageStarRating);
+        model.addAttribute("hasPurchased", hasPurchased);
 
         return "product/detail";
     }
