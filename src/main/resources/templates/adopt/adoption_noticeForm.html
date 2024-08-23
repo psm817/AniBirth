@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="personal-data-input">
-                <form method="POST" th:action="@{/adopt/create}" th:object="${adoptionnoticeForm}"
+                <form method="POST" th:action="@{/adopt/create}" th:object="${adoptionnoticeForm}" onsubmit="submitAdoptNoticeForm(this); return false;"
                       enctype="multipart/form-data">
                     <div class="input-box name">
                         <span>1. 동물이름</span>
@@ -76,7 +76,7 @@
                     </div>
                     <div class="upload-file">
                         <h4>입양동물 사진 :</h4>
-                        <input type="file" name="thumbnail">
+                        <input type="file" name="thumbnail" id="thumbnail">
                     </div>
                     <div style="width: 100%; margin: 20px 0px;">
                         <hr class="my-2">

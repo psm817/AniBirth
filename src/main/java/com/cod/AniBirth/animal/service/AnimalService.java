@@ -34,10 +34,10 @@ public class AnimalService {
     @Value("${custom.genFileDirPath}")
     private String genFileDirPath;
 
-//    public Page<Animal> getList(int page, String kw) {
+    //    public Page<Animal> getList(int page, String kw) {
     public Page<Animal> getList(int page, String kw, AnimalSearchDTO searchDTO) {
         List<Sort.Order> sorts = new ArrayList<>();
-        sorts.add(Sort.Order.desc("noticeDate"));
+        sorts.add(Sort.Order.desc("createDate"));
         Pageable pageable = PageRequest.of(page, 16, Sort.by(sorts));
 
         System.out.println("getClassification : " + searchDTO.getClassification());
