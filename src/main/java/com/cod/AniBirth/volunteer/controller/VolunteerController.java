@@ -235,9 +235,29 @@ public class VolunteerController {
     public String reviewList(Authentication authentication, Model model,
                              @RequestParam(value = "page", defaultValue = "0") int page) {
         Member member = null;
+        boolean canCreateReview = false;
 
-        if(authentication != null && authentication.isAuthenticated()) {
+        if (authentication != null && authentication.isAuthenticated()) {
             member = memberService.findByUsername(authentication.getName());
+
+            if (member != null) {
+                // 봉사활동 신청 내역 가져오기
+                List<VolunteerApplication> applications = volunteerApplicationService.findByMember(member);
+
+                LocalDateTime now = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+
+                for (VolunteerApplication application : applications) {
+                    Volunteer volunteer = application.getVolunteer();
+                    LocalDateTime endDate = LocalDateTime.parse(volunteer.getEndDate(), formatter); // Using ISO_LOCAL_DATE_TIME format
+
+                    // 현재 날짜와 시간이 종료 날짜 이후인 경우 후기 작성 가능
+                    if (endDate.isBefore(now) || endDate.isEqual(now)) {
+                        canCreateReview = true;
+                        break;
+                    }
+                }
+            }
         }
 
         // 전체 후기 가져오기
@@ -245,6 +265,7 @@ public class VolunteerController {
 
         model.addAttribute("member", member);
         model.addAttribute("paging", paging);
+        model.addAttribute("canCreateReview", canCreateReview);
 
         return "volunteer/review";
     }

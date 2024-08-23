@@ -77,7 +77,8 @@
                             <span class="volunteer-name w-[30%]">
                                 <a th:href="@{|/volunteer/detail/${volunteer.volunteer.id}|}" th:text="${volunteer.volunteer.title}"></a>
                             </span>
-                            <span class="apply w-[8%]"><a th:href="@{|/volunteer/apply/delete/${volunteer.volunteer.id}|}" onclick="return confirmApplyDelete();" class="w-[100%]">취소</a></span>
+                            <span class="apply w-[8%]" th:if="${volunteer.volunteer.deadLineDate >= todayDate}"><a th:href="@{|/volunteer/apply/delete/${volunteer.volunteer.id}|}" onclick="return confirmApplyDelete();" class="w-[100%]">취소</a></span>
+                            <span class="apply w-[8%]" th:unless="${volunteer.volunteer.deadLineDate >= todayDate}">종료</span>
                         </li>
                     </ul>
                 </div>
