@@ -10,11 +10,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    if (closeDonateModal) {
-        closeDonateModal.addEventListener('click', function() {
-            donateModal.style.display = "none";
-        });
-    }
+   var closeDonateModal = document.getElementsByClassName("close")[0];
+   if (closeDonateModal) {
+       closeDonateModal.addEventListener('click', function() {
+           donateModal.style.display = "none";
+       });
+   }
 
     window.addEventListener('click', function(event) {
         if (event.target == donateModal) {
@@ -22,34 +23,36 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Donation Form Submission Logic
     const submitDonationBtn = document.getElementById('submitDonation');
-    submitDonationBtn.addEventListener('click', function() {
-        const recipient = document.getElementById('recipient').value;
-        const amount = document.getElementById('amount').value;
-        if (recipient && amount) {
-            const form = document.createElement('form');
-            form.method = 'POST';
-            form.action = '/donation/submit';
+    if (submitDonationBtn) {
+        submitDonationBtn.addEventListener('click', function() {
+            const recipient = document.getElementById('recipient').value;
+            const amount = document.getElementById('amount').value;
+            if (recipient && amount) {
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = '/donation/submit';
 
-            const recipientInput = document.createElement('input');
-            recipientInput.type = 'hidden';
-            recipientInput.name = 'recipientId';
-            recipientInput.value = recipient;
-            form.appendChild(recipientInput);
+                const recipientInput = document.createElement('input');
+                recipientInput.type = 'hidden';
+                recipientInput.name = 'recipientId';
+                recipientInput.value = recipient;
+                form.appendChild(recipientInput);
 
-            const amountInput = document.createElement('input');
-            amountInput.type = 'hidden';
-            amountInput.name = 'amount';
-            amountInput.value = amount;
-            form.appendChild(amountInput);
+                const amountInput = document.createElement('input');
+                amountInput.type = 'hidden';
+                amountInput.name = 'amount';
+                amountInput.value = amount;
+                form.appendChild(amountInput);
 
-            document.body.appendChild(form);
-            form.submit();
-        } else {
-            alert('모든 필드를 입력하세요.');
-        }
-    });
+                document.body.appendChild(form);
+                form.submit();
+            } else {
+                alert('모든 필드를 입력하세요.');
+            }
+        });
+    }
+
 
     document.getElementById('donationForm').addEventListener('submit', function(event) {
         var amount = document.getElementById('amount').value;
