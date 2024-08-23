@@ -51,9 +51,14 @@ function productModify() {
 function productDelete() {
     return confirm('애니마켓에 등록된 상품을 삭제하시겠습니까?');
 }
-// 후가 작성했을 때 알림
-function adoptReviewCreate() {
+// 후기 작성버튼 클릭했을 때 알림
+function adoptReviewWrite() {
     return confirm('입양후기를 작성하시겠습니까?');
+}
+
+//후기 신청버튼 클릭했을 때 알림
+function adoptReviewCreate() {
+    return confirm('입양후기를 작성을 완료하시겠습니까?');
 }
 
 // 리뷰 삭제할 때 알림

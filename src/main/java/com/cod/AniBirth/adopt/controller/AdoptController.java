@@ -44,8 +44,10 @@ public class AdoptController {
                        @ModelAttribute AnimalSearchDTO searchDTO
     ) {
 
-//        Page<Animal> paging = animalService.getList(page, kw);
+
+
         Page<Animal> paging = animalService.getList(page, kw, searchDTO);
+
 
         model.addAttribute("paging", paging);
         model.addAttribute("kw", kw);
@@ -57,12 +59,13 @@ public class AdoptController {
 
         return "adopt/list";
     }
-
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/create")
     public String show_create(AdoptionnoticeForm adoptionnoticeForm) {
         return "adopt/adoption_noticeForm";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/create")
     public String create(@Valid AdoptionnoticeForm adoptionnoticeForm, @RequestParam("thumbnail")MultipartFile thumbnail, Principal principal) {
 //        Member member = memberService.getMemberById(id);
@@ -84,6 +87,7 @@ public class AdoptController {
         return "adopt/detail";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/apply/{id}")
     public String showApplyForm(AdoptForm adoptForm, @PathVariable("id") Long id, Model model) {
         Animal animal = animalService.getAnimal(id);
@@ -93,6 +97,7 @@ public class AdoptController {
         return "adopt/form";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/apply/{id}")
     public String submitApplyForm(@Valid AdoptForm adoptForm, @RequestParam("isGender") boolean isGender,
                                   @RequestParam("isMarried") boolean isMarried, @RequestParam("file")MultipartFile file,Principal principal, @PathVariable("id") Long id) {

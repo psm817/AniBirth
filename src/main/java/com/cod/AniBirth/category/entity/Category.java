@@ -34,6 +34,7 @@ public class Category extends BaseEntity {
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.REMOVE)
     private List<Animal> animals = new ArrayList<>();
+
     @Override
     public String toString() {
         return "Category [name=" + name + ", type=" + type + "]";

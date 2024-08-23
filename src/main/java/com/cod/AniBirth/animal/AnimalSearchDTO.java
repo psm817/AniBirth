@@ -5,7 +5,6 @@ import lombok.Data;
 
 @Data
 public class AnimalSearchDTO {
-    private String keyword;
     private String classification;
     private String gender;
     private String weight;
