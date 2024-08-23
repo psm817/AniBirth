@@ -8,7 +8,7 @@ function submitVolunteerForm(form) {
     form.title.value = form.title.value.trim();
 
     if ( form.title.value.length == 0 ) {
-        alert("봉사명을 입력해주세요.");
+    alert("봉사명을 입력해주세요.");
         form.title.focus();
         return;
     }

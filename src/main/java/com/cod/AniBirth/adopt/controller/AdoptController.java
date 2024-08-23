@@ -18,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.Banner;
 import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -38,17 +39,21 @@ public class AdoptController {
     private final MemberService memberService;
 
     @GetMapping("/list")
-    public String list(Model model,
+    public String list(Authentication authentication, Model model,
                        @RequestParam(value = "page", defaultValue = "0") int page,
                        @RequestParam(value = "kw", defaultValue = "") String kw,
                        @ModelAttribute AnimalSearchDTO searchDTO
     ) {
 
+        Member member = null;
 
+        if(authentication != null && authentication.isAuthenticated()) {
+            member = memberService.findByUsername(authentication.getName());
+        }
 
         Page<Animal> paging = animalService.getList(page, kw, searchDTO);
 
-
+        model.addAttribute("member", member);
         model.addAttribute("paging", paging);
         model.addAttribute("kw", kw);
         model.addAttribute("searchDTO", searchDTO);
@@ -61,15 +66,18 @@ public class AdoptController {
     }
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/create")
-    public String show_create(AdoptionnoticeForm adoptionnoticeForm) {
+    public String show_create(AdoptionnoticeForm adoptionnoticeForm, Authentication authentication, Model model) {
+        Member member = memberService.findByUsername(authentication.getName());
+        model.addAttribute("member",member);
         return "adopt/adoption_noticeForm";
     }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/create")
-    public String create(@Valid AdoptionnoticeForm adoptionnoticeForm, @RequestParam("thumbnail")MultipartFile thumbnail, Principal principal) {
+    public String create(@Valid AdoptionnoticeForm adoptionnoticeForm, @RequestParam("thumbnail")MultipartFile thumbnail, Principal principal,Authentication authentication) {
 //        Member member = memberService.getMemberById(id);
-        Member member = memberService.getMemberByUsername(principal.getName());
+        Member member = memberService.getMemberByUsername(authentication.getName());
+//        Member member1 = memberService.findByUsername(authentication.getName());
 
         animalService.create(adoptionnoticeForm.getAge(),adoptionnoticeForm.getName(),adoptionnoticeForm.getClassification(),
                 adoptionnoticeForm.getHairColor(),adoptionnoticeForm.getMemo(),adoptionnoticeForm.getGender(),adoptionnoticeForm.getRegId(),

@@ -16,8 +16,8 @@
         <a th:href="@{/adopt/list}" class="link active">입양정보</a>
         <span class="divider">|</span>
         <a th:href="@{/adopt/review}" class="link">입양후기</a>
-        <span class="divider" th:if="${#authorization.expression('isAuthenticated()')}" >|</span>
-        <a th:if="${#authorization.expression('isAuthenticated()')}"
+        <span class="divider" th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or ${member.authority} == 1)" >|</span>
+        <a th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or ${member.authority} == 1)"
            th:href="@{/adopt/create}" class="link">입양공고 작성</a>
       </div>
       <div class="category-box bg-white shadow-md rounded-lg">
