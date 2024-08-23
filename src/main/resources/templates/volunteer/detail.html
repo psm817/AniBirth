@@ -40,7 +40,7 @@
                 <!-- 일반회원일 때 신청, 완료, 마감 표시  -->
                 <li class="list-group-item apply-btn" th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 2)">
                     <a class="btn btn-primary" th:if="${!alreadyApplied} and ${!isDeadlinePassed}" th:href="@{|/volunteer/apply/${volunteer.id}?apply=true|}" onclick="return confirmApply();">신청하기</a>
-                    <span th:if="${alreadyApplied}">신청완료</span>
+                    <span th:if="${alreadyApplied}">신청완료 (신청 취소는 '마이페이지' -> '봉사내역' 에서 가능합니다.)</span>
                     <span th:if="${isDeadlinePassed}">신청마감</span>
                 </li>
                 <!-- 관리자, 중간관리자일 때 수정, 삭제  -->

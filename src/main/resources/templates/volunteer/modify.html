@@ -11,28 +11,28 @@
                     <form th:action="@{|/volunteer/modify/${volunteer.id}|}" method="POST" onsubmit="submitVolunteerForm(this); return false;" enctype="multipart/form-data">
                         <div class="type-box name-box">
                             <span class="font-weight">봉사명<span class="text-red-600">*</span></span>
-                            <input type="text" id="title" maxlength="200" name="title" th:placeholder="${volunteer.title}">
+                            <input type="text" id="title" maxlength="200" name="title" th:value="${volunteer.title}">
                         </div>
                         <div class="type-box date-box">
                             <span>봉사 시작 날짜<span class="text-red-600">*</span></span>
-                            <input type="datetime-local" id="startDate" name="startDate">
+                            <input type="datetime-local" id="startDate" name="startDate" th:value="${volunteer.startDate}">
                         </div>
                         <div class="type-box date-box">
                             <span>봉사 끝나는 날짜<span class="text-red-600">*</span></span>
-                            <input type="datetime-local" id="endDate" name="endDate">
+                            <input type="datetime-local" id="endDate" name="endDate" th:value="${volunteer.endDate}">
                         </div>
                         <div class="type-box date-box">
                             <span>신청 마감 날짜<span class="text-red-600">*</span></span>
-                            <input type="date" id="deadLineDate" name="deadLineDate">
+                            <input type="date" id="deadLineDate" name="deadLineDate" th:value="${volunteer.deadLineDate}">
                         </div>
                         <div class="type-box location-box">
                             <span>봉사 장소<span class="text-red-600">*</span></span>
-                            <input type="text" name="location" id="location" placeholder="봉사장소를 검색하세요.">
+                            <input type="text" name="location" id="location" th:value="${volunteer.location}">
                             <button type="button" class="btn btn-primary" onclick="openKakaoMapModal()">장소 검색</button>
                         </div>
                         <div class="type-box limit-box">
                             <span>모집 인원<span class="text-red-600">*</span></span>
-                            <input type="number" name="limit" id="limit">
+                            <input type="number" name="limit" id="limit" th:value="${volunteer.limit}">
                         </div>
                         <div class="type-box img-box">
                             <span>대표 이미지<span class="text-red-600">*</span></span>
@@ -40,7 +40,7 @@
                         </div>
                         <div class="type-box content-box">
                             <span>봉사 내용<span class="text-red-600">*</span></span>
-                            <textarea name="content" id="content" class="form-control" rows="7" th:placeholder="${volunteer.title}"></textarea>
+                            <textarea name="content" id="content" class="form-control" rows="7" th:text="${volunteer.content}"></textarea>
                         </div>
                         <div class="type-box signup-btn flex justify-center">
                             <button class="btn btn-primary cancel" type="button" onclick="if(confirm('봉사활동 수정을 취소하시겠습니까?')) { window.location.href='/volunteer/list'; }">취소</button>

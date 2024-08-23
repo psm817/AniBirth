@@ -84,28 +84,28 @@
                                th:if="${review.member != null and #authentication.getPrincipal().getUsername() == review.member.username}">삭제</a>
                         </div>
                     </div>
-                    <div class="review-modify-container" style="display: none; margin-top: 20px;">
-                        <form class="reviewModifyForm" sec:authorize="isAuthenticated()" th:action="@{|/review/modify/${review.id}|}" method="POST">
-                            <div class="star-input">
-                                    <div class="prod-rating modify-rating">
-                                    <input value="5" name="starRating" id="modify-star5" type="radio">
-                                    <label title="5 stars" for="modify-star5"></label>
-                                    <input value="4" name="starRating" id="modify-star4" type="radio">
-                                    <label title="4 stars" for="modify-star4"></label>
-                                    <input value="3" name="starRating" id="modify-star3" type="radio">
-                                    <label title="3 stars" for="modify-star3"></label>
-                                    <input value="2" name="starRating" id="modify-star2" type="radio">
-                                    <label title="2 stars" for="modify-star2"></label>
-                                    <input value="1" name="starRating" id="modify-star1" type="radio">
-                                    <label title="1 star" for="modify-star1"></label>
+                    <div class="custom-review-modify-container" style="display: none; margin-top: 20px;">
+                        <form class="custom-reviewModifyForm" id="custom-review-form" sec:authorize="isAuthenticated()" th:action="@{|/review/modify/${review.id}|}" method="POST">
+                            <div class="custom-star-input">
+                                <div class="custom-prod-rating custom-modify-rating">
+                                    <input value="5" name="starRating" id="custom-modify-star5" type="radio">
+                                    <label title="5 stars" for="custom-modify-star5"></label>
+                                    <input value="4" name="starRating" id="custom-modify-star4" type="radio">
+                                    <label title="4 stars" for="custom-modify-star4"></label>
+                                    <input value="3" name="starRating" id="custom-modify-star3" type="radio">
+                                    <label title="3 stars" for="custom-modify-star3"></label>
+                                    <input value="2" name="starRating" id="custom-modify-star2" type="radio">
+                                    <label title="2 stars" for="custom-modify-star2"></label>
+                                    <input value="1" name="starRating" id="custom-modify-star1" type="radio">
+                                    <label title="1 star" for="custom-modify-star1"></label>
                                     <span>별점을 체크해주세요 : </span>
                                 </div>
                             </div>
-                            <div class="content-input">
-                                <textarea name="content" id="modify-content" class="prod-form-control" rows="5" placeholder="수정할 내용을 입력하세요."></textarea>
+                            <div class="custom-content-input">
+                                <textarea name="content" id="custom-modify-content" class="custom-prod-form-control" rows="5" placeholder="수정할 내용을 입력하세요."></textarea>
                             </div>
-                            <button type="button" onclick="cancelReview(this)">취소</button>
-                            <button type="submit" onclick="saveReview(event, this)">수정</button>
+                            <button type="button" onclick="customCancelReview(this)">취소</button>
+                            <button type="submit" onclick="customSaveReview(event, this)">수정</button>
                         </form>
                     </div>
                 </li>

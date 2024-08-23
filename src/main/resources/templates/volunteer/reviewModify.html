@@ -11,7 +11,7 @@
                     <form th:action="@{|/volunteer/review/modify/${volunteerReview.id}|}" method="POST" onsubmit="reviewSubmitButton(this); return false;" enctype="multipart/form-data">
                         <div class="type-box name-box">
                             <span class="font-weight">제목<span class="text-red-600 ml-[5px]">*</span></span>
-                            <input type="text" id="title" maxlength="200" name="title" th:placeholder="${volunteerReview.title}">
+                            <input type="text" id="title" maxlength="200" name="title" th:value="${volunteerReview.title}">
                         </div>
                         <div class="type-box img-box">
                             <span>대표 이미지<span class="text-red-600 ml-[5px]">*</span></span>
@@ -31,7 +31,7 @@
                         </div>
                         <div class="type-box content-box">
                             <span>내용<span class="text-red-600 ml-[5px]">*</span></span>
-                            <textarea name="body" id="body" class="form-control" rows="9" th:placeholder="${volunteerReview.body}"></textarea>
+                            <textarea name="body" id="body" class="form-control" rows="9" th:text="${volunteerReview.body}"></textarea>
                         </div>
                         <div class="type-box signup-btn flex justify-center">
                             <button class="btn btn-primary cancel" type="button" onclick="if(confirm('봉사후기 수정을 취소하시겠습니까?')) { window.location.href='/volunteer/review'; }">취소</button>

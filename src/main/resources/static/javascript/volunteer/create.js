@@ -48,7 +48,7 @@ function submitVolunteerForm(form) {
     form.limit.value = form.limit.value.trim();
 
     if ( form.limit.value.length == 0 ) {
-        alert("최대 신청인원을 입력해주세요.");
+        alert("모집 인원을 입력해주세요.");
         form.limit.focus();
         return;
     }
@@ -89,6 +89,12 @@ function submitVolunteerForm(form) {
     if (deadLineDate >= startDate) {
         alert("신청 마감 날짜는 봉사 시작 날짜보다 빨라야합니다. \n날짜를 다시 선택해주세요.");
         form.deadLineDate.focus();
+        return;
+    }
+
+    if (form.limit.value < 0) {
+        alert("모집 인원은 최소 1명 이상입니다. \n다시 입력해주세요.")
+        form.limit.focus();
         return;
     }
 
