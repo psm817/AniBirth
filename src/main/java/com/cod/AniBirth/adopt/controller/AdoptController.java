@@ -41,17 +41,16 @@ public class AdoptController {
     public String list(Model model,
                        @RequestParam(value = "page", defaultValue = "0") int page,
                        @RequestParam(value = "kw", defaultValue = "") String kw,
-                       @ModelAttribute AnimalSearchDTO searchDTO,
-                       @RequestParam(value = "category", defaultValue = "") Long categoryId
+                       @ModelAttribute AnimalSearchDTO searchDTO
     ) {
 
-//        Page<Animal> paging = animalService.getList(page, kw);
-        Page<Animal> paging = animalService.getList(page, kw);
-        Page<Animal> paging_category = animalService.getListByCategory(page, kw, categoryId);
+
+
+        Page<Animal> paging = animalService.getList(page, kw, searchDTO);
+
 
         model.addAttribute("paging", paging);
         model.addAttribute("kw", kw);
-        model.addAttribute("paging_category", paging_category);
         model.addAttribute("searchDTO", searchDTO);
         model.addAttribute("classifications", categoryService.getClassifications());
         model.addAttribute("genders", categoryService.getGenders());
@@ -60,12 +59,13 @@ public class AdoptController {
 
         return "adopt/list";
     }
-
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/create")
     public String show_create(AdoptionnoticeForm adoptionnoticeForm) {
         return "adopt/adoption_noticeForm";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/create")
     public String create(@Valid AdoptionnoticeForm adoptionnoticeForm, @RequestParam("thumbnail")MultipartFile thumbnail, Principal principal) {
 //        Member member = memberService.getMemberById(id);
@@ -87,6 +87,7 @@ public class AdoptController {
         return "adopt/detail";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/apply/{id}")
     public String showApplyForm(AdoptForm adoptForm, @PathVariable("id") Long id, Model model) {
         Animal animal = animalService.getAnimal(id);
@@ -96,6 +97,7 @@ public class AdoptController {
         return "adopt/form";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/apply/{id}")
     public String submitApplyForm(@Valid AdoptForm adoptForm, @RequestParam("isGender") boolean isGender,
                                   @RequestParam("isMarried") boolean isMarried, @RequestParam("file")MultipartFile file,Principal principal, @PathVariable("id") Long id) {

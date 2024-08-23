@@ -2,10 +2,8 @@ package com.cod.AniBirth.animal.service;
 
 import com.cod.AniBirth.ApiResponse;
 import com.cod.AniBirth.animal.AnimalSearchDTO;
-import com.cod.AniBirth.animal.AnimalSpecification;
 import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.animal.repository.AnimalRepository;
-import com.cod.AniBirth.category.entity.Category;
 import com.cod.AniBirth.category.repository.CategoryRepository;
 import com.cod.AniBirth.global.security.DataNotFoundException;
 import com.cod.AniBirth.member.entity.Member;
@@ -16,7 +14,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -33,41 +30,29 @@ public class AnimalService {
     private final AnimalRepository animalRepository;
     private final CategoryRepository categoryRepository;
 
+
     @Value("${custom.genFileDirPath}")
     private String genFileDirPath;
 
-    public Page<Animal> getList(int page, String kw) {
+//    public Page<Animal> getList(int page, String kw) {
+    public Page<Animal> getList(int page, String kw, AnimalSearchDTO searchDTO) {
         List<Sort.Order> sorts = new ArrayList<>();
         sorts.add(Sort.Order.desc("noticeDate"));
         Pageable pageable = PageRequest.of(page, 16, Sort.by(sorts));
 
+        System.out.println("getClassification : " + searchDTO.getClassification());
+        System.out.println("getGender : " + searchDTO.getGender());
+        System.out.println("getWeight : " + searchDTO.getWeight());
+        System.out.println("getAge : " + searchDTO.getAge());
 
-//        Specification<Animal> spec = AnimalSpecification.searchWith(searchDTO);
-//        return animalRepository.findAll(spec, pageable);
-//        return animalRepository.findAll(AnimalSpecification.searchWith(searchDTO), pageable);
-        return animalRepository.findAllByKeyword(kw, pageable);
-//        return animalRepository.findByFilters(kw, searchDTO.getClassification(), searchDTO.getGender(),
-//                searchDTO.getWeight(), searchDTO.getAge(), pageable);
-    }
-
-    public Page<Animal> getListByCategory(int page, String kw, Long categoryId) {
-        if ( categoryId == null) {
-            return getList(page, kw);
-        }
-
-        List<Sort.Order> sorts = new ArrayList<>();
-        sorts.add(Sort.Order.desc("noticeDate"));
-        Pageable pageable = PageRequest.of(page, 12, Sort.by(Sort.Direction.DESC, "noticeDate"));
-        if (kw == null || kw.isBlank()) {
-            return animalRepository.findAllByCategory_Id(categoryId, pageable);
-        }
-
-        return animalRepository.findAll((root, query, criteriaBuilder) ->
-                criteriaBuilder.and(
-                        criteriaBuilder.equal(root.get("category").get("id"), categoryId),
-                        criteriaBuilder.like(root.get("title"), "%" + kw + "%")
-                ), pageable);
-
+        return animalRepository.findAllByKeyword(
+                pageable,
+                kw,
+                searchDTO.getClassification(),
+                searchDTO.getGender(),
+                searchDTO.getWeight(),
+                searchDTO.getAge()
+        );
     }
 
     public List<Animal> findAll() {
@@ -106,8 +91,10 @@ public class AnimalService {
                 animal.setCategorynum(5);//5번 개
             } else if ("2".equals(animal.getClassification())) {
                 animal.setClassification("고양이");
+                animal.setCategorynum(6);//6번 고양이
             } else {
                 animal.setClassification("기타동물");
+                animal.setCategorynum(7);//7번 기타동물
             }
 
 
@@ -135,37 +122,6 @@ public class AnimalService {
         }
         animalRepository.saveAll(animals);
     }
-
-    public void saveAnimal(Animal animal) {
-        // 카테고리 설정
-//        setCategory(animal);
-
-        // Animal 엔티티 저장
-        animalRepository.save(animal);
-    }
-
-//    private void setCategory(Animal animal) {
-//        String gender = animal.getGender(); // 예: "1" 또는 "Male"
-//        String age = animal.getAge(); // 예: "Puppy"
-//        String classification = animal.getClassification(); // 예: "Dog"
-//        String weight = animal.getWeight(); // 예: "Small"
-//
-//        // Gender 카테고리 설정
-//        Category genderCategory = categoryRepository.findByName(gender);
-//        animal.setCategory(genderCategory);
-//
-//        // Age 카테고리 설정
-//        Category ageCategory = categoryRepository.findByName(age);
-//        animal.setCategory(ageCategory);
-//
-//        // Classification 카테고리 설정
-//        Category classificationCategory = categoryRepository.findByName(classification);
-//        animal.setCategory(classificationCategory);
-//
-//        // Weight 카테고리 설정
-//        Category weightCategory = categoryRepository.findByName(weight);
-//        animal.setCategory(weightCategory);
-//    }
 
     public Animal getAnimal(Long id) {
         Optional<Animal> animal = animalRepository.findById(id);
@@ -247,34 +203,4 @@ public class AnimalService {
         animalRepository.save(animal);
 
     }
-
-
-//    public Page<Animal> getListByCategory(int page, String kw, Long categoryId) {
-//        if ( categoryId == null) {
-//            return getList(page, kw);
-//        }
-//        Pageable pageable = PageRequest.of(page, 12, Sort.by(Sort.Direction.DESC, "createDate"));
-//        if (kw == null || kw.isBlank()) {
-//            return animalRepository.findAllByCategory_Id(categoryId, pageable);
-//        }
-//        return animalRepository.findAll((root, query, criteriaBuilder) ->
-//                criteriaBuilder.and(
-//                        criteriaBuilder.equal(root.get("category").get("id"), categoryId),
-//                        criteriaBuilder.like(root.get("title"), "%" + kw + "%")
-//                ), pageable);
-//    }
-
-//    public Page<Animal> getListByFilters(int page, String kw, Long classificationId, Long genderId, String weightId, String ageId) {
-//        if ( classificationId == null ) {
-//            return getList(page, kw);
-//        }
-//
-//        Pageable pageable = PageRequest.of(page, 12, Sort.by(Sort.Direction.DESC, "createDate"));
-//
-//        if (kw == null || kw.isBlank()) {
-//            return animalRepository.findAllByCategory_Id(classificationId, pageable);
-//        }
-//
-//        return animalRepository.findAllByFilters(kw, classificationId, genderId, weightId, ageId, pageable);
-//    }
 }

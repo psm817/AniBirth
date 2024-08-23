@@ -95,19 +95,19 @@ public class ApiExplorer implements CommandLineRunner {
 //            e.printStackTrace();
 //        }
 //    }
-    private void setCategoryForAnimal(Animal animal) {
-        // Classification 값을 사용하여 Category 엔티티를 찾거나 생성
-        String classification = animal.getClassification();
-        if (classification != null) {
-            Category category = categoryRepository.findByName(classification);
-            if (category == null) {
-                // 필요한 경우 카테고리 생성 (옵션)
-                category = new Category();
-                category.setName(classification);
-                category.setType("classification");
-                categoryRepository.save(category);
-            }
-            animal.setCategory(category);
-        }
-    }
+//    private void setCategoryForAnimal(Animal animal) {
+//        // Classification 값을 사용하여 Category 엔티티를 찾거나 생성
+//        String classification = animal.getClassification();
+//        if (classification != null) {
+//            Category category = categoryRepository.findByName(classification);
+//            if (category == null) {
+//                // 필요한 경우 카테고리 생성 (옵션)
+//                category = new Category();
+//                category.setName(classification);
+//                category.setType("classification");
+//                categoryRepository.save(category);
+//            }
+//            animal.setCategory(category);
+//        }
+//    }
 }

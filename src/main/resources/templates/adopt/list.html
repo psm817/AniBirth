@@ -16,13 +16,17 @@
         <a th:href="@{/adopt/list}" class="link active">입양정보</a>
         <span class="divider">|</span>
         <a th:href="@{/adopt/review}" class="link">입양후기</a>
-        <span class="divider">|</span>
-        <a th:href="@{/adopt/create}" class="link">입양공고 작성</a>
+        <span class="divider" th:if="${#authorization.expression('isAuthenticated()')}" >|</span>
+        <a th:if="${#authorization.expression('isAuthenticated()')}"
+           th:href="@{/adopt/create}" class="link">입양공고 작성</a>
       </div>
       <div class="category-box bg-white shadow-md rounded-lg">
         <button class="toggle-btn" id="toggleBtn">동물상세검색</button> <!-- 드롭다운 버튼 추가 -->
         <div class="category-search-container" id="searchContainer"> <!-- 검색 폼 감싸는 div -->
-          <form th:action="@{/adopt/list}" class="category-search-form" method="get">
+          <form th:action="@{/adopt/list}" class="category-search-form" method="get" id="searchForm">
+            <input type="hidden" id="kw" name="kw" th:value="${kw}">
+            <input type="hidden" id="page" name="page" th:value="${paging.number}">
+
             <h1 class="adoptnotice text-[1.5rem] font-bold" style="margin-bottom: 20px;">입양동물 공고</h1>
             <div class="category-box-line">
               <div class="category-type">
@@ -35,9 +39,9 @@
                       <select name="classification" id="classification" data-msg="동물구분을 선택해 주세요" class="custom-select">
                         <option value="" th:selected="${searchDTO.classification == null}">All</option>
                         <option th:each="classification : ${classifications}"
-                                th:value="${classification.id}"
+                                th:value="${classification.name}"
                                 th:text="${classification.name}"
-                                th:selected="${classification.id == searchDTO.classification}"></option>
+                                th:selected="${classification.name == searchDTO.classification}"></option>
                       </select>
                     </div>
                   </div>
@@ -51,9 +55,9 @@
                       <select name="gender" id="gender" data-msg="성별을 선택해 주세요" class="custom-select">
                         <option value="" th:selected="${searchDTO.gender == null}">All</option>
                         <option th:each="gender : ${genders}"
-                                th:value="${gender.id}"
+                                th:value="${gender.name}"
                                 th:text="${gender.name}"
-                                th:selected="${gender.id == searchDTO.gender}"></option>
+                                th:selected="${gender.name == searchDTO.gender}"></option>
                       </select>
                     </div>
                   </div>
@@ -67,9 +71,9 @@
                       <select name="weight" id="weight" data-msg="크기를 선택해 주세요" class="custom-select">
                         <option value="" th:selected="${searchDTO.weight == null}">All</option>
                         <option th:each="weight : ${weights}"
-                                th:value="${weight.id}"
+                                th:value="${weight.name}"
                                 th:text="${weight.name}"
-                                th:selected="${weight.id == searchDTO.weight}"></option>
+                                th:selected="${weight.name == searchDTO.weight}"></option>
                       </select>
                     </div>
                   </div>
@@ -83,9 +87,9 @@
                       <select name="age" id="age" data-msg="나이를 선택해 주세요" class="custom-select">
                         <option value="" th:selected="${searchDTO.age == null}">All</option>
                         <option th:each="age : ${ages}"
-                                th:value="${age.id}"
+                                th:value="${age.name}"
                                 th:text="${age.name}"
-                                th:selected="${age.id == searchDTO.age}"></option>
+                                th:selected="${age.name == searchDTO.age}"></option>
                       </select>
                     </div>
                   </div>
@@ -94,12 +98,12 @@
             </div>
             <div class="category-search-section">
               <div class="input-group">
-                <input class="form-control" type="text" name="kw" th:value="${kw}"
-                       placeholder="검색어를 입력하세요">
+                <input class="form-control" type="text" th:value="${kw}"
+                       placeholder="검색어를 입력하세요" id="search_kw">
               </div>
               <div class="search-group">
                 <button type="submit" class="btn btn-sm btn-block btn-primary transition-3d-hover mb-1"
-                        style="width: 150px">검색
+                        style="width: 150px" id="btn_search">검색
                 </button>
               </div>
             </div>
@@ -110,10 +114,6 @@
         <li th:each="animal, loop : ${paging}" class="flex flex-col">
           <a th:href="@{|/adopt/detail/${animal.id}|}"
              class="border border-black h-[280px] transition duration-300 rounded-lg hover:rounded-lg hover:-translate-y-1.5 hover:transition hover:duration-300 hover:shadow-md">
-            <!--            <img class="block w-full h-full rounded-lg hover:rounded-lg"-->
-            <!--                 th:src="@{|http://www.daejeon.go.kr/${animal.filePath}|}" alt="이미지가 존재하지 않습니다.">-->
-            <!--                        <img class="block w-full h-full rounded-lg hover:rounded-lg"-->
-            <!--                             th:src="@{|/${animal.filePath}|}" alt="이미지가 존재하지 않습니다.">-->
             <!-- FileUpload로 시작하는 경우 -->
             <img class="block w-full h-full rounded-lg hover:rounded-lg"
                  th:if="${animal.filePath.startsWith('FileUpload')}"
@@ -125,7 +125,6 @@
                  th:unless="${animal.filePath.startsWith('FileUpload')}"
                  th:src="@{|/gen/${animal.filePath}|}"
                  alt="이미지가 존재하지 않습니다.">
-
           </a>
           <div class="animal-content-detail">
             <a th:href="@{|/adopt/detail/${animal.id}|}" th:text="${animal.species}"
@@ -165,10 +164,6 @@
           </a>
         </li>
       </ul>
-      <form th:action="@{/adopt/list}" method="get" id="searchForm">
-        <input type="hidden" id="kw" name="kw" th:value="${kw}">
-        <input type="hidden" id="page" name="page" th:value="${paging.number}">
-      </form>
     </div>
     <div class="adopt-list-bottom g-hidden-md-down">
       <div style="height:100%; background-color: white; border-width: 5px 0px;">

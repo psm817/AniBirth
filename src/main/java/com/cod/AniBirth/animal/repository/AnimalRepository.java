@@ -20,28 +20,24 @@ import java.util.Optional;
 public interface AnimalRepository extends JpaRepository<Animal, Long>, JpaSpecificationExecutor<Animal> {
 
     @Query("""
-            select distinct p
-            from Animal p
-            where p.species like %:kw%
-            or p.gender like %:kw%
-            """)
-    Page<Animal> findAllByKeyword(@Param("kw") String kw, Pageable pageable);
+        SELECT a FROM Animal a
+        WHERE (:kw IS NULL OR a.species LIKE CONCAT('%', :kw, '%'))
+        AND (:classification IS NULL OR a.classification LIKE CONCAT('%', :classification, '%'))
+        AND (:gender IS NULL OR a.gender LIKE CONCAT('%', :gender, '%'))
+        AND (:weight IS NULL OR a.weight LIKE CONCAT('%', :weight, '%'))
+        AND (:age IS NULL OR a.age LIKE CONCAT('%', :age, '%'))
+    """)
+    Page<Animal> findAllByKeyword(
+            Pageable pageable,
+            @Param("kw") String kw,
+            @Param("classification") String classification,
+            @Param("gender") String gender,
+            @Param("weight") String weight,
+            @Param("age") String age
+    );
 
-    Page<Animal> findAllByCategory_Id(Long categoryId, Pageable pageable);
-    Page<Animal> findAll(Specification<Animal> spec, Pageable pageable);
+//    Page<Animal> findAll(Specification<Animal> spec, Pageable pageable);
 
     List<Animal> findTop4ByOrderByCreateDateDesc();
 
-//    @Query("SELECT a FROM Animal a WHERE "
-//            + "(:keyword IS NULL OR a.name LIKE %:keyword%) AND "
-//            + "(:classification IS NULL OR a.classification = :classification) AND "
-//            + "(:gender IS NULL OR a.gender = :gender) AND "
-//            + "(:weight IS NULL OR a.weight = :weight) AND "
-//            + "(:age IS NULL OR a.age = :age)")
-//    Page<Animal> findByFilters(@Param("keyword") String keyword,
-//                               @Param("classification") String classification,
-//                               @Param("gender") String gender,
-//                               @Param("weight") String weight,
-//                               @Param("age") String age,
-//                               Pageable pageable);
 }

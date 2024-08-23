@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout/layout}">
 <section layout:fragment="content" class="flex-1 flex justify-center items-center">
-    <meta name="csrf-token" content="${_csrf.token}">
+<!--    <meta name="csrf-token" content="${_csrf.token}">-->
     <!-- 토스트 UI 에디터 - 코어 -->
     <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
     <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
@@ -50,7 +50,7 @@
             <div class="review-data-input">
                 <form method="POST" th:action="@{/adopt/create_review}" th:object="${createReviewForm}"
                       enctype="multipart/form-data">
-                    <input type="hidden" name="_csrf" th:value="${_csrf.token}" id="csrfToken"/>
+<!--                    <input type="hidden" name="_csrf" th:value="${_csrf.token}" id="csrfToken"/>-->
                     <div class="input-box title">
                         <span>제목</span>
                         <textarea id="title" name="title" class="form-control" rows="1"></textarea>
@@ -63,20 +63,11 @@
                         <h4>대표사진 :</h4>
                         <input type="file" name="images" accept="image/png, image/gif, image/jpeg"><br>
                     </div>
-                    <!--여기까지-->
-                    <!--          <div class="input-box content">-->
-                    <!--            <span>내용</span>-->
-                    <!--            <textarea id="content" name="content" class="form-control" rows="7"></textarea>-->
-                    <!--          </div>-->
-                    <!--          <div class="upload-file">-->
-                    <!--            <h4>사진업로드 :</h4>-->
-                    <!--            <input type="file" name="images">-->
-                    <!--          </div>-->
                     <div style="width: 100%; margin: 20px 0px;">
                         <hr class="my-2">
                     </div>
                     <button id="submitBtn" class="btn btn-block btn-primary detail_adopt_application_event mb-2"
-                            type="submit">신청하기
+                            type="submit" onclick="return adoptReviewCreate();">작성하기
                     </button>
                 </form>
             </div>
@@ -99,7 +90,6 @@
         };
 
         $(document).ready(function () {
-            const csrfToken = $('#csrfToken').val();
 
             const editor = new toastui.Editor({
                 el: $("#editor")[0],
@@ -125,9 +115,6 @@
 
                             const response = await fetch('/adopt/image-upload', {
                                 method: "POST",
-                                headers: {
-                                    "X-CSRF-TOKEN": csrfToken
-                                },
                                 body: formData,
                             });
 
