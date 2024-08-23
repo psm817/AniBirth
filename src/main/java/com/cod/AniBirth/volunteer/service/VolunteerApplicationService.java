@@ -53,4 +53,8 @@ public class VolunteerApplicationService {
 
         volunteerRepository.save(volunteer);
     }
+
+    public List<VolunteerApplication> findByMember(Member member) {
+        return volunteerApplicationRepository.findByMember(member);
+    }
 }

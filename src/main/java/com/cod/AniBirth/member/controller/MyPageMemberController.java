@@ -27,6 +27,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,6 +93,11 @@ public class MyPageMemberController {
     @GetMapping("/volunteer")
     public String myVolunteer(Model model, Principal principal) {
         Member member = memberService.findByUsername(principal.getName());
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String todayDate = today.format(formatter);
+
+        model.addAttribute("todayDate", todayDate);
 
         // 일반회원 봉사신청 리스트
         List<VolunteerApplication> volunteerApplicationList = volunteerApplicationService.getAllByMember(member);

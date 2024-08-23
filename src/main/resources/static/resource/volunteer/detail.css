@@ -95,10 +95,13 @@
 .volunteer-detail > .top-box > .detail-box > .apply-btn {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .volunteer-detail > .top-box > .detail-box > .apply-btn > span {
     color: #d15a4f;
+    width: 100% !important;
+    text-align: center;
 }
 
 /* 수정, 삭제하기 버튼 커스텀 */

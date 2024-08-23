@@ -45,19 +45,19 @@
                             <span class="mr-[110px]">활동명
                                 <span class="text-red-600">*</span>
                             </span>
-                            <input type="text" name="nickname" placeholder="닉네임을 입력하세요.">
+                            <input type="text" name="nickname" th:value="${member.nickname}">
                         </div>
                         <div class="type-box email-box">
                             <span class="mr-[110px]">이메일
                                 <span class="text-red-600">*</span>
                             </span>
-                            <input type="email" name="email" placeholder="이메일을 입력하세요.">
+                            <input type="email" name="email" th:value="${member.email}">
                         </div>
                         <div class="type-box phone-box">
                             <span class="mr-[110px]">전화번호
                                 <span class="text-red-600">*</span>
                             </span>
-                            <input type="text" name="phone" placeholder="전화번호를 입력하세요. (- 포함)">
+                            <input type="text" name="phone" th:value="${member.phone}">
                         </div>
                         <div class="type-box address-box">
                             <span class="mr-[110px]">주소
