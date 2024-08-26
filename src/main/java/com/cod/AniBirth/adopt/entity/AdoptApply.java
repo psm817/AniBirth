@@ -4,6 +4,7 @@ import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.base.entity.BaseEntity;
 import com.cod.AniBirth.member.entity.Member;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -19,7 +20,11 @@ public class AdoptApply extends BaseEntity {
 
     private String name;
     private String phone;
+
+    @NotBlank(message = "이메일 형식에 맞게 입력해주세요")
+    @Email
     private String email;
+
     private String age;
     private String company; //직업,직장명
 
