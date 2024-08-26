@@ -315,10 +315,12 @@ public class ProductController {
 
         Member member = null;
         boolean hasPurchased = false;
+        boolean hasWrittenReview = false;
 
         if (authentication != null && authentication.isAuthenticated()) {
             member = memberService.findByUsername(authentication.getName());
             hasPurchased = orderService.existsByMemberAndProduct(member, product);
+            hasWrittenReview = reviewService.existByMemberAndProduct(member, product);
         }
 
         productService.plusHit(product);
@@ -327,6 +329,7 @@ public class ProductController {
         model.addAttribute("member", member);
         model.addAttribute("averageStarRating", averageStarRating);
         model.addAttribute("hasPurchased", hasPurchased);
+        model.addAttribute("hasWrittenReview", hasWrittenReview);
 
         return "product/detail";
     }

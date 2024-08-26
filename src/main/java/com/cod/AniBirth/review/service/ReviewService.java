@@ -47,4 +47,8 @@ public class ReviewService {
     public void delete(Review review) {
         reviewRepository.delete(review);
     }
+
+    public boolean existByMemberAndProduct(Member member, Product product) {
+        return reviewRepository.existsByBuyerAndProduct(member, product);
+    }
 }
