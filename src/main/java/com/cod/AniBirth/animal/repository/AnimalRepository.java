@@ -3,6 +3,7 @@ package com.cod.AniBirth.animal.repository;
 import com.cod.AniBirth.adopt.entity.Adopt;
 import com.cod.AniBirth.animal.AnimalSearchDTO;
 import com.cod.AniBirth.animal.entity.Animal;
+import com.cod.AniBirth.member.entity.Member;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -40,4 +41,7 @@ public interface AnimalRepository extends JpaRepository<Animal, Long>, JpaSpecif
 
     List<Animal> findTop4ByOrderByCreateDateDesc();
 
+    List<Animal> findByAdopter(Member member);
+
+    List<Animal> findByAdoptee(Member member);
 }

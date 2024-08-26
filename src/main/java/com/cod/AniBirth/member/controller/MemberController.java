@@ -25,6 +25,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Controller
@@ -124,31 +126,23 @@ public class MemberController {
         }
     }
 
-    @PostMapping("/sendId")
-    public String sendId(@RequestParam(value="mail", defaultValue = "") String mail, Model model) {
+    @PostMapping(value = "/sendId", produces = "application/json")
+    @ResponseBody
+    public Map<String, String> sendId(@RequestParam(value="mail", defaultValue = "") String mail) {
+        Map<String, String> response = new HashMap<>();
+
         // email 만족하는 회원 찾기
         Member member = memberService.findByEmail(mail);
 
         if (member != null) {
-            String subject = "애니버스 - 아이디 찾기";
-            String body = String.format(
-                    "애니버스 사이트에 오신 것을 진심으로 환영합니다! 저희는 유기동물 봉사, 입양, 후원을 통해 따뜻한 사회를 만들어 나가는 커뮤티니 사이트입니다.<br><br>" +
-                            "아이디를 잃어버리셔서 걱정 많으셨죠? 아래 회원님의 아이디를 전달드립니다.<br><br>" +
-                            "아이디는 다음과 같습니다: <b>%s</b><br><br>" +
-                            "더 궁금하신 점이나 도움이 필요하신 경우 언제든지 저희에게 연락해 주세요. 애니버스가 여러분께 많은 즐거움을 줄 수 있기를 바랍니다.<br><br>" +
-                            "애니버스 팀 드림<br>" +
-                            "고객지원 이메일 주소 : 5004jse@gmail.com<br>" +
-                            "웹 사이트 주소 : http://localhost:8040", member.getUsername()
-            );
-
-            if (member.getEmail().equals(mail)) {
-                emailService.send(mail, subject, body);
-                return "redirect:/member/login?success=true";
-            }
+            response.put("status", "success");
+            response.put("username", member.getUsername());
+        } else {
+            response.put("status", "fail");
+            response.put("message", "해당 이메일로 등록된 아이디가 없습니다.");
         }
 
-        // 이메일 주소가 일치하지 않거나 회원이 존재하지 않는 경우
-        return "redirect:/member/login?incorrect=true";
+        return response;
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -206,6 +200,8 @@ public class MemberController {
         if(!member.getUsername().equals(principal.getName())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "삭제권한이 없습니다.");
         }
+
+        this.memberService.delete(member);
 
         return "redirect:/member/logout";
     }

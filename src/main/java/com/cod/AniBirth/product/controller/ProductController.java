@@ -6,6 +6,8 @@ import com.cod.AniBirth.member.service.MemberService;
 import com.cod.AniBirth.order.service.OrderService;
 import com.cod.AniBirth.product.entity.Product;
 import com.cod.AniBirth.product.service.ProductService;
+import com.cod.AniBirth.review.entity.Review;
+import com.cod.AniBirth.review.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -24,6 +26,7 @@ public class ProductController {
     private final ProductService productService;
     private final MemberService memberService;
     private final OrderService orderService;
+    private final ReviewService reviewService;
 
     @GetMapping("/main")
     public String product(Model model, Authentication authentication) {
@@ -312,10 +315,12 @@ public class ProductController {
 
         Member member = null;
         boolean hasPurchased = false;
+        boolean hasWrittenReview = false;
 
         if (authentication != null && authentication.isAuthenticated()) {
             member = memberService.findByUsername(authentication.getName());
             hasPurchased = orderService.existsByMemberAndProduct(member, product);
+            hasWrittenReview = reviewService.existByMemberAndProduct(member, product);
         }
 
         productService.plusHit(product);
@@ -324,6 +329,7 @@ public class ProductController {
         model.addAttribute("member", member);
         model.addAttribute("averageStarRating", averageStarRating);
         model.addAttribute("hasPurchased", hasPurchased);
+        model.addAttribute("hasWrittenReview", hasWrittenReview);
 
         return "product/detail";
     }

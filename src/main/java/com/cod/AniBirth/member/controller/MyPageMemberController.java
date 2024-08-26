@@ -121,9 +121,13 @@ public class MyPageMemberController {
     public String myAdopt(Model model, Principal principal) {
         Member member = memberService.findByUsername(principal.getName());
         List<Animal> animalList = animalService.findAll();
+        List<Animal> adoptList = animalService.findByAdopter(member);
+        List<Animal> adopteeList = animalService.findByAdoptee(member);
 
         model.addAttribute("member", member);
         model.addAttribute("animalList", animalList);
+        model.addAttribute("adoptList", adoptList);
+        model.addAttribute("adopteeList", adopteeList);
 
         return "member/myPage/adopt";
     }

@@ -397,6 +397,17 @@ footer a {
     border: 1px solid transparent;
 }
 
+.modal > .modal-dialog > .modal-content > .modal-body > #resultMessage {
+    font-family: 'Pretendard-Regular', sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.modal > .modal-dialog > .modal-content > .modal-body > #resultMessage > p {
+    font-weight: 500;
+    font-size: 16px;
+}
+
 .modal > .modal-dialog > .modal-content > .modal-footer > button {
     border: 1px solid transparent;
 }

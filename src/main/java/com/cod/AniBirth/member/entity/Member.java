@@ -1,11 +1,15 @@
 package com.cod.AniBirth.member.entity;
 
 import com.cod.AniBirth.account.entity.Account;
+import com.cod.AniBirth.adopt.entity.AdoptApply;
 import com.cod.AniBirth.adopt.entity.AdoptReview;
 import com.cod.AniBirth.animal.entity.Animal;
+import com.cod.AniBirth.article.entity.Qa;
 import com.cod.AniBirth.base.entity.BaseEntity;
 import com.cod.AniBirth.donation.entity.Donation;
+import com.cod.AniBirth.order.entity.Order;
 import com.cod.AniBirth.product.entity.Product;
+import com.cod.AniBirth.review.entity.Review;
 import com.cod.AniBirth.volunteer.entity.Volunteer;
 import com.cod.AniBirth.volunteer.entity.VolunteerApplication;
 import com.cod.AniBirth.volunteer.entity.VolunteerReview;
@@ -65,21 +69,36 @@ public class Member extends BaseEntity {
     @OneToMany(mappedBy = "writer", cascade = CascadeType.REMOVE)
     private List<AdoptReview> adoptReviewList;
 
+    @OneToMany(mappedBy = "buyer", cascade = CascadeType.REMOVE)
+    private List<Order> orderList;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
+    private List<Volunteer> volunteerList;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
     private List<VolunteerApplication> volunteerApplications;
 
     @OneToMany(mappedBy = "writer", cascade = CascadeType.REMOVE)
     private List<VolunteerReview> volunteerReviewList;
 
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
+    private List<Qa> qaList;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
+    private List<Review> reviewList;
 
     @ManyToMany
     private List<Volunteer> appliedVolunteers; // 회원이 신청한 봉사 리스트
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
     private List<Product> products;
 
+    @OneToMany(mappedBy = "adoptee", cascade = CascadeType.REMOVE)
+    private List<AdoptApply> adoptApplyList;
 
+    @OneToMany(mappedBy = "adoptee", cascade = CascadeType.REMOVE)
+    private List<Animal> adopteeList;
 
-
+    @OneToMany(mappedBy = "adopter", cascade = CascadeType.REMOVE)
+    private List<Animal> adopterList;
 }

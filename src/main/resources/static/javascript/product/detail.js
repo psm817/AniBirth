@@ -68,7 +68,7 @@ function customSaveReview(event, element) {
 
     var form = element.closest('form');
     var content = form.querySelector('textarea[name="content"]').value.trim();
-    var starRating = form.querySelector('input[name="starRating"]:checked');
+    var starRating = form.querySelector('input[name="modifyStarRating"]:checked');
 
     if (!starRating) {
         alert('별점을 선택해주세요.');

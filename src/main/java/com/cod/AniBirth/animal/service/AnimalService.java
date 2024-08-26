@@ -203,4 +203,11 @@ public class AnimalService {
         animalRepository.save(animal);
 
     }
+    public List<Animal> findByAdopter(Member member) {
+        return animalRepository.findByAdopter(member);
+    }
+
+    public List<Animal> findByAdoptee(Member member) {
+        return animalRepository.findByAdoptee(member);
+    }
 }

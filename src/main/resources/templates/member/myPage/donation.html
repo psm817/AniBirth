@@ -39,12 +39,12 @@
 
       <div class="content-box card-header pl-[40px]">
         <div class="total-box">
-          <span th:if="${member.authority eq 2}" th:text="${member.nickname} + '님이 후원하신 후원내역은 총 ' + ${donationCount} + ' 건입니다.'"></span>
-          <span th:if="${member.authority eq 1}" th:text="${member.nickname} + '님이 등록하신 후원내역은 총 ' + ${donationCount} + ' 건입니다.'"></span>
-          <span th:if="${member.authority} == 0" th:text="'애니버스에 등록된 후원내역은 총 ' + ${donationCount} + ' 건입니다.'"></span>
+          <span th:if="${member.authority eq 2}" th:utext="${member.nickname} + '님이 후원하신 후원내역은 총 <strong>' + ${donationCount} + '</strong> 건입니다.'"></span>
+          <span th:if="${member.authority eq 1}" th:utext="${member.nickname} + '님이 등록하신 후원내역은 총 <strong>' + ${donationCount} + '</strong> 건입니다.'"></span>
+          <span th:if="${member.authority} == 0" th:utext="'애니버스에 등록된 후원내역은 총 <strong>' + ${donationCount} + '</strong> 건입니다.'"></span>
         </div>
         <!-- 일반 회원일때 리스트 항목 -->
-        <div class="donation-box-title card-body" th:if="${member.authority == 2}">
+        <div class="donation-box-title donation-member-title card-body" th:if="${member.authority == 2}">
           <ul class="list-group list-group-flush gap-6">
             <li class="list-group-item flex items-center">
               <span class="number w-[10%]">번호</span>
@@ -55,7 +55,7 @@
           </ul>
         </div>
         <!-- 최고/중간 관리자일때 리스트 항목 -->
-        <div class="donation-box-title card-body" th:if="${member.authority == 1 or member.authority == 0}">
+        <div class="donation-box-title donation-admin-title card-body" th:if="${member.authority == 1 or member.authority == 0}">
           <ul class="list-group list-group-flush gap-6">
             <li class="list-group-item flex items-center">
               <span class="number w-[10%]">번호</span>
@@ -66,7 +66,7 @@
           </ul>
         </div>
         <!-- 일반 회원일때 리스트 내용 -->
-        <div class="donation-box-detail card-body" th:if="${member.authority == 2}">
+        <div class="donation-box-detail donation-member-detail card-body" th:if="${member.authority == 2}">
           <ul class="list-group list-group-flush">
             <li class="list-group-item flex items-center" th:each="donation, iterStat : ${donationList}">
               <span class="number w-[10%]" th:text="${iterStat.count}"></span>
@@ -77,7 +77,7 @@
           </ul>
         </div>
         <!-- 최고 관리자일때 리스트 내용 -->
-        <div class="donation-box-detail card-body" th:if="${member.authority == 0}">
+        <div class="donation-box-detail donation-admin-detail card-body" th:if="${member.authority == 0}">
           <ul class="list-group list-group-flush">
             <li class="list-group-item flex items-center" th:each="donation, iterStat : ${allDonations}">
               <span class="number w-[10%]" th:text="${iterStat.count}"></span>
@@ -88,7 +88,7 @@
           </ul>
         </div>
         <!-- 중간 관리자일때 리스트 내용 -->
-        <div class="donation-box-detail card-body" th:if="${member.authority == 1}">
+        <div class="donation-box-detail donation-admin-detail card-body" th:if="${member.authority == 1}">
           <ul class="list-group list-group-flush">
             <li class="list-group-item flex items-center" th:each="donation, iterStat : ${allDonations}">
               <span class="number w-[10%]" th:text="${iterStat.count}"></span>

@@ -42,14 +42,14 @@
             <div class="content-box card-header pl-[40px]">
                 <div class="total-box">
                     <span th:if="${member.authority} == 2"
-                          th:text="${member.nickname} + '님이 구매하신 마켓내역은 총 ' + ${productList.size()} + ' 건입니다.'"></span>
+                          th:utext="${member.nickname} + '님이 구매하신 마켓내역은 총 <strong>' + ${productList.size()} + '</strong> 건입니다.'"></span>
                     <span th:if="${member.authority} == 1"
-                          th:text="${member.nickname} + '님이 등록하신 마켓물품은 총 ' + ${productList.size()} + ' 건입니다.'"></span>
+                          th:utext="${member.nickname} + '님이 등록하신 마켓물품은 총 <strong>' + ${productList.size()} + '</strong> 건입니다.'"></span>
                     <span th:if="${member.authority} == 0"
-                          th:text="'애니버스에 등록된 마켓물품 총 ' + ${productList.size()} + ' 건입니다.'"></span>
+                          th:utext="'애니버스에 등록된 마켓물품 총 <strong>' + ${productList.size()} + '</strong> 건입니다.'"></span>
                 </div>
                 <!-- 일반 회원일때 리스트 항목 -->
-                <div class="market-box-title card-body" th:if="${member.authority} == 2">
+                <div class="market-box-title market-member-title card-body" th:if="${member.authority} == 2">
                     <ul class="list-group list-group-flush gap-6">
                         <li class="list-group-item flex items-center">
                             <span class="number w-[10%]">번호</span>
@@ -61,7 +61,7 @@
                     </ul>
                 </div>
                 <!-- 최고/기업 관리자일때 리스트 항목 -->
-                <div class="market-box-title card-body" th:if="${member.authority} == 1 or ${member.authority} == 0">
+                <div class="market-box-title market-admin-title card-body" th:if="${member.authority} == 1 or ${member.authority} == 0">
                     <ul class="list-group list-group-flush gap-6">
                         <li class="list-group-item flex items-center">
                             <span class="number w-[10%]">번호</span>
@@ -74,15 +74,17 @@
                     </ul>
                 </div>
                 <!-- 일반 회원일때 리스트 내용 -->
-                <div class="market-box-detail card-body" th:if="${member.authority} == 2">
+                <div class="market-box-detail market-member-detail card-body" th:if="${member.authority} == 2">
                     <ul class="list-group list-group-flush">
                         <li th:each="product, stat : ${productList}" class="list-group-item flex items-center">
                             <span class="number w-[10%]" th:text="${stat.index + 1}"></span>
                             <span class="date w-[20%]" th:if="${product.orderItems.size() > 0}" th:text="${#temporals.format(product.orderItems[0].payDate, 'yyyy-MM-dd')}"></span>
-                            <span class="title w-[30%]" th:text="${product.title}"></span>
+                            <span class="title w-[30%]">
+                                <a th:href="@{|/product/detail/${product.id}|}" th:text="${product.title}"></a>
+                            </span>
                             <span class="amount w-[20%]" th:text="${product.price + ' 원 (' + product.orderItems[0].quantity + '개)'}"></span>
                             <span class="review w-[20%]">
-                               <span th:if="${product.hasReviewed}">리뷰 완료</span>
+                               <span th:if="${product.hasReviewed}">작성 완료</span>
                 <a th:if="${!product.hasReviewed}" th:href="@{/product/detail/{id}(id=${product.id})}" class="btn btn-link"><i class="fa-solid fa-pen"></i>작성하기</a>
             </span>
                             </span>
@@ -90,7 +92,7 @@
                     </ul>
                 </div>
                 <!-- 최고 관리자일때 리스트 내용 -->
-                <div class="market-box-detail card-body" th:if="${member.authority} == 0">
+                <div class="market-box-detail market-admin-detail card-body" th:if="${member.authority} == 0">
                     <ul class="list-group list-group-flush">
                         <li th:each="product, stat : ${productList}" class="list-group-item flex items-center">
                             <span class="number w-[10%]" th:text="${stat.index + 1}"></span>
@@ -105,7 +107,7 @@
                     </ul>
                 </div>
                 <!-- 중간 관리자일때 리스트 내용 -->
-                <div class="market-box-detail card-body" th:if="${member.authority} == 1">
+                <div class="market-box-detail market-admin-detail card-body" th:if="${member.authority} == 1">
                     <ul class="list-group list-group-flush">
                         <li th:each="product, stat : ${productList}" class="list-group-item flex items-center">
                             <span class="number w-[10%]" th:text="${stat.index + 1}"></span>

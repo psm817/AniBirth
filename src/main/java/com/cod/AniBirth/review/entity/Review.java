@@ -25,6 +25,7 @@ public class Review extends BaseEntity {
 
     @ManyToOne
     private Member member;
+
     @ManyToOne
     private Product product;
 

@@ -45,7 +45,7 @@ public class ReviewController {
             @PathVariable("id") Long id,
             Principal principal,
             @RequestParam("content") String content,
-            @RequestParam("starRating") int starRating
+            @RequestParam("modifyStarRating") int starRating
     ) {
         Review review = reviewService.getReview(id);
         if (!review.getMember().getUsername().equals(principal.getName())) {
@@ -65,6 +65,8 @@ public class ReviewController {
 
         reviewService.delete(review);
 
-        return "redirect:/product/detail/%s?productReviewDeleteSuccess=true".formatted(id);
+        Long num = review.getProduct().getId();
+
+        return "redirect:/product/detail/%s?productReviewDeleteSuccess=true".formatted(num);
     }
 }

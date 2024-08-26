@@ -93,7 +93,7 @@ function submitVolunteerForm(form) {
     }
 
     if (form.limit.value < 0) {
-        alert("모집 인원은 최소 1명 이상입니다. \n다시 입력해주세요.")
+        alert("모집 인원은 최소 1명 이상입니다. \n다시 입력해주세요.");
         form.limit.focus();
         return;
     }
