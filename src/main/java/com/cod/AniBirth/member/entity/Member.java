@@ -1,6 +1,7 @@
 package com.cod.AniBirth.member.entity;
 
 import com.cod.AniBirth.account.entity.Account;
+import com.cod.AniBirth.adopt.entity.AdoptApply;
 import com.cod.AniBirth.adopt.entity.AdoptReview;
 import com.cod.AniBirth.animal.entity.Animal;
 import com.cod.AniBirth.article.entity.Qa;
@@ -72,6 +73,9 @@ public class Member extends BaseEntity {
     private List<Order> orderList;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
+    private List<Volunteer> volunteerList;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
     private List<VolunteerApplication> volunteerApplications;
 
     @OneToMany(mappedBy = "writer", cascade = CascadeType.REMOVE)
@@ -86,6 +90,15 @@ public class Member extends BaseEntity {
     @ManyToMany
     private List<Volunteer> appliedVolunteers; // 회원이 신청한 봉사 리스트
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
     private List<Product> products;
+
+    @OneToMany(mappedBy = "adoptee", cascade = CascadeType.REMOVE)
+    private List<AdoptApply> adoptApplyList;
+
+    @OneToMany(mappedBy = "adoptee", cascade = CascadeType.REMOVE)
+    private List<Animal> adopteeList;
+
+    @OneToMany(mappedBy = "adopter", cascade = CascadeType.REMOVE)
+    private List<Animal> adopterList;
 }

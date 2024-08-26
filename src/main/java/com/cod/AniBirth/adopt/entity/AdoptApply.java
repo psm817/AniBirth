@@ -42,6 +42,4 @@ public class AdoptApply extends BaseEntity {
 
     @ManyToOne
     private Member adoptee;
-
-
 }
