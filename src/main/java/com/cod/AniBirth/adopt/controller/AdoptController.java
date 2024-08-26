@@ -17,12 +17,16 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.Banner;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.swing.plaf.multi.MultiListUI;
 import java.awt.print.PrinterGraphics;
@@ -152,6 +156,41 @@ public class AdoptController {
         return "redirect:/adopt/review";
 
     }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/review/modify/{id}")
+    public String createReviewModify(CreateReviewForm createReviewForm, @PathVariable("id") Long id, Principal principal, Model model){
+        AdoptReview adoptReview = this.adoptReviewService.getAdoptReviews(id);
+        if(!adoptReview.getWriter().getUsername().equals(principal.getName())){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
+        }
+
+        createReviewForm.setTitle(adoptReview.getTitle());
+        createReviewForm.setContent(adoptReview.getContent());
+//        createReviewForm.setImages(adoptReview.getImages());
+
+        return "adopt/create_review_form";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/review/modify/{id}")
+    public String createReviewModify(@Valid CreateReviewForm createReviewForm, BindingResult bindingResult,
+                                     Principal principal, @PathVariable("id") Long id,
+                                     RedirectAttributes redirectAttributes,
+                                     @RequestParam("images") MultipartFile images
+            , Model model) {
+        Member member = memberService.getMemberByUsername(principal.getName());
+
+        AdoptReview adoptReview = this.adoptReviewService.getAdoptReviews(id);
+        if(!adoptReview.getWriter().getUsername().equals(principal.getName())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
+        }
+
+        this.adoptReviewService.modify(adoptReview, createReviewForm.getTitle(), createReviewForm.getContent(), createReviewForm.getImages(), member);
+        return "redirect:/adopt/review";
+
+    }
+
     @GetMapping("/review/detail/{id}")
     public String review_detail(@PathVariable("id") Long id, Model model) {
         AdoptReview adoptReview = adoptReviewService.getreview(id);

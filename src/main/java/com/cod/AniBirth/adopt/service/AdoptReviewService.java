@@ -18,7 +18,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -135,4 +138,38 @@ public class AdoptReviewService {
         return adoptReviewRepository.findFirstByIdGreaterThanOrderByIdAsc(id);
     }
 
+    public AdoptReview getAdoptReviews(Long id) {
+        Optional<AdoptReview> adoptReview = this.adoptReviewRepository.findById(id);
+        if (adoptReview.isPresent()) {
+            return adoptReview.get();
+        } else {
+            throw new DataNotFoundException("해당되는 리뷰를 찾을 수 없습니다");
+        }
+    }
+
+    public void modify(AdoptReview adoptReview, String title, String content, MultipartFile images, Member member) {
+        adoptReview.setTitle(title);
+        adoptReview.setContent(content);
+
+
+        if (!images.isEmpty()) {
+            try {
+                // 기존 썸네일 파일 삭제
+                if (adoptReview.getImages() != null) {
+                    Path oldFilePath = Paths.get(genFileDirPath, adoptReview.getImages());
+                    Files.deleteIfExists(oldFilePath);
+                }
+
+                // 새로운 썸네일 파일 저장
+                String originalFileName = images.getOriginalFilename();
+                String fileName = System.currentTimeMillis() + "_" + originalFileName;
+                Path filePath = Paths.get(genFileDirPath, fileName);
+                Files.copy(images.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+                adoptReview.setImages(fileName);
+            } catch (IOException e) {
+                throw new RuntimeException("Failed to save thumbnail file", e);
+            }
+        }
+        this.adoptReviewRepository.save(adoptReview);
+    }
 }
