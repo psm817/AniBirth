@@ -195,4 +195,134 @@
         display: inline-block;
         min-width: 100%;
     }
+
+    .container > .right-box > .content-box > .market-admin-title > ul > li {
+        width: 1200px !important;
+        display: flex;
+    }
+
+    .container > .right-box > .content-box > .market-admin-title > ul > li > .number {
+        margin-right: 10px;
+        width: 7%;
+    }
+
+    .container > .right-box > .content-box > .market-admin-title > ul > li > .date {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .market-admin-title > ul > li > .title {
+        margin-right: 10px;
+        width: 70%;
+    }
+
+    .container > .right-box > .content-box > .market-admin-title > ul > li > .amount {
+        margin-right: 10px;
+        width: 30%;
+    }
+
+    .container > .right-box > .content-box > .market-admin-title > ul > li > .review {
+        margin-right: 10px;
+        width: 30%;
+    }
+
+    .container > .right-box > .content-box > .market-admin-title > ul > li > .view {
+        margin-right: 10px;
+        width: 30%;
+    }
+
+    .container > .right-box > .content-box > .market-admin-detail > ul > li {
+        width: 1200px !important;
+        display: flex;
+    }
+
+    .container > .right-box > .content-box > .market-admin-detail > ul > li > .number {
+        margin-right: 10px;
+        width: 7%;
+    }
+
+    .container > .right-box > .content-box > .market-admin-detail > ul > li > .date {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .market-admin-detail > ul > li > .title {
+        margin-right: 10px;
+        width: 70%;
+    }
+
+    .container > .right-box > .content-box > .market-admin-detail > ul > li > .amount {
+        margin-right: 10px;
+        width: 30%;
+    }
+
+    .container > .right-box > .content-box > .market-admin-detail > ul > li > .review {
+        margin-right: 10px;
+        width: 30%;
+    }
+
+    .container > .right-box > .content-box > .market-admin-detail > ul > li > .view {
+        margin-right: 10px;
+        width: 30%;
+    }
+
+    .container > .right-box > .content-box > .market-member-title > ul > li {
+        width: 900px !important;
+        display: flex;
+    }
+
+    .container > .right-box > .content-box > .market-member-title > ul > li > .number {
+        margin-right: 10px;
+        width: 7%;
+    }
+
+    .container > .right-box > .content-box > .market-member-title > ul > li > .date {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .market-member-title > ul > li > .title {
+        margin-right: 10px;
+        width: 70%;
+    }
+
+    .container > .right-box > .content-box > .market-member-title > ul > li > .amount {
+        margin-right: 10px;
+        width: 30%;
+    }
+
+    .container > .right-box > .content-box > .market-member-title > ul > li > .review {
+        margin-right: 10px;
+        width: 30%;
+    }
+
+    .container > .right-box > .content-box > .market-member-detail > ul > li {
+        width: 900px !important;
+        display: flex;
+    }
+
+    .container > .right-box > .content-box > .market-member-detail > ul > li > .number {
+        margin-right: 10px;
+        width: 7%;
+    }
+
+    .container > .right-box > .content-box > .market-member-detail > ul > li > .date {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .market-member-detail > ul > li > .title {
+        margin-right: 10px;
+        width: 70%;
+    }
+
+    .container > .right-box > .content-box > .market-member-detail > ul > li > .amount {
+        margin-right: 10px;
+        width: 30%;
+    }
+
+    .container > .right-box > .content-box > .market-member-detail > ul > li > .review {
+        margin-right: 10px;
+        width: 30%;
+    }
 }

@@ -195,4 +195,104 @@
         display: inline-block;
         min-width: 100%;
     }
+
+    .container > .right-box > .content-box > .donation-admin-title > ul > li {
+        width: 550px !important;
+        display: flex;
+    }
+
+    .container > .right-box > .content-box > .donation-admin-title > ul > li > .number {
+        margin-right: 10px;
+        width: 7%;
+    }
+
+    .container > .right-box > .content-box > .donation-admin-title > ul > li > .date {
+        margin-right: 10px;
+        width: 60%;
+    }
+
+    .container > .right-box > .content-box > .donation-admin-title > ul > li > .shelter {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .donation-admin-title > ul > li > .totalAmount {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .donation-admin-detail > ul > li {
+        width: 550px !important;
+        display: flex;
+    }
+
+    .container > .right-box > .content-box > .donation-admin-detail > ul > li > .number {
+        margin-right: 10px;
+        width: 7%;
+    }
+
+    .container > .right-box > .content-box > .donation-admin-detail > ul > li > .date {
+        margin-right: 10px;
+        width: 60%;
+    }
+
+    .container > .right-box > .content-box > .donation-admin-detail > ul > li > .shelter {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .donation-admin-detail > ul > li > .totalAmount {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .donation-member-title > ul > li {
+        width: 550px !important;
+        display: flex;
+    }
+
+    .container > .right-box > .content-box > .donation-member-title > ul > li > .number {
+        margin-right: 10px;
+        width: 7%;
+    }
+
+    .container > .right-box > .content-box > .donation-member-title > ul > li > .date {
+        margin-right: 10px;
+        width: 60%;
+    }
+
+    .container > .right-box > .content-box > .donation-member-title > ul > li > .shelter {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .donation-member-title > ul > li > .totalAmount {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .donation-member-detail > ul > li {
+        width: 550px !important;
+        display: flex;
+    }
+
+    .container > .right-box > .content-box > .donation-member-detail > ul > li > .number {
+        margin-right: 10px;
+        width: 7%;
+    }
+
+    .container > .right-box > .content-box > .donation-member-detail > ul > li > .date {
+        margin-right: 10px;
+        width: 60%;
+    }
+
+    .container > .right-box > .content-box > .donation-member-detail > ul > li > .shelter {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .donation-member-detail > ul > li > .totalAmount {
+        margin-right: 10px;
+        width: 40%;
+    }
 }

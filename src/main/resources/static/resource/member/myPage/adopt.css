@@ -195,4 +195,154 @@
         display: inline-block;
         min-width: 100%;
     }
+
+    .container > .right-box > .content-box > .adopt-admin-title > ul > li {
+        width: 1000px !important;
+        display: flex;
+    }
+
+    .container > .right-box > .content-box > .adopt-admin-title > ul > li > .number {
+        margin-right: 10px;
+        width: 7%;
+    }
+
+    .container > .right-box > .content-box > .adopt-admin-title > ul > li > .date {
+        margin-right: 10px;
+        width: 60%;
+    }
+
+    .container > .right-box > .content-box > .adopt-admin-title > ul > li > .name {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .adopt-admin-title > ul > li > .type {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .adopt-admin-title > ul > li > .shelter {
+        margin-right: 10px;
+        width: 50%;
+    }
+
+    .container > .right-box > .content-box > .adopt-admin-title > ul > li > .adoptCheck {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .adopt-admin-title > ul > li > .picture {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .adopt-admin-detail > ul > li {
+        width: 1000px !important;
+        display: flex;
+    }
+
+    .container > .right-box > .content-box > .adopt-admin-detail > ul > li > .number {
+        margin-right: 10px;
+        width: 7%;
+    }
+
+    .container > .right-box > .content-box > .adopt-admin-detail > ul > li > .date {
+        margin-right: 10px;
+        width: 60%;
+    }
+
+    .container > .right-box > .content-box > .adopt-admin-detail > ul > li > .name {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .adopt-admin-detail > ul > li > .type {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .adopt-admin-detail > ul > li > .shelter {
+        margin-right: 10px;
+        width: 50%;
+    }
+
+    .container > .right-box > .content-box > .adopt-admin-detail > ul > li > .adoptCheck {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .adopt-admin-detail > ul > li > .picture {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .adopt-member-title > ul > li {
+        width: 800px !important;
+        display: flex;
+    }
+
+    .container > .right-box > .content-box > .adopt-member-title > ul > li > .number {
+        margin-right: 10px;
+        width: 7%;
+    }
+
+    .container > .right-box > .content-box > .adopt-member-title > ul > li > .date {
+        margin-right: 10px;
+        width: 60%;
+    }
+
+    .container > .right-box > .content-box > .adopt-member-title > ul > li > .name {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .adopt-member-title > ul > li > .type {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .adopt-member-title > ul > li > .shelter {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .adopt-member-title > ul > li > .picture {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .adopt-member-detail > ul > li {
+        width: 800px !important;
+        display: flex;
+    }
+
+    .container > .right-box > .content-box > .adopt-member-detail > ul > li > .number {
+        margin-right: 10px;
+        width: 7%;
+    }
+
+    .container > .right-box > .content-box > .adopt-member-detail > ul > li > .date {
+        margin-right: 10px;
+        width: 60%;
+    }
+
+    .container > .right-box > .content-box > .adopt-member-detail > ul > li > .name {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .adopt-member-detail > ul > li > .type {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .adopt-member-detail > ul > li > .shelter {
+        margin-right: 10px;
+        width: 40%;
+    }
+
+    .container > .right-box > .content-box > .adopt-member-detail > ul > li > .picture {
+        margin-right: 10px;
+        width: 40%;
+    }
 }
