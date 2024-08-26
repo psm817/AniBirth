@@ -94,6 +94,8 @@ function submitAdoptNoticeForm(form) {
         form.thumbnail.focus();
         return;
     }
+
+    form.submit();
 }
 
 
