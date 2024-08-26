@@ -11,7 +11,7 @@
                     <form th:action="@{|/product/modify/${product.id}|}" method="POST" onsubmit="submitProductForm(this); return false;" enctype="multipart/form-data">
                         <div class="type-box name-box">
                             <span class="font-weight">상품명<span class="text-red-600">*</span></span>
-                            <input type="text" id="title" maxlength="200" name="title" th:placeholder="${product.title}">
+                            <input type="text" id="title" maxlength="200" name="title" th:value="${product.title}">
                         </div>
                         <div class="type-box category-box">
                             <span >상품 종류<span class="text-red-600">*</span></span>
@@ -23,7 +23,7 @@
                         </div>
                         <div class="type-box date-box">
                             <span>가격<span class="text-red-600">*</span></span>
-                            <input type="number" id="price" name="price" th:placeholder="${product.price}">
+                            <input type="number" id="price" name="price" th:value="${product.price}">
                         </div>
                         <div class="type-box img-box">
                             <span>상품 이미지<span class="text-red-600">*</span></span>
@@ -31,7 +31,7 @@
                         </div>
                         <div class="type-box content-box">
                             <span>상품 설명<span class="text-red-600">*</span></span>
-                            <textarea name="description" id="description" class="form-control" rows="9" th:placeholder="${product.description}"></textarea>
+                            <textarea name="description" id="description" class="form-control" rows="9" th:text="${product.description}"></textarea>
                         </div>
                         <div class="type-box signup-btn flex justify-center">
                             <button class="btn btn-primary cancel" type="button" onclick="if(confirm('상품 수정을 취소하시겠습니까?')) { window.location.href='/product/list'; }">취소</button>

@@ -6,6 +6,8 @@ import com.cod.AniBirth.member.service.MemberService;
 import com.cod.AniBirth.order.service.OrderService;
 import com.cod.AniBirth.product.entity.Product;
 import com.cod.AniBirth.product.service.ProductService;
+import com.cod.AniBirth.review.entity.Review;
+import com.cod.AniBirth.review.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -24,6 +26,7 @@ public class ProductController {
     private final ProductService productService;
     private final MemberService memberService;
     private final OrderService orderService;
+    private final ReviewService reviewService;
 
     @GetMapping("/main")
     public String product(Model model, Authentication authentication) {

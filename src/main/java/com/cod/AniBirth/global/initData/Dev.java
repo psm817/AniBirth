@@ -147,22 +147,14 @@ public class Dev {
             Product product18 = productService.create("곰돌이 프릴 네임 자수 빕 케이프","18 설명입니다", 20500, "accessory", member2, 3000, "images/product/product-accessory-9.jpg");
 
             // 상품 리뷰
-            reviewService.create(product1, member4, "좋은 품질의 상품이네요! 최고예요!!", 5);
-            reviewService.create(product1, member5, "좋은 품질의 상품이네요! 최고예요!!", 4);
-            reviewService.create(product2, member4, "좋은 품질의 상품이네요! 최고예요!!", 5);
-            reviewService.create(product3, member5, "좋은 품질의 상품이네요! 최고예요!!", 4);
-            reviewService.create(product4, member4, "좋은 품질의 상품이네요! 최고예요!!", 3);
-            reviewService.create(product5, member5, "좋은 품질의 상품이네요! 최고예요!!", 4);
-            reviewService.create(product6, member4, "좋은 품질의 상품이네요! 최고예요!!", 5);
+            reviewService.create(product1, member5, "좋은 품질의 상품이네요! 최고예요!!", 5);
+            reviewService.create(product2, member5, "좋은 품질의 상품이네요! 최고예요!!", 4);
+            reviewService.create(product3, member5, "좋은 품질의 상품이네요! 최고예요!!", 5);
+            reviewService.create(product4, member5, "좋은 품질의 상품이네요! 최고예요!!", 4);
+            reviewService.create(product5, member5, "좋은 품질의 상품이네요! 최고예요!!", 3);
             reviewService.create(product6, member5, "좋은 품질의 상품이네요! 최고예요!!", 4);
-            reviewService.create(product7, member4, "좋은 품질의 상품이네요! 최고예요!!", 5);
-            reviewService.create(product7, member5, "좋은 품질의 상품이네요! 최고예요!!", 3);
-            reviewService.create(product8, member4, "좋은 품질의 상품이네요! 최고예요!!", 5);
-            reviewService.create(product8, member5, "좋은 품질의 상품이네요! 최고예요!!", 2);
-            reviewService.create(product9, member4, "좋은 품질의 상품이네요! 최고예요!!", 3);
-            reviewService.create(product10, member5, "좋은 품질의 상품이네요! 최고예요!!", 4);
-            reviewService.create(product11, member4, "좋은 품질의 상품이네요! 최고예요!!", 5);
-            reviewService.create(product12, member5, "좋은 품질의 상품이네요! 최고예요!!", 5);
+            reviewService.create(product7, member5, "좋은 품질의 상품이네요! 최고예요!!", 5);
+            reviewService.create(product8, member5, "좋은 품질의 상품이네요! 최고예요!!", 4);
 
             // 후원 샘플
             Donation donation1 = new Donation();

@@ -79,10 +79,12 @@
                         <li th:each="product, stat : ${productList}" class="list-group-item flex items-center">
                             <span class="number w-[10%]" th:text="${stat.index + 1}"></span>
                             <span class="date w-[20%]" th:if="${product.orderItems.size() > 0}" th:text="${#temporals.format(product.orderItems[0].payDate, 'yyyy-MM-dd')}"></span>
-                            <span class="title w-[30%]" th:text="${product.title}"></span>
+                            <span class="title w-[30%]">
+                                <a th:href="@{|/product/detail/${product.id}|}" th:text="${product.title}"></a>
+                            </span>
                             <span class="amount w-[20%]" th:text="${product.price + ' 원 (' + product.orderItems[0].quantity + '개)'}"></span>
                             <span class="review w-[20%]">
-                               <span th:if="${product.hasReviewed}">리뷰 완료</span>
+                               <span th:if="${product.hasReviewed}">작성 완료</span>
                 <a th:if="${!product.hasReviewed}" th:href="@{/product/detail/{id}(id=${product.id})}" class="btn btn-link"><i class="fa-solid fa-pen"></i>작성하기</a>
             </span>
                             </span>
