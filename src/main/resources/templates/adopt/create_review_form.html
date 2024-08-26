@@ -48,8 +48,10 @@
                 <hr class="my-2">
             </div>
             <div class="review-data-input">
-                <form method="POST" th:action="@{/adopt/create_review}" th:object="${createReviewForm}"
+                <form method="POST" th:object="${createReviewForm}"
                       enctype="multipart/form-data">
+<!--                <form method="POST" th:action="@{/adopt/create_review}" th:object="${createReviewForm}"-->
+<!--                      enctype="multipart/form-data">-->
 <!--                    <input type="hidden" name="_csrf" th:value="${_csrf.token}" id="csrfToken"/>-->
                     <div class="input-box title">
                         <span>제목</span>
@@ -66,8 +68,14 @@
                     <div style="width: 100%; margin: 20px 0px;">
                         <hr class="my-2">
                     </div>
-                    <button id="submitBtn" class="btn btn-block btn-primary detail_adopt_application_event mb-2"
-                            type="submit" onclick="return adoptReviewCreate();">작성하기
+<!--                    <button id="submitBtn" class="btn btn-block btn-primary detail_adopt_application_event mb-2"-->
+<!--                            type="submit" onclick="return adoptReviewCreate();">작성하기-->
+<!--                    </button>-->
+                    <button id="submitBtn"
+                            class="btn btn-block btn-primary detail_adopt_application_event mb-2"
+                            type="submit"
+                            onclick="return adoptReviewCreate('${adoptReview != null ? '입양후기를 작성을 완료하시겠습니까&#63;' : '입양후기를 작성을 완료하시겠습니까&#63;'}');">
+                    <span th:text="${adoptReview != null ? '수정하기' : '작성하기'}"></span>
                     </button>
                 </form>
             </div>

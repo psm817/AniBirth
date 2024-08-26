@@ -1,5 +1,6 @@
 package com.cod.AniBirth.adopt.controller;
 
+import com.cod.AniBirth.adopt.entity.Adopt;
 import com.cod.AniBirth.adopt.entity.AdoptReview;
 import com.cod.AniBirth.adopt.form.AdoptForm;
 import com.cod.AniBirth.adopt.form.AdoptionnoticeForm;
@@ -12,10 +13,8 @@ import com.cod.AniBirth.animal.service.AnimalService;
 import com.cod.AniBirth.category.service.CategoryService;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
-import com.cod.AniBirth.volunteer.entity.VolunteerReview;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.Banner;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -28,8 +27,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.swing.plaf.multi.MultiListUI;
-import java.awt.print.PrinterGraphics;
 import java.security.Principal;
 
 @Controller
@@ -159,11 +156,16 @@ public class AdoptController {
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/review/modify/{id}")
-    public String createReviewModify(CreateReviewForm createReviewForm, @PathVariable("id") Long id, Principal principal, Model model){
+    public String createReviewModify(CreateReviewForm createReviewForm, @PathVariable("id") Long id, Principal principal, Model model, Authentication authentication){
+
+
         AdoptReview adoptReview = this.adoptReviewService.getAdoptReviews(id);
+
         if(!adoptReview.getWriter().getUsername().equals(principal.getName())){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
         }
+
+        model.addAttribute("adoptReview", adoptReview);
 
         createReviewForm.setTitle(adoptReview.getTitle());
         createReviewForm.setContent(adoptReview.getContent());
@@ -179,6 +181,13 @@ public class AdoptController {
                                      RedirectAttributes redirectAttributes,
                                      @RequestParam("images") MultipartFile images
             , Model model) {
+
+        // 검증 에러가 있는 경우, 수정 폼 페이지로 리다이렉트
+        if (bindingResult.hasErrors()) {
+            return "adopt/create_review_form";
+        }
+
+//        Member member = memberService.getMemberByUsername(authentication.getName());
         Member member = memberService.getMemberByUsername(principal.getName());
 
         AdoptReview adoptReview = this.adoptReviewService.getAdoptReviews(id);
@@ -189,6 +198,17 @@ public class AdoptController {
         this.adoptReviewService.modify(adoptReview, createReviewForm.getTitle(), createReviewForm.getContent(), createReviewForm.getImages(), member);
         return "redirect:/adopt/review";
 
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/review/delete/{id}")
+    public String adoptReviewDelete(Principal principal, @PathVariable("id") Long id){
+        AdoptReview adoptReview= this.adoptReviewService.getAdoptReviews(id);
+        if(!adoptReview.getWriter().getUsername().equals(principal.getName())){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "삭제 권한이 없습니다.");
+        }
+        this.adoptReviewService.delete(adoptReview);
+        return "redirect:/adopt/review";
     }
 
     @GetMapping("/review/detail/{id}")

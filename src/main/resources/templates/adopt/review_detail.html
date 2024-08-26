@@ -8,38 +8,36 @@
       <div class="adopt-detail-box">
         <span th:text="${adoptReview.title}"></span>
         <div class="adopt-review flex-box">
-          <div class="adopt-description-box">
-            <span th:text="'작성자 : ' + ${adoptReview.writer.nickname}"></span>
-            <span class="bar">|</span>
-            <span th:text="'최초 작성일 : ' + ${#temporals.format(adoptReview.createDate, 'yyyy-MM-dd HH:mm')}"></span>
-            <span class="bar">|</span>
-            <span th:text="'조회수 : ' + ${adoptReview.hit}"></span>
-            <!--            <span class="bar">|</span>-->
-            <a class="btn btn-link" th:href="@{/adopt/review}">목록보기</a>
-          </div>
-          <div id="viewer" class="adopt-detail-content-box">
-          </div>
-          <div class="picture-area">
-            <span><img th:src="@{|/gen/${adoptReview.images}|}" style="border-radius: 10px;" alt="대표이미지"></span>
-          </div>
-          <!--          <div class="adopt-btn-box">-->
-          <!--            <a th:href="@{|/adopt/review/modify/${volunteerReview.id}|}"-->
-          <!--               th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or (${volunteerReview.writer.username} == ${member.username}))"-->
-          <!--               onclick="return reviewModify();">수정</a>-->
-          <!--            <a th:href="@{|/adopt/review/delete/${volunteerReview.id}|}"-->
-          <!--               th:if="${#authorization.expression('isAuthenticated()')} and (${member.authority} == 0 or (${volunteerReview.writer.username} == ${member.username}))"-->
-          <!--               onclick="return reviewDelete();">삭제</a>-->
-          <!--          </div>-->
+<!--          <div class="sm-description">-->
+            <div class="adopt-description-box">
+              <span th:text="'작성자 : ' + ${adoptReview.writer.nickname}"></span>
+              <span class="bar">|</span>
+              <span th:text="'최초 작성일 : ' + ${#temporals.format(adoptReview.createDate, 'yyyy-MM-dd HH:mm')}"></span>
+              <span class="bar">|</span>
+              <span th:text="'조회수 : ' + ${adoptReview.hit}"></span>
+              <!--            <span class="bar">|</span>-->
+              <a class="btn btn-link" th:href="@{/adopt/review}">목록보기</a>
+            </div>
+            <div class="btn-box">
+              <a th:href="@{|/adopt/review/modify/${adoptReview.id}|}" class="adoptReviewDetail_content_modify_btn"
+                 sec:authorize="isAuthenticated()"
+                 th:if="${adoptReview.writer != null and #authentication.getPrincipal().getUsername() == adoptReview.writer.username}"
+                 th:text="수정"></a>
+              <a href="javascript:void(0);" th:data-uri="@{|/adopt/review/delete/${adoptReview.id}|}"
+                 class="adoptReviewDetail_content_delete_btn" sec:authorize="isAuthenticated()"
+                 th:if="${adoptReview.writer != null and #authentication.getPrincipal().getUsername() == adoptReview.writer.username}"
+                 th:text="삭제"></a>
+            </div>
+<!--          </div>-->
+
+<!--          <div class="picture-area">-->
+<!--            <span><img th:src="@{|/gen/${adoptReview.images}|}" style="border-radius: 10px;" alt="대표이미지"></span>-->
+<!--          </div>-->
         </div>
       </div>
-      <!--      <div class="adopt-content-box">-->
-      <!--        <div class="subImg-box" th:each="subImage : ${adoptReview.subImages}">-->
-      <!--          <img th:src="@{|/gen/${subImage}|}" alt="첨부 이미지">-->
-      <!--        </div>-->
-      <!--        <div class="body-box">-->
-      <!--          <span th:utext="${review.formattedBody}"></span>-->
-      <!--        </div>-->
-      <!--      </div>-->
+      <div class="adopt-detail-content-box">
+        <span><img th:src="@{|/gen/${adoptReview.images}|}" style="border-radius: 10px;" alt="대표이미지"></span>
+      </div>
       <div class="adopt-review-button-box flex justify-between mt-6">
         <!-- 다음 버튼 -->
         <a th:href="@{|/adopt/review/detail/${nextVR}|}"
@@ -60,19 +58,14 @@
     </div>
   </div>
   <script th:inline="javascript">
-    const Viewer = toastui.Editor;
-
-    $(document).ready(function() {
-      const contentFromServer = /*[[${adoptReview.content}]]*/ '';
-
-      const viewer = new toastui.Editor({
-          el: document.querySelector('#viewer'),
-          height: '600px',
-          initialValue: contentFromServer
-        });
-    });
-
-    // 장바구니
+    const adopt_review_delete_elements = document.getElementsByClassName("adoptReviewDetail_content_delete_btn");
+    Array.from(adopt_review_delete_elements).forEach(function(element) {
+       element.addEventListener('click', function() {
+           if(confirm("정말로 삭제하시겠습니까?")) {
+               location.href = this.dataset.uri;
+           }
+       });
+   });
   </script>
 </section>
 </html>

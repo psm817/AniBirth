@@ -147,6 +147,7 @@ public class AdoptReviewService {
         }
     }
 
+    @Transactional
     public void modify(AdoptReview adoptReview, String title, String content, MultipartFile images, Member member) {
         adoptReview.setTitle(title);
         adoptReview.setContent(content);
@@ -171,5 +172,9 @@ public class AdoptReviewService {
             }
         }
         this.adoptReviewRepository.save(adoptReview);
+    }
+
+    public void delete(AdoptReview adoptReview) {
+        this.adoptReviewRepository.delete(adoptReview);
     }
 }
