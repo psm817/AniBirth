@@ -195,6 +195,7 @@ html > body .notice-container-box > .container > .personal-data-input {
 .notice-content > .personal-data-input > form > #submitBtn {
     background-color: #f88379;
     border-color: #f88379;
+    margin-top: 10px;
 }
 
 .notice-content > .personal-data-input > form > #submitBtn:hover {
