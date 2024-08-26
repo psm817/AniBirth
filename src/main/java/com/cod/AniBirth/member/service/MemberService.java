@@ -207,4 +207,8 @@ public class MemberService {
             throw new DataNotFoundException("member not found");
         }
     }
+
+    public void delete(Member member) {
+        this.memberRepository.delete(member);
+    }
 }
