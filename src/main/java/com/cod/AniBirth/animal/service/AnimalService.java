@@ -199,7 +199,7 @@ public class AnimalService {
 
     public void modify(Member member, Animal animal) {
         animal.setAdoptee(member);
-
+        animal.setAdoptionStatusCd("입양 진행중");
         animalRepository.save(animal);
 
     }
