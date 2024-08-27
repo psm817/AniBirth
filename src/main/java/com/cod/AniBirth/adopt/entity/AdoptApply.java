@@ -8,7 +8,9 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 @Entity
 @Setter
 @SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 public class AdoptApply extends BaseEntity {
 
     private String name;

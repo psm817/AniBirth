@@ -83,7 +83,7 @@
                             <span class="type w-[20%]" th:if="${animal.classification} == '기타동물'" th:text="'기타동물'"></span>
                             <span class="shelter w-[20%]">대전센터</span>
                             <span class="picture w-[15%]">
-                                <a class="btn btn-link" th:href="@{/}">미리보기</a>
+                                <a class="btn btn-link" th:href="@{|http://www.daejeon.go.kr/${animal.filePath}|}">미리보기</a>
                             </span>
                         </li>
                     </ul>
