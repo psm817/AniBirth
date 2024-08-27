@@ -57,13 +57,13 @@ function adoptReviewWrite() {
 }
 
 //후기 신청버튼 클릭했을 때 알림
-function adoptReviewCreate() {
-    return confirm('입양후기를 작성을 완료하시겠습니까?');
-}
-//function adoptReviewCreate(message) {
-//    console.log(message);
-//    return confirm(message);
+//function adoptReviewCreate() {
+//    return confirm('입양후기를 작성을 완료하시겠습니까?');
 //}
+function adoptReviewCreate(message) {
+    console.log(message);
+    return confirm(message);
+}
 
 // 리뷰 삭제할 때 알림
 function productReviewDelete() {

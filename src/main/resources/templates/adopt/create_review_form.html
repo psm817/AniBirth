@@ -83,7 +83,6 @@
                             onclick="return adoptReviewCreate();">
                     <span th:text="${adoptReview != null ? '수정하기' : '작성하기'}"></span>
                     </button>
-
                 </form>
             </div>
         </div>
@@ -94,6 +93,13 @@
             cursor: auto !important;
         }
     </style>
+
+    <script th:inline="javascript">
+        /* 타임리프 변수를 JavaScript로 전달 */
+        var adoptReview = /*[[${adoptReview != null}]]*/ false;  // 서버에서 adoptReview의 값에 따라 설정됨
+        var message = adoptReview ? '입양후기를 수정하시겠습니까?' : '입양후기를 작성하시겠습니까?';
+    </script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const Editor = toastui.Editor;
