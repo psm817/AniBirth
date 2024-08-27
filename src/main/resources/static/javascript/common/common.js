@@ -51,16 +51,31 @@ function productModify() {
 function productDelete() {
     return confirm('애니마켓에 등록된 상품을 삭제하시겠습니까?');
 }
+
+// 입양하기 버튼 클릭했을 때 알림
+//function adoptApply() {
+//    return confirm('입양신청 페이지로 이동하시겠습니까?');
+//}
+function adoptApply(adoptionStatusCd) {
+    console.log('Current adoption status:', adoptionStatusCd);
+
+    if (adoptionStatusCd == '입양공고중' || adoptionStatusCd == '입양가능') {
+        console.log('Status is true'); // 상태 확인
+        return confirm('입양신청 페이지로 이동하시겠습니까?');  // 입양 가능 상태일 때, 확인 및 취소 버튼이 나타나는 confirm 창
+    } else {
+        console.log('Status is false'); // 상태 확인
+        alert('해당 동물은 입양할 수 없는 상태입니다.');  // 입양 불가 상태일 때, 확인 버튼만 나타나는 alert 창
+        return false;  // 클릭 이벤트 차단
+    }
+}
+
 // 후기 작성버튼 클릭했을 때 알림
 function adoptReviewWrite() {
     return confirm('입양후기를 작성하시겠습니까?');
 }
 
 //후기 신청버튼 클릭했을 때 알림
-//function adoptReviewCreate() {
-//    return confirm('입양후기를 작성을 완료하시겠습니까?');
-//}
-function adoptReviewCreate(message) {
+function adoptReviewCreate() {
     console.log(message);
     return confirm(message);
 }

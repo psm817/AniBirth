@@ -110,11 +110,19 @@
                     <hr class="my-4">
                     <div class="adopt-button">
                         <!-- 입양하기 -->
-                        <!-- GA 클래스 추가 detail_adopt_application_event -->
-                        <a th:href="@{|/adopt/apply/${animal.id}|}"
-                           th:if="${#authorization.expression('isAuthenticated()')}">
-                            <button class="btn btn-block btn-primary detail_adopt_application_event" type="submit"
-                                    style="background-color:#f88379; margin-top: 5px; border:1px solid #f7a199;">
+<!--                        <a th:href="@{|/adopt/apply/${animal.id}|}"-->
+<!--                           th:if="${#authorization.expression('isAuthenticated()')}">-->
+<!--                            <button class="btn btn-block btn-primary detail_adopt_application_event" type="submit"-->
+<!--                                    style="background-color:#f88379; margin-top: 5px; border:1px solid #f7a199;">-->
+<!--                                입양하기-->
+<!--                            </button>-->
+<!--                        </a>-->
+                        <a th:href="${animal.adoptionStatusCd == '입양공고중' || animal.adoptionStatusCd == '입양가능' ? '/adopt/apply/' + animal.id : '#'}"
+                           th:if="${#authorization.expression('isAuthenticated()')}"
+                           th:onclick="adoptApply([[${animal.adoptionStatusCd}]])">
+                            <button class="btn btn-block btn-primary detail_adopt_application_event" type="button"
+                                    style="background-color:#f88379; margin-top: 5px; border:1px solid #f7a199;"
+                                    th:attr="disabled=${animal.adoptionStatusCd != '입양공고중' and animal.adoptionStatusCd != '입양가능'}">
                                 입양하기
                             </button>
                         </a>
