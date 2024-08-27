@@ -67,7 +67,7 @@ public class AnimalService {
 
         for (Animal animal : animals) {
             if ("1".equals(animal.getAdoptionStatusCd())) {
-                animal.setAdoptionStatusCd("입양 공고중");
+                animal.setAdoptionStatusCd("입양공고중");
             } else if ("2".equals(animal.getAdoptionStatusCd())) {
                 animal.setAdoptionStatusCd("입양가능");
             } else if ("3".equals(animal.getAdoptionStatusCd())) {

@@ -30,6 +30,7 @@ html > body .adopt-total .adopt-detail-head .adopt-info > .h2 {
 /* 입양 상세 내용 스타일 */
 html > body .adopt-detail-content {
     width: 100%;
+    height: 550px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,16 +42,22 @@ html > body .adopt-detail-content > .row-adopt {
     justify-content: center;
     align-items: flex-start;
     width: 100%;
+    height: 100%;
     gap: 40px; /* 이미지와 콘텐츠 사이의 간격 */
 
 }
-
+.adopt.img {
+    height: 460px;
+}
 /* 이미지와 콘텐츠 각각 50% 차지하도록 설정 */
 .adopt.img,
 .adopt.content {
     flex: 1;
     max-width: 50%;
     box-sizing: border-box;
+}
+.adopt-img-big {
+    height: 100%;
 }
 
 .adopt.content {
@@ -65,7 +72,7 @@ html > body .adopt-detail-content > .row-adopt {
 /* 이미지 스타일 */
 .adopt-img-big img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
 }
 
