@@ -20,7 +20,7 @@
         <div class="title-box">
           <span>전체 입양후기</span>
           <span>(※ 입양 후기 이미지 또는 제목을 클릭하면 상세내용을 확인하실 수 있습니다.)</span>
-          <a th:if="${#authorization.expression('isAuthenticated()')}"
+          <a th:if="${canCreateReview}"
              th:href="@{/adopt/create_review}" class="btn btn_link" onclick="return adoptReviewWrite();">작성하기</a>
         </div>
         <div class="adopt-totalList-box">
