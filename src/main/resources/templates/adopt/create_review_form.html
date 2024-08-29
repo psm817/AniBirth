@@ -156,6 +156,13 @@
                 event.preventDefault(); // 기본 제출 동작 방지
 
                 const editorContent = editor.getMarkdown();
+
+                // 에디터 내용이 비어 있는지 확인
+                if (!editorContent.trim()) {
+                    alert("내용은 필수항목입니다.");
+                    return;
+                }
+
                 const formData = new FormData(this); // 폼 데이터 가져오기
                 formData.set("content", editorContent); // 에디터 내용 추가
 
