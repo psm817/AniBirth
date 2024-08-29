@@ -5,7 +5,14 @@
     <div class="adopt-review">
       <div class="adopt-review-wrapper">
         <div class="adopt-review-banner">
-          <img th:src="@{/images/banner/입양리스트.jpg}" alt="배너1">
+          <img th:src="@{/images/banner/입양배경.png}" alt="배너1">
+        </div>
+        <div class="adoptReview-text-overlay-v">
+          <h1 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold">입양후기</h1>
+          <br>
+          <p class="mt-4 text-sm sm:text-base md:text-lg lg:text-xl">애니버스를 통해 입양하신 분들은 누구나! 입양후기를 올려주세요.<br>
+            가족이 되어 즐겁게 지내시는 모습, 입양 전후 사진, 특이한 버릇, 입양 후 가장 좋은 점 등 입양을 망설이시거나 고민하시는 분들께 좋은 선물이 될 수 있습니다.<br>
+          </p>
         </div>
       </div>
     </div>
@@ -36,7 +43,7 @@
                 <a th:href="@{|/adopt/review/detail/${review.id}|}">
                   <span th:text="${review.title}"></span>
                 </a>
-                <span th:text="'작성자 : ' + ${review.writer.nickname}"></span>
+                <span th:text="'작성자 : ' + ${review.writer != null ? review.writer.nickname : 'Unknown'}"></span>
                 <span th:text="'조회수 : ' + ${review.hit}"></span>
                 <span th:text="'작성일자 : ' + ${#temporals.format(review.createDate, 'yyyy년 MM월 dd일')}"></span>
               </div>

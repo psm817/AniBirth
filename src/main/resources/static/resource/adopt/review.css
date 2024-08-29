@@ -44,6 +44,32 @@ html > body .adopt-review-banner {
   object-fit: cover;
 }
 
+html > body .adopt-review-wrapper > .adoptReview-text-overlay-v {
+    position: absolute;
+    top: 32%;
+    left: 180px;
+    width: 900px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+.adoptReview-text-overlay-v > h1 {
+    margin-right: auto;
+    font-size: 3em;
+}
+
+.adoptReview-text-overlay-v > p {
+    margin: 0;
+    font-size: 1.2em;
+    text-align: left;
+    max-width: 80%;
+    color: #fff;
+}
+
 html > body .container-box > .adopt-review-box {
     display: flex;
     flex-direction: column;
