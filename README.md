@@ -560,9 +560,9 @@
     - 로그인이 되어 있지 않은 경우 : 로그인, 회원가입
     - 로그인이 되어 있는 경우 : 마이페이지, 장바구니, 로그아웃
 
-| 메인화면                                                          |
-|---------------------------------------------------------------|
-| <img src="src/main/resources/static/images/capture/메인화면.png"> |
+| 메인화면                                                         |
+|--------------------------------------------------------------|
+| <img src="src/main/resources/static/images/capture/메인1.png"> |
 
 <br>
 
@@ -576,10 +576,10 @@
 - 회원가입이 완료되면 로그인 화면으로 이동과 동시에 회원가입 시 입력한 이메일 주소로 환영 메일이 전송됩니다.
 - 최고 관리자의 승인을 받은 보호소/기업 권한의 회원 역시 승인과 동시에 입력한 이메일 주소로 승인완료 메일이 전송됩니다.
 
-| 회원가입                                                               |
-|--------------------------------------------------------------------|
-| <img src="src/main/resources/static/images/capture/회원가입-약관동의.png"> |
-| <img src="src/main/resources/static/images/capture/회원가입-정보입력.png"> |
+| 회원가입                                                          |
+|---------------------------------------------------------------|
+| <img src="src/main/resources/static/images/capture/약관동의.png"> |
+| <img src="src/main/resources/static/images/capture/회원가입.png"> |
 
 <br>
 
@@ -599,10 +599,10 @@
 - 임시비밀번호 발급 버튼을 통해 회원가입 시 입력한 아이디와 이메일 주소를 입력하면 해당 이메일 주소로 임시비밀번호가 전송됩니다.
 - 임시비밀번호를 발급받은 회원은 기존의 비밀번호가 아닌 발급받은 임시비밀번호를 통해서만 로그인이 가능합니다.
 
-| 아이디 찾기, 임시비밀번호 발급                                                  |
-|--------------------------------------------------------------------|
-| <img src="src/main/resources/static/images/capture/차트목록-탑100.png"> |
-| <img src="src/main/resources/static/images/capture/차트목록-장르별.png">  |
+| 아이디 찾기, 임시비밀번호 발급                                               |
+|-----------------------------------------------------------------|
+| <img src="src/main/resources/static/images/capture/아이디찾기.png">  |
+| <img src="src/main/resources/static/images/capture/임시비밀번호.png"> |
 
 <br>
 
@@ -626,9 +626,11 @@
       - 입양내역 : 일반회원이 입양하기에 등록한 유기동물의 내역을 보여줍니다.
       - 후원 및 마켓내역 : 회원이 후원한 후원 내역과 애니마켓에서 구매한 구매내역을 보여줍니다.
 
-| 마이페이지                                                          |
-|----------------------------------------------------------------|
-| <img src="src/main/resources/static/images/capture/마이페이지.png"> |
+| 마이페이지                                                              |
+|--------------------------------------------------------------------|
+| <img src="src/main/resources/static/images/capture/마이페이지-관리자.png"> |
+| <img src="src/main/resources/static/images/capture/마이페이지-기업.png">  |
+| <img src="src/main/resources/static/images/capture/마이페이지-일반.png">  |
 
 <br>
 
@@ -640,9 +642,9 @@
 ### [애니버스]
 - 애니버스는 기업 소개 페이지로 애니버스의 어원과 개발자 소개 및 위 사이트의 목표와 개요를 설명합니다.
 
-| 애니버스                                                           |
-|----------------------------------------------------------------|
-| <img src="src/main/resources/static/images/capture/음악 검색.png"> |
+| 애니버스                                                          |
+|---------------------------------------------------------------|
+| <img src="src/main/resources/static/images/capture/애니버스.png"> |
 
 <br>
 
@@ -662,9 +664,10 @@
     - 봉사후기 등록과 수정, 삭제는 후기 글을 게시한 회원에게만 권한이 있습니다.
     - 봉사후기 등록 시 대표 이미지를 제외하고 내용에 들어갈 첨부 이미지를 최대 3장까지 선택할 수 있습니다.
 
-| 봉사활동                                                            |
-|-----------------------------------------------------------------|
-| <img src="src/main/resources/static/images/capture/플레이리스트.png"> |
+| 봉사활동                                                          |
+|---------------------------------------------------------------|
+| <img src="src/main/resources/static/images/capture/봉사활동.png"> |
+| <img src="src/main/resources/static/images/capture/봉사후기.png"> |
 
 <br>
 
@@ -690,7 +693,8 @@
       
 | 입양정보                                                          |
 |---------------------------------------------------------------|
-| <img src="src/main/resources/static/images/capture/커뮤니티.png"> |
+| <img src="src/main/resources/static/images/capture/입양.png">   |
+| <img src="src/main/resources/static/images/capture/입양후기.png"> |
 
 <br>
 
@@ -723,7 +727,7 @@
 
 | 애니마켓                                                          |
 |---------------------------------------------------------------|
-| <img src="src/main/resources/static/images/capture/스튜디오.png"> |
+| <img src="src/main/resources/static/images/capture/애니마켓.png"> |
 
 <br>
 
@@ -742,9 +746,9 @@
 - 제목을 클릭하면 질문의 상세 페이지로 이동합니다.
 - 질문의 상세페이지는 제목과 정보, 내용으로 표시되고 페이네이션으로 이전/다음 질문을 확인할 수 있습니다.
 
-| 애니공지                                                         |
-|--------------------------------------------------------------|
-| <img src="src/main/resources/static/images/capture/스튜디오.png"> |
+| 애니공지                                                          |
+|---------------------------------------------------------------|
+| <img src="src/main/resources/static/images/capture/애니공지.png"> |
 
 <br>
 
@@ -760,9 +764,10 @@
 - 포인트로 결제하기 버튼을 누르면 포인트가 차감됩니다.
 - 결제는 포인트 충전 후 이용할 수 있습니다.
 
-| 장바구니 및 결제                                                |
-|----------------------------------------------------------|
-| <img src="src/main/resources/static/images/capture/스튜디오.png"> |
+| 장바구니 및 결제                                                     |
+|---------------------------------------------------------------|
+| <img src="src/main/resources/static/images/capture/장바구니.png"> |
+| <img src="src/main/resources/static/images/capture/결제.png">   |
 
 <br>
 
