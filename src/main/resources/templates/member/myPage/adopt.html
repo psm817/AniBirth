@@ -76,7 +76,9 @@
                             <span class="number w-[5%]" th:text="${loop.index} + 1"></span>
                             <span class="date w-[20%]" th:text="${#temporals.format(animal.createDate, 'yyyy-MM-dd')}"></span>
                             <span class="name w-[20%]" th:if="${animal.gender} == '암'" th:text="'암컷'"></span>
+                            <span class="name w-[20%]" th:if="${animal.gender} == '암컷'" th:text="'암컷'"></span>
                             <span class="name w-[20%]" th:if="${animal.gender} == '수'" th:text="'수컷'"></span>
+                            <span class="name w-[20%]" th:if="${animal.gender} == '수컷'" th:text="'수컷'"></span>
                             <span class="name w-[20%]" th:if="${animal.gender} == '4'" th:text="'중성'"></span>
                             <span class="type w-[20%]" th:if="${animal.classification} == '개'" th:text="'강아지'"></span>
                             <span class="type w-[20%]" th:if="${animal.classification} == '고양이'" th:text="'고양이'"></span>
@@ -96,7 +98,9 @@
                             <span class="number w-[5%]" th:text="${loop.index} + 1"></span>
                             <span class="date w-[20%]" th:text="${#temporals.format(animal.createDate, 'yyyy-MM-dd')}"></span>
                             <span class="name w-[15%]" th:if="${animal.gender} == '암'" th:text="'암컷'"></span>
+                            <span class="name w-[20%]" th:if="${animal.gender} == '암컷'" th:text="'암컷'"></span>
                             <span class="name w-[15%]" th:if="${animal.gender} == '수'" th:text="'수컷'"></span>
+                            <span class="name w-[20%]" th:if="${animal.gender} == '수컷'" th:text="'수컷'"></span>
                             <span class="name w-[15%]" th:if="${animal.gender} == '4'" th:text="'중성'"></span>
                             <span class="type w-[15%]" th:if="${animal.classification} == '개'" th:text="'강아지'"></span>
                             <span class="type w-[15%]" th:if="${animal.classification} == '고양이'" th:text="'고양이'"></span>
@@ -117,7 +121,9 @@
                             <span class="number w-[5%]" th:text="${loop.index} + 1"></span>
                             <span class="date w-[20%]" th:text="${#temporals.format(animal.createDate, 'yyyy-MM-dd')}"></span>
                             <span class="name w-[15%]" th:if="${animal.gender} == '암'" th:text="'암컷'"></span>
+                            <span class="name w-[20%]" th:if="${animal.gender} == '암컷'" th:text="'암컷'"></span>
                             <span class="name w-[15%]" th:if="${animal.gender} == '수'" th:text="'수컷'"></span>
+                            <span class="name w-[20%]" th:if="${animal.gender} == '수컷'" th:text="'수컷'"></span>
                             <span class="name w-[15%]" th:if="${animal.gender} == '4'" th:text="'중성화'"></span>
                             <span class="type w-[15%]" th:if="${animal.classification} == '개'" th:text="'강아지'"></span>
                             <span class="type w-[15%]" th:if="${animal.classification} == '고양이'" th:text="'고양이'"></span>
