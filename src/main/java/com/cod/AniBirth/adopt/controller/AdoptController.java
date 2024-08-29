@@ -13,6 +13,7 @@ import com.cod.AniBirth.animal.service.AnimalService;
 import com.cod.AniBirth.category.service.CategoryService;
 import com.cod.AniBirth.member.entity.Member;
 import com.cod.AniBirth.member.service.MemberService;
+import com.cod.AniBirth.volunteer.entity.Volunteer;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -28,6 +29,8 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -103,6 +106,7 @@ public class AdoptController {
 
         model.addAttribute("animal", animal);
 
+
         return "adopt/form";
     }
 
@@ -127,9 +131,32 @@ public class AdoptController {
     @GetMapping("/review")
     public String reviewlist(Model model,
                              @RequestParam(value = "page", defaultValue = "0") int page,
-                             @RequestParam(value = "kw", defaultValue = "") String kw) {
+                             @RequestParam(value = "kw", defaultValue = "") String kw,
+                             Authentication authentication) {
+        Member member = null;
+        boolean canCreateReview = false;
+
+        if (authentication != null) {
+            member = memberService.findByUsername(authentication.getName());
+
+            if (member != null) {
+                // 해당 사용자가 입양한 동물 목록을 가져옵니다.
+                List<Animal> adoptees = animalService.findByAdoptee(member);
+
+                // 입양한 동물이 하나라도 있으면 리뷰 작성 권한을 부여합니다.
+                if (!adoptees.isEmpty()) {
+                    canCreateReview = true;
+                }
+            }
+        }
+
         Page<AdoptReview> paging = adoptReviewService.getList(page);
 //        Page<AdoptReview> paging = adoptReviewService.getList(page, kw);
+
+
+
+
+        model.addAttribute("canCreateReview", canCreateReview);
 
         model.addAttribute("paging", paging);
         model.addAttribute("kw", kw);
