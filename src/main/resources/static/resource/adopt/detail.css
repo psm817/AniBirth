@@ -2,6 +2,7 @@ html, body {
     position: relative;
     height: 100%;
 }
+
 body {
   background: #eee;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -114,11 +115,15 @@ html > body .adopt-detail-content .row-adopt .content .space-1 > .card-frame {
 
 /* 반응형 디자인: 작은 화면에서는 세로로 배치 */
 @media (max-width: 394px) {
+    .adopt-total {
+        height: 1000px;
+    }
 
     html > body .adopt-detail-head {
         width: 100%;
         margin: 20px 0px;
     }
+
     html > body .adopt-detail-head > .adopt-info {
         display: flex;
         align-items: center;
@@ -126,6 +131,7 @@ html > body .adopt-detail-content .row-adopt .content .space-1 > .card-frame {
     }
     .row-adopt {
         flex-direction: column;
+        margin-top: 200px;
     }
 
     .adopt.content {
@@ -141,7 +147,6 @@ html > body .adopt-detail-content .row-adopt .content .space-1 > .card-frame {
     .adopt.content > ul {
         margin: 10px;
     }
-
 
     html > body .adopt-detail-content .content > .mx-n2 {
         margin-left: -0.5rem !important;
