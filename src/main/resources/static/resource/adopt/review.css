@@ -210,19 +210,21 @@ html > body .container-box > .adopt-review-box {
 
 /* 반응형 시작 */
 @media (max-width: 394px) {
-   /* .text-overlay-vr {
+    .adoptReview-text-overlay-v {
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 100%;
+        width: 100% !important;
         padding: 26px;
         margin-top: 130px;
+        padding-left: 40px;
     }
-    .text-overlay-vr h1 {
+    .adoptReview-text-overlay-v h1 {
         font-size: 2.0em;
     }
-    .text-overlay-vr p {
+
+    .adoptReview-text-overlay-v p {
         font-size: 0.9em;
-    }*/
+    }
 
     .adopt-review-box > .adopt-review-section > .title-box {
         margin-top: 15px;

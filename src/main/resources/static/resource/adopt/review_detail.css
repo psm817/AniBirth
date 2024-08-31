@@ -182,3 +182,51 @@
     }
 
 }
+
+@media(max-width: 394px) {
+    .adopt-review-detail {
+        padding-top: 10px;
+    }
+
+    .adopt-review-detail > .adopt-top-box > .adopt-detail-box {
+        height: 210px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .adopt-review-detail > .adopt-top-box > .adopt-detail-box > span {
+        height: 70px;
+        font-size: 20px;
+        text-align: left;
+    }
+
+    .adopt-review-detail > .adopt-top-box > .adopt-detail-box > .flex-box {
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .adopt-review-detail > .adopt-top-box > .adopt-detail-box > .flex-box > .adopt-description-box {
+        flex-direction: column;
+        align-items: start;
+        width: 100%;
+        height: 110px;
+    }
+
+    .adopt-review-detail > .adopt-top-box > .adopt-detail-box > .flex-box > .adopt-description-box > .bar {
+        display: none;
+    }
+
+    .adopt-review-detail > .adopt-top-box > .adopt-detail-box > .flex-box > .btn-box {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        width: 100%;
+    }
+
+    .adopt-review-detail > .adopt-top-box > .adopt-detail-content-box {
+        padding-left: 10px;
+        padding-right: 10px;
+        height: 100%;
+        width: 100%;
+    }
+}

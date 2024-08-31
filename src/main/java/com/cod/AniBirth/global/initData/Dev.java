@@ -72,9 +72,9 @@ public class Dev {
             Volunteer volunteer6 = volunteerService.create("사설보호소 지영이네 봉사활동", "봉사활동 내용6", "대전 유성구 금남구즉로 1234", "2024-08-01T13:00", "2024-08-01T19:00", "2024-07-30", "images/volunteer/volunteer-6.png", 20, member8, 0);
             Volunteer volunteer7 = volunteerService.create("유기견 목욕시키기", "봉사활동 내용6", "강원특별자치도 원주시 호저면 칠봉로 110-6", "2024-08-05T08:50", "2024-08-06T09:50", "2024-08-02", "images/volunteer/volunteer-7.png", 20, member7, 0);
             Volunteer volunteer8 = volunteerService.create("사설보호소 현철이네 봉사활동", "봉사활동 내용6", "충남 청양군 대치면 청산로 420", "2024-08-06T11:00", "2024-08-06T17:00", "2024-08-03", "images/volunteer/volunteer-8.png", 20, member6, 0);
-            Volunteer volunteer9 = volunteerService.create("번식장 구조견 돌봄 봉사활동", "봉사활동 내용6", "대전 유성구 금남구즉로 1234", "2024-08-10T09:00", "2024-08-10T17:50", "2024-08-05", "images/volunteer/volunteer-9.png", 20, member9, 0);
-            Volunteer volunteer10 = volunteerService.create("사설보호소 태우네 봉사활동", "봉사활동 내용6", "세종특별자치시 전동면 미륵당1길 117-16", "2024-08-26T07:50", "2024-08-26T14:50", "2024-08-21", "images/volunteer/volunteer-10.png", 20, member2, 0);
-            Volunteer volunteer11 = volunteerService.create("사설보호소 상민이네 봉사활동", "봉사활동 내용6", "강원특별자치도 원주시 호저면 칠봉로 110-6", "2024-08-30T16:00", "2024-08-31T15:50", "2024-08-26", "images/volunteer/volunteer-11.png", 1, member2, 0);
+            Volunteer volunteer9 = volunteerService.create("번식장 구조견 돌봄 봉사활동", "봉사활동 내용6", "대전 유성구 금남구즉로 1234", "2024-09-06T09:00", "2024-09-06T17:50", "2024-09-03", "images/volunteer/volunteer-9.png", 20, member9, 0);
+            Volunteer volunteer10 = volunteerService.create("사설보호소 태우네 봉사활동", "봉사활동 내용6", "세종특별자치시 전동면 미륵당1길 117-16", "2024-09-10T07:50", "2024-09-11T14:50", "2024-09-06", "images/volunteer/volunteer-10.png", 20, member2, 0);
+            Volunteer volunteer11 = volunteerService.create("사설보호소 상민이네 봉사활동", "봉사활동 내용6", "강원특별자치도 원주시 호저면 칠봉로 110-6", "2024-09-16T16:00", "2024-09-16T15:50", "2024-09-12", "images/volunteer/volunteer-11.png", 1, member2, 0);
 
             // 캘린더 샘플 만들기
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
@@ -158,19 +158,19 @@ public class Dev {
 
             // 후원 샘플
             Donation donation1 = new Donation();
-            donation1.setAmount(10000000L);
+            donation1.setAmount(1200000L);
             donation1.setDonor(member4); // Example: user1
             donation1.setRecipient(member6); // Example: company3
             donationService.save(donation1);
 
             Donation donation2 = new Donation();
-            donation2.setAmount(20000000L);
+            donation2.setAmount(2800000L);
             donation2.setDonor(member5); // Example: user2
             donation2.setRecipient(member7); // Example: company4
             donationService.save(donation2);
 
             Donation donation3 = new Donation();
-            donation3.setAmount(30000000L);
+            donation3.setAmount(2400000L);
             donation3.setDonor(member10); // Example: user3
             donation3.setRecipient(member8); // Example: company5
             donationService.save(donation3);
@@ -206,14 +206,14 @@ public class Dev {
 
             //입양후기 샘플
             adoptReviewService.create("입양후기1","입양후기 1에 대한 내용입니다.","images/adoptreview/입양리스트.jpg", member1);
-            adoptReviewService.create("입양후기2","입양후기 2에 대한 내용입니다.","images/adoptreview/입양리스트.jpg", member2);
-            adoptReviewService.create("입양후기3","입양후기 3에 대한 내용입니다.","images/adoptreview/입양리스트.jpg", member3);
-            adoptReviewService.create("입양후기4","입양후기 4에 대한 내용입니다.","images/adoptreview/입양리스트.jpg", member4);
-            adoptReviewService.create("입양후기5","입양후기 5에 대한 내용입니다.","images/adoptreview/입양리스트.jpg", member5);
-            adoptReviewService.create("입양후기6","입양후기 6에 대한 내용입니다.","images/adoptreview/입양리스트.jpg", member6);
-            adoptReviewService.create("입양후기7","입양후기 7에 대한 내용입니다.","images/adoptreview/입양리스트.jpg", member7);
-            adoptReviewService.create("입양후기8","입양후기 8에 대한 내용입니다.","images/adoptreview/입양리스트.jpg", member7);
-            adoptReviewService.create("입양후기9","입양후기 9에 대한 내용입니다.","images/adoptreview/입양리스트.jpg", member7);
+            adoptReviewService.create("입양후기2","입양후기 2에 대한 내용입니다.","images/adoptreview/adopt-review-1.png", member2);
+            adoptReviewService.create("입양후기3","입양후기 3에 대한 내용입니다.","images/adoptreview/adopt-review-2.png", member3);
+            adoptReviewService.create("입양후기4","입양후기 4에 대한 내용입니다.","images/adoptreview/adopt-review-3.png", member4);
+            adoptReviewService.create("입양후기5","입양후기 5에 대한 내용입니다.","images/adoptreview/adopt-review-4.png", member5);
+            adoptReviewService.create("입양후기6","입양후기 6에 대한 내용입니다.","images/adoptreview/adopt-review-5.png", member6);
+            adoptReviewService.create("입양후기7","입양후기 7에 대한 내용입니다.","images/adoptreview/adopt-review-6.png", member7);
+            adoptReviewService.create("입양후기8","입양후기 8에 대한 내용입니다.","images/adoptreview/adopt-review-7.png", member7);
+            adoptReviewService.create("입양후기9","입양후기 9에 대한 내용입니다.","images/adoptreview/adopt-review-1.png", member7);
 
             animalService.create("11","동구","개","흰색","없음","수","2024-07-15","2024-07-15","11kg","images/adoptionnotice/cf2bf21f-dd81-4a9b-a76d-507f826fd6c8.jpg","123123","포메라니안",member6);
 
