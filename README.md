@@ -933,4 +933,4 @@ AND (:age IS NULL OR a.age LIKE CONCAT('%', :age, '%'))</br>
 
 ## 🔗Link
 
-[프로젝트 완성 및 시연 영상](주소작성)
+[프로젝트 완성 및 시연 영상](https://youtu.be/mQ1BB95RSgE)
