@@ -74,7 +74,7 @@ public class Dev {
             Volunteer volunteer8 = volunteerService.create("사설보호소 현철이네 봉사활동", "봉사활동 내용6", "충남 청양군 대치면 청산로 420", "2024-08-06T11:00", "2024-08-06T17:00", "2024-08-03", "images/volunteer/volunteer-8.png", 20, member6, 0);
             Volunteer volunteer9 = volunteerService.create("번식장 구조견 돌봄 봉사활동", "봉사활동 내용6", "대전 유성구 금남구즉로 1234", "2024-09-06T09:00", "2024-09-06T17:50", "2024-09-03", "images/volunteer/volunteer-9.png", 20, member9, 0);
             Volunteer volunteer10 = volunteerService.create("사설보호소 태우네 봉사활동", "봉사활동 내용6", "세종특별자치시 전동면 미륵당1길 117-16", "2024-09-10T07:50", "2024-09-11T14:50", "2024-09-06", "images/volunteer/volunteer-10.png", 20, member2, 0);
-            Volunteer volunteer11 = volunteerService.create("사설보호소 상민이네 봉사활동", "봉사활동 내용6", "강원특별자치도 원주시 호저면 칠봉로 110-6", "2024-09-16T16:00", "2024-09-16T15:50", "2024-09-12", "images/volunteer/volunteer-11.png", 1, member2, 0);
+            Volunteer volunteer11 = volunteerService.create("사설보호소 상민이네 봉사활동", "봉사활동 내용6", "강원특별자치도 원주시 호저면 칠봉로 110-6", "2024-09-16T09:00", "2024-09-16T15:50", "2024-09-12", "images/volunteer/volunteer-11.png", 1, member2, 0);
 
             // 캘린더 샘플 만들기
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");

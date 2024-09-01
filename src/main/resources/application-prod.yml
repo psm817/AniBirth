@@ -12,5 +12,16 @@ spring:
         show_sql: false
         format_sql: false
         use_sql_comments: false
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: 5004jse@gmail.com
+    password: NEED_TO_INPUT_ON_SECRET
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 custom:
   genFileDirPath: /temp/thumbnail
