@@ -1,6 +1,4 @@
 spring:
-  config:
-    import: file:/path/to/application-secret.yml
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
     url: jdbc:mariadb://172.17.0.1:3306/anibirth_dev?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul
@@ -18,7 +16,7 @@ spring:
     host: smtp.gmail.com
     port: 587
     username: 5004jse@gmail.com
-    password: NEED_TO_INPUT_ON_SECRET
+    password: wpssijrqxcbxznqe
     properties:
       mail:
         smtp:
