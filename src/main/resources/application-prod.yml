@@ -1,6 +1,6 @@
 spring:
-  profiles:
-    include: secret
+  config:
+    import: file:/path/to/application-secret.yml
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
     url: jdbc:mariadb://172.17.0.1:3306/anibirth_dev?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul
