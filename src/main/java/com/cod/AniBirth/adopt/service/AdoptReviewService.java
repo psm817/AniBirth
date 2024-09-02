@@ -234,4 +234,10 @@ public class AdoptReviewService {
     public void delete(AdoptReview adoptReview) {
         this.adoptReviewRepository.delete(adoptReview);
     }
+
+    public void hit(AdoptReview adoptReview) {
+        adoptReview.setHit(adoptReview.getHit() + 1);
+
+        adoptReviewRepository.save(adoptReview);
+    }
 }

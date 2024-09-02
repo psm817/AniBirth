@@ -242,6 +242,8 @@ public class AdoptController {
     public String review_detail(@PathVariable("id") Long id, Model model) {
         AdoptReview adoptReview = adoptReviewService.getreview(id);
 
+        adoptReviewService.hit(adoptReview);
+
         // 이전 다음 페이지
         AdoptReview prevVR = adoptReviewService.getPreviousVR(id);
         AdoptReview nextVR = adoptReviewService.getNextVR(id);
