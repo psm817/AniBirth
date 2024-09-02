@@ -113,9 +113,9 @@ public class Prod {
             calendarService.create(volunteer11.getTitle(), start11, end11, volunteer11);
 
             // 봉사후기 샘플
-            volunteerReviewService.createProd("따뜻한 마음의 온기, 유기동물과 함께한 하루", "내용1", 0, member4, "/app/resources/static/images/volunteer/volunteer-review-1.png", Arrays.asList("/app/resources/static/images/volunteer/volunteer-review-1.png"));
-            volunteerReviewService.createProd("작은 손길, 큰 사랑", "내용2", 0, member5, "/app/resources/static/images/volunteer/volunteer-review-2.png", Arrays.asList("/app/resources/static/images/volunteer/volunteer-review-2.png", "/app/resources/static/images/volunteer/volunteer-review-18.png"));
-            volunteerReviewService.createProd("새로운 친구들과 함께한 유기동물 봉사 이야기", "내용3", 0, member10, "/app/resources/static/images/volunteer/volunteer-review-3.png", Arrays.asList("/app/resources/static/images/volunteer/volunteer-review-3.png"));
+            volunteerReviewService.createProd("따뜻한 마음의 온기, 유기동물과 함께한 하루", "내용1", 0, member4, "/app/resources/static/images/volunteer/volunteer-review-1.png", Arrays.asList("volunteer/volunteer-review-1.png"));
+            volunteerReviewService.createProd("작은 손길, 큰 사랑", "내용2", 0, member5, "/app/resources/static/images/volunteer/volunteer-review-2.png", Arrays.asList("volunteer/volunteer-review-2.png", "volunteer/volunteer-review-18.png"));
+            volunteerReviewService.createProd("새로운 친구들과 함께한 유기동물 봉사 이야기", "내용3", 0, member10, "/app/resources/static/images/volunteer/volunteer-review-3.png", Arrays.asList("volunteer/volunteer-review-3.png"));
             volunteerReviewService.createProd("유기동물과의 만남, 그 따뜻한 순간들", "내용4", 0, member4, "/app/resources/static/images/volunteer/volunteer-review-4.png", Arrays.asList("/app/resources/static/images/volunteer/volunteer-review-4.png", "/app/resources/static/images/volunteer/volunteer-review-17.png"));
             volunteerReviewService.createProd("유기동물에게 전한 작은 사랑, 큰 감동", "내용5", 0, member5, "/app/resources/static/images/volunteer/volunteer-review-5.png", Arrays.asList("/app/resources/static/images/volunteer/volunteer-review-5.png", "/app/resources/static/images/volunteer/volunteer-review-16.png"));
             volunteerReviewService.createProd("사랑이 필요한 그들에게, 유기동물 봉사활동 체험기", "내용6", 0, member10, "/app/resources/static/images/volunteer/volunteer-review-6.png", Arrays.asList("/app/resources/static/images/volunteer/volunteer-review-6.png", "/app/resources/static/images/volunteer/volunteer-review-14.png", "/app/resources/static/images/volunteer/volunteer-review-15.png"));
