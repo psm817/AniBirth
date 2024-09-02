@@ -80,7 +80,7 @@ public class MemberService {
 
         Member member = signup(
                 username,
-                passwordEncoder.encode(password),
+                password,
                 nickname,
                 email,
                 phone,
