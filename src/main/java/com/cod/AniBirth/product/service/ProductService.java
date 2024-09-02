@@ -13,10 +13,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -72,6 +74,67 @@ public class ProductService {
                 .hitCount(0)
                 .build();
         productRepository.save(product);
+    }
+
+    public Product createI(String title, String description, int price, String category, MultipartFile thumbnailImg, Member member, int shippingFee, int hit) {
+        String thumbnailRelPath = "images/product/" + UUID.randomUUID().toString() + ".jpg";
+        File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
+
+        File parentDir = thumbnailFile.getParentFile();
+        if (!parentDir.exists()) {
+            parentDir.mkdirs();
+        }
+
+        try {
+            thumbnailImg.transferTo(thumbnailFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Product product = Product.builder()
+                .title(title)
+                .description(description)
+                .price(price)
+                .category(category)
+                .thumbnailImg(thumbnailRelPath)
+                .member(member)
+                .shippingFee(shippingFee) // 배송비 추가
+                .hitCount(hit)
+                .build();
+        return productRepository.save(product);
+    }
+
+    public Product createProd(String title, String description, int price, String category, Member member, int shippingFee, String thumbnailImg, int hit) throws IOException {
+        MultipartFile thumbnail = getMultipartFile(thumbnailImg);
+
+        Product product = createI(
+                title,
+                description,
+                price,
+                category,
+                thumbnail,
+                member,
+                shippingFee,
+                hit
+        );
+
+        return product;
+    }
+
+    private MultipartFile getMultipartFile(String filePath) throws IOException {
+        // 절대 경로를 직접 사용함으로 System.getProperty("user.dir") 제거
+        File file = new File(filePath);
+        if (!file.exists()) {
+            System.out.println("파일이 존재하지 않습니다: " + file.getAbsolutePath());
+            throw new IOException("파일이 존재하지 않습니다: " + file.getAbsolutePath());
+        }
+        FileInputStream input = new FileInputStream(file);
+        return new MockMultipartFile(
+                file.getName(),
+                file.getName(),
+                "image/jpeg",
+                input
+        );
     }
 
     public Product create(String title, String description, int price, String category, Member member, int shippingFee, String thumbnailImg) {

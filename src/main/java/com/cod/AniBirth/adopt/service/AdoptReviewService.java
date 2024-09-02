@@ -12,11 +12,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -85,6 +87,61 @@ public class AdoptReviewService {
         }
     }
 
+    public AdoptReview createI(String title, String content, MultipartFile images, Member member) {
+
+        String thumbnailRelPath = "images/adoptreview/" + UUID.randomUUID().toString() + ".jpg";
+        File thumbnailFile = new File(genFileDirPath + "/" + thumbnailRelPath);
+
+        File parentDir = thumbnailFile.getParentFile();
+        if (!parentDir.exists()) {
+            parentDir.mkdirs();
+        }
+
+        try {
+            images.transferTo(thumbnailFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        AdoptReview ar = AdoptReview.builder()
+                .title(title)
+                .content(content)
+                .writer(member)
+                .images(thumbnailRelPath)
+                .build();
+
+        return adoptReviewRepository.save(ar);
+    }
+
+    public AdoptReview createProd(String title, String content, String thumbnailImg, Member member) throws IOException {
+        MultipartFile thumbnail = getMultipartFile(thumbnailImg);
+
+        AdoptReview ar = createI(
+                title,
+                content,
+                thumbnail,
+                member
+        );
+
+        return ar;
+    }
+
+    private MultipartFile getMultipartFile(String filePath) throws IOException {
+        // 절대 경로를 직접 사용함으로 System.getProperty("user.dir") 제거
+        File file = new File(filePath);
+        if (!file.exists()) {
+            System.out.println("파일이 존재하지 않습니다: " + file.getAbsolutePath());
+            throw new IOException("파일이 존재하지 않습니다: " + file.getAbsolutePath());
+        }
+        FileInputStream input = new FileInputStream(file);
+        return new MockMultipartFile(
+                file.getName(),
+                file.getName(),
+                "image/jpeg",
+                input
+        );
+    }
 
     public void create(String title, String content, String images, Member member) {
 
