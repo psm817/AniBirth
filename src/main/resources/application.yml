@@ -68,6 +68,4 @@ spring:
       org.hibernate.orm.jdbc.extract: TRACE
       org.springframework.security: DEBUG
   custom:
-    site:
-      baseUrl: http://localhost
     genFileDirPath: C:\work\AniBirth\src\main\resources\static
