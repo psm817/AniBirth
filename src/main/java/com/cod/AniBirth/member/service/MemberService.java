@@ -9,6 +9,7 @@ import com.cod.AniBirth.member.repository.MemberRepository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -73,29 +75,89 @@ public class MemberService {
     }
 
     public Member signup(String username, String password, String nickname, String email,
-                         String phone, String address, String thumbnailImgPath, int authority, int isActive) {
-        Member member = Member.builder()
-                .username(username)
-                .password(passwordEncoder.encode(password))
-                .nickname(nickname)
-                .email(email)
-                .phone(phone)
-                .address(address)
-                .thumbnailImg(thumbnailImgPath)
-                .authority(authority)
-                .isActive(isActive)
-                .createDate(LocalDateTime.now())
-                .build();
+                         String phone, String address, String thumbnailImgPath, int authority, int isActive) throws IOException {
+        MultipartFile thumbnail = getMultipartFile(thumbnailImgPath);
 
-        if (authority == 2) {
-            member.setIsActive(1);
-        }
-
-        memberRepository.save(member);
-        accountService.createOrUpdate(member, "", 0L);
+        Member member = signup(
+                username,
+                passwordEncoder.encode(password),
+                nickname,
+                email,
+                phone,
+                address,
+                thumbnail,
+                authority,
+                isActive
+        );
 
         return member;
     }
+
+    private MultipartFile getMultipartFile(String filePath) throws IOException {
+        // 절대 경로를 직접 사용함으로 System.getProperty("user.dir") 제거
+        File file = new File(filePath);
+        if (!file.exists()) {
+            System.out.println("파일이 존재하지 않습니다: " + file.getAbsolutePath());
+            throw new IOException("파일이 존재하지 않습니다: " + file.getAbsolutePath());
+        }
+        FileInputStream input = new FileInputStream(file);
+        return new MockMultipartFile(
+                file.getName(),
+                file.getName(),
+                "image/jpeg",
+                input
+        );
+    }
+
+//    public Member signup(String username, String password, String nickname, String email,
+//                         String phone, String address, String thumbnailImgPath, int authority, int isActive) {
+//        Member member = Member.builder()
+//                .username(username)
+//                .password(passwordEncoder.encode(password))
+//                .nickname(nickname)
+//                .email(email)
+//                .phone(phone)
+//                .address(address)
+//                .thumbnailImg(thumbnailImgPath)
+//                .authority(authority)
+//                .isActive(isActive)
+//                .createDate(LocalDateTime.now())
+//                .build();
+//
+//        if (authority == 2) {
+//            member.setIsActive(1);
+//        }
+//
+//        memberRepository.save(member);
+//        accountService.createOrUpdate(member, "", 0L);
+//
+//        return member;
+//    }
+
+//    public Member signup(String username, String password, String nickname, String email,
+//                         String phone, String address, String thumbnailImgPath, int authority, int isActive) {
+//        Member member = Member.builder()
+//                .username(username)
+//                .password(passwordEncoder.encode(password))
+//                .nickname(nickname)
+//                .email(email)
+//                .phone(phone)
+//                .address(address)
+//                .thumbnailImg(thumbnailImgPath)
+//                .authority(authority)
+//                .isActive(isActive)
+//                .createDate(LocalDateTime.now())
+//                .build();
+//
+//        if (authority == 2) {
+//            member.setIsActive(1);
+//        }
+//
+//        memberRepository.save(member);
+//        accountService.createOrUpdate(member, "", 0L);
+//
+//        return member;
+//    }
 
     public boolean usernameExists(String username) {
         return memberRepository.existsByUsername(username);
