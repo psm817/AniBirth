@@ -24,4 +24,4 @@ spring:
           starttls:
             enable: true
 custom:
-  genFileDirPath: /temp/thumbnail
+  genFileDirPath: /app/resources/static/images/
