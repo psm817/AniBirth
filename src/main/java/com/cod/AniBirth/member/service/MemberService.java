@@ -74,7 +74,7 @@ public class MemberService {
         return member;
     }
 
-    public Member signup(String username, String password, String nickname, String email,
+    public Member signupProd(String username, String password, String nickname, String email,
                          String phone, String address, String thumbnailImgPath, int authority, int isActive) throws IOException {
         MultipartFile thumbnail = getMultipartFile(thumbnailImgPath);
 
@@ -109,55 +109,30 @@ public class MemberService {
         );
     }
 
-//    public Member signup(String username, String password, String nickname, String email,
-//                         String phone, String address, String thumbnailImgPath, int authority, int isActive) {
-//        Member member = Member.builder()
-//                .username(username)
-//                .password(passwordEncoder.encode(password))
-//                .nickname(nickname)
-//                .email(email)
-//                .phone(phone)
-//                .address(address)
-//                .thumbnailImg(thumbnailImgPath)
-//                .authority(authority)
-//                .isActive(isActive)
-//                .createDate(LocalDateTime.now())
-//                .build();
-//
-//        if (authority == 2) {
-//            member.setIsActive(1);
-//        }
-//
-//        memberRepository.save(member);
-//        accountService.createOrUpdate(member, "", 0L);
-//
-//        return member;
-//    }
+    public Member signup(String username, String password, String nickname, String email,
+                         String phone, String address, String thumbnailImgPath, int authority, int isActive) {
+        Member member = Member.builder()
+                .username(username)
+                .password(passwordEncoder.encode(password))
+                .nickname(nickname)
+                .email(email)
+                .phone(phone)
+                .address(address)
+                .thumbnailImg(thumbnailImgPath)
+                .authority(authority)
+                .isActive(isActive)
+                .createDate(LocalDateTime.now())
+                .build();
 
-//    public Member signup(String username, String password, String nickname, String email,
-//                         String phone, String address, String thumbnailImgPath, int authority, int isActive) {
-//        Member member = Member.builder()
-//                .username(username)
-//                .password(passwordEncoder.encode(password))
-//                .nickname(nickname)
-//                .email(email)
-//                .phone(phone)
-//                .address(address)
-//                .thumbnailImg(thumbnailImgPath)
-//                .authority(authority)
-//                .isActive(isActive)
-//                .createDate(LocalDateTime.now())
-//                .build();
-//
-//        if (authority == 2) {
-//            member.setIsActive(1);
-//        }
-//
-//        memberRepository.save(member);
-//        accountService.createOrUpdate(member, "", 0L);
-//
-//        return member;
-//    }
+        if (authority == 2) {
+            member.setIsActive(1);
+        }
+
+        memberRepository.save(member);
+        accountService.createOrUpdate(member, "", 0L);
+
+        return member;
+    }
 
     public boolean usernameExists(String username) {
         return memberRepository.existsByUsername(username);
